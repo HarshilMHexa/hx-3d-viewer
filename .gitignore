@@ -1,0 +1,11 @@
+# Ignore everything
+/*
+
+# Allow specific files/folders
+!/dist/
+!/package.json
+!/README.md
+!/.gitignore
+
+# Ignore node_modules always
+node_modules/

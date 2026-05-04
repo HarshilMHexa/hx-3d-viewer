@@ -1,0 +1,33 @@
+{
+  "name": "hx-3d-viewer",
+  "version": "1.0.0",
+  "description": "Closed-source 3D viewer SDK",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format cjs,esm --dts --minify --clean",
+    "dev": "tsup src/index.tsx --format cjs,esm --dts --watch --clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "@react-three/fiber": ">=8.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "three": ">=0.150.0"
+  },
+  "devDependencies": {
+    "@react-three/fiber": "^9.6.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/three": "^0.169.0",
+    "three": "^0.184.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  }
+}
