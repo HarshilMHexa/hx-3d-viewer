@@ -10,9 +10,9 @@
     "dist2"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format cjs,esm --dts --minify --clean --platform browser --external react --external react-dom --no-splitting",
-    "build:dist2": "tsup src/index.tsx --format cjs,esm --dts --minify --clean --out-dir dist2 --platform browser --external react --external react-dom --no-splitting",
-    "dev": "tsup src/index.tsx --format cjs,esm --dts --watch --clean --platform browser --external react --external react-dom --no-splitting"
+    "build": "tsup src/index.tsx --format esm --dts --minify --clean --platform browser --external react --external react-dom --no-splitting",
+    "build:dist2": "tsup src/index.tsx --format esm --dts --minify --clean --out-dir dist2 --platform browser --external react --external react-dom --no-splitting",
+    "dev": "tsup src/index.tsx --format esm --dts --watch --clean --platform browser --external react --external react-dom --no-splitting"
   },
   "keywords": [],
   "author": "",

@@ -3,6 +3,7 @@
 
 # Allow specific files/folders
 !/dist/
+!/dist2/
 !/package.json
 !/README.md
 !/.gitignore
