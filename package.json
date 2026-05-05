@@ -4,11 +4,17 @@
   "description": "Closed-source 3D viewer SDK",
   "main": "dist2/index.js",
   "module": "dist2/index.mjs",
-  "types": "dist2/index.d.ts",
+  "types": "dist2/index.d.mts",
   "files": [
     "dist",
     "dist2"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist2/index.d.mts",
+      "import": "./dist2/index.mjs"
+    }
+  },
   "scripts": {
     "build": "tsup",
     "build:dist2": "tsup",
