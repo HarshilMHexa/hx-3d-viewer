@@ -16,6 +16,8 @@ interface R3FViewerProps {
     position?: [number, number, number];
     plugins?: Plugin[];
     showControls?: boolean;
+    minDistance?: number;
+    maxDistance?: number;
 }
 declare const R3FViewer: React.FC<R3FViewerProps>;
 

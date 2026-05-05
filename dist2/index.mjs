@@ -151427,19 +151427,28 @@ var R3FViewer = ({
   size = 1,
   position: position2 = [0, 0, 0],
   plugins = [],
-  showControls = true
+  showControls = true,
+  minDistance = 1,
+  maxDistance = 20
 }) => {
   const boxSize = Array.isArray(size) ? size : [size, size, size];
-  return /* @__PURE__ */ jsx("div", { style: { width: "100%", height: "100%", minHeight: "400px" }, children: /* @__PURE__ */ jsxs(Canvas, { camera: { position: [3, 3, 3] }, children: [
+  return /* @__PURE__ */ jsx("div", { style: { width: "100%", height: "100%", minHeight: "400px" }, children: /* @__PURE__ */ jsxs(Canvas, { camera: { position: [5, 5, 5] }, children: [
     /* @__PURE__ */ jsx("ambientLight", { intensity: Math.PI / 2 }),
     /* @__PURE__ */ jsx("spotLight", { position: [10, 10, 10], angle: 0.15, penumbra: 1, decay: 0, intensity: Math.PI }),
     /* @__PURE__ */ jsx("pointLight", { position: [-10, -10, -10], decay: 0, intensity: Math.PI }),
-    showControls && /* @__PURE__ */ jsx(OrbitControls2, {}),
+    showControls && /* @__PURE__ */ jsx(OrbitControls2, { minDistance, maxDistance }),
     /* @__PURE__ */ jsxs("mesh", { position: position2, children: [
       /* @__PURE__ */ jsx("boxGeometry", { args: boxSize }),
       /* @__PURE__ */ jsx("meshStandardMaterial", { color })
     ] }),
-    plugins.map((plugin) => /* @__PURE__ */ jsx(plugin.component, {}, plugin.name))
+    plugins.map((plugin) => /* @__PURE__ */ jsx(
+      plugin.component,
+      {
+        minDistance,
+        maxDistance
+      },
+      plugin.name
+    ))
   ] }) });
 };
 /*! Bundled license information:
