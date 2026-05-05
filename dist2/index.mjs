@@ -1,25 +1,20 @@
-import * as React142 from 'react';
-import React142__default, { forwardRef, useRef, useMemo, useLayoutEffect, useEffect, Fragment as Fragment$1, useImperativeHandle, useState, useCallback, useContext, Suspense, createContext } from 'react';
+import * as React143 from 'react';
+import React143__default, { forwardRef, useRef, useMemo, useLayoutEffect, useEffect, Fragment as Fragment$1, useImperativeHandle, useState, useCallback, useContext, Suspense, createContext } from 'react';
+import 'react-dom';
+import useSyncExternalStoreExports from 'use-sync-external-store/shim/with-selector.js';
 import { jsx, Fragment, jsxs } from 'react/jsx-runtime';
-import * as ReactDOM from 'react-dom/client';
+import * as ReactDOM2 from 'react-dom/client';
 
-// Pure ESM Bundle
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __require = /* @__PURE__ */ ((x3) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x3, {
-  get: (a7, b6) => (typeof require !== "undefined" ? require : a7)[b6]
-}) : x3)(function(x3) {
-  if (typeof require !== "undefined") return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x3 + '" is not supported');
-});
 var __esm = (fn2, res) => function __init() {
   return fn2 && (res = (0, fn2[__getOwnPropNames(fn2)[0]])(fn2 = 0)), res;
 };
-var __commonJS = (cb, mod) => function __require2() {
+var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target2, all) => {
@@ -39,160 +34,18 @@ var __toESM = (mod, isNodeMode, target2) => (target2 = mod != null ? __create(__
   // file that has been converted to a CommonJS file using a Babel-
   // compatible transform (i.e. "__esModule" has not been set), then set
   // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target2, "default", { value: mod, enumerable: true }) : target2,
+  !mod || !mod.__esModule ? __defProp(target2, "default", { value: mod, enumerable: true }) : target2,
   mod
 ));
-
-// node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js
-var require_use_sync_external_store_shim_development = __commonJS({
-  "node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.development.js"(exports$1) {
-    (function() {
-      function is3(x3, y2) {
-        return x3 === y2 && (0 !== x3 || 1 / x3 === 1 / y2) || x3 !== x3 && y2 !== y2;
-      }
-      function useSyncExternalStore$2(subscribe, getSnapshot) {
-        didWarnOld18Alpha || void 0 === React145.startTransition || (didWarnOld18Alpha = true, console.error(
-          "You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."
-        ));
-        var value = getSnapshot();
-        if (!didWarnUncachedGetSnapshot) {
-          var cachedValue = getSnapshot();
-          objectIs(value, cachedValue) || (console.error(
-            "The result of getSnapshot should be cached to avoid an infinite loop"
-          ), didWarnUncachedGetSnapshot = true);
-        }
-        cachedValue = useState63({
-          inst: { value, getSnapshot }
-        });
-        var inst = cachedValue[0].inst, forceUpdate = cachedValue[1];
-        useLayoutEffect61(
-          function() {
-            inst.value = value;
-            inst.getSnapshot = getSnapshot;
-            checkIfSnapshotChanged(inst) && forceUpdate({ inst });
-          },
-          [subscribe, value, getSnapshot]
-        );
-        useEffect63(
-          function() {
-            checkIfSnapshotChanged(inst) && forceUpdate({ inst });
-            return subscribe(function() {
-              checkIfSnapshotChanged(inst) && forceUpdate({ inst });
-            });
-          },
-          [subscribe]
-        );
-        useDebugValue2(value);
-        return value;
-      }
-      function checkIfSnapshotChanged(inst) {
-        var latestGetSnapshot = inst.getSnapshot;
-        inst = inst.value;
-        try {
-          var nextValue = latestGetSnapshot();
-          return !objectIs(inst, nextValue);
-        } catch (error2) {
-          return true;
-        }
-      }
-      function useSyncExternalStore$1(subscribe, getSnapshot) {
-        return getSnapshot();
-      }
-      "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React145 = __require("react"), objectIs = "function" === typeof Object.is ? Object.is : is3, useState63 = React145.useState, useEffect63 = React145.useEffect, useLayoutEffect61 = React145.useLayoutEffect, useDebugValue2 = React145.useDebugValue, didWarnOld18Alpha = false, didWarnUncachedGetSnapshot = false, shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
-      exports$1.useSyncExternalStore = void 0 !== React145.useSyncExternalStore ? React145.useSyncExternalStore : shim;
-      "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-    })();
-  }
-});
-
-// node_modules/use-sync-external-store/shim/index.js
-var require_shim = __commonJS({
-  "node_modules/use-sync-external-store/shim/index.js"(exports$1, module) {
-    {
-      module.exports = require_use_sync_external_store_shim_development();
-    }
-  }
-});
-
-// node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js
-var require_with_selector_development = __commonJS({
-  "node_modules/use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js"(exports$1) {
-    (function() {
-      function is3(x3, y2) {
-        return x3 === y2 && (0 !== x3 || 1 / x3 === 1 / y2) || x3 !== x3 && y2 !== y2;
-      }
-      "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React145 = __require("react"), shim = require_shim(), objectIs = "function" === typeof Object.is ? Object.is : is3, useSyncExternalStore = shim.useSyncExternalStore, useRef85 = React145.useRef, useEffect63 = React145.useEffect, useMemo79 = React145.useMemo, useDebugValue2 = React145.useDebugValue;
-      exports$1.useSyncExternalStoreWithSelector = function(subscribe, getSnapshot, getServerSnapshot, selector, isEqual) {
-        var instRef = useRef85(null);
-        if (null === instRef.current) {
-          var inst = { hasValue: false, value: null };
-          instRef.current = inst;
-        } else inst = instRef.current;
-        instRef = useMemo79(
-          function() {
-            function memoizedSelector(nextSnapshot) {
-              if (!hasMemo) {
-                hasMemo = true;
-                memoizedSnapshot = nextSnapshot;
-                nextSnapshot = selector(nextSnapshot);
-                if (void 0 !== isEqual && inst.hasValue) {
-                  var currentSelection = inst.value;
-                  if (isEqual(currentSelection, nextSnapshot))
-                    return memoizedSelection = currentSelection;
-                }
-                return memoizedSelection = nextSnapshot;
-              }
-              currentSelection = memoizedSelection;
-              if (objectIs(memoizedSnapshot, nextSnapshot))
-                return currentSelection;
-              var nextSelection = selector(nextSnapshot);
-              if (void 0 !== isEqual && isEqual(currentSelection, nextSelection))
-                return memoizedSnapshot = nextSnapshot, currentSelection;
-              memoizedSnapshot = nextSnapshot;
-              return memoizedSelection = nextSelection;
-            }
-            var hasMemo = false, memoizedSnapshot, memoizedSelection, maybeGetServerSnapshot = void 0 === getServerSnapshot ? null : getServerSnapshot;
-            return [
-              function() {
-                return memoizedSelector(getSnapshot());
-              },
-              null === maybeGetServerSnapshot ? void 0 : function() {
-                return memoizedSelector(maybeGetServerSnapshot());
-              }
-            ];
-          },
-          [getSnapshot, getServerSnapshot, selector, isEqual]
-        );
-        var value = useSyncExternalStore(subscribe, instRef[0], instRef[1]);
-        useEffect63(
-          function() {
-            inst.hasValue = true;
-            inst.value = value;
-          },
-          [value]
-        );
-        useDebugValue2(value);
-        return value;
-      };
-      "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-    })();
-  }
-});
-
-// node_modules/use-sync-external-store/shim/with-selector.js
-var require_with_selector = __commonJS({
-  "node_modules/use-sync-external-store/shim/with-selector.js"(exports$1, module) {
-    {
-      module.exports = require_with_selector_development();
-    }
+var init_react_shim = __esm({
+  "react-shim.js"() {
   }
 });
 
 // node_modules/scheduler/cjs/scheduler.development.js
 var require_scheduler_development = __commonJS({
   "node_modules/scheduler/cjs/scheduler.development.js"(exports$1) {
+    init_react_shim();
     (function() {
       function performWorkUntilDeadline() {
         needsPaint = false;
@@ -451,6 +304,7 @@ var require_scheduler_development = __commonJS({
 // node_modules/scheduler/index.js
 var require_scheduler = __commonJS({
   "node_modules/scheduler/index.js"(exports$1, module) {
+    init_react_shim();
     {
       module.exports = require_scheduler_development();
     }
@@ -6054,6 +5908,7 @@ function getResponseUrl(response, context12) {
 var isFiniteNumber, isSafeInteger, MAX_SAFE_INTEGER, ErrorTypes, ErrorDetails, Events, PlaylistContextType, PlaylistLevelType, EWMA, EwmaBandWidthEstimator, Logger, noop2, fakeLogger, exportedLogger, logger, urlToolkit, hasRequiredUrlToolkit, urlToolkitExports, LoadStats, ElementaryStreamTypes, BaseSegment, Fragment16, Part, UINT32_MAX$1, push, RemuxerTrackIdConfig, userAgentHevcSupportIsInaccurate, sampleEntryCodesISO, CODEC_COMPATIBLE_NAMES, AUDIO_CODEC_REGEXP, supportedResult, unsupportedResult, SUPPORTED_INFO_DEFAULT, HdcpLevels, VideoRangeValues, HlsSkip, HlsUrlParameters, Level, omitCircularRefsReplacer, stringify, AbrController, BinarySearch, NetworkErrorAction, ErrorActionFlags, ErrorController, FragmentState, FragmentTracker, DecrypterAesMode, AESCrypto, AESDecryptor, FastAESKey, CHUNK_SIZE, Decrypter, MIN_CHUNK_SIZE, FragmentLoader, LoadError, TaskLoop, ChunkMetadata, noopBuffered, BufferHelper, VARIABLE_REPLACEMENT_REGEX, DECIMAL_RESOLUTION_REGEX, ATTR_LIST_REGEX, AttrList, CLASS_INTERSTITIAL, DateRange, DEFAULT_TARGET_DURATION, LevelDetails, optionalSelf, KeySystems, KeySystemFormats, requestMediaKeySystemAccess, keyUriToKeyIdMap, LevelKey, MASTER_PLAYLIST_REGEX, MASTER_PLAYLIST_MEDIA_REGEX, IS_MEDIA_PLAYLIST, LEVEL_PLAYLIST_REGEX_FAST, LEVEL_PLAYLIST_REGEX_SLOW, M3U8Parser, TimeRanges, State, BaseStreamController, ChunkCache, eventemitter3, hasRequiredEventemitter3, eventemitter3Exports, EventEmitter, version4, workerStore, HEADER_FOOTER_SIZE, FRAME_SIZE, MetadataSchema, BaseAudioDemuxer, initPTSFn, chromeVersion$1, BitratesMap, SamplingRateMap, SamplesCoefficients, BytesInSlot, AACDemuxer, getAudioBSID, AC3Demuxer, MP3Demuxer, emsgSchemePattern, MP4Demuxer, SampleAesDecrypter, BaseVideoParser, ExpGolomb, AvcVideoParser, HevcVideoParser, PACKET_LENGTH, TSDemuxer, AAC, UINT32_MAX, MP4, MPEG_TS_CLOCK_FREQ_HZ, MAX_SILENT_FRAME_DURATION, AAC_SAMPLES_PER_FRAME, MPEG_AUDIO_SAMPLE_PER_FRAME, AC3_SAMPLES_PER_FRAME, chromeVersion, safariWebkitVersion, MP4Remuxer, PassThroughRemuxer, now2, muxConfig, Transmuxer, emptyResult, TransmuxConfig, TransmuxState, transmuxerInstanceCount, TransmuxerInterface, TICK_INTERVAL$3, AudioStreamController, BasePlaylistController, AudioTrackController, BufferOperationQueue, VIDEO_CODEC_PROFILE_REPLACE, TRACK_REMOVED_ERROR_NAME, HlsJsTrackRemovedError, BufferController, CapLevelController, CmObjectType, CmcdObjectType, CmStreamingFormat, CmcdStreamingFormat, SfItem, DICT, SfToken, BARE_ITEM, BOOLEAN, BYTES, INTEGER, DECIMAL, STRING, STRING_REGEX, TOKEN, KEY, CMCD_OBJECT, CMCD_REQUEST, CMCD_SESSION, CMCD_STATUS, CMCD_HEADER_MAP, CmcdHeaderField, CMCD_EVENT_MODE, toRounded, toUrlSafe, toHundred, nor, CMCD_FORMATTER_MAP, CMCD_REQUEST_MODE, CMCD_RESPONSE_MODE, CMCD_COMMON_KEYS, CMCD_EVENT_KEYS, CUSTOM_KEY_REGEX, CMCD_REQUEST_KEYS, CMCD_RESPONSE_KEYS, CMCD_V1_KEYS, filterMap, CMCD_PARAM, REGEX, CMCDController, PATHWAY_PENALTY_DURATION_MS, ContentSteeringController, EMEController, EMEKeyError, FPSController, SubtitleTrackController, ALIGNED_END_THRESHOLD_SECONDS, TimelineOccupancy, InterstitialEvent, HlsAssetPlayer, ABUTTING_THRESHOLD_SECONDS, InterstitialsSchedule, AssetListLoader, InterstitialsController, TICK_INTERVAL$2, SubtitleStreamController, BufferableInstance, specialCea608CharsCodes, getCharForByte, NR_ROWS, NR_COLS, rowsLowCh1, rowsHighCh1, rowsLowCh2, rowsHighCh2, backgroundColors, CaptionsLogger, numArrayToHexArray, PenState, StyledUnicodeChar, Row, CaptionScreen, Cea608Channel, Cea608Parser, VTTCue, StringDecoder, Settings, defaults2, center2, VTTParser, LINEBREAKS, startsWith, cueString2millis, calculateOffset, IMSC1_CODEC, HMSF_REGEX, TIME_UNIT_REGEX, textAlignToLineAlign, OutputFilter, TimelineController, WHITESPACE_CHAR, Cues, BYTERANGE, FetchLoader, FetchError, AGE_HEADER_LINE_REGEX, XhrLoader, defaultLoadPolicy, hlsDefaultConfig, MAX_START_GAP_JUMP, SKIP_BUFFER_HOLE_STEP_SECONDS, SKIP_BUFFER_RANGE_START, TICK_INTERVAL$1, GapController, MIN_CUE_DURATION, MAX_CUE_ENDTIME, ID3TrackController, LatencyController, LevelController, TICK_INTERVAL, StreamController, KeyLoader, PlaylistLoader, Hls;
 var init_hls = __esm({
   "node_modules/hls.js/dist/hls.mjs"() {
+    init_react_shim();
     isFiniteNumber = Number.isFinite || function(value) {
       return typeof value === "number" && isFinite(value);
     };
@@ -33534,6 +33389,7 @@ Schedule: ${scheduleItems.map((seg) => segmentToString(seg))} pos: ${this.timeli
 // node_modules/stats.js/build/stats.min.js
 var require_stats_min = __commonJS({
   "node_modules/stats.js/build/stats.min.js"(exports$1, module) {
+    init_react_shim();
     (function(f3, e4) {
       "object" === typeof exports$1 && "undefined" !== typeof module ? module.exports = e4() : "function" === typeof define && define.amd ? define(e4) : f3.Stats = e4();
     })(exports$1, function() {
@@ -35426,6 +35282,7 @@ function Kh(t4) {
 var t3, i5, s2, o4, a6, h2, u2, l3, f2, d2, p4, E2, w, T2, k2, S, L, R, P, O, D2, G, W2, K, Y, $, q, Z, Q, tt, et2, nt, ot, at, ht, dt, gt, mt, _t, vt, wt, Tt, At, bt, kt, St, xt, Lt, Rt, Mt, It, Pt, Ot, zt, ae, he, ce, ue, le, fe, de, pe, ge, ke, Se, xe, Le, Me, Ce, zn, Qn, tr, nr, sr, or, hr, cr, Er, Ar, Lr, Fr, Or, Hr, Wr, Qr, ti, ei, ni, ri, ii, si, oi, ai, hi, ci, ui, li, fi, di, pi, gi, mi, yi, _i, vi, Ei, wi, ki, Si, xi, Li, Ri, Fi, Mi, Ii, Pi, Oi, Ci, Ni, Ui, Di, Vi, Xi, Hi, Wi, $i, qi, Ji, Zi, Qi, ts, es, ns, rs, is2, ss, os, as, hs, cs, us, ls, fs, ds, ps, gs, ms, ys, _s, vs, Es, ws, Ts, As, bs, ks, Ss, xs, Ls, Rs, Fs, Ms, Is, Ps, Os, Cs, Ns, Us, Ds, Bs, Gs, js, Vs, Xs, Hs, Ws, zs, Ks, Ys, $s, qs, Js, Zs, Qs, to, eo, no, ro, io, so, oo, ao, ho, co, uo, lo, fo, po, go, mo, yo, _o, vo, Eo, wo, To, Ao, bo, ko, Po, Oo, Uo, Qo, ea, ca, ua, la, Ea, wa, Ta, Aa, Ia, ja, Va, Ha, Wa, za, Za, Qa, th, eh, nh, rh, ih, sh, oh, ah, hh, ch, lh, fh, dh, yh, vh, Eh, bh, kh, Sh, xh, Fh, Mh, Ih, Ph, Oh, Ch, Nh, Uh, Dh, Bh, Gh, jh, Vh, Xh, Hh, Wh, Yh;
 var init_vision_bundle = __esm({
   "node_modules/@mediapipe/tasks-vision/vision_bundle.mjs"() {
+    init_react_shim();
     t3 = "undefined" != typeof self ? self : {};
     o4 = "undefined" != typeof TextDecoder;
     h2 = "undefined" != typeof TextEncoder;
@@ -37667,6 +37524,9 @@ var init_vision_bundle = __esm({
   }
 });
 
+// src/index.tsx
+init_react_shim();
+
 // node_modules/@react-three/fiber/dist/react-three-fiber.esm.js
 var react_three_fiber_esm_exports = {};
 __export(react_three_fiber_esm_exports, {
@@ -37700,6 +37560,10 @@ __export(react_three_fiber_esm_exports, {
   useStore: () => useStore,
   useThree: () => useThree
 });
+init_react_shim();
+
+// node_modules/@react-three/fiber/dist/events-b389eeca.esm.js
+init_react_shim();
 
 // node_modules/three/build/three.module.js
 var three_module_exports = {};
@@ -38146,8 +38010,10 @@ __export(three_module_exports, {
   warn: () => warn,
   warnOnce: () => warnOnce
 });
+init_react_shim();
 
 // node_modules/three/build/three.core.js
+init_react_shim();
 var REVISION = "184";
 var MOUSE = { LEFT: 0, MIDDLE: 1, RIGHT: 2, ROTATE: 0, DOLLY: 1, PAN: 2 };
 var TOUCH = { ROTATE: 0, PAN: 1, DOLLY_PAN: 2, DOLLY_ROTATE: 3 };
@@ -81195,9 +81061,10 @@ var WebGLRenderer = class {
 };
 
 // node_modules/zustand/esm/traditional.mjs
-var import_with_selector = __toESM(require_with_selector(), 1);
+init_react_shim();
 
 // node_modules/zustand/esm/vanilla.mjs
+init_react_shim();
 var createStoreImpl = (createState) => {
   let state2;
   const listeners = /* @__PURE__ */ new Set();
@@ -81222,7 +81089,7 @@ var createStoreImpl = (createState) => {
 var createStore = ((createState) => createState ? createStoreImpl(createState) : createStoreImpl);
 
 // node_modules/zustand/esm/traditional.mjs
-var { useSyncExternalStoreWithSelector } = import_with_selector.default;
+var { useSyncExternalStoreWithSelector } = useSyncExternalStoreExports;
 var identity = (arg) => arg;
 function useStoreWithEqualityFn(api, selector = identity, equalityFn) {
   const slice2 = useSyncExternalStoreWithSelector(
@@ -81232,7 +81099,7 @@ function useStoreWithEqualityFn(api, selector = identity, equalityFn) {
     selector,
     equalityFn
   );
-  React142__default.useDebugValue(slice2);
+  React143__default.useDebugValue(slice2);
   return slice2;
 }
 var createWithEqualityFnImpl = (createState, defaultEqualityFn) => {
@@ -81244,6 +81111,7 @@ var createWithEqualityFnImpl = (createState, defaultEqualityFn) => {
 var createWithEqualityFn = ((createState, defaultEqualityFn) => createState ? createWithEqualityFnImpl(createState, defaultEqualityFn) : createWithEqualityFnImpl);
 
 // node_modules/suspend-react/index.js
+init_react_shim();
 var isPromise = (promise) => typeof promise === "object" && typeof promise.then === "function";
 var globalCache = [];
 function shallowEqualArrays(arrA, arrB, equal = (a7, b6) => a7 === b6) {
@@ -81303,6 +81171,9 @@ var clear = (keys) => {
 
 // node_modules/@react-three/fiber/dist/events-b389eeca.esm.js
 var import_scheduler = __toESM(require_scheduler());
+
+// node_modules/its-fine/dist/index.js
+init_react_shim();
 function i(e4, t4, r4) {
   if (!e4) return;
   if (r4(e4) === true) return e4;
@@ -81335,17 +81206,17 @@ function l(e4) {
     return e4;
   }
 }
-var a = /* @__PURE__ */ l(/* @__PURE__ */ React142.createContext(null));
-var m = class extends React142.Component {
+var a = /* @__PURE__ */ l(/* @__PURE__ */ React143.createContext(null));
+var m = class extends React143.Component {
   render() {
-    return /* @__PURE__ */ React142.createElement(a.Provider, { value: this._reactInternals }, this.props.children);
+    return /* @__PURE__ */ React143.createElement(a.Provider, { value: this._reactInternals }, this.props.children);
   }
 };
 function c() {
-  const e4 = React142.useContext(a);
+  const e4 = React143.useContext(a);
   if (e4 === null) throw new Error("its-fine: useFiber must be called within a <FiberProvider />!");
-  const t4 = React142.useId();
-  return React142.useMemo(() => {
+  const t4 = React143.useId();
+  return React143.useMemo(() => {
     for (const n3 of [e4, e4 == null ? void 0 : e4.alternate]) {
       if (!n3) continue;
       const u3 = i(n3, false, (d3) => {
@@ -81362,21 +81233,21 @@ function c() {
 var p = /* @__PURE__ */ Symbol.for("react.context");
 var b = (e4) => e4 !== null && typeof e4 == "object" && "$$typeof" in e4 && e4.$$typeof === p;
 function h() {
-  const e4 = c(), [t4] = React142.useState(() => /* @__PURE__ */ new Map());
+  const e4 = c(), [t4] = React143.useState(() => /* @__PURE__ */ new Map());
   t4.clear();
   let r4 = e4;
   for (; r4; ) {
     const n3 = r4.type;
-    b(n3) && n3 !== a && !t4.has(n3) && t4.set(n3, React142.use(l(n3))), r4 = r4.return;
+    b(n3) && n3 !== a && !t4.has(n3) && t4.set(n3, React143.use(l(n3))), r4 = r4.return;
   }
   return t4;
 }
 function x() {
   const e4 = h();
-  return React142.useMemo(
+  return React143.useMemo(
     () => Array.from(e4.keys()).reduce(
-      (t4, r4) => (n3) => /* @__PURE__ */ React142.createElement(t4, null, /* @__PURE__ */ React142.createElement(r4.Provider, { ...n3, value: e4.get(r4) })),
-      (t4) => /* @__PURE__ */ React142.createElement(m, { ...t4 })
+      (t4, r4) => (n3) => /* @__PURE__ */ React143.createElement(t4, null, /* @__PURE__ */ React143.createElement(r4.Provider, { ...n3, value: e4.get(r4) })),
+      (t4) => /* @__PURE__ */ React143.createElement(m, { ...t4 })
     ),
     [e4]
   );
@@ -81391,24 +81262,24 @@ function findInitialRoot(instance2) {
   while (root.getState().previousRoot) root = root.getState().previousRoot;
   return root;
 }
-var act2 = React142["act"];
+var act2 = React143["act"];
 var isOrthographicCamera = (def) => def && def.isOrthographicCamera;
 var isRef = (obj) => obj && obj.hasOwnProperty("current");
 var isColorRepresentation = (value) => value != null && (typeof value === "string" || typeof value === "number" || value.isColor);
-var useIsomorphicLayoutEffect = /* @__PURE__ */ ((_window$document2, _window$navigator2) => typeof window !== "undefined" && (((_window$document2 = window.document) == null ? void 0 : _window$document2.createElement) || ((_window$navigator2 = window.navigator) == null ? void 0 : _window$navigator2.product) === "ReactNative"))() ? React142.useLayoutEffect : React142.useEffect;
+var useIsomorphicLayoutEffect = /* @__PURE__ */ ((_window$document2, _window$navigator2) => typeof window !== "undefined" && (((_window$document2 = window.document) == null ? void 0 : _window$document2.createElement) || ((_window$navigator2 = window.navigator) == null ? void 0 : _window$navigator2.product) === "ReactNative"))() ? React143.useLayoutEffect : React143.useEffect;
 function useMutableCallback(fn2) {
-  const ref = React142.useRef(fn2);
+  const ref = React143.useRef(fn2);
   useIsomorphicLayoutEffect(() => void (ref.current = fn2), [fn2]);
   return ref;
 }
 function useBridge() {
   const fiber = c();
   const ContextBridge = x();
-  return React142.useMemo(() => ({
+  return React143.useMemo(() => ({
     children
   }) => {
-    const strict = !!i(fiber, true, (node) => node.type === React142.StrictMode);
-    const Root = strict ? React142.StrictMode : React142.Fragment;
+    const strict = !!i(fiber, true, (node) => node.type === React143.StrictMode);
+    const Root = strict ? React143.StrictMode : React143.Fragment;
     return /* @__PURE__ */ jsx(Root, {
       children: /* @__PURE__ */ jsx(ContextBridge, {
         children
@@ -81425,7 +81296,7 @@ function Block({
   }, [set]);
   return null;
 }
-var ErrorBoundary = /* @__PURE__ */ ((_ErrorBoundary) => (_ErrorBoundary = class ErrorBoundary extends React142.Component {
+var ErrorBoundary = /* @__PURE__ */ ((_ErrorBoundary) => (_ErrorBoundary = class ErrorBoundary extends React143.Component {
   constructor(...args) {
     super(...args);
     this.state = {
@@ -82086,7 +81957,7 @@ function createEvents(store) {
   };
 }
 var isRenderer = (def) => !!(def != null && def.render);
-var context = /* @__PURE__ */ React142.createContext(null);
+var context = /* @__PURE__ */ React143.createContext(null);
 var createStore2 = (invalidate2, advance2) => {
   const rootStore = createWithEqualityFn((set, get) => {
     const position2 = new Vector3();
@@ -82245,7 +82116,7 @@ var createStore2 = (invalidate2, advance2) => {
         initialClick: [0, 0],
         initialHits: [],
         capturedMap: /* @__PURE__ */ new Map(),
-        lastEvent: /* @__PURE__ */ React142.createRef(),
+        lastEvent: /* @__PURE__ */ React143.createRef(),
         // Updates
         active: false,
         frames: 0,
@@ -82305,12 +82176,12 @@ var createStore2 = (invalidate2, advance2) => {
   return rootStore;
 };
 function useInstanceHandle(ref) {
-  const instance2 = React142.useRef(null);
-  React142.useImperativeHandle(instance2, () => ref.current.__r3f, [ref]);
+  const instance2 = React143.useRef(null);
+  React143.useImperativeHandle(instance2, () => ref.current.__r3f, [ref]);
   return instance2;
 }
 function useStore() {
-  const store = React142.useContext(context);
+  const store = React143.useContext(context);
   if (!store) throw new Error("R3F: Hooks can only be used within the Canvas component!");
   return store;
 }
@@ -82325,7 +82196,7 @@ function useFrame(callback, renderPriority = 0) {
   return null;
 }
 function useGraph(object) {
-  return React142.useMemo(() => buildGraph(object), [object]);
+  return React143.useMemo(() => buildGraph(object), [object]);
 }
 var memoizedLoaders = /* @__PURE__ */ new WeakMap();
 var isConstructor$1 = (value) => {
@@ -88673,7 +88544,7 @@ Check the render method of %s.`, G4(di2) || "Unknown")), i6 = zo2(n3), i6.payloa
       function Ic() {
         return di2;
       }
-      var le2 = {}, qm = React142__default, St2 = import_scheduler.default, ze2 = Object.assign, Uh2 = /* @__PURE__ */ Symbol.for("react.element"), Ho2 = /* @__PURE__ */ Symbol.for("react.transitional.element"), Ao2 = /* @__PURE__ */ Symbol.for("react.portal"), ol = /* @__PURE__ */ Symbol.for("react.fragment"), Lc = /* @__PURE__ */ Symbol.for("react.strict_mode"), Uf = /* @__PURE__ */ Symbol.for("react.profiler"), ei2 = /* @__PURE__ */ Symbol.for("react.consumer"), on2 = /* @__PURE__ */ Symbol.for("react.context"), jn2 = /* @__PURE__ */ Symbol.for("react.forward_ref"), Nc = /* @__PURE__ */ Symbol.for("react.suspense"), Bf = /* @__PURE__ */ Symbol.for("react.suspense_list"), al = /* @__PURE__ */ Symbol.for("react.memo"), kt2 = /* @__PURE__ */ Symbol.for("react.lazy");
+      var le2 = {}, qm = React143__default, St2 = import_scheduler.default, ze2 = Object.assign, Uh2 = /* @__PURE__ */ Symbol.for("react.element"), Ho2 = /* @__PURE__ */ Symbol.for("react.transitional.element"), Ao2 = /* @__PURE__ */ Symbol.for("react.portal"), ol = /* @__PURE__ */ Symbol.for("react.fragment"), Lc = /* @__PURE__ */ Symbol.for("react.strict_mode"), Uf = /* @__PURE__ */ Symbol.for("react.profiler"), ei2 = /* @__PURE__ */ Symbol.for("react.consumer"), on2 = /* @__PURE__ */ Symbol.for("react.context"), jn2 = /* @__PURE__ */ Symbol.for("react.forward_ref"), Nc = /* @__PURE__ */ Symbol.for("react.suspense"), Bf = /* @__PURE__ */ Symbol.for("react.suspense_list"), al = /* @__PURE__ */ Symbol.for("react.memo"), kt2 = /* @__PURE__ */ Symbol.for("react.lazy");
       var Ds2 = /* @__PURE__ */ Symbol.for("react.activity");
       var Bh2 = /* @__PURE__ */ Symbol.for("react.memo_cache_sentinel");
       var ni2 = Symbol.iterator, il = /* @__PURE__ */ Symbol.for("react.client.reference"), fn2 = Array.isArray, x3 = qm.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, Jt2 = m3.rendererVersion, Zt2 = m3.rendererPackageName, jo2 = m3.extraDevToolsConfig, ot2 = m3.getPublicInstance, Zr2 = m3.getRootHostContext, Dn2 = m3.getChildHostContext, Ws2 = m3.prepareForCommit, pa2 = m3.resetAfterCommit, Fc = m3.createInstance;
@@ -90254,7 +90125,7 @@ var reconciler = /* @__PURE__ */ createReconciler({
   NotPendingTransition: null,
   // The reconciler types use the internal ReactContext with all the hidden properties
   // so we have to cast from the public React.Context type
-  HostTransitionContext: /* @__PURE__ */ React142.createContext(null),
+  HostTransitionContext: /* @__PURE__ */ React143.createContext(null),
   setCurrentUpdatePriority(newPriority) {
     currentUpdatePriority = newPriority;
   },
@@ -90699,8 +90570,8 @@ function Portal({
     ...rest
   } = state2;
   const previousRoot = useStore();
-  const [raycaster] = React142.useState(() => new Raycaster());
-  const [pointer] = React142.useState(() => new Vector2());
+  const [raycaster] = React143.useState(() => new Raycaster());
+  const [pointer] = React143.useState(() => new Vector2());
   const inject2 = useMutableCallback((rootState, injectState) => {
     let viewport = void 0;
     if (injectState.camera && size) {
@@ -90743,7 +90614,7 @@ function Portal({
       }))
     };
   });
-  const usePortalStore = React142.useMemo(() => {
+  const usePortalStore = React143.useMemo(() => {
     const store = createWithEqualityFn((set, get) => ({
       ...rest,
       set,
@@ -90947,6 +90818,9 @@ function createPointerEvents(store) {
     }
   };
 }
+
+// node_modules/react-use-measure/dist/index.js
+init_react_shim();
 function g(n3, t4) {
   let o5;
   return (...i6) => {
@@ -91030,7 +90904,7 @@ function CanvasImpl({
   onCreated,
   ...props
 }) {
-  React142.useMemo(() => extend(three_module_exports), []);
+  React143.useMemo(() => extend(three_module_exports), []);
   const Bridge = useBridge();
   const [containerRef, containerRect] = j({
     scroll: true,
@@ -91040,15 +90914,15 @@ function CanvasImpl({
     },
     ...resize
   });
-  const canvasRef = React142.useRef(null);
-  const divRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => canvasRef.current);
+  const canvasRef = React143.useRef(null);
+  const divRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => canvasRef.current);
   const handlePointerMissed = useMutableCallback(onPointerMissed);
-  const [block, setBlock] = React142.useState(false);
-  const [error2, setError] = React142.useState(false);
+  const [block, setBlock] = React143.useState(false);
+  const [error2, setError] = React143.useState(false);
   if (block) throw block;
   if (error2) throw error2;
-  const root = React142.useRef(null);
+  const root = React143.useRef(null);
   useIsomorphicLayoutEffect(() => {
     const canvas = canvasRef.current;
     if (containerRect.width > 0 && containerRect.height > 0 && canvas) {
@@ -91089,7 +90963,7 @@ function CanvasImpl({
         root.current.render(/* @__PURE__ */ jsx(Bridge, {
           children: /* @__PURE__ */ jsx(ErrorBoundary, {
             set: setError,
-            children: /* @__PURE__ */ jsx(React142.Suspense, {
+            children: /* @__PURE__ */ jsx(React143.Suspense, {
               fallback: /* @__PURE__ */ jsx(Block, {
                 set: setBlock
               }),
@@ -91101,7 +90975,7 @@ function CanvasImpl({
       run2();
     }
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const canvas = canvasRef.current;
     if (canvas) return () => unmountComponentAtNode(canvas);
   }, []);
@@ -91363,8 +91237,13 @@ __export(drei_exports, {
   useTrailTexture: () => useTrailTexture,
   useVideoTexture: () => useVideoTexture
 });
+init_react_shim();
+
+// node_modules/@react-three/drei/web/Html.js
+init_react_shim();
 
 // node_modules/@babel/runtime/helpers/esm/extends.js
+init_react_shim();
 function _extends() {
   return _extends = Object.assign ? Object.assign.bind() : function(n3) {
     for (var e4 = 1; e4 < arguments.length; e4++) {
@@ -91448,7 +91327,7 @@ var getObjectCSSMatrix = /* @__PURE__ */ ((scaleMultipliers) => {
 function isRefObject(ref) {
   return ref && typeof ref === "object" && "current" in ref;
 }
-var Html = /* @__PURE__ */ React142.forwardRef(({
+var Html = /* @__PURE__ */ React143.forwardRef(({
   children,
   eps: eps2 = 1e-3,
   style,
@@ -91482,20 +91361,20 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
     events,
     viewport
   } = useThree();
-  const [el] = React142.useState(() => document.createElement(as2));
-  const root = React142.useRef(null);
-  const group = React142.useRef(null);
-  const oldZoom = React142.useRef(0);
-  const oldPosition = React142.useRef([0, 0]);
-  const transformOuterRef = React142.useRef(null);
-  const transformInnerRef = React142.useRef(null);
+  const [el] = React143.useState(() => document.createElement(as2));
+  const root = React143.useRef(null);
+  const group = React143.useRef(null);
+  const oldZoom = React143.useRef(0);
+  const oldPosition = React143.useRef([0, 0]);
+  const transformOuterRef = React143.useRef(null);
+  const transformInnerRef = React143.useRef(null);
   const target2 = (portal == null ? void 0 : portal.current) || events.connected || gl.domElement.parentNode;
-  const occlusionMeshRef = React142.useRef(null);
-  const isMeshSizeSet = React142.useRef(false);
-  const isRayCastOcclusion = React142.useMemo(() => {
+  const occlusionMeshRef = React143.useRef(null);
+  const isMeshSizeSet = React143.useRef(false);
+  const isRayCastOcclusion = React143.useMemo(() => {
     return occlude && occlude !== "blending" || Array.isArray(occlude) && occlude.length && isRefObject(occlude[0]);
   }, [occlude]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const el2 = gl.domElement;
     if (occlude && occlude === "blending") {
       el2.style.zIndex = `${Math.floor(zIndexRange[0] / 2)}`;
@@ -91507,9 +91386,9 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       el2.style.pointerEvents = null;
     }
   }, [occlude]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (group.current) {
-      const currentRoot = root.current = ReactDOM.createRoot(el);
+      const currentRoot = root.current = ReactDOM2.createRoot(el);
       scene.updateMatrixWorld();
       if (transform) {
         el.style.cssText = `position:absolute;top:0;left:0;pointer-events:none;overflow:hidden;`;
@@ -91527,10 +91406,10 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       };
     }
   }, [target2, transform]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (wrapperClass) el.className = wrapperClass;
   }, [wrapperClass]);
-  const styles2 = React142.useMemo(() => {
+  const styles2 = React143.useMemo(() => {
     if (transform) {
       return {
         position: "absolute",
@@ -91555,21 +91434,21 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       };
     }
   }, [style, center3, fullscreen, size, transform]);
-  const transformInnerStyles = React142.useMemo(() => ({
+  const transformInnerStyles = React143.useMemo(() => ({
     position: "absolute",
     pointerEvents
   }), [pointerEvents]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     isMeshSizeSet.current = false;
     if (transform) {
       var _root$current;
-      (_root$current = root.current) == null || _root$current.render(/* @__PURE__ */ React142.createElement("div", {
+      (_root$current = root.current) == null || _root$current.render(/* @__PURE__ */ React143.createElement("div", {
         ref: transformOuterRef,
         style: styles2
-      }, /* @__PURE__ */ React142.createElement("div", {
+      }, /* @__PURE__ */ React143.createElement("div", {
         ref: transformInnerRef,
         style: transformInnerStyles
-      }, /* @__PURE__ */ React142.createElement("div", {
+      }, /* @__PURE__ */ React143.createElement("div", {
         ref,
         className,
         style,
@@ -91577,7 +91456,7 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       }))));
     } else {
       var _root$current2;
-      (_root$current2 = root.current) == null || _root$current2.render(/* @__PURE__ */ React142.createElement("div", {
+      (_root$current2 = root.current) == null || _root$current2.render(/* @__PURE__ */ React143.createElement("div", {
         ref,
         style: styles2,
         className,
@@ -91585,7 +91464,7 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       }));
     }
   });
-  const visible = React142.useRef(true);
+  const visible = React143.useRef(true);
   useFrame((gl2) => {
     if (group.current) {
       camera.updateMatrixWorld();
@@ -91688,7 +91567,7 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       }
     }
   });
-  const shaders = React142.useMemo(() => ({
+  const shaders = React143.useMemo(() => ({
     vertexShader: !transform ? (
       /* glsl */
       `
@@ -91735,18 +91614,21 @@ var Html = /* @__PURE__ */ React142.forwardRef(({
       `
     )
   }), [transform]);
-  return /* @__PURE__ */ React142.createElement("group", _extends({}, props, {
+  return /* @__PURE__ */ React143.createElement("group", _extends({}, props, {
     ref: group
-  }), occlude && !isRayCastOcclusion && /* @__PURE__ */ React142.createElement("mesh", {
+  }), occlude && !isRayCastOcclusion && /* @__PURE__ */ React143.createElement("mesh", {
     castShadow,
     receiveShadow,
     ref: occlusionMeshRef
-  }, geometry3 || /* @__PURE__ */ React142.createElement("planeGeometry", null), material || /* @__PURE__ */ React142.createElement("shaderMaterial", {
+  }, geometry3 || /* @__PURE__ */ React143.createElement("planeGeometry", null), material || /* @__PURE__ */ React143.createElement("shaderMaterial", {
     side: DoubleSide,
     vertexShader: shaders.vertexShader,
     fragmentShader: shaders.fragmentShader
   })));
 });
+
+// node_modules/@react-three/drei/web/CycleRaycast.js
+init_react_shim();
 function CycleRaycast({
   onChanged,
   portal,
@@ -91754,11 +91636,11 @@ function CycleRaycast({
   scroll = true,
   keyCode = 9
 }) {
-  const cycle = React142.useRef(0);
+  const cycle = React143.useRef(0);
   const setEvents = useThree((state2) => state2.setEvents);
   const get = useThree((state2) => state2.get);
   const gl = useThree((state2) => state2.gl);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _portal$current;
     let hits = [];
     let lastEvent = void 0;
@@ -91819,22 +91701,34 @@ function CycleRaycast({
   }, [gl, get, setEvents, preventDefault, scroll, keyCode]);
   return null;
 }
+
+// node_modules/@react-three/drei/web/useCursor.js
+init_react_shim();
 function useCursor(hovered, onPointerOver = "pointer", onPointerOut = "auto", container = document.body) {
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (hovered) {
       container.style.cursor = onPointerOver;
       return () => void (container.style.cursor = onPointerOut);
     }
   }, [hovered]);
 }
+
+// node_modules/@react-three/drei/web/Loader.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Progress.js
+init_react_shim();
+
+// node_modules/zustand/esm/react.mjs
+init_react_shim();
 var identity2 = (arg) => arg;
 function useStore2(api, selector = identity2) {
-  const slice2 = React142__default.useSyncExternalStore(
+  const slice2 = React143__default.useSyncExternalStore(
     api.subscribe,
-    React142__default.useCallback(() => selector(api.getState()), [api, selector]),
-    React142__default.useCallback(() => selector(api.getInitialState()), [api, selector])
+    React143__default.useCallback(() => selector(api.getState()), [api, selector]),
+    React143__default.useCallback(() => selector(api.getInitialState()), [api, selector])
   );
-  React142__default.useDebugValue(slice2);
+  React143__default.useDebugValue(slice2);
   return slice2;
 }
 var createImpl = (createState) => {
@@ -91890,7 +91784,7 @@ function Progress({
   children
 }) {
   const result = useProgress();
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(result));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(result));
 }
 
 // node_modules/@react-three/drei/web/Loader.js
@@ -91907,44 +91801,44 @@ function Loader2({
     active,
     progress
   } = useProgress();
-  const progressRef = React142.useRef(0);
-  const rafRef = React142.useRef(0);
-  const progressSpanRef = React142.useRef(null);
-  const [shown, setShown] = React142.useState(initialState(active));
-  React142.useEffect(() => {
+  const progressRef = React143.useRef(0);
+  const rafRef = React143.useRef(0);
+  const progressSpanRef = React143.useRef(null);
+  const [shown, setShown] = React143.useState(initialState(active));
+  React143.useEffect(() => {
     let t4;
     if (active !== shown) t4 = setTimeout(() => setShown(active), 300);
     return () => clearTimeout(t4);
   }, [shown, active]);
-  const updateProgress = React142.useCallback(() => {
+  const updateProgress = React143.useCallback(() => {
     if (!progressSpanRef.current) return;
     progressRef.current += (progress - progressRef.current) / 2;
     if (progressRef.current > 0.95 * progress || progress === 100) progressRef.current = progress;
     progressSpanRef.current.innerText = dataInterpolation(progressRef.current);
     if (progressRef.current < progress) rafRef.current = requestAnimationFrame(updateProgress);
   }, [dataInterpolation, progress]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     updateProgress();
     return () => cancelAnimationFrame(rafRef.current);
   }, [updateProgress]);
-  return shown ? /* @__PURE__ */ React142.createElement("div", {
+  return shown ? /* @__PURE__ */ React143.createElement("div", {
     style: {
       ...styles.container,
       opacity: active ? 1 : 0,
       ...containerStyles
     }
-  }, /* @__PURE__ */ React142.createElement("div", null, /* @__PURE__ */ React142.createElement("div", {
+  }, /* @__PURE__ */ React143.createElement("div", null, /* @__PURE__ */ React143.createElement("div", {
     style: {
       ...styles.inner,
       ...innerStyles
     }
-  }, /* @__PURE__ */ React142.createElement("div", {
+  }, /* @__PURE__ */ React143.createElement("div", {
     style: {
       ...styles.bar,
       transform: `scaleX(${progress / 100})`,
       ...barStyles
     }
-  }), /* @__PURE__ */ React142.createElement("span", {
+  }), /* @__PURE__ */ React143.createElement("span", {
     ref: progressSpanRef,
     style: {
       ...styles.data,
@@ -91991,7 +91885,20 @@ var styles = {
   }
 };
 
+// node_modules/@react-three/drei/web/DragControls.js
+init_react_shim();
+
+// node_modules/@use-gesture/react/dist/use-gesture-react.esm.js
+init_react_shim();
+
+// node_modules/@use-gesture/core/actions/dist/use-gesture-core-actions.esm.js
+init_react_shim();
+
+// node_modules/@use-gesture/core/dist/actions-fe213e88.esm.js
+init_react_shim();
+
 // node_modules/@use-gesture/core/dist/maths-0ab39ae9.esm.js
+init_react_shim();
 function clamp2(v6, min, max2) {
   return Math.max(min, Math.min(v6, max2));
 }
@@ -93493,6 +93400,7 @@ var wheelAction = {
 };
 
 // node_modules/@use-gesture/core/dist/use-gesture-core.esm.js
+init_react_shim();
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target2 = {};
@@ -93812,13 +93720,19 @@ function parseMergedHandlers(mergedHandlers, mergedConfig) {
   };
 }
 
+// node_modules/@use-gesture/core/utils/dist/use-gesture-core-utils.esm.js
+init_react_shim();
+
+// node_modules/@use-gesture/core/types/dist/use-gesture-core-types.esm.js
+init_react_shim();
+
 // node_modules/@use-gesture/react/dist/use-gesture-react.esm.js
 function useRecognizers(handlers, config = {}, gestureKey, nativeHandlers) {
-  const ctrl = React142__default.useMemo(() => new Controller(handlers), []);
+  const ctrl = React143__default.useMemo(() => new Controller(handlers), []);
   ctrl.applyHandlers(handlers, nativeHandlers);
   ctrl.applyConfig(config, gestureKey);
-  React142__default.useEffect(ctrl.effect.bind(ctrl));
-  React142__default.useEffect(() => {
+  React143__default.useEffect(ctrl.effect.bind(ctrl));
+  React143__default.useEffect(() => {
     return ctrl.clean.bind(ctrl);
   }, []);
   if (config.target === void 0) {
@@ -93849,7 +93763,7 @@ var mousePosition3D = /* @__PURE__ */ new Vector3();
 var dragOffset = /* @__PURE__ */ new Vector3();
 var dragPlaneNormal = /* @__PURE__ */ new Vector3();
 var dragPlane = /* @__PURE__ */ new Plane();
-var DragControls = /* @__PURE__ */ React142.forwardRef(({
+var DragControls = /* @__PURE__ */ React143.forwardRef(({
   autoTransform = true,
   matrix: matrix3,
   axisLock,
@@ -93869,7 +93783,7 @@ var DragControls = /* @__PURE__ */ React142.forwardRef(({
     raycaster,
     invalidate: invalidate2
   } = useThree();
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const bind = useGesture({
     onHover: ({
       hovering
@@ -93947,12 +93861,12 @@ var DragControls = /* @__PURE__ */ React142.forwardRef(({
       ...typeof dragConfig === "object" ? dragConfig : {}
     }
   });
-  React142.useImperativeHandle(fRef, () => ref.current, []);
-  React142.useLayoutEffect(() => {
+  React143.useImperativeHandle(fRef, () => ref.current, []);
+  React143.useLayoutEffect(() => {
     if (!matrix3) return;
     ref.current.matrix = matrix3;
   }, [matrix3]);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
   }, bind(), {
     matrix: matrix3,
@@ -93960,7 +93874,17 @@ var DragControls = /* @__PURE__ */ React142.forwardRef(({
   }, props), children);
 });
 
+// node_modules/@react-three/drei/web/ScrollControls.js
+init_react_shim();
+
+// node_modules/maath/dist/maath.esm.js
+init_react_shim();
+
+// node_modules/maath/dist/buffer-59a95d05.esm.js
+init_react_shim();
+
 // node_modules/maath/dist/objectSpread2-284232a6.esm.js
+init_react_shim();
 function _defineProperty2(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -93975,7 +93899,11 @@ function _defineProperty2(obj, key, value) {
   return obj;
 }
 
+// node_modules/maath/dist/triangle-b62b9067.esm.js
+init_react_shim();
+
 // node_modules/maath/dist/isNativeReflectConstruct-5594d075.esm.js
+init_react_shim();
 function _setPrototypeOf(o5, p5) {
   _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf2(o6, p6) {
     o6.__proto__ = p6;
@@ -93997,6 +93925,7 @@ function _isNativeReflectConstruct() {
 }
 
 // node_modules/maath/dist/matrix-baa530bf.esm.js
+init_react_shim();
 function determinant3() {
   for (var _len2 = arguments.length, terms = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
     terms[_key2] = arguments[_key2];
@@ -94114,6 +94043,7 @@ function doThreePointsMakeARight(points) {
 }
 
 // node_modules/maath/dist/misc-19a3ec46.esm.js
+init_react_shim();
 function clamp3(value, min, max2) {
   return Math.max(min, Math.min(max2, value));
 }
@@ -94291,7 +94221,17 @@ var misc = /* @__PURE__ */ Object.freeze({
   get2DFromIndex
 });
 
+// node_modules/maath/dist/vector2-d2bf51f1.esm.js
+init_react_shim();
+
+// node_modules/maath/dist/vector3-0a088b7f.esm.js
+init_react_shim();
+
+// node_modules/maath/dist/index-0332b2ed.esm.js
+init_react_shim();
+
 // node_modules/maath/dist/classCallCheck-9098b006.esm.js
+init_react_shim();
 function _classCallCheck(instance2, Constructor) {
   if (!(instance2 instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -94373,6 +94313,7 @@ var Generator = function Generator2(_seed2) {
 new Generator(Math.random());
 
 // node_modules/maath/dist/easing-0f4db1c0.esm.js
+init_react_shim();
 var rsqw = function rsqw2(t4) {
   var delta = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0.01;
   var a7 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 1;
@@ -94669,10 +94610,16 @@ var easing = /* @__PURE__ */ Object.freeze({
   dampM
 });
 
+// node_modules/maath/dist/geometry-0fb11825.esm.js
+init_react_shim();
+
+// node_modules/maath/dist/three-eb2ad8c0.esm.js
+init_react_shim();
+
 // node_modules/@react-three/drei/web/ScrollControls.js
-var context2 = /* @__PURE__ */ React142.createContext(null);
+var context2 = /* @__PURE__ */ React143.createContext(null);
 function useScroll() {
-  return React142.useContext(context2);
+  return React143.useContext(context2);
 }
 function ScrollControls({
   eps: eps2 = 1e-5,
@@ -94695,12 +94642,12 @@ function ScrollControls({
     invalidate: invalidate2,
     events
   } = useThree();
-  const [el] = React142.useState(() => document.createElement("div"));
-  const [fill2] = React142.useState(() => document.createElement("div"));
-  const [fixed] = React142.useState(() => document.createElement("div"));
+  const [el] = React143.useState(() => document.createElement("div"));
+  const [fill2] = React143.useState(() => document.createElement("div"));
+  const [fixed] = React143.useState(() => document.createElement("div"));
   const target2 = gl.domElement.parentNode;
-  const scroll = React142.useRef(0);
-  const state2 = React142.useMemo(() => {
+  const scroll = React143.useRef(0);
+  const state2 = React143.useMemo(() => {
     const state3 = {
       el,
       eps: eps2,
@@ -94731,7 +94678,7 @@ function ScrollControls({
     };
     return state3;
   }, [eps2, damping, horizontal, pages]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     el.style.position = "absolute";
     el.style.width = "100%";
     el.style.height = "100%";
@@ -94779,7 +94726,7 @@ function ScrollControls({
       events.connect == null || events.connect(oldTarget);
     };
   }, [pages, distance, horizontal, el, fill2, fixed, target2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (events.connected === el) {
       const containerLength = size[horizontal ? "width" : "height"];
       const scrollLength = el[horizontal ? "scrollWidth" : "scrollHeight"];
@@ -94830,15 +94777,15 @@ function ScrollControls({
     easing.damp(state2, "delta", Math.abs(last - state2.offset), damping, delta, maxSpeed, void 0, eps2);
     if (state2.delta > eps2) invalidate2();
   });
-  return /* @__PURE__ */ React142.createElement(context2.Provider, {
+  return /* @__PURE__ */ React143.createElement(context2.Provider, {
     value: state2
   }, children);
 }
-var ScrollCanvas = /* @__PURE__ */ React142.forwardRef(({
+var ScrollCanvas = /* @__PURE__ */ React143.forwardRef(({
   children
 }, ref) => {
-  const group = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => group.current, []);
+  const group = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => group.current, []);
   const state2 = useScroll();
   const {
     width,
@@ -94848,30 +94795,30 @@ var ScrollCanvas = /* @__PURE__ */ React142.forwardRef(({
     group.current.position.x = state2.horizontal ? -width * (state2.pages - 1) * state2.offset : 0;
     group.current.position.y = state2.horizontal ? 0 : height * (state2.pages - 1) * state2.offset;
   });
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     ref: group
   }, children);
 });
-var ScrollHtml = /* @__PURE__ */ React142.forwardRef(({
+var ScrollHtml = /* @__PURE__ */ React143.forwardRef(({
   children,
   style,
   ...props
 }, ref) => {
   const state2 = useScroll();
-  const group = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => group.current, []);
+  const group = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => group.current, []);
   const {
     width,
     height
   } = useThree((state3) => state3.size);
-  const fiberState = React142.useContext(context);
-  const root = React142.useMemo(() => ReactDOM.createRoot(state2.fixed), [state2.fixed]);
+  const fiberState = React143.useContext(context);
+  const root = React143.useMemo(() => ReactDOM2.createRoot(state2.fixed), [state2.fixed]);
   useFrame(() => {
     if (state2.delta > state2.eps) {
       group.current.style.transform = `translate3d(${state2.horizontal ? -width * (state2.pages - 1) * state2.offset : 0}px,${state2.horizontal ? 0 : height * (state2.pages - 1) * -state2.offset}px,0)`;
     }
   });
-  root.render(/* @__PURE__ */ React142.createElement("div", _extends({
+  root.render(/* @__PURE__ */ React143.createElement("div", _extends({
     ref: group,
     style: {
       ...style,
@@ -94880,22 +94827,25 @@ var ScrollHtml = /* @__PURE__ */ React142.forwardRef(({
       left: 0,
       willChange: "transform"
     }
-  }, props), /* @__PURE__ */ React142.createElement(context2.Provider, {
+  }, props), /* @__PURE__ */ React143.createElement(context2.Provider, {
     value: state2
-  }, /* @__PURE__ */ React142.createElement(context.Provider, {
+  }, /* @__PURE__ */ React143.createElement(context.Provider, {
     value: fiberState
   }, children))));
   return null;
 });
-var Scroll = /* @__PURE__ */ React142.forwardRef(({
+var Scroll = /* @__PURE__ */ React143.forwardRef(({
   html,
   ...props
 }, ref) => {
   const El = html ? ScrollHtml : ScrollCanvas;
-  return /* @__PURE__ */ React142.createElement(El, _extends({
+  return /* @__PURE__ */ React143.createElement(El, _extends({
     ref
   }, props));
 });
+
+// node_modules/@react-three/drei/web/PresentationControls.js
+init_react_shim();
 function PresentationControls({
   enabled = true,
   snap,
@@ -94916,10 +94866,10 @@ function PresentationControls({
   const {
     size
   } = useThree();
-  const rPolar = React142.useMemo(() => [rotation3[0] + polar[0], rotation3[0] + polar[1]], [rotation3[0], polar[0], polar[1]]);
-  const rAzimuth = React142.useMemo(() => [rotation3[1] + azimuth[0], rotation3[1] + azimuth[1]], [rotation3[1], azimuth[0], azimuth[1]]);
-  const rInitial = React142.useMemo(() => [MathUtils.clamp(rotation3[0], ...rPolar), MathUtils.clamp(rotation3[1], ...rAzimuth), rotation3[2]], [rotation3[0], rotation3[1], rotation3[2], rPolar, rAzimuth]);
-  React142.useEffect(() => {
+  const rPolar = React143.useMemo(() => [rotation3[0] + polar[0], rotation3[0] + polar[1]], [rotation3[0], polar[0], polar[1]]);
+  const rAzimuth = React143.useMemo(() => [rotation3[1] + azimuth[0], rotation3[1] + azimuth[1]], [rotation3[1], azimuth[0], azimuth[1]]);
+  const rInitial = React143.useMemo(() => [MathUtils.clamp(rotation3[0], ...rPolar), MathUtils.clamp(rotation3[1], ...rAzimuth), rotation3[2]], [rotation3[0], rotation3[1], rotation3[2], rPolar, rAzimuth]);
+  React143.useEffect(() => {
     if (global && cursor && enabled) {
       explDomElement.style.cursor = "grab";
       gl.domElement.style.cursor = "";
@@ -94929,12 +94879,12 @@ function PresentationControls({
       };
     }
   }, [global, cursor, explDomElement, enabled]);
-  const [animation] = React142.useState({
+  const [animation] = React143.useState({
     scale: 1,
     rotation: rInitial,
     damping
   });
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   useFrame((state2, delta) => {
     easing.damp3(ref.current.scale, animation.scale, animation.damping, delta);
     easing.dampE(ref.current.rotation, animation.rotation, animation.damping, delta);
@@ -94962,12 +94912,16 @@ function PresentationControls({
   }, {
     target: global ? explDomElement : void 0
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
   }, bind == null ? void 0 : bind()), children);
 }
 
+// node_modules/@react-three/drei/web/KeyboardControls.js
+init_react_shim();
+
 // node_modules/zustand/esm/middleware.mjs
+init_react_shim();
 var subscribeWithSelectorImpl = (fn2) => (set, get, api) => {
   const origSubscribe = api.subscribe;
   api.subscribe = ((selector, optListener, options) => {
@@ -94994,7 +94948,7 @@ var subscribeWithSelectorImpl = (fn2) => (set, get, api) => {
 var subscribeWithSelector = subscribeWithSelectorImpl;
 
 // node_modules/@react-three/drei/web/KeyboardControls.js
-var context3 = /* @__PURE__ */ React142.createContext(null);
+var context3 = /* @__PURE__ */ React143.createContext(null);
 function KeyboardControls({
   map,
   children,
@@ -95002,15 +94956,15 @@ function KeyboardControls({
   domElement
 }) {
   const key = map.map((item) => item.name + item.keys).join("-");
-  const useControls = React142.useMemo(() => {
+  const useControls = React143.useMemo(() => {
     return create(subscribeWithSelector(() => map.reduce((prev, cur) => ({
       ...prev,
       [cur.name]: false
     }), {})));
   }, [key]);
-  const api = React142.useMemo(() => [useControls.subscribe, useControls.getState, useControls], [key]);
+  const api = React143.useMemo(() => [useControls.subscribe, useControls.getState, useControls], [key]);
   const set = useControls.setState;
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const config = map.map(({
       name,
       keys,
@@ -95076,24 +95030,35 @@ function KeyboardControls({
       source.removeEventListener("keyup", upHandler);
     };
   }, [domElement, key]);
-  return /* @__PURE__ */ React142.createElement(context3.Provider, {
+  return /* @__PURE__ */ React143.createElement(context3.Provider, {
     value: api,
     children
   });
 }
 function useKeyboardControls(sel) {
-  const [sub, get, store] = React142.useContext(context3);
+  const [sub, get, store] = React143.useContext(context3);
   if (sel) return store(sel);
   else return [sub, get];
 }
 
+// node_modules/@react-three/drei/web/Select.js
+init_react_shim();
+
+// node_modules/three-stdlib/index.js
+init_react_shim();
+
+// node_modules/three-stdlib/_polyfill/uv1.js
+init_react_shim();
+
 // node_modules/three-stdlib/_polyfill/constants.js
+init_react_shim();
 var version = /* @__PURE__ */ (() => parseInt(REVISION.replace(/\D+/g, "")))();
 
 // node_modules/three-stdlib/_polyfill/uv1.js
 var UV1 = version >= 125 ? "uv1" : "uv2";
 
 // node_modules/three-stdlib/modifiers/CurveModifier.js
+init_react_shim();
 var __defProp2 = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp2(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => {
@@ -95266,6 +95231,7 @@ var Flow = class {
 };
 
 // node_modules/three-stdlib/utils/BufferGeometryUtils.js
+init_react_shim();
 function mergeVertices(geometry3, tolerance = 1e-4) {
   tolerance = Math.max(tolerance, Number.EPSILON);
   const hashToIndex = {};
@@ -95465,6 +95431,7 @@ function toCreasedNormals(geometry3, creaseAngle = Math.PI / 3) {
 }
 
 // node_modules/three-stdlib/node_modules/fflate/esm/browser.js
+init_react_shim();
 var u8 = Uint8Array;
 var u16 = Uint16Array;
 var u32 = Uint32Array;
@@ -95799,6 +95766,7 @@ try {
 }
 
 // node_modules/three-stdlib/objects/MarchingCubes.js
+init_react_shim();
 var MarchingCubes = class extends Mesh {
   constructor(resolution, material, enableUvs = false, enableColors = false, maxPolyCount = 1e4) {
     const geometry3 = new BufferGeometry();
@@ -100604,6 +100572,7 @@ var triTable = new Int32Array([
 ]);
 
 // node_modules/three-stdlib/math/SimplexNoise.js
+init_react_shim();
 var __defProp3 = Object.defineProperty;
 var __defNormalProp2 = (obj, key, value) => key in obj ? __defProp3(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField2 = (obj, key, value) => {
@@ -101038,6 +101007,7 @@ var SimplexNoise = class {
 };
 
 // node_modules/three-stdlib/objects/Sky.js
+init_react_shim();
 var __defProp4 = Object.defineProperty;
 var __defNormalProp3 = (obj, key, value) => key in obj ? __defProp4(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField3 = (obj, key, value) => {
@@ -101239,6 +101209,7 @@ var Sky = /* @__PURE__ */ (() => {
 })();
 
 // node_modules/three-stdlib/objects/GroundProjectedEnv.js
+init_react_shim();
 var isCubeTexture = (def) => def && def.isCubeTexture;
 var GroundProjectedEnv = class extends Mesh {
   constructor(texture, options) {
@@ -101371,6 +101342,7 @@ var GroundProjectedEnv = class extends Mesh {
 };
 
 // node_modules/three-stdlib/utils/SkeletonUtils.js
+init_react_shim();
 function retarget(target2, source, options = {}) {
   const pos = new Vector3(), quat = new Quaternion(), scale3 = new Vector3(), bindBoneMatrix = new Matrix4(), relativeMatrix = new Matrix4(), globalMatrix = new Matrix4();
   options.preserveMatrix = options.preserveMatrix !== void 0 ? options.preserveMatrix : true;
@@ -101580,6 +101552,7 @@ function parallelTraverse(a7, b6, callback) {
 var SkeletonUtils = { retarget, retargetClip, clone };
 
 // node_modules/three-stdlib/math/MeshSurfaceSampler.js
+init_react_shim();
 var _face = /* @__PURE__ */ new Triangle();
 var _color3 = /* @__PURE__ */ new Vector3();
 var MeshSurfaceSampler = class {
@@ -101681,6 +101654,7 @@ var MeshSurfaceSampler = class {
 };
 
 // node_modules/three-stdlib/controls/EventDispatcher.js
+init_react_shim();
 var __defProp5 = Object.defineProperty;
 var __defNormalProp4 = (obj, key, value) => key in obj ? __defProp5(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField4 = (obj, key, value) => {
@@ -101756,6 +101730,7 @@ var EventDispatcher2 = class {
 };
 
 // node_modules/three-stdlib/controls/FirstPersonControls.js
+init_react_shim();
 var __defProp6 = Object.defineProperty;
 var __defNormalProp5 = (obj, key, value) => key in obj ? __defProp6(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField5 = (obj, key, value) => {
@@ -101982,6 +101957,7 @@ var FirstPersonControls = class extends EventDispatcher2 {
 };
 
 // node_modules/three-stdlib/controls/TransformControls.js
+init_react_shim();
 var __defProp7 = Object.defineProperty;
 var __defNormalProp6 = (obj, key, value) => key in obj ? __defProp7(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField6 = (obj, key, value) => {
@@ -103060,6 +103036,7 @@ var TransformControlsPlane = class extends Mesh {
 };
 
 // node_modules/three-stdlib/controls/PointerLockControls.js
+init_react_shim();
 var __defProp8 = Object.defineProperty;
 var __defNormalProp7 = (obj, key, value) => key in obj ? __defProp8(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField7 = (obj, key, value) => {
@@ -103160,6 +103137,7 @@ var PointerLockControls = class extends EventDispatcher2 {
 };
 
 // node_modules/three-stdlib/controls/DeviceOrientationControls.js
+init_react_shim();
 var __defProp9 = Object.defineProperty;
 var __defNormalProp8 = (obj, key, value) => key in obj ? __defProp9(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField8 = (obj, key, value) => {
@@ -103241,6 +103219,7 @@ var DeviceOrientationControls = class extends EventDispatcher2 {
 };
 
 // node_modules/three-stdlib/controls/TrackballControls.js
+init_react_shim();
 var __defProp10 = Object.defineProperty;
 var __defNormalProp9 = (obj, key, value) => key in obj ? __defProp10(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField9 = (obj, key, value) => {
@@ -103736,6 +103715,7 @@ var TrackballControls = class extends EventDispatcher2 {
 };
 
 // node_modules/three-stdlib/controls/OrbitControls.js
+init_react_shim();
 var __defProp11 = Object.defineProperty;
 var __defNormalProp10 = (obj, key, value) => key in obj ? __defProp11(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField10 = (obj, key, value) => {
@@ -104578,6 +104558,7 @@ var MapControls = class extends OrbitControls {
 };
 
 // node_modules/three-stdlib/controls/ArcballControls.js
+init_react_shim();
 var __defProp12 = Object.defineProperty;
 var __defNormalProp11 = (obj, key, value) => key in obj ? __defProp12(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField11 = (obj, key, value) => {
@@ -106412,6 +106393,7 @@ var ArcballControls = class extends EventDispatcher2 {
 };
 
 // node_modules/three-stdlib/controls/FlyControls.js
+init_react_shim();
 var __defProp13 = Object.defineProperty;
 var __defNormalProp12 = (obj, key, value) => key in obj ? __defProp13(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField12 = (obj, key, value) => {
@@ -106656,7 +106638,11 @@ var FlyControls = class extends EventDispatcher2 {
   }
 };
 
+// node_modules/three-stdlib/postprocessing/ShaderPass.js
+init_react_shim();
+
 // node_modules/three-stdlib/postprocessing/Pass.js
+init_react_shim();
 var __defProp14 = Object.defineProperty;
 var __defNormalProp13 = (obj, key, value) => key in obj ? __defProp14(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField13 = (obj, key, value) => {
@@ -106750,6 +106736,7 @@ var ShaderPass = class extends Pass {
 };
 
 // node_modules/three-stdlib/shaders/CopyShader.js
+init_react_shim();
 var CopyShader = {
   uniforms: {
     tDiffuse: { value: null },
@@ -106788,6 +106775,7 @@ var CopyShader = {
 };
 
 // node_modules/three-stdlib/postprocessing/MaskPass.js
+init_react_shim();
 var __defProp16 = Object.defineProperty;
 var __defNormalProp15 = (obj, key, value) => key in obj ? __defProp16(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField15 = (obj, key, value) => {
@@ -106854,6 +106842,7 @@ var ClearMaskPass = class extends Pass {
 };
 
 // node_modules/three-stdlib/postprocessing/EffectComposer.js
+init_react_shim();
 var __defProp17 = Object.defineProperty;
 var __defNormalProp16 = (obj, key, value) => key in obj ? __defProp17(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField16 = (obj, key, value) => {
@@ -107011,6 +107000,7 @@ var EffectComposer = class {
 };
 
 // node_modules/three-stdlib/postprocessing/RenderPass.js
+init_react_shim();
 var __defProp18 = Object.defineProperty;
 var __defNormalProp17 = (obj, key, value) => key in obj ? __defProp18(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField17 = (obj, key, value) => {
@@ -107066,7 +107056,11 @@ var RenderPass = class extends Pass {
   }
 };
 
+// node_modules/three-stdlib/loaders/GLTFLoader.js
+init_react_shim();
+
 // node_modules/three-stdlib/_polyfill/LoaderUtils.js
+init_react_shim();
 function decodeText(array) {
   if (typeof TextDecoder !== "undefined") {
     return new TextDecoder().decode(array);
@@ -109689,6 +109683,7 @@ function addPrimitiveAttributes(geometry3, primitiveDef, parser) {
 }
 
 // node_modules/three-stdlib/geometries/DecalGeometry.js
+init_react_shim();
 var DecalGeometry = class extends BufferGeometry {
   constructor(mesh, position2, orientation, size) {
     super();
@@ -109867,6 +109862,7 @@ var DecalVertex = class {
 };
 
 // node_modules/three-stdlib/geometries/TextGeometry.js
+init_react_shim();
 var TextGeometry = class extends ExtrudeGeometry {
   constructor(text, parameters = {}) {
     const {
@@ -109891,6 +109887,7 @@ var TextGeometry = class extends ExtrudeGeometry {
 };
 
 // node_modules/three-stdlib/shaders/GammaCorrectionShader.js
+init_react_shim();
 var GammaCorrectionShader = {
   uniforms: {
     tDiffuse: { value: null }
@@ -109931,6 +109928,7 @@ var GammaCorrectionShader = {
 };
 
 // node_modules/three-stdlib/shaders/HorizontalBlurShader.js
+init_react_shim();
 var HorizontalBlurShader = {
   uniforms: {
     tDiffuse: { value: null },
@@ -109979,6 +109977,7 @@ var HorizontalBlurShader = {
 };
 
 // node_modules/three-stdlib/shaders/VerticalBlurShader.js
+init_react_shim();
 var VerticalBlurShader = {
   uniforms: {
     tDiffuse: { value: null },
@@ -110028,6 +110027,7 @@ var VerticalBlurShader = {
 };
 
 // node_modules/three-stdlib/interactive/SelectionBox.js
+init_react_shim();
 var frustum = /* @__PURE__ */ new Frustum();
 var center = /* @__PURE__ */ new Vector3();
 var tmpPoint = /* @__PURE__ */ new Vector3();
@@ -110160,6 +110160,7 @@ var SelectionBox = class {
 };
 
 // node_modules/three-stdlib/effects/AsciiEffect.js
+init_react_shim();
 var AsciiEffect = class {
   constructor(renderer, charSet = " .:-=+*#%@", options = {}) {
     const fResolution = options["resolution"] || 0.15;
@@ -110313,7 +110314,14 @@ var AsciiEffect = class {
   }
 };
 
+// node_modules/three-stdlib/loaders/FBXLoader.js
+init_react_shim();
+
+// node_modules/three-stdlib/curves/NURBSCurve.js
+init_react_shim();
+
 // node_modules/three-stdlib/curves/NURBSUtils.js
+init_react_shim();
 function findSpan(p5, u3, U2) {
   const n3 = U2.length - p5 - 1;
   if (u3 >= U2[n3]) {
@@ -112988,6 +112996,7 @@ function inject(a1, index2, a22) {
 }
 
 // node_modules/three-stdlib/loaders/FontLoader.js
+init_react_shim();
 var __defProp19 = Object.defineProperty;
 var __defNormalProp18 = (obj, key, value) => key in obj ? __defProp19(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField18 = (obj, key, value) => {
@@ -113108,6 +113117,7 @@ function createPath(char, scale3, offsetX, offsetY, data) {
 }
 
 // node_modules/three-stdlib/_polyfill/Data3DTexture.js
+init_react_shim();
 var Data3DTexture2 = class extends Texture {
   constructor(data = null, width = 1, height = 1, depth = 1) {
     super(null);
@@ -113122,7 +113132,11 @@ var Data3DTexture2 = class extends Texture {
   }
 };
 
+// node_modules/three-stdlib/loaders/KTX2Loader.js
+init_react_shim();
+
 // node_modules/three-stdlib/utils/WorkerPool.js
+init_react_shim();
 var WorkerPool = class {
   constructor(pool = 4) {
     this.pool = pool;
@@ -113184,6 +113198,7 @@ var WorkerPool = class {
 };
 
 // node_modules/three-stdlib/libs/ktx-parse.js
+init_react_shim();
 var KHR_SUPERCOMPRESSION_NONE = 0;
 var KHR_SUPERCOMPRESSION_ZSTD = 2;
 var KHR_DF_KHR_DESCRIPTORTYPE_BASICFORMAT = 0;
@@ -113472,6 +113487,7 @@ function read(data) {
 }
 
 // node_modules/three-stdlib/libs/zstddec.js
+init_react_shim();
 var init;
 var instance;
 var heap;
@@ -113520,6 +113536,7 @@ var ZSTDDecoder = class {
 var wasm = "AGFzbQEAAAABpQEVYAF/AX9gAn9/AGADf39/AX9gBX9/f39/AX9gAX8AYAJ/fwF/YAR/f39/AX9gA39/fwBgBn9/f39/fwF/YAd/f39/f39/AX9gAn9/AX5gAn5+AX5gAABgBX9/f39/AGAGf39/f39/AGAIf39/f39/f38AYAl/f39/f39/f38AYAABf2AIf39/f39/f38Bf2ANf39/f39/f39/f39/fwF/YAF/AX4CJwEDZW52H2Vtc2NyaXB0ZW5fbm90aWZ5X21lbW9yeV9ncm93dGgABANpaAEFAAAFAgEFCwACAQABAgIFBQcAAwABDgsBAQcAEhMHAAUBDAQEAAANBwQCAgYCBAgDAwMDBgEACQkHBgICAAYGAgQUBwYGAwIGAAMCAQgBBwUGCgoEEQAEBAEIAwgDBQgDEA8IAAcABAUBcAECAgUEAQCAAgYJAX8BQaCgwAILB2AHBm1lbW9yeQIABm1hbGxvYwAoBGZyZWUAJgxaU1REX2lzRXJyb3IAaBlaU1REX2ZpbmREZWNvbXByZXNzZWRTaXplAFQPWlNURF9kZWNvbXByZXNzAEoGX3N0YXJ0ACQJBwEAQQELASQKussBaA8AIAAgACgCBCABajYCBAsZACAAKAIAIAAoAgRBH3F0QQAgAWtBH3F2CwgAIABBiH9LC34BBH9BAyEBIAAoAgQiA0EgTQRAIAAoAggiASAAKAIQTwRAIAAQDQ8LIAAoAgwiAiABRgRAQQFBAiADQSBJGw8LIAAgASABIAJrIANBA3YiBCABIARrIAJJIgEbIgJrIgQ2AgggACADIAJBA3RrNgIEIAAgBCgAADYCAAsgAQsUAQF/IAAgARACIQIgACABEAEgAgv3AQECfyACRQRAIABCADcCACAAQQA2AhAgAEIANwIIQbh/DwsgACABNgIMIAAgAUEEajYCECACQQRPBEAgACABIAJqIgFBfGoiAzYCCCAAIAMoAAA2AgAgAUF/ai0AACIBBEAgAEEIIAEQFGs2AgQgAg8LIABBADYCBEF/DwsgACABNgIIIAAgAS0AACIDNgIAIAJBfmoiBEEBTQRAIARBAWtFBEAgACABLQACQRB0IANyIgM2AgALIAAgAS0AAUEIdCADajYCAAsgASACakF/ai0AACIBRQRAIABBADYCBEFsDwsgAEEoIAEQFCACQQN0ams2AgQgAgsWACAAIAEpAAA3AAAgACABKQAINwAICy8BAX8gAUECdEGgHWooAgAgACgCAEEgIAEgACgCBGprQR9xdnEhAiAAIAEQASACCyEAIAFCz9bTvtLHq9lCfiAAfEIfiUKHla+vmLbem55/fgsdAQF/IAAoAgggACgCDEYEfyAAKAIEQSBGBUEACwuCBAEDfyACQYDAAE8EQCAAIAEgAhBnIAAPCyAAIAJqIQMCQCAAIAFzQQNxRQRAAkAgAkEBSARAIAAhAgwBCyAAQQNxRQRAIAAhAgwBCyAAIQIDQCACIAEtAAA6AAAgAUEBaiEBIAJBAWoiAiADTw0BIAJBA3ENAAsLAkAgA0F8cSIEQcAASQ0AIAIgBEFAaiIFSw0AA0AgAiABKAIANgIAIAIgASgCBDYCBCACIAEoAgg2AgggAiABKAIMNgIMIAIgASgCEDYCECACIAEoAhQ2AhQgAiABKAIYNgIYIAIgASgCHDYCHCACIAEoAiA2AiAgAiABKAIkNgIkIAIgASgCKDYCKCACIAEoAiw2AiwgAiABKAIwNgIwIAIgASgCNDYCNCACIAEoAjg2AjggAiABKAI8NgI8IAFBQGshASACQUBrIgIgBU0NAAsLIAIgBE8NAQNAIAIgASgCADYCACABQQRqIQEgAkEEaiICIARJDQALDAELIANBBEkEQCAAIQIMAQsgA0F8aiIEIABJBEAgACECDAELIAAhAgNAIAIgAS0AADoAACACIAEtAAE6AAEgAiABLQACOgACIAIgAS0AAzoAAyABQQRqIQEgAkEEaiICIARNDQALCyACIANJBEADQCACIAEtAAA6AAAgAUEBaiEBIAJBAWoiAiADRw0ACwsgAAsMACAAIAEpAAA3AAALQQECfyAAKAIIIgEgACgCEEkEQEEDDwsgACAAKAIEIgJBB3E2AgQgACABIAJBA3ZrIgE2AgggACABKAAANgIAQQALDAAgACABKAIANgAAC/cCAQJ/AkAgACABRg0AAkAgASACaiAASwRAIAAgAmoiBCABSw0BCyAAIAEgAhALDwsgACABc0EDcSEDAkACQCAAIAFJBEAgAwRAIAAhAwwDCyAAQQNxRQRAIAAhAwwCCyAAIQMDQCACRQ0EIAMgAS0AADoAACABQQFqIQEgAkF/aiECIANBAWoiA0EDcQ0ACwwBCwJAIAMNACAEQQNxBEADQCACRQ0FIAAgAkF/aiICaiIDIAEgAmotAAA6AAAgA0EDcQ0ACwsgAkEDTQ0AA0AgACACQXxqIgJqIAEgAmooAgA2AgAgAkEDSw0ACwsgAkUNAgNAIAAgAkF/aiICaiABIAJqLQAAOgAAIAINAAsMAgsgAkEDTQ0AIAIhBANAIAMgASgCADYCACABQQRqIQEgA0EEaiEDIARBfGoiBEEDSw0ACyACQQNxIQILIAJFDQADQCADIAEtAAA6AAAgA0EBaiEDIAFBAWohASACQX9qIgINAAsLIAAL8wICAn8BfgJAIAJFDQAgACACaiIDQX9qIAE6AAAgACABOgAAIAJBA0kNACADQX5qIAE6AAAgACABOgABIANBfWogAToAACAAIAE6AAIgAkEHSQ0AIANBfGogAToAACAAIAE6AAMgAkEJSQ0AIABBACAAa0EDcSIEaiIDIAFB/wFxQYGChAhsIgE2AgAgAyACIARrQXxxIgRqIgJBfGogATYCACAEQQlJDQAgAyABNgIIIAMgATYCBCACQXhqIAE2AgAgAkF0aiABNgIAIARBGUkNACADIAE2AhggAyABNgIUIAMgATYCECADIAE2AgwgAkFwaiABNgIAIAJBbGogATYCACACQWhqIAE2AgAgAkFkaiABNgIAIAQgA0EEcUEYciIEayICQSBJDQAgAa0iBUIghiAFhCEFIAMgBGohAQNAIAEgBTcDGCABIAU3AxAgASAFNwMIIAEgBTcDACABQSBqIQEgAkFgaiICQR9LDQALCyAACy8BAn8gACgCBCAAKAIAQQJ0aiICLQACIQMgACACLwEAIAEgAi0AAxAIajYCACADCy8BAn8gACgCBCAAKAIAQQJ0aiICLQACIQMgACACLwEAIAEgAi0AAxAFajYCACADCx8AIAAgASACKAIEEAg2AgAgARAEGiAAIAJBCGo2AgQLCAAgAGdBH3MLugUBDX8jAEEQayIKJAACfyAEQQNNBEAgCkEANgIMIApBDGogAyAEEAsaIAAgASACIApBDGpBBBAVIgBBbCAAEAMbIAAgACAESxsMAQsgAEEAIAEoAgBBAXRBAmoQECENQVQgAygAACIGQQ9xIgBBCksNABogAiAAQQVqNgIAIAMgBGoiAkF8aiEMIAJBeWohDiACQXtqIRAgAEEGaiELQQQh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ASIDNgLE4AEgACgCvOABIQQgACABNgK84AEgACABIAJqNgK44AEgACABIAQgA2tqNgLA4AELpgEBAX8gACAAKALs4QEQFjYCyOABIABCADcD+OABIABCADcDuOABIABBwOABakIANwMAIABBqNAAaiIBQYyAgOAANgIAIABBADYCmOIBIABCADcDiOEBIABCAzcDgOEBIABBrNABakHgEikCADcCACAAQbTQAWpB6BIoAgA2AgAgACABNgIMIAAgAEGYIGo2AgggACAAQaAwajYCBCAAIABBEGo2AgALYQEBf0G4fyEDAkAgAUEDSQ0AIAIgABAhIgFBA3YiADYCCCACIAFBAXE2AgQgAiABQQF2QQNxIgM2AgACQCADQX9qIgFBAksNAAJAIAFBAWsOAgEAAgtBbA8LIAAhAwsgAwsMACAAIAEgAkEAEC4LiAQCA38CfiADEBYhBCAAQQBBKBAQIQAgBCACSwRAIAQPCyABRQRAQX8PCwJAAkAgA0EBRg0AIAEoAAAiBkGo6r5pRg0AQXYhAyAGQXBxQdDUtMIBRw0BQQghAyACQQhJDQEgAEEAQSgQECEAIAEoAAQhASAAQQE2AhQgACABrTcDAEEADwsgASACIAMQLyIDIAJLDQAgACADNgIYQXIhAyABIARqIgVBf2otAAAiAkEIcQ0AIAJBIHEiBkUEQEFwIQMgBS0AACIFQacBSw0BIAVBB3GtQgEgBUEDdkEKaq2GIgdCA4h+IAd8IQggBEEBaiEECyACQQZ2IQMgAkECdiEFAkAgAkEDcUF/aiICQQJLBEBBACECDAELAkACQAJAIAJBAWsOAgECAAsgASAEai0AACECIARBAWohBAwCCyABIARqLwAAIQIgBEECaiEEDAELIAEgBGooAAAhAiAEQQRqIQQLIAVBAXEhBQJ+AkACQAJAIANBf2oiA0ECTQRAIANBAWsOAgIDAQtCfyAGRQ0DGiABIARqMQAADAMLIAEgBGovAACtQoACfAwCCyABIARqKAAArQwBCyABIARqKQAACyEHIAAgBTYCICAAIAI2AhwgACAHNwMAQQAhAyAAQQA2AhQgACAHIAggBhsiBzcDCCAAIAdCgIAIIAdCgIAIVBs+AhALIAMLWwEBf0G4fyEDIAIQFiICIAFNBH8gACACakF/ai0AACIAQQNxQQJ0QaAeaigC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C0Egak8NAQsgByAHKQNoNwMQIAcgBykDYDcDCCAEIA0gB0EIaiAHQdwAaiAPIA4gESAQEB4hCwwBCyACIARqIQggBCAKEAcgAkERTwRAIARBEGohAgNAIAIgCkEQaiIKEAcgAkEQaiICIAhJDQALCyAIIAlrIQIgByATNgJcIAkgCCAOa0sEQCAJIAggEWtLBEBBbCELDAILIBAgAiAOayICaiIKIANqIBBNBEAgCCAKIAMQDxoMAgsgCCAKQQAgAmsQDyEIIAcgAiADaiIDNgJkIAggAmshCCAOIQILIAlBEE8EQCADIAhqIQMDQCAIIAIQByACQRBqIQIgCEEQaiIIIANJDQALDAELAkAgCUEHTQRAIAggAi0AADoAACAIIAItAAE6AAEgCCACLQACOgACIAggAi0AAzoAAyAIQQRqIAIgCUECdCIDQcAeaigCAGoiAhAXIAIgA0HgHmooAgBrIQIgBygCZCEDDAELIAggAhAMCyADQQlJDQAgAyAIaiEDIAhBCGoiCCACQQhqIgJrQQ9MBEADQCAIIAIQDCACQQhqIQIgCEEIaiIIIANJDQAMAgALAAsDQCAIIAIQByACQRBqIQIgCEEQaiIIIANJDQALCyAHQRhqEAQaIAsgDCALEAMiAhshDCAEIAQgC2ogAhshBCAFQX9qIgUNAAsgDBADDQFBbCEMIAdBGGoQBEECSQ0BQQAhCANAIAhBA0cEQCAAIAhBAnQiAmpBrNABaiACIAdqKAJENgIAIAhBAWohCAwBCwsgBygCXCEIC0G6fyEMIA8gCGsiACANIARrSw0AIAQEfyAEIAggABALIABqBUEACyABayEMCyAHQfAAaiQAIAwLkRcCFn8FfiMAQdABayIHJAAgByAAKALw4QEiCDYCvAEgASACaiESIAggACgCgOIBaiETAkACQCAFRQRAIAEhAwwBCyAAKALE4AEhESAAKALA4AEhFSAAKAK84AEhDyAAQQE2AozhAUEAIQgDQCAIQQNHBEAgByAIQQJ0IgJqIAAgAmpBrNABaigCADYCVCAIQQFqIQgMAQsLIAcgETYCZCAHIA82AmAgByABIA9rNgJoQWwhECAHQShqIAMgBBAGEAMNASAFQQQgBUEESBshFyAHQTxqIAdBKGogACgCABATIAdBxABqIAdBKGogACgCCBATIAdBzABqIAdB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IAdB0AFqJAAgEAslACAAQgA3AgAgAEEAOwEIIABBADoACyAAIAE2AgwgACACOgAKC7QFAQN/IwBBMGsiBCQAIABB/wFqIgVBfWohBgJAIAMvAQIEQCAEQRhqIAEgAhAGIgIQAw0BIARBEGogBEEYaiADEBwgBEEIaiAEQRhqIAMQHCAAIQMDQAJAIARBGGoQBCADIAZPckUEQCADIARBEGogBEEYahASOgAAIAMgBEEIaiAEQRhqEBI6AAEgBEEYahAERQ0BIANBAmohAwsgBUF+aiEFAn8DQEG6fyECIAMiASAFSw0FIAEgBEEQaiAEQRhqEBI6AAAgAUEBaiEDIARBGGoQBEEDRgRAQQIhAiAEQQhqDAILIAMgBUsNBSABIARBCGogBEEYahASOgABIAFBAmohA0EDIQIgBEEYahAEQQNHDQALIARBEGoLIQUgAyAFIARBGGoQEjoAACABIAJqIABrIQIMAwsgAyAEQRBqIARBGGoQEjoAAiADIARBCGogBEEYahASOgADIANBBGohAwwAAAsACyAEQRhqIAEgAhAGIgIQAw0AIARBEGogBEEYaiADEBwgBEEIaiAEQRhqIAMQHCAAIQMDQAJAIARBGGoQBCADIAZPckUEQCADIARBEGogBEEYahAROgAAIAMgBEEIaiAEQRhqEBE6AAEgBEEYahAERQ0BIANBAmohAwsgBUF+aiEFAn8DQEG6fyECIAMiASAFSw0EIAEgBEEQaiAEQRhqEBE6AAAgAUEBaiEDIARBGGoQBEEDRgRAQQIhAiAEQQhqDAILIAMgBUsNBCABIARBCGogBEEYahAROgABIAFBAmohA0EDIQIgBEEYahAEQQNHDQALIARBEGoLIQUgAyAFIARBGGoQEToAACABIAJqIABrIQIMAgsgAyAEQRBqIARBGGoQEToAAiADIARBCGogBEEYahAROgADIANBBGohAwwAAAsACyAEQTBqJAAgAgtpAQF/An8CQAJAIAJBB00NACABKAAAQbfIwuF+Rw0AIAAgASgABDYCmOIBQWIgAEEQaiABIAIQPiIDEAMNAhogAEKBgICAEDcDiOEBIAAgASADaiACIANrECoMAQsgACABIAIQKgtBAAsLrQMBBn8jAEGAAWsiAyQAQWIhCAJAIAJBCUkNACAAQZjQAGogAUEIaiIEIAJBeGogAEGY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wOABCwutAgIEfwF+IwBBQGoiBCQAAkACQCACQQhJDQAgASgAAEFwcUHQ1LTCAUcNACABIAIQIiEBIABCADcDCCAAQQA2AgQgACABNgIADAELIARBGGogASACEC0iAxADBEAgACADEBoMAQsgAwRAIABBuH8QGgwBCyACIAQoAjAiA2shAiABIANqIQMDQAJAIAAgAyACIARBCGoQLCIFEAMEfyAFBSACIAVBA2oiBU8NAUG4fwsQGgwCCyAGQQFqIQYgAiAFayECIAMgBWohAyAEKAIMRQ0ACyAEKAI4BEAgAkEDTQRAIABBuH8QGgwCCyADQQRqIQMLIAQoAighAiAEKQMYIQcgAEEANgIEIAAgAyABazYCACAAIAIgBmytIAcgB0J/URs3AwgLIARBQGskAAslAQF/IwBBEGsiAiQAIAIgACABEFEgAigCACEAIAJBEGokACAAC30BBH8jAEGQBGsiBCQAIARB/wE2AggCQCAEQRBqIARBCGogBEEMaiABIAIQFSIGEAMEQCAGIQUMAQtBVCEFIAQoAgwiB0EGSw0AIAMgBEEQaiAEKAIIIAcQQSIFEAMNACAAIAEgBmogAiAGayADEDwhBQsgBEGQBGokACAFC4cBAgJ/An5BABAWIQMCQANAIAEgA08EQAJAIAAoAABBcHFB0NS0wgFGBEAgACABECIiAhADRQ0BQn4PCyAAIAEQVSIEQn1WDQMgBCAFfCIFIARUIQJCfiEEIAINAyAAIAEQUiICEAMNAwsgASACayEBIAAgAmohAAwBCwtCfiAFIAEbIQQLIAQLPwIBfwF+IwBBMGsiAiQAAn5CfiACQQhqIAAgARAtDQAaQgAgAigCHEEBRg0AGiACKQMICyEDIAJBMGokACADC40BAQJ/IwBBMGsiASQAAkAgAEUNACAAKAKI4gENACABIABB/OEBaigCADYCKCABIAApAvThATcDICAAEDAgACgCqOIBIQIgASABKAIoNgIYIAEgASkDIDcDECACIAFBEGoQGyAAQQA2AqjiASABIAEoAig2AgggASABKQMgNwMAIAAgARAbCyABQTBqJAALKgECfyMAQRBrIgAkACAAQQA2AgggAEIANwMAIAAQWCEBIABBEGokACABC4cBAQN/IwBBEGsiAiQAAkAgACgCAEUgACgCBEVzDQAgAiAAKAIINgIIIAIgACkCADcDAAJ/IAIoAgAiAQRAIAIoAghBqOMJIAERBQAMAQtBqOMJECgLIgFFDQAgASAAKQIANwL04QEgAUH84QFqIAAoAgg2AgAgARBZIAEhAwsgAkEQaiQAIAMLywEBAn8jAEEgayIBJAAgAEGBgIDAADYCtOIBIABBADYCiOIBIABBADYC7OEBIABCADcDkOIBIABBADYCpOMJIABBADYC3OIBIABCADcCzOIBIABBADYCvOIBIABBADYCxOABIABCADcCnOIBIABBpOIBakIANwIAIABBrOIBakEANgIAIAFCADcCECABQgA3AhggASABKQMYNwMIIAEgASkDEDcDACABKAIIQQh2QQFxIQIgAEEANgLg4gEgACACNgKM4gEgAUEgaiQAC3YBA38jAEEwayIBJAAgAARAIAEgAEHE0AFqIgIoAgA2AiggASAAKQK80AE3AyAgACgCACEDIAEgAigCADYCGCABIAApArzQATcDECADIAFBEGoQGyABIAEoAig2AgggASABKQMgNwMAIAAgARAbCyABQTBqJAALzAEBAX8gACABKAK00AE2ApjiASAAIAEoAgQiAjYCwOABIAAgAjYCvOABIAAgAiABKAIIaiICNgK44AEgACACNgLE4AEgASgCuNABBEAgAEKBgICAEDcDiOEBIAAgAUGk0ABqNgIMIAAgAUGUIGo2AgggACABQZwwajYCBCAAIAFBDGo2AgAgAEGs0AFqIAFBqNABaigCADYCACAAQbDQAWogAUGs0AFqKAIANgIAIABBtNABaiABQbDQAWooAgA2AgAPCyAAQgA3A4jhAQs7ACACRQRAQbp/DwsgBEUEQEFsDwsgAiAEEGAEQCAAIAEgAiADIAQgBRBhDwsgACABIAIgAyAEIAUQZQtGAQF/IwBBEGsiBSQAIAVBCGogBBAOAn8gBS0ACQRAIAAgASACIAMgBBAyDAELIAAgASACIAMgBBA0CyEAIAVBEGokACAACzQAIAAgAyAEIAUQNiIFEAMEQCAFDwsgBSAESQR/IAEgAiADIAVqIAQgBWsgABA1BUG4fwsLRgEBfyMAQRBrIgUkACAFQQhqIAQQDgJ/IAUtAAkEQCAAIAEgAiADIAQQYgwBCyAAIAEgAiADIAQQNQshACAFQRBqJAAgAAtZAQF/QQ8hAiABIABJBEAgAUEE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";
 
 // node_modules/three-stdlib/_polyfill/CompressedCubeTexture.js
+init_react_shim();
 var CompressedCubeTexture2 = class extends CompressedTexture {
   constructor(images, format2, type) {
     super(void 0, images[0].width, images[0].height, format2, type, CubeReflectionMapping);
@@ -113530,6 +113547,7 @@ var CompressedCubeTexture2 = class extends CompressedTexture {
 };
 
 // node_modules/three-stdlib/_polyfill/CompressedArrayTexture.js
+init_react_shim();
 var CompressedArrayTexture2 = class extends CompressedTexture {
   constructor(mipmaps, width, height, depth, format2, type) {
     super(mipmaps, width, height, format2, type);
@@ -114073,6 +114091,7 @@ function parseColorSpace(container) {
 }
 
 // node_modules/three-stdlib/loaders/RGBELoader.js
+init_react_shim();
 var RGBELoader = class extends DataTextureLoader {
   constructor(manager) {
     super(manager);
@@ -114312,6 +114331,7 @@ var RGBELoader = class extends DataTextureLoader {
 };
 
 // node_modules/three-stdlib/loaders/EXRLoader.js
+init_react_shim();
 var hasColorSpace = version >= 152;
 var EXRLoader = class extends DataTextureLoader {
   constructor(manager) {
@@ -115665,6 +115685,7 @@ var EXRLoader = class extends DataTextureLoader {
 };
 
 // node_modules/three-stdlib/loaders/SVGLoader.js
+init_react_shim();
 var COLOR_SPACE_SVG = "srgb";
 var SVGLoader = /* @__PURE__ */ (() => {
   class SVGLoader2 extends Loader {
@@ -117484,6 +117505,7 @@ var SVGLoader = /* @__PURE__ */ (() => {
 })();
 
 // node_modules/three-stdlib/loaders/DRACOLoader.js
+init_react_shim();
 var _taskCache2 = /* @__PURE__ */ new WeakMap();
 var DRACOLoader = class extends Loader {
   constructor(manager) {
@@ -117823,6 +117845,7 @@ function DRACOWorker() {
 }
 
 // node_modules/three-stdlib/lines/LineSegmentsGeometry.js
+init_react_shim();
 var _box2 = /* @__PURE__ */ new Box3();
 var _vector5 = /* @__PURE__ */ new Vector3();
 var LineSegmentsGeometry = class extends InstancedBufferGeometry {
@@ -117945,6 +117968,7 @@ var LineSegmentsGeometry = class extends InstancedBufferGeometry {
 };
 
 // node_modules/three-stdlib/lines/LineGeometry.js
+init_react_shim();
 var LineGeometry = class extends LineSegmentsGeometry {
   constructor() {
     super();
@@ -118000,6 +118024,7 @@ var LineGeometry = class extends LineSegmentsGeometry {
 };
 
 // node_modules/three-stdlib/lines/LineMaterial.js
+init_react_shim();
 var LineMaterial = class extends ShaderMaterial {
   constructor(parameters) {
     super({
@@ -118572,7 +118597,11 @@ var LineMaterial = class extends ShaderMaterial {
   }
 };
 
+// node_modules/three-stdlib/lines/Line2.js
+init_react_shim();
+
 // node_modules/three-stdlib/lines/LineSegments2.js
+init_react_shim();
 var _viewport = /* @__PURE__ */ new Vector4();
 var _start2 = /* @__PURE__ */ new Vector3();
 var _end2 = /* @__PURE__ */ new Vector3();
@@ -118795,6 +118824,7 @@ var Line2 = class extends LineSegments2 {
 };
 
 // node_modules/three-stdlib/libs/MeshoptDecoder.js
+init_react_shim();
 var generated;
 var MeshoptDecoder = () => {
   if (generated)
@@ -119014,7 +119044,11 @@ var MeshoptDecoder = () => {
   return generated;
 };
 
+// node_modules/zustand/esm/shallow.mjs
+init_react_shim();
+
 // node_modules/zustand/esm/vanilla/shallow.mjs
+init_react_shim();
 var isIterable = (obj) => Symbol.iterator in obj;
 var hasIterableEntries = (value) => (
   // HACK: avoid checking entries type
@@ -119070,7 +119104,7 @@ function shallow(valueA, valueB) {
 }
 
 // node_modules/@react-three/drei/web/Select.js
-var context4 = /* @__PURE__ */ React142.createContext([]);
+var context4 = /* @__PURE__ */ React143.createContext([]);
 function Select({
   box,
   multiple,
@@ -119082,7 +119116,7 @@ function Select({
   filter: customFilter = (item) => item,
   ...props
 }) {
-  const [downed, down] = React142.useState(false);
+  const [downed, down] = React143.useState(false);
   const {
     setEvents,
     camera,
@@ -119092,8 +119126,8 @@ function Select({
     size,
     get
   } = useThree();
-  const [hovered, hover] = React142.useState(false);
-  const [active, dispatch] = React142.useReducer(
+  const [hovered, hover] = React143.useState(false);
+  const [active, dispatch] = React143.useReducer(
     // @ts-expect-error
     (state2, {
       object,
@@ -119107,20 +119141,20 @@ function Select({
     },
     []
   );
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (downed) onChange == null || onChange(active);
     else onChangePointerUp == null || onChangePointerUp(active);
   }, [active, downed]);
-  const onClick = React142.useCallback((e4) => {
+  const onClick = React143.useCallback((e4) => {
     e4.stopPropagation();
     dispatch({
       object: customFilter([e4.object])[0],
       shift: multiple && e4.shiftKey
     });
   }, []);
-  const onPointerMissed = React142.useCallback((e4) => !hovered && dispatch({}), [hovered]);
-  const ref = React142.useRef(null);
-  React142.useEffect(() => {
+  const onPointerMissed = React143.useCallback((e4) => !hovered && dispatch({}), [hovered]);
+  const ref = React143.useRef(null);
+  React143.useEffect(() => {
     if (!box || !multiple) return;
     const selBox = new SelectionBox(camera, ref.current);
     const element = document.createElement("div");
@@ -119220,20 +119254,23 @@ function Select({
       document.removeEventListener("pointerup", pointerUp);
     };
   }, [size.width, size.height, raycaster, camera, controls, gl]);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref,
     onClick,
     onPointerOver: () => hover(true),
     onPointerOut: () => hover(false),
     onPointerMissed
-  }, props), /* @__PURE__ */ React142.createElement(context4.Provider, {
+  }, props), /* @__PURE__ */ React143.createElement(context4.Provider, {
     value: active
   }, children));
 }
 function useSelect() {
-  return React142.useContext(context4);
+  return React143.useContext(context4);
 }
-var Billboard = /* @__PURE__ */ React142.forwardRef(function Billboard2({
+
+// node_modules/@react-three/drei/core/Billboard.js
+init_react_shim();
+var Billboard = /* @__PURE__ */ React143.forwardRef(function Billboard2({
   children,
   follow = true,
   lockX = false,
@@ -119241,8 +119278,8 @@ var Billboard = /* @__PURE__ */ React142.forwardRef(function Billboard2({
   lockZ = false,
   ...props
 }, fref) {
-  const inner = React142.useRef(null);
-  const localRef = React142.useRef(null);
+  const inner = React143.useRef(null);
+  const localRef = React143.useRef(null);
   const q3 = new Quaternion();
   useFrame(({
     camera
@@ -119257,34 +119294,41 @@ var Billboard = /* @__PURE__ */ React142.forwardRef(function Billboard2({
     if (lockY) inner.current.rotation.y = prevRotation.y;
     if (lockZ) inner.current.rotation.z = prevRotation.z;
   });
-  React142.useImperativeHandle(fref, () => localRef.current, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  React143.useImperativeHandle(fref, () => localRef.current, []);
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: localRef
-  }, props), /* @__PURE__ */ React142.createElement("group", {
+  }, props), /* @__PURE__ */ React143.createElement("group", {
     ref: inner
   }, children));
 });
-var ScreenSpace = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/ScreenSpace.js
+init_react_shim();
+var ScreenSpace = /* @__PURE__ */ React143.forwardRef(({
   children,
   depth = -1,
   ...rest
 }, ref) => {
-  const localRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => localRef.current, []);
+  const localRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => localRef.current, []);
   useFrame(({
     camera
   }) => {
     localRef.current.quaternion.copy(camera.quaternion);
     localRef.current.position.copy(camera.position);
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: localRef
-  }, rest), /* @__PURE__ */ React142.createElement("group", {
+  }, rest), /* @__PURE__ */ React143.createElement("group", {
     "position-z": -depth
   }, children));
 });
 
+// node_modules/@react-three/drei/core/ScreenSizer.js
+init_react_shim();
+
 // node_modules/@react-three/drei/core/calculateScaleFactor.js
+init_react_shim();
 var tV0 = /* @__PURE__ */ new Vector3();
 var tV1 = /* @__PURE__ */ new Vector3();
 var tV2 = /* @__PURE__ */ new Vector3();
@@ -119320,18 +119364,24 @@ var ScreenSizer = /* @__PURE__ */ forwardRef(({
   ...props
 }, ref) => {
   const container = useRef(null);
-  React142.useImperativeHandle(ref, () => container.current, []);
+  React143.useImperativeHandle(ref, () => container.current, []);
   useFrame((state2) => {
     const obj = container.current;
     if (!obj) return;
     const sf = calculateScaleFactor(obj.getWorldPosition(worldPos), scale3, state2.camera, state2.size);
     obj.scale.setScalar(sf * scale3);
   });
-  return /* @__PURE__ */ React142.createElement("object3D", _extends({
+  return /* @__PURE__ */ React143.createElement("object3D", _extends({
     ref: container
   }, props));
 });
-var Line4 = /* @__PURE__ */ React142.forwardRef(function Line5({
+
+// node_modules/@react-three/drei/core/QuadraticBezierLine.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Line.js
+init_react_shim();
+var Line4 = /* @__PURE__ */ React143.forwardRef(function Line5({
   points,
   color = 16777215,
   vertexColors,
@@ -119343,10 +119393,10 @@ var Line4 = /* @__PURE__ */ React142.forwardRef(function Line5({
 }, ref) {
   var _vertexColors$, _ref;
   const size = useThree((state2) => state2.size);
-  const line2 = React142.useMemo(() => segments ? new LineSegments2() : new Line2(), [segments]);
-  const [lineMaterial] = React142.useState(() => new LineMaterial());
+  const line2 = React143.useMemo(() => segments ? new LineSegments2() : new Line2(), [segments]);
+  const [lineMaterial] = React143.useState(() => new LineMaterial());
   const itemSize = (vertexColors == null || (_vertexColors$ = vertexColors[0]) == null ? void 0 : _vertexColors$.length) === 4 ? 4 : 3;
-  const lineGeom = React142.useMemo(() => {
+  const lineGeom = React143.useMemo(() => {
     const geom = segments ? new LineSegmentsGeometry() : new LineGeometry();
     const pValues = points.map((p5) => {
       const isArray3 = Array.isArray(p5);
@@ -119360,10 +119410,10 @@ var Line4 = /* @__PURE__ */ React142.forwardRef(function Line5({
     }
     return geom;
   }, [points, segments, vertexColors, itemSize]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     line2.computeLineDistances();
   }, [points, line2]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (dashed) {
       lineMaterial.defines.USE_DASH = "";
     } else {
@@ -119371,19 +119421,19 @@ var Line4 = /* @__PURE__ */ React142.forwardRef(function Line5({
     }
     lineMaterial.needsUpdate = true;
   }, [dashed, lineMaterial]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => {
       lineGeom.dispose();
       lineMaterial.dispose();
     };
   }, [lineGeom]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: line2,
     ref
-  }, rest), /* @__PURE__ */ React142.createElement("primitive", {
+  }, rest), /* @__PURE__ */ React143.createElement("primitive", {
     object: lineGeom,
     attach: "geometry"
-  }), /* @__PURE__ */ React142.createElement("primitive", _extends({
+  }), /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: lineMaterial,
     attach: "material",
     color,
@@ -119397,17 +119447,17 @@ var Line4 = /* @__PURE__ */ React142.forwardRef(function Line5({
 
 // node_modules/@react-three/drei/core/QuadraticBezierLine.js
 var v = /* @__PURE__ */ new Vector3();
-var QuadraticBezierLine = /* @__PURE__ */ React142.forwardRef(function QuadraticBezierLine2({
+var QuadraticBezierLine = /* @__PURE__ */ React143.forwardRef(function QuadraticBezierLine2({
   start = [0, 0, 0],
   end = [0, 0, 0],
   mid,
   segments = 20,
   ...rest
 }, forwardref) {
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(forwardref, () => ref.current);
-  const [curve] = React142.useState(() => new QuadraticBezierCurve3(void 0, void 0, void 0));
-  const getPoints = React142.useCallback((start2, end2, mid2, segments2 = 20) => {
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(forwardref, () => ref.current);
+  const [curve] = React143.useState(() => new QuadraticBezierCurve3(void 0, void 0, void 0));
+  const getPoints = React143.useCallback((start2, end2, mid2, segments2 = 20) => {
     if (start2 instanceof Vector3) curve.v0.copy(start2);
     else curve.v0.set(...start2);
     if (end2 instanceof Vector3) curve.v2.copy(end2);
@@ -119421,19 +119471,22 @@ var QuadraticBezierLine = /* @__PURE__ */ React142.forwardRef(function Quadratic
     }
     return curve.getPoints(segments2);
   }, []);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     ref.current.setPoints = (start2, end2, mid2) => {
       const points2 = getPoints(start2, end2, mid2);
       if (ref.current.geometry) ref.current.geometry.setPositions(points2.map((p5) => p5.toArray()).flat());
     };
   }, []);
-  const points = React142.useMemo(() => getPoints(start, end, mid, segments), [start, end, mid, segments]);
-  return /* @__PURE__ */ React142.createElement(Line4, _extends({
+  const points = React143.useMemo(() => getPoints(start, end, mid, segments), [start, end, mid, segments]);
+  return /* @__PURE__ */ React143.createElement(Line4, _extends({
     ref,
     points
   }, rest));
 });
-var CubicBezierLine = /* @__PURE__ */ React142.forwardRef(function CubicBezierLine2({
+
+// node_modules/@react-three/drei/core/CubicBezierLine.js
+init_react_shim();
+var CubicBezierLine = /* @__PURE__ */ React143.forwardRef(function CubicBezierLine2({
   start,
   end,
   midA,
@@ -119441,7 +119494,7 @@ var CubicBezierLine = /* @__PURE__ */ React142.forwardRef(function CubicBezierLi
   segments = 20,
   ...rest
 }, ref) {
-  const points = React142.useMemo(() => {
+  const points = React143.useMemo(() => {
     const startV = start instanceof Vector3 ? start : new Vector3(...start);
     const endV = end instanceof Vector3 ? end : new Vector3(...end);
     const midAV = midA instanceof Vector3 ? midA : new Vector3(...midA);
@@ -119449,12 +119502,15 @@ var CubicBezierLine = /* @__PURE__ */ React142.forwardRef(function CubicBezierLi
     const interpolatedV = new CubicBezierCurve3(startV, midAV, midBV, endV).getPoints(segments);
     return interpolatedV;
   }, [start, end, midA, midB, segments]);
-  return /* @__PURE__ */ React142.createElement(Line4, _extends({
+  return /* @__PURE__ */ React143.createElement(Line4, _extends({
     ref,
     points
   }, rest));
 });
-var CatmullRomLine = /* @__PURE__ */ React142.forwardRef(function CatmullRomLine2({
+
+// node_modules/@react-three/drei/core/CatmullRomLine.js
+init_react_shim();
+var CatmullRomLine = /* @__PURE__ */ React143.forwardRef(function CatmullRomLine2({
   points,
   closed = false,
   curveType = "centripetal",
@@ -119463,12 +119519,12 @@ var CatmullRomLine = /* @__PURE__ */ React142.forwardRef(function CatmullRomLine
   vertexColors,
   ...rest
 }, ref) {
-  const curve = React142.useMemo(() => {
+  const curve = React143.useMemo(() => {
     const mappedPoints = points.map((pt2) => pt2 instanceof Vector3 ? pt2 : new Vector3(...pt2));
     return new CatmullRomCurve3(mappedPoints, closed, curveType, tension);
   }, [points, closed, curveType, tension]);
-  const segmentedPoints = React142.useMemo(() => curve.getPoints(segments), [curve, segments]);
-  const interpolatedVertexColors = React142.useMemo(() => {
+  const segmentedPoints = React143.useMemo(() => curve.getPoints(segments), [curve, segments]);
+  const interpolatedVertexColors = React143.useMemo(() => {
     if (!vertexColors || vertexColors.length < 2) return void 0;
     if (vertexColors.length === segments + 1) return vertexColors;
     const mappedColors = vertexColors.map((color) => color instanceof Color ? color : new Color(...color));
@@ -119483,27 +119539,30 @@ var CatmullRomLine = /* @__PURE__ */ React142.forwardRef(function CatmullRomLine
     iColors.push(mappedColors[mappedColors.length - 1]);
     return iColors;
   }, [vertexColors, segments]);
-  return /* @__PURE__ */ React142.createElement(Line4, _extends({
+  return /* @__PURE__ */ React143.createElement(Line4, _extends({
     ref,
     points: segmentedPoints,
     vertexColors: interpolatedVertexColors
   }, rest));
 });
-var PositionalAudio2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/PositionalAudio.js
+init_react_shim();
+var PositionalAudio2 = /* @__PURE__ */ React143.forwardRef(({
   url,
   distance = 1,
   loop: loop2 = true,
   autoplay,
   ...props
 }, ref) => {
-  const sound = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => sound.current, []);
+  const sound = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => sound.current, []);
   const camera = useThree(({
     camera: camera2
   }) => camera2);
-  const [listener] = React142.useState(() => new AudioListener());
+  const [listener] = React143.useState(() => new AudioListener());
   const buffer2 = useLoader(AudioLoader, url);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const _sound = sound.current;
     if (_sound) {
       _sound.setBuffer(buffer2);
@@ -119512,7 +119571,7 @@ var PositionalAudio2 = /* @__PURE__ */ React142.forwardRef(({
       if (autoplay && !_sound.isPlaying) _sound.play();
     }
   }, [buffer2, camera, distance, loop2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const _sound = sound.current;
     camera.add(listener);
     return () => {
@@ -119523,13 +119582,20 @@ var PositionalAudio2 = /* @__PURE__ */ React142.forwardRef(({
       }
     };
   }, []);
-  return /* @__PURE__ */ React142.createElement("positionalAudio", _extends({
+  return /* @__PURE__ */ React143.createElement("positionalAudio", _extends({
     ref: sound,
     args: [listener]
   }, props));
 });
 
+// node_modules/@react-three/drei/core/Text.js
+init_react_shim();
+
+// node_modules/troika-three-text/dist/troika-three-text.esm.js
+init_react_shim();
+
 // node_modules/troika-worker-utils/dist/troika-worker-utils.esm.js
+init_react_shim();
 function workerBootstrap() {
   var modules = /* @__PURE__ */ Object.create(null);
   function registerModule(ref, callback) {
@@ -119869,6 +119935,7 @@ function callWorker(workerId, action, data) {
 }
 
 // node_modules/webgl-sdf-generator/dist/webgl-sdf-generator.mjs
+init_react_shim();
 function SDFGenerator() {
   var exports$1 = (function(exports2) {
     function pointOnQuadraticBezier(x0, y0, x1, y1, x22, y2, t4, pointOut) {
@@ -120485,6 +120552,7 @@ function SDFGenerator() {
 }
 
 // node_modules/bidi-js/dist/bidi.mjs
+init_react_shim();
 function bidiFactory() {
   var bidi = (function(exports$1) {
     var DATA2 = {
@@ -121252,6 +121320,7 @@ function bidiFactory() {
 var bidi_default = bidiFactory;
 
 // node_modules/troika-three-utils/dist/troika-three-utils.esm.js
+init_react_shim();
 var voidMainRegExp = /\bvoid\s+main\s*\(\s*\)\s*{/g;
 function expandShaderIncludes(source) {
   const pattern = /^[ \t]*#include +<([\w\d./]+)>/gm;
@@ -125073,7 +125142,7 @@ SYNCABLE_PROPS.forEach((prop) => {
 new Color();
 
 // node_modules/@react-three/drei/core/Text.js
-var Text2 = /* @__PURE__ */ React142.forwardRef(({
+var Text2 = /* @__PURE__ */ React143.forwardRef(({
   sdfGlyphSize = 64,
   anchorX = "center",
   anchorY = "middle",
@@ -125087,11 +125156,11 @@ var Text2 = /* @__PURE__ */ React142.forwardRef(({
   const invalidate2 = useThree(({
     invalidate: invalidate3
   }) => invalidate3);
-  const [troikaMesh] = React142.useState(() => new Text());
-  const [nodes, text] = React142.useMemo(() => {
+  const [troikaMesh] = React143.useState(() => new Text());
+  const [nodes, text] = React143.useMemo(() => {
     const n3 = [];
     let t4 = "";
-    React142.Children.forEach(children, (child) => {
+    React143.Children.forEach(children, (child) => {
       if (typeof child === "string" || typeof child === "number") {
         t4 += child;
       } else {
@@ -125104,14 +125173,14 @@ var Text2 = /* @__PURE__ */ React142.forwardRef(({
     font,
     characters
   }, res)), ["troika-text", font, characters]);
-  React142.useLayoutEffect(() => void troikaMesh.sync(() => {
+  React143.useLayoutEffect(() => void troikaMesh.sync(() => {
     invalidate2();
     if (onSync) onSync(troikaMesh);
   }));
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => troikaMesh.dispose();
   }, [troikaMesh]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: troikaMesh,
     ref,
     font,
@@ -125123,7 +125192,11 @@ var Text2 = /* @__PURE__ */ React142.forwardRef(({
   }, props), nodes);
 });
 
+// node_modules/@react-three/drei/core/Text3D.js
+init_react_shim();
+
 // node_modules/@react-three/drei/core/useFont.js
+init_react_shim();
 var fontLoader = null;
 async function loadFontData(font) {
   return typeof font === "string" ? await (await fetch(font)).json() : font;
@@ -125149,13 +125222,13 @@ var types = ["string", "number"];
 var getTextFromChildren = (children) => {
   let label = "";
   const rest = [];
-  React142.Children.forEach(children, (child) => {
+  React143.Children.forEach(children, (child) => {
     if (types.includes(typeof child)) label += child + "";
     else rest.push(child);
   });
   return [label, ...rest];
 };
-var Text3D = /* @__PURE__ */ React142.forwardRef(({
+var Text3D = /* @__PURE__ */ React143.forwardRef(({
   font: _font,
   letterSpacing = 0,
   lineHeight = 1,
@@ -125171,10 +125244,10 @@ var Text3D = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, fref) => {
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     RenamedTextGeometry: TextGeometry
   }), []);
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const font = useFont(_font);
   const opts = useMemo(() => {
     return {
@@ -125192,20 +125265,23 @@ var Text3D = /* @__PURE__ */ React142.forwardRef(({
     };
   }, [font, size, height, bevelThickness, bevelSize, bevelEnabled, bevelSegments, bevelOffset, curveSegments, letterSpacing, lineHeight]);
   const [label, ...rest] = useMemo(() => getTextFromChildren(children), [children]);
-  const args = React142.useMemo(() => [label, opts], [label, opts]);
-  React142.useLayoutEffect(() => {
+  const args = React143.useMemo(() => [label, opts], [label, opts]);
+  React143.useLayoutEffect(() => {
     if (smooth) {
       ref.current.geometry = mergeVertices(ref.current.geometry, smooth);
       ref.current.geometry.computeVertexNormals();
     }
   }, [args, smooth]);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({}, props, {
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({}, props, {
     ref
-  }), /* @__PURE__ */ React142.createElement("renamedTextGeometry", {
+  }), /* @__PURE__ */ React143.createElement("renamedTextGeometry", {
     args
   }), rest);
 });
+
+// node_modules/@react-three/drei/core/Effects.js
+init_react_shim();
 var isWebGL2Available = () => {
   try {
     var canvas = document.createElement("canvas");
@@ -125214,7 +125290,7 @@ var isWebGL2Available = () => {
     return false;
   }
 };
-var Effects = /* @__PURE__ */ React142.forwardRef(({
+var Effects = /* @__PURE__ */ React143.forwardRef(({
   children,
   multisamping = 8,
   renderIndex = 1,
@@ -125228,13 +125304,13 @@ var Effects = /* @__PURE__ */ React142.forwardRef(({
   type,
   ...props
 }, ref) => {
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     EffectComposer,
     RenderPass,
     ShaderPass
   }), []);
-  const composer = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => composer.current, []);
+  const composer = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => composer.current, []);
   const {
     scene,
     camera,
@@ -125242,7 +125318,7 @@ var Effects = /* @__PURE__ */ React142.forwardRef(({
     size,
     viewport
   } = useThree();
-  const [target2] = React142.useState(() => {
+  const [target2] = React143.useState(() => {
     const t4 = new WebGLRenderTarget(size.width, size.height, {
       type: type || HalfFloatType,
       format: RGBAFormat,
@@ -125256,7 +125332,7 @@ var Effects = /* @__PURE__ */ React142.forwardRef(({
     t4.samples = multisamping;
     return t4;
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _composer$current, _composer$current2;
     (_composer$current = composer.current) == null || _composer$current.setSize(size.width, size.height);
     (_composer$current2 = composer.current) == null || _composer$current2.setPixelRatio(viewport.dpr);
@@ -125266,27 +125342,30 @@ var Effects = /* @__PURE__ */ React142.forwardRef(({
     if (!disableRender) (_composer$current3 = composer.current) == null || _composer$current3.render();
   }, renderIndex);
   const passes = [];
-  if (!disableRenderPass) passes.push(/* @__PURE__ */ React142.createElement("renderPass", {
+  if (!disableRenderPass) passes.push(/* @__PURE__ */ React143.createElement("renderPass", {
     key: "renderpass",
     attach: `passes-${passes.length}`,
     args: [scene, camera]
   }));
-  if (!disableGamma) passes.push(/* @__PURE__ */ React142.createElement("shaderPass", {
+  if (!disableGamma) passes.push(/* @__PURE__ */ React143.createElement("shaderPass", {
     attach: `passes-${passes.length}`,
     key: "gammapass",
     args: [GammaCorrectionShader]
   }));
-  React142.Children.forEach(children, (el) => {
-    el && passes.push(/* @__PURE__ */ React142.cloneElement(el, {
+  React143.Children.forEach(children, (el) => {
+    el && passes.push(/* @__PURE__ */ React143.cloneElement(el, {
       key: passes.length,
       attach: `passes-${passes.length}`
     }));
   });
-  return /* @__PURE__ */ React142.createElement("effectComposer", _extends({
+  return /* @__PURE__ */ React143.createElement("effectComposer", _extends({
     ref: composer,
     args: [gl, target2]
   }, props), passes);
 });
+
+// node_modules/@react-three/drei/core/GradientTexture.js
+init_react_shim();
 var GradientType = /* @__PURE__ */ (function(GradientType2) {
   GradientType2["Linear"] = "linear";
   GradientType2["Radial"] = "radial";
@@ -125303,7 +125382,7 @@ function GradientTexture({
   ...props
 }) {
   const gl = useThree((state2) => state2.gl);
-  const canvas = React142.useMemo(() => {
+  const canvas = React143.useMemo(() => {
     const canvas2 = document.createElement("canvas");
     const context12 = canvas2.getContext("2d");
     canvas2.width = width;
@@ -125328,14 +125407,18 @@ function GradientTexture({
     context12.restore();
     return canvas2;
   }, [stops]);
-  return /* @__PURE__ */ React142.createElement("canvasTexture", _extends({
+  return /* @__PURE__ */ React143.createElement("canvasTexture", _extends({
     colorSpace: gl.outputColorSpace,
     args: [canvas],
     attach: "map"
   }, props));
 }
 
+// node_modules/@react-three/drei/core/Image.js
+init_react_shim();
+
 // node_modules/@react-three/drei/core/shaderMaterial.js
+init_react_shim();
 function shaderMaterial(uniforms, vertexShader3, fragmentShader3, onInit) {
   var _Class;
   return _Class = class extends ShaderMaterial {
@@ -125361,6 +125444,9 @@ function shaderMaterial(uniforms, vertexShader3, fragmentShader3, onInit) {
     }
   }, _Class.key = MathUtils.generateUUID(), _Class;
 }
+
+// node_modules/@react-three/drei/core/Texture.js
+init_react_shim();
 var IsObject = (url) => url === Object(url) && !Array.isArray(url) && typeof url !== "function";
 function useTexture(input, onLoad) {
   const gl = useThree((state2) => state2.gl);
@@ -125405,10 +125491,11 @@ var Texture2 = ({
   onLoad
 }) => {
   const ret = useTexture(input, onLoad);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(ret));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(ret));
 };
 
 // node_modules/@react-three/drei/helpers/constants.js
+init_react_shim();
 var getVersion = () => parseInt(REVISION.replace(/\D+/g, ""));
 var version2 = /* @__PURE__ */ getVersion();
 
@@ -125485,7 +125572,7 @@ var ImageMaterialImpl = /* @__PURE__ */ shaderMaterial(
   }
 `
 );
-var ImageBase = /* @__PURE__ */ React142.forwardRef(({
+var ImageBase = /* @__PURE__ */ React143.forwardRef(({
   children,
   color,
   segments = 1,
@@ -125503,13 +125590,13 @@ var ImageBase = /* @__PURE__ */ React142.forwardRef(({
   extend({
     ImageMaterial: ImageMaterialImpl
   });
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const size = useThree((state2) => state2.size);
   const planeBounds = Array.isArray(scale3) ? [scale3[0], scale3[1]] : [scale3, scale3];
   const imageBounds = [texture.image.width, texture.image.height];
   const resolution = Math.max(size.width, size.height);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  React142.useLayoutEffect(() => {
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  React143.useLayoutEffect(() => {
     if (ref.current.geometry.parameters) {
       ref.current.material.scale.set(
         // @ts-ignore
@@ -125519,12 +125606,12 @@ var ImageBase = /* @__PURE__ */ React142.forwardRef(({
       );
     }
   }, [planeBounds[0], planeBounds[1]]);
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     scale: Array.isArray(scale3) ? [...scale3, 1] : scale3
-  }, props), /* @__PURE__ */ React142.createElement("planeGeometry", {
+  }, props), /* @__PURE__ */ React143.createElement("planeGeometry", {
     args: [1, 1, segments, segments]
-  }), /* @__PURE__ */ React142.createElement("imageMaterial", {
+  }), /* @__PURE__ */ React143.createElement("imageMaterial", {
     color,
     map: texture,
     zoom,
@@ -125540,44 +125627,47 @@ var ImageBase = /* @__PURE__ */ React142.forwardRef(({
     key: ImageMaterialImpl.key
   }), children);
 });
-var ImageWithUrl = /* @__PURE__ */ React142.forwardRef(({
+var ImageWithUrl = /* @__PURE__ */ React143.forwardRef(({
   url,
   ...props
 }, ref) => {
   const texture = useTexture(url);
-  return /* @__PURE__ */ React142.createElement(ImageBase, _extends({}, props, {
+  return /* @__PURE__ */ React143.createElement(ImageBase, _extends({}, props, {
     texture,
     ref
   }));
 });
-var ImageWithTexture = /* @__PURE__ */ React142.forwardRef(({
+var ImageWithTexture = /* @__PURE__ */ React143.forwardRef(({
   url: _url,
   ...props
 }, ref) => {
-  return /* @__PURE__ */ React142.createElement(ImageBase, _extends({}, props, {
+  return /* @__PURE__ */ React143.createElement(ImageBase, _extends({}, props, {
     ref
   }));
 });
-var Image2 = /* @__PURE__ */ React142.forwardRef((props, ref) => {
-  if (props.url) return /* @__PURE__ */ React142.createElement(ImageWithUrl, _extends({}, props, {
+var Image2 = /* @__PURE__ */ React143.forwardRef((props, ref) => {
+  if (props.url) return /* @__PURE__ */ React143.createElement(ImageWithUrl, _extends({}, props, {
     ref
   }));
-  else if (props.texture) return /* @__PURE__ */ React142.createElement(ImageWithTexture, _extends({}, props, {
+  else if (props.texture) return /* @__PURE__ */ React143.createElement(ImageWithTexture, _extends({}, props, {
     ref
   }));
   else throw new Error("<Image /> requires a url or texture");
 });
-var Edges = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Edges.js
+init_react_shim();
+var Edges = /* @__PURE__ */ React143.forwardRef(({
   threshold = 15,
   geometry: explicitGeometry,
   ...props
 }, fref) => {
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  const tmpPoints = React142.useMemo(() => [0, 0, 0, 1, 0, 0], []);
-  const memoizedGeometry = React142.useRef(null);
-  const memoizedThreshold = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  const tmpPoints = React143.useMemo(() => [0, 0, 0, 1, 0, 0], []);
+  const memoizedGeometry = React143.useRef(null);
+  const memoizedThreshold = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     const parent = ref.current.parent;
     const geometry3 = explicitGeometry !== null && explicitGeometry !== void 0 ? explicitGeometry : parent == null ? void 0 : parent.geometry;
     if (!geometry3) return;
@@ -125591,13 +125681,16 @@ var Edges = /* @__PURE__ */ React142.forwardRef(({
     ref.current.geometry.attributes.instanceEnd.needsUpdate = true;
     ref.current.computeLineDistances();
   });
-  return /* @__PURE__ */ React142.createElement(Line4, _extends({
+  return /* @__PURE__ */ React143.createElement(Line4, _extends({
     segments: true,
     points: tmpPoints,
     ref,
     raycast: () => null
   }, props));
 });
+
+// node_modules/@react-three/drei/core/Outlines.js
+init_react_shim();
 var OutlinesMaterial = /* @__PURE__ */ shaderMaterial({
   screenspace: false,
   color: /* @__PURE__ */ new Color("black"),
@@ -125663,20 +125756,20 @@ function Outlines({
   clippingPlanes,
   ...props
 }) {
-  const ref = React142.useRef(null);
-  const [material] = React142.useState(() => new OutlinesMaterial({
+  const ref = React143.useRef(null);
+  const [material] = React143.useState(() => new OutlinesMaterial({
     side: BackSide
   }));
   const {
     gl
   } = useThree();
   const contextSize = gl.getDrawingBufferSize(new Vector2());
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     OutlinesMaterial
   }), []);
-  const oldAngle = React142.useRef(0);
-  const oldGeometry = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const oldAngle = React143.useRef(0);
+  const oldGeometry = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     const group = ref.current;
     if (!group) return;
     const parent = group.parent;
@@ -125710,7 +125803,7 @@ function Outlines({
       }
     }
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const group = ref.current;
     if (!group) return;
     const mesh = group.children[0];
@@ -125736,7 +125829,7 @@ function Outlines({
       });
     }
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => {
       const group = ref.current;
       if (!group) return;
@@ -125747,12 +125840,16 @@ function Outlines({
       }
     };
   }, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
   }, props));
 }
 
+// node_modules/@react-three/drei/core/Trail.js
+init_react_shim();
+
 // node_modules/meshline/dist/index.js
+init_react_shim();
 var __defProp21 = Object.defineProperty;
 var __defNormalProp20 = (obj, key, value) => key in obj ? __defProp21(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField20 = (obj, key, value) => {
@@ -126346,17 +126443,17 @@ function useTrail(target2, settings) {
     ...defaults,
     ...settings
   };
-  const points = React142.useRef(null);
-  const [worldPosition] = React142.useState(() => new Vector3());
-  React142.useLayoutEffect(() => {
+  const points = React143.useRef(null);
+  const [worldPosition] = React143.useState(() => new Vector3());
+  React143.useLayoutEffect(() => {
     if (target2) {
       points.current = Float32Array.from({
         length: length * 10 * 3
       }, (_2, i6) => target2.position.getComponent(i6 % 3));
     }
   }, [length, target2]);
-  const prevPosition = React142.useRef(new Vector3());
-  const frameCount = React142.useRef(0);
+  const prevPosition = React143.useRef(new Vector3());
+  const frameCount = React143.useRef(0);
   useFrame(() => {
     if (!target2) return;
     if (!points.current) return;
@@ -126381,7 +126478,7 @@ function useTrail(target2, settings) {
   });
   return points;
 }
-var Trail = /* @__PURE__ */ React142.forwardRef((props, forwardRef82) => {
+var Trail = /* @__PURE__ */ React143.forwardRef((props, forwardRef82) => {
   const {
     children
   } = props;
@@ -126403,8 +126500,8 @@ var Trail = /* @__PURE__ */ React142.forwardRef((props, forwardRef82) => {
   } = props;
   const size = useThree((s3) => s3.size);
   const scene = useThree((s3) => s3.scene);
-  const ref = React142.useRef(null);
-  const [anchor, setAnchor] = React142.useState(null);
+  const ref = React143.useRef(null);
+  const [anchor, setAnchor] = React143.useState(null);
   const points = useTrail(anchor, {
     length,
     decay,
@@ -126412,7 +126509,7 @@ var Trail = /* @__PURE__ */ React142.forwardRef((props, forwardRef82) => {
     stride,
     interval
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const t4 = (target2 == null ? void 0 : target2.current) || ref.current.children.find((o5) => {
       return o5 instanceof Object3D;
     });
@@ -126420,8 +126517,8 @@ var Trail = /* @__PURE__ */ React142.forwardRef((props, forwardRef82) => {
       setAnchor(t4);
     }
   }, [points, target2]);
-  const geo = React142.useMemo(() => new MeshLineGeometry(), []);
-  const mat2 = React142.useMemo(() => {
+  const geo = React143.useMemo(() => new MeshLineGeometry(), []);
+  const mat2 = React143.useMemo(() => {
     var _matOverride, _matOverride2;
     const m3 = new MeshLineMaterial({
       lineWidth: 0.1 * width,
@@ -126448,29 +126545,32 @@ var Trail = /* @__PURE__ */ React142.forwardRef((props, forwardRef82) => {
     }
     return m3;
   }, [width, color, size, children]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     mat2.uniforms.resolution.value.set(size.width, size.height);
   }, [size]);
   useFrame(() => {
     if (!points.current) return;
     geo.setPoints(points.current, attenuation);
   });
-  return /* @__PURE__ */ React142.createElement("group", null, createPortal(/* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement("group", null, createPortal(/* @__PURE__ */ React143.createElement("mesh", {
     ref: forwardRef82,
     geometry: geo,
     material: mat2
-  }), scene), /* @__PURE__ */ React142.createElement("group", {
+  }), scene), /* @__PURE__ */ React143.createElement("group", {
     ref
   }, children));
 });
+
+// node_modules/@react-three/drei/core/Sampler.js
+init_react_shim();
 function useSurfaceSampler(mesh, count = 16, transform, weight, instanceMesh) {
-  const [buffer2, setBuffer] = React142.useState(() => {
+  const [buffer2, setBuffer] = React143.useState(() => {
     const arr = Array.from({
       length: count
     }, () => [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]).flat();
     return new InstancedBufferAttribute(Float32Array.from(arr), 16);
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (typeof mesh.current === "undefined") return;
     const sampler = new MeshSurfaceSampler(mesh.current);
     if (weight) {
@@ -126518,27 +126618,30 @@ function Sampler({
   count = 16,
   ...props
 }) {
-  const group = React142.useRef(null);
-  const instancedRef = React142.useRef(null);
-  const meshToSampleRef = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const group = React143.useRef(null);
+  const instancedRef = React143.useRef(null);
+  const meshToSampleRef = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     var _instances$current, _mesh$current;
     instancedRef.current = (_instances$current = instances == null ? void 0 : instances.current) !== null && _instances$current !== void 0 ? _instances$current : group.current.children.find((c6) => c6.hasOwnProperty("instanceMatrix"));
     meshToSampleRef.current = (_mesh$current = mesh == null ? void 0 : mesh.current) !== null && _mesh$current !== void 0 ? _mesh$current : group.current.children.find((c6) => c6.type === "Mesh");
   }, [children, mesh == null ? void 0 : mesh.current, instances == null ? void 0 : instances.current]);
   useSurfaceSampler(meshToSampleRef, count, transform, weight, instancedRef);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: group
   }, props), children);
 }
+
+// node_modules/@react-three/drei/core/ComputedAttribute.js
+init_react_shim();
 var ComputedAttribute = ({
   compute,
   name,
   ...props
 }) => {
-  const [bufferAttribute] = React142.useState(() => new BufferAttribute(new Float32Array(0), 1));
-  const primitive = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const [bufferAttribute] = React143.useState(() => new BufferAttribute(new Float32Array(0), 1));
+  const primitive = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     if (primitive.current) {
       var _ref;
       const parent = (_ref = primitive.current.parent) !== null && _ref !== void 0 ? _ref : primitive.current.__r3f.parent.object;
@@ -126546,12 +126649,15 @@ var ComputedAttribute = ({
       primitive.current.copy(attr);
     }
   }, [compute]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref: primitive,
     object: bufferAttribute,
     attach: `attributes-${name}`
   }, props));
 };
+
+// node_modules/@react-three/drei/core/Clone.js
+init_react_shim();
 function createSpread(child, {
   keys = ["near", "far", "color", "distance", "decay", "penumbra", "angle", "intensity", "skeleton", "visible", "castShadow", "receiveShadow", "morphTargetDictionary", "morphTargetInfluences", "name", "geometry", "material", "position", "rotation", "scale", "up", "userData", "bindMode", "bindMatrix", "bindMatrixInverse", "skeleton"],
   deep,
@@ -126572,7 +126678,7 @@ function createSpread(child, {
       ...spread,
       children: inject2(child)
     };
-    else if (/* @__PURE__ */ React142.isValidElement(inject2)) spread = {
+    else if (/* @__PURE__ */ React143.isValidElement(inject2)) spread = {
       ...spread,
       children: inject2
     };
@@ -126587,7 +126693,7 @@ function createSpread(child, {
   }
   return spread;
 }
-var Clone = /* @__PURE__ */ React142.forwardRef(({
+var Clone = /* @__PURE__ */ React143.forwardRef(({
   isChild = false,
   object,
   children,
@@ -126605,7 +126711,7 @@ var Clone = /* @__PURE__ */ React142.forwardRef(({
     castShadow,
     receiveShadow
   };
-  object = React142.useMemo(() => {
+  object = React143.useMemo(() => {
     if (isChild === false && !Array.isArray(object)) {
       let isSkinned = false;
       object.traverse((object2) => {
@@ -126616,9 +126722,9 @@ var Clone = /* @__PURE__ */ React142.forwardRef(({
     return object;
   }, [object, isChild]);
   if (Array.isArray(object)) {
-    return /* @__PURE__ */ React142.createElement("group", _extends({}, props, {
+    return /* @__PURE__ */ React143.createElement("group", _extends({}, props, {
       ref: forwardRef82
-    }), object.map((o5) => /* @__PURE__ */ React142.createElement(Clone, _extends({
+    }), object.map((o5) => /* @__PURE__ */ React143.createElement(Clone, _extends({
       key: o5.uuid,
       object: o5
     }, config))), children);
@@ -126628,14 +126734,14 @@ var Clone = /* @__PURE__ */ React142.forwardRef(({
     ...spread
   } = createSpread(object, config);
   const Element = object.type[0].toLowerCase() + object.type.slice(1);
-  return /* @__PURE__ */ React142.createElement(Element, _extends({}, spread, props, {
+  return /* @__PURE__ */ React143.createElement(Element, _extends({}, spread, props, {
     ref: forwardRef82
   }), object.children.map((child) => {
-    if (child.type === "Bone") return /* @__PURE__ */ React142.createElement("primitive", _extends({
+    if (child.type === "Bone") return /* @__PURE__ */ React143.createElement("primitive", _extends({
       key: child.uuid,
       object: child
     }, config));
-    return /* @__PURE__ */ React142.createElement(Clone, _extends({
+    return /* @__PURE__ */ React143.createElement(Clone, _extends({
       key: child.uuid,
       object: child
     }, config, {
@@ -126643,8 +126749,11 @@ var Clone = /* @__PURE__ */ React142.forwardRef(({
     }));
   }), children, injectChildren);
 });
-var globalContext = /* @__PURE__ */ React142.createContext(null);
-var MarchingCubes2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/MarchingCubes.js
+init_react_shim();
+var globalContext = /* @__PURE__ */ React143.createContext(null);
+var MarchingCubes2 = /* @__PURE__ */ React143.forwardRef(({
   resolution = 28,
   maxPolyCount = 1e4,
   enableUvs = false,
@@ -126652,24 +126761,24 @@ var MarchingCubes2 = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, ref) => {
-  const marchingCubesRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => marchingCubesRef.current, []);
-  const marchingCubes = React142.useMemo(() => new MarchingCubes(resolution, null, enableUvs, enableColors, maxPolyCount), [resolution, maxPolyCount, enableUvs, enableColors]);
-  const api = React142.useMemo(() => ({
+  const marchingCubesRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => marchingCubesRef.current, []);
+  const marchingCubes = React143.useMemo(() => new MarchingCubes(resolution, null, enableUvs, enableColors, maxPolyCount), [resolution, maxPolyCount, enableUvs, enableColors]);
+  const api = React143.useMemo(() => ({
     getParent: () => marchingCubesRef
   }), []);
   useFrame(() => {
     marchingCubes.update();
     marchingCubes.reset();
   }, -1);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: marchingCubes,
     ref: marchingCubesRef
-  }, props), /* @__PURE__ */ React142.createElement(globalContext.Provider, {
+  }, props), /* @__PURE__ */ React143.createElement(globalContext.Provider, {
     value: api
   }, children)));
 });
-var MarchingCube = /* @__PURE__ */ React142.forwardRef(({
+var MarchingCube = /* @__PURE__ */ React143.forwardRef(({
   strength = 0.5,
   subtract = 12,
   color,
@@ -126677,21 +126786,21 @@ var MarchingCube = /* @__PURE__ */ React142.forwardRef(({
 }, ref) => {
   const {
     getParent
-  } = React142.useContext(globalContext);
-  const parentRef = React142.useMemo(() => getParent(), [getParent]);
-  const cubeRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => cubeRef.current, []);
+  } = React143.useContext(globalContext);
+  const parentRef = React143.useMemo(() => getParent(), [getParent]);
+  const cubeRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => cubeRef.current, []);
   const vec = new Vector3();
   useFrame((state2) => {
     if (!parentRef.current || !cubeRef.current) return;
     cubeRef.current.getWorldPosition(vec);
     parentRef.current.addBall(0.5 + vec.x * 0.5, 0.5 + vec.y * 0.5, 0.5 + vec.z * 0.5, strength, subtract, color);
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: cubeRef
   }, props));
 });
-var MarchingPlane = /* @__PURE__ */ React142.forwardRef(({
+var MarchingPlane = /* @__PURE__ */ React143.forwardRef(({
   planeType: _planeType = "x",
   strength = 0.5,
   subtract = 12,
@@ -126699,19 +126808,22 @@ var MarchingPlane = /* @__PURE__ */ React142.forwardRef(({
 }, ref) => {
   const {
     getParent
-  } = React142.useContext(globalContext);
-  const parentRef = React142.useMemo(() => getParent(), [getParent]);
-  const wallRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => wallRef.current, []);
-  const planeType = React142.useMemo(() => _planeType === "x" ? "addPlaneX" : _planeType === "y" ? "addPlaneY" : "addPlaneZ", [_planeType]);
+  } = React143.useContext(globalContext);
+  const parentRef = React143.useMemo(() => getParent(), [getParent]);
+  const wallRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => wallRef.current, []);
+  const planeType = React143.useMemo(() => _planeType === "x" ? "addPlaneX" : _planeType === "y" ? "addPlaneY" : "addPlaneZ", [_planeType]);
   useFrame(() => {
     if (!parentRef.current || !wallRef.current) return;
     parentRef.current[planeType](strength, subtract);
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: wallRef
   }, props));
 });
+
+// node_modules/@react-three/drei/core/Decal.js
+init_react_shim();
 function isArray(vec) {
   return Array.isArray(vec);
 }
@@ -126724,7 +126836,7 @@ function vecToArray(vec = [0, 0, 0]) {
     return [vec, vec, vec];
   }
 }
-var Decal = /* @__PURE__ */ React142.forwardRef(function Decal2({
+var Decal = /* @__PURE__ */ React143.forwardRef(function Decal2({
   debug,
   depthTest = false,
   polygonOffsetFactor = -10,
@@ -126736,15 +126848,15 @@ var Decal = /* @__PURE__ */ React142.forwardRef(function Decal2({
   scale: scale3,
   ...props
 }, forwardRef82) {
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(forwardRef82, () => ref.current);
-  const helper = React142.useRef(null);
-  const state2 = React142.useRef({
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(forwardRef82, () => ref.current);
+  const helper = React143.useRef(null);
+  const state2 = React143.useRef({
     position: new Vector3(),
     rotation: new Euler(),
     scale: new Vector3(1, 1, 1)
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const parent = (mesh == null ? void 0 : mesh.current) || ref.current.parent;
     const target2 = ref.current;
     if (!(parent instanceof Mesh)) {
@@ -126806,24 +126918,27 @@ var Decal = /* @__PURE__ */ React142.forwardRef(function Decal2({
       };
     }
   }, [mesh, ...vecToArray(position2), ...vecToArray(scale3), ...vecToArray(rotation3)]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (helper.current) {
       helper.current.traverse((child) => child.raycast = () => null);
     }
   }, [debug]);
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     "material-transparent": true,
     "material-polygonOffset": true,
     "material-polygonOffsetFactor": polygonOffsetFactor,
     "material-depthTest": depthTest,
     "material-map": map
-  }, props), children, debug && /* @__PURE__ */ React142.createElement("mesh", {
+  }, props), children, debug && /* @__PURE__ */ React143.createElement("mesh", {
     ref: helper
-  }, /* @__PURE__ */ React142.createElement("boxGeometry", null), /* @__PURE__ */ React142.createElement("meshNormalMaterial", {
+  }, /* @__PURE__ */ React143.createElement("boxGeometry", null), /* @__PURE__ */ React143.createElement("meshNormalMaterial", {
     wireframe: true
-  }), /* @__PURE__ */ React142.createElement("axesHelper", null)));
+  }), /* @__PURE__ */ React143.createElement("axesHelper", null)));
 });
+
+// node_modules/@react-three/drei/core/Svg.js
+init_react_shim();
 var Svg = /* @__PURE__ */ forwardRef(function R3FSvg({
   src,
   skipFill,
@@ -126843,32 +126958,32 @@ var Svg = /* @__PURE__ */ forwardRef(function R3FSvg({
     return () => strokeGeometries.forEach((group) => group && group.map((g3) => g3.dispose()));
   }, [strokeGeometries]);
   let renderOrder = 0;
-  return /* @__PURE__ */ React142.createElement("object3D", _extends({
+  return /* @__PURE__ */ React143.createElement("object3D", _extends({
     ref
-  }, props), /* @__PURE__ */ React142.createElement("object3D", {
+  }, props), /* @__PURE__ */ React143.createElement("object3D", {
     scale: [1, -1, 1]
   }, svg.paths.map((path, p5) => {
     var _path$userData2, _path$userData3;
-    return /* @__PURE__ */ React142.createElement(Fragment$1, {
+    return /* @__PURE__ */ React143.createElement(Fragment$1, {
       key: p5
-    }, !skipFill && ((_path$userData2 = path.userData) == null ? void 0 : _path$userData2.style.fill) !== void 0 && path.userData.style.fill !== "none" && SVGLoader.createShapes(path).map((shape, s3) => /* @__PURE__ */ React142.createElement("mesh", _extends({
+    }, !skipFill && ((_path$userData2 = path.userData) == null ? void 0 : _path$userData2.style.fill) !== void 0 && path.userData.style.fill !== "none" && SVGLoader.createShapes(path).map((shape, s3) => /* @__PURE__ */ React143.createElement("mesh", _extends({
       key: s3
     }, fillMeshProps, {
       renderOrder: renderOrder++
-    }), /* @__PURE__ */ React142.createElement("shapeGeometry", {
+    }), /* @__PURE__ */ React143.createElement("shapeGeometry", {
       args: [shape]
-    }), /* @__PURE__ */ React142.createElement("meshBasicMaterial", _extends({
+    }), /* @__PURE__ */ React143.createElement("meshBasicMaterial", _extends({
       color: path.userData.style.fill,
       opacity: path.userData.style.fillOpacity,
       transparent: true,
       side: DoubleSide,
       depthWrite: false
-    }, fillMaterial)))), !skipStrokes && ((_path$userData3 = path.userData) == null ? void 0 : _path$userData3.style.stroke) !== void 0 && path.userData.style.stroke !== "none" && path.subPaths.map((_subPath, s3) => /* @__PURE__ */ React142.createElement("mesh", _extends({
+    }, fillMaterial)))), !skipStrokes && ((_path$userData3 = path.userData) == null ? void 0 : _path$userData3.style.stroke) !== void 0 && path.userData.style.stroke !== "none" && path.subPaths.map((_subPath, s3) => /* @__PURE__ */ React143.createElement("mesh", _extends({
       key: s3,
       geometry: strokeGeometries[p5][s3]
     }, strokeMeshProps, {
       renderOrder: renderOrder++
-    }), /* @__PURE__ */ React142.createElement("meshBasicMaterial", _extends({
+    }), /* @__PURE__ */ React143.createElement("meshBasicMaterial", _extends({
       color: path.userData.style.stroke,
       opacity: path.userData.style.strokeOpacity,
       transparent: true,
@@ -126877,6 +126992,9 @@ var Svg = /* @__PURE__ */ forwardRef(function R3FSvg({
     }, strokeMaterial)))));
   })));
 });
+
+// node_modules/@react-three/drei/core/Gltf.js
+init_react_shim();
 var dracoLoader = null;
 var decoderPath = "https://www.gstatic.com/draco/versioned/decoders/1.5.5/";
 function extensions(useDraco = true, useMeshopt = true, extendLoader) {
@@ -126902,7 +127020,7 @@ useGLTF.clear = (path) => useLoader.clear(GLTFLoader, path);
 useGLTF.setDecoderPath = (path) => {
   decoderPath = path;
 };
-var Gltf = /* @__PURE__ */ React142.forwardRef(({
+var Gltf = /* @__PURE__ */ React143.forwardRef(({
   src,
   useDraco,
   useMeshOpt,
@@ -126912,12 +127030,15 @@ var Gltf = /* @__PURE__ */ React142.forwardRef(({
   const {
     scene
   } = useGLTF(src, useDraco, useMeshOpt, extendLoader);
-  return /* @__PURE__ */ React142.createElement(Clone, _extends({
+  return /* @__PURE__ */ React143.createElement(Clone, _extends({
     ref
   }, props, {
     object: scene
   }));
 });
+
+// node_modules/@react-three/drei/core/AsciiRenderer.js
+init_react_shim();
 function AsciiRenderer({
   renderIndex = 1,
   bgColor = "black",
@@ -126933,7 +127054,7 @@ function AsciiRenderer({
     scene,
     camera
   } = useThree();
-  const effect = React142.useMemo(() => {
+  const effect = React143.useMemo(() => {
     const effect2 = new AsciiEffect(gl, characters, {
       invert,
       color,
@@ -126945,11 +127066,11 @@ function AsciiRenderer({
     effect2.domElement.style.pointerEvents = "none";
     return effect2;
   }, [characters, invert, color, resolution]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     effect.domElement.style.color = fgColor;
     effect.domElement.style.backgroundColor = bgColor;
   }, [fgColor, bgColor]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     gl.domElement.style.opacity = "0";
     gl.domElement.parentNode.appendChild(effect.domElement);
     return () => {
@@ -126957,14 +127078,17 @@ function AsciiRenderer({
       gl.domElement.parentNode.removeChild(effect.domElement);
     };
   }, [effect]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     effect.setSize(size.width, size.height);
   }, [effect, size]);
   useFrame((state2) => {
     effect.render(scene, camera);
   }, renderIndex);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null);
 }
+
+// node_modules/@react-three/drei/core/Splat.js
+init_react_shim();
 var SplatMaterial = /* @__PURE__ */ shaderMaterial(
   {
     alphaTest: 0,
@@ -127432,19 +127556,19 @@ function Splat({
   extend({
     SplatMaterial
   });
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const gl = useThree((state2) => state2.gl);
   const camera = useThree((state2) => state2.camera);
   const shared = useLoader(SplatLoader, src, (loader2) => {
     loader2.gl = gl;
     loader2.chunkSize = chunkSize;
   });
-  React142.useLayoutEffect(() => shared.connect(ref.current), [src]);
+  React143.useLayoutEffect(() => shared.connect(ref.current), [src]);
   useFrame(() => shared.update(ref.current, camera, alphaHash));
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     frustumCulled: false
-  }, props), /* @__PURE__ */ React142.createElement("splatMaterial", {
+  }, props), /* @__PURE__ */ React143.createElement("splatMaterial", {
     key: `${src}/${alphaTest}/${alphaHash}${SplatMaterial.key}`,
     transparent: !alphaHash,
     depthTest: true,
@@ -127458,6 +127582,12 @@ function Splat({
     toneMapped
   }));
 }
+
+// node_modules/@react-three/drei/core/OrthographicCamera.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Fbo.js
+init_react_shim();
 function useFBO(width, height, settings) {
   const size = useThree((state2) => state2.size);
   const viewport = useThree((state2) => state2.viewport);
@@ -127470,7 +127600,7 @@ function useFBO(width, height, settings) {
     ...targetSettings
   } = _settings;
   const depthBuffer = depth !== null && depth !== void 0 ? depth : _settings.depthBuffer;
-  const target2 = React142.useMemo(() => {
+  const target2 = React143.useMemo(() => {
     const target3 = new WebGLRenderTarget(_width, _height, {
       minFilter: LinearFilter,
       magFilter: LinearFilter,
@@ -127483,11 +127613,11 @@ function useFBO(width, height, settings) {
     target3.samples = samples;
     return target3;
   }, []);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     target2.setSize(_width, _height);
     if (samples) target2.samples = samples;
   }, [samples, target2, _width, _height]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => target2.dispose();
   }, []);
   return target2;
@@ -127500,12 +127630,12 @@ var Fbo = /* @__PURE__ */ forwardRef(({
 }, fref) => {
   const target2 = useFBO(width, height, settings);
   useImperativeHandle(fref, () => target2, [target2]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(target2));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(target2));
 });
 
 // node_modules/@react-three/drei/core/OrthographicCamera.js
 var isFunction = (node) => typeof node === "function";
-var OrthographicCamera2 = /* @__PURE__ */ React142.forwardRef(({
+var OrthographicCamera2 = /* @__PURE__ */ React143.forwardRef(({
   envMap,
   resolution = 256,
   frames = Infinity,
@@ -127522,19 +127652,19 @@ var OrthographicCamera2 = /* @__PURE__ */ React142.forwardRef(({
   const size = useThree(({
     size: size2
   }) => size2);
-  const cameraRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => cameraRef.current, []);
-  const groupRef = React142.useRef(null);
+  const cameraRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => cameraRef.current, []);
+  const groupRef = React143.useRef(null);
   const fbo = useFBO(resolution);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (!props.manual) {
       cameraRef.current.updateProjectionMatrix();
     }
   }, [size, props]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     cameraRef.current.updateProjectionMatrix();
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (makeDefault) {
       const oldCam = camera;
       set(() => ({
@@ -127561,18 +127691,21 @@ var OrthographicCamera2 = /* @__PURE__ */ React142.forwardRef(({
       count++;
     }
   });
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("orthographicCamera", _extends({
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("orthographicCamera", _extends({
     left: size.width / -2,
     right: size.width / 2,
     top: size.height / 2,
     bottom: size.height / -2,
     ref: cameraRef
-  }, props), !functional && children), /* @__PURE__ */ React142.createElement("group", {
+  }, props), !functional && children), /* @__PURE__ */ React143.createElement("group", {
     ref: groupRef
   }, functional && children(fbo.texture)));
 });
+
+// node_modules/@react-three/drei/core/PerspectiveCamera.js
+init_react_shim();
 var isFunction2 = (node) => typeof node === "function";
-var PerspectiveCamera2 = /* @__PURE__ */ React142.forwardRef(({
+var PerspectiveCamera2 = /* @__PURE__ */ React143.forwardRef(({
   envMap,
   resolution = 256,
   frames = Infinity,
@@ -127589,16 +127722,16 @@ var PerspectiveCamera2 = /* @__PURE__ */ React142.forwardRef(({
   const size = useThree(({
     size: size2
   }) => size2);
-  const cameraRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => cameraRef.current, []);
-  const groupRef = React142.useRef(null);
+  const cameraRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => cameraRef.current, []);
+  const groupRef = React143.useRef(null);
   const fbo = useFBO(resolution);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (!props.manual) {
       cameraRef.current.aspect = size.width / size.height;
     }
   }, [size, props]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     cameraRef.current.updateProjectionMatrix();
   });
   let count = 0;
@@ -127617,7 +127750,7 @@ var PerspectiveCamera2 = /* @__PURE__ */ React142.forwardRef(({
       count++;
     }
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (makeDefault) {
       const oldCam = camera;
       set(() => ({
@@ -127628,12 +127761,15 @@ var PerspectiveCamera2 = /* @__PURE__ */ React142.forwardRef(({
       }));
     }
   }, [cameraRef, makeDefault, set]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("perspectiveCamera", _extends({
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("perspectiveCamera", _extends({
     ref: cameraRef
-  }, props), !functional && children), /* @__PURE__ */ React142.createElement("group", {
+  }, props), !functional && children), /* @__PURE__ */ React143.createElement("group", {
     ref: groupRef
   }, functional && children(fbo.texture)));
 });
+
+// node_modules/@react-three/drei/core/CubeCamera.js
+init_react_shim();
 function useCubeCamera({
   resolution = 256,
   near = 0.1,
@@ -127660,7 +127796,7 @@ function useCubeCamera({
   const camera = useMemo(() => new CubeCamera(near, far, fbo), [near, far, fbo]);
   let originalFog;
   let originalBackground;
-  const update3 = React142.useCallback(() => {
+  const update3 = React143.useCallback(() => {
     originalFog = scene.fog;
     originalBackground = scene.background;
     scene.background = envMap || originalBackground;
@@ -127685,7 +127821,7 @@ function CubeCamera2({
   fog,
   ...props
 }) {
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const {
     fbo,
     camera,
@@ -127706,13 +127842,16 @@ function CubeCamera2({
       count++;
     }
   });
-  return /* @__PURE__ */ React142.createElement("group", props, /* @__PURE__ */ React142.createElement("primitive", {
+  return /* @__PURE__ */ React143.createElement("group", props, /* @__PURE__ */ React143.createElement("primitive", {
     object: camera
-  }), /* @__PURE__ */ React142.createElement("group", {
+  }), /* @__PURE__ */ React143.createElement("group", {
     ref
   }, children == null ? void 0 : children(fbo.texture)));
 }
-var DeviceOrientationControls2 = /* @__PURE__ */ React142.forwardRef((props, ref) => {
+
+// node_modules/@react-three/drei/core/DeviceOrientationControls.js
+init_react_shim();
+var DeviceOrientationControls2 = /* @__PURE__ */ React143.forwardRef((props, ref) => {
   const {
     camera,
     onChange,
@@ -127724,8 +127863,8 @@ var DeviceOrientationControls2 = /* @__PURE__ */ React142.forwardRef((props, ref
   const get = useThree((state2) => state2.get);
   const set = useThree((state2) => state2.set);
   const explCamera = camera || defaultCamera;
-  const controls = React142.useMemo(() => new DeviceOrientationControls(explCamera), [explCamera]);
-  React142.useEffect(() => {
+  const controls = React143.useMemo(() => new DeviceOrientationControls(explCamera), [explCamera]);
+  React143.useEffect(() => {
     const callback = (e4) => {
       invalidate2();
       if (onChange) onChange(e4);
@@ -127734,12 +127873,12 @@ var DeviceOrientationControls2 = /* @__PURE__ */ React142.forwardRef((props, ref
     return () => controls == null || controls.removeEventListener == null ? void 0 : controls.removeEventListener("change", callback);
   }, [onChange, controls, invalidate2]);
   useFrame(() => controls == null ? void 0 : controls.update(), -1);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const current = controls;
     current == null || current.connect();
     return () => current == null ? void 0 : current.dispose();
   }, [controls]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -127750,12 +127889,15 @@ var DeviceOrientationControls2 = /* @__PURE__ */ React142.forwardRef((props, ref
       });
     }
   }, [makeDefault, controls]);
-  return controls ? /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return controls ? /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls
   }, rest)) : null;
 });
-var FlyControls2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/FlyControls.js
+init_react_shim();
+var FlyControls2 = /* @__PURE__ */ React143.forwardRef(({
   domElement,
   ...props
 }, fref) => {
@@ -127771,12 +127913,12 @@ var FlyControls2 = /* @__PURE__ */ React142.forwardRef(({
   const get = useThree((state2) => state2.get);
   const set = useThree((state2) => state2.set);
   const explDomElement = domElement || events.connected || gl.domElement;
-  const controls = React142.useMemo(() => new FlyControls(camera), [camera]);
-  React142.useEffect(() => {
+  const controls = React143.useMemo(() => new FlyControls(camera), [camera]);
+  React143.useEffect(() => {
     controls.connect(explDomElement);
     return () => void controls.dispose();
   }, [explDomElement, controls, invalidate2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const callback = (e4) => {
       invalidate2();
       if (onChange) onChange(e4);
@@ -127784,7 +127926,7 @@ var FlyControls2 = /* @__PURE__ */ React142.forwardRef(({
     controls.addEventListener == null || controls.addEventListener("change", callback);
     return () => controls.removeEventListener == null ? void 0 : controls.removeEventListener("change", callback);
   }, [onChange, invalidate2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -127796,13 +127938,16 @@ var FlyControls2 = /* @__PURE__ */ React142.forwardRef(({
     }
   }, [makeDefault, controls]);
   useFrame((_2, delta) => controls.update(delta));
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref: fref,
     object: controls,
     args: [camera, explDomElement]
   }, rest));
 });
-var MapControls2 = /* @__PURE__ */ React142.forwardRef((props = {
+
+// node_modules/@react-three/drei/core/MapControls.js
+init_react_shim();
+var MapControls2 = /* @__PURE__ */ React143.forwardRef((props = {
   enableDamping: true
 }, ref) => {
   const {
@@ -127822,8 +127967,8 @@ var MapControls2 = /* @__PURE__ */ React142.forwardRef((props = {
   const get = useThree((state2) => state2.get);
   const explDomElement = domElement || events.connected || gl.domElement;
   const explCamera = camera || defaultCamera;
-  const controls = React142.useMemo(() => new MapControls(explCamera), [explCamera]);
-  React142.useEffect(() => {
+  const controls = React143.useMemo(() => new MapControls(explCamera), [explCamera]);
+  React143.useEffect(() => {
     controls.connect(explDomElement);
     const callback = (e4) => {
       invalidate2();
@@ -127839,7 +127984,7 @@ var MapControls2 = /* @__PURE__ */ React142.forwardRef((props = {
       if (onEnd) controls.removeEventListener("end", onEnd);
     };
   }, [onChange, onStart, onEnd, controls, invalidate2, explDomElement]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -127851,13 +127996,16 @@ var MapControls2 = /* @__PURE__ */ React142.forwardRef((props = {
     }
   }, [makeDefault, controls]);
   useFrame(() => controls.update(), -1);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls,
     enableDamping: true
   }, rest));
 });
-var OrbitControls2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/OrbitControls.js
+init_react_shim();
+var OrbitControls2 = /* @__PURE__ */ React143.forwardRef(({
   makeDefault,
   camera,
   regress,
@@ -127879,18 +128027,18 @@ var OrbitControls2 = /* @__PURE__ */ React142.forwardRef(({
   const performance2 = useThree((state2) => state2.performance);
   const explCamera = camera || defaultCamera;
   const explDomElement = domElement || events.connected || gl.domElement;
-  const controls = React142.useMemo(() => new OrbitControls(explCamera), [explCamera]);
+  const controls = React143.useMemo(() => new OrbitControls(explCamera), [explCamera]);
   useFrame(() => {
     if (controls.enabled) controls.update();
   }, -1);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (keyEvents) {
       controls.connect(keyEvents === true ? explDomElement : keyEvents);
     }
     controls.connect(explDomElement);
     return () => void controls.dispose();
   }, [keyEvents, explDomElement, regress, controls, invalidate2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const callback = (e4) => {
       invalidate2();
       if (regress) performance2.regress();
@@ -127911,7 +128059,7 @@ var OrbitControls2 = /* @__PURE__ */ React142.forwardRef(({
       controls.removeEventListener("change", callback);
     };
   }, [onChange, onStart, onEnd, controls, invalidate2, setEvents]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -127922,13 +128070,16 @@ var OrbitControls2 = /* @__PURE__ */ React142.forwardRef(({
       });
     }
   }, [makeDefault, controls]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls,
     enableDamping
   }, restProps));
 });
-var TrackballControls2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/TrackballControls.js
+init_react_shim();
+var TrackballControls2 = /* @__PURE__ */ React143.forwardRef(({
   makeDefault,
   camera,
   domElement,
@@ -127950,15 +128101,15 @@ var TrackballControls2 = /* @__PURE__ */ React142.forwardRef(({
   } = useThree();
   const explCamera = camera || defaultCamera;
   const explDomElement = domElement || events.connected || gl.domElement;
-  const controls = React142.useMemo(() => new TrackballControls(explCamera), [explCamera]);
+  const controls = React143.useMemo(() => new TrackballControls(explCamera), [explCamera]);
   useFrame(() => {
     if (controls.enabled) controls.update();
   }, -1);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     controls.connect(explDomElement);
     return () => void controls.dispose();
   }, [explDomElement, regress, controls, invalidate2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const callback = (e4) => {
       invalidate2();
       if (regress) performance2.regress();
@@ -127973,10 +128124,10 @@ var TrackballControls2 = /* @__PURE__ */ React142.forwardRef(({
       controls.removeEventListener("change", callback);
     };
   }, [onChange, onStart, onEnd, controls, invalidate2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     controls.handleResize();
   }, [viewport]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -127987,11 +128138,14 @@ var TrackballControls2 = /* @__PURE__ */ React142.forwardRef(({
       });
     }
   }, [makeDefault, controls]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls
   }, restProps));
 });
+
+// node_modules/@react-three/drei/core/ArcballControls.js
+init_react_shim();
 var ArcballControls2 = /* @__PURE__ */ forwardRef(({
   camera,
   makeDefault,
@@ -128045,12 +128199,15 @@ var ArcballControls2 = /* @__PURE__ */ forwardRef(({
       });
     }
   }, [makeDefault, controls]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls
   }, restProps));
 });
-var TransformControls2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/TransformControls.js
+init_react_shim();
+var TransformControls2 = /* @__PURE__ */ React143.forwardRef(({
   children,
   domElement,
   onChange,
@@ -128083,9 +128240,9 @@ var TransformControls2 = /* @__PURE__ */ React142.forwardRef(({
   const set = useThree((state2) => state2.set);
   const explCamera = camera || defaultCamera;
   const explDomElement = domElement || events.connected || gl.domElement;
-  const controls = React142.useMemo(() => new TransformControls(explCamera, explDomElement), [explCamera, explDomElement]);
-  const group = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const controls = React143.useMemo(() => new TransformControls(explCamera, explDomElement), [explCamera, explDomElement]);
+  const group = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     if (object) {
       controls.attach(object instanceof Object3D ? object : object.current);
     } else if (group.current instanceof Object3D) {
@@ -128093,22 +128250,22 @@ var TransformControls2 = /* @__PURE__ */ React142.forwardRef(({
     }
     return () => void controls.detach();
   }, [object, children, controls]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (defaultControls) {
       const callback = (event) => defaultControls.enabled = !event.value;
       controls.addEventListener("dragging-changed", callback);
       return () => controls.removeEventListener("dragging-changed", callback);
     }
   }, [controls, defaultControls]);
-  const onChangeRef = React142.useRef(void 0);
-  const onMouseDownRef = React142.useRef(void 0);
-  const onMouseUpRef = React142.useRef(void 0);
-  const onObjectChangeRef = React142.useRef(void 0);
-  React142.useLayoutEffect(() => void (onChangeRef.current = onChange), [onChange]);
-  React142.useLayoutEffect(() => void (onMouseDownRef.current = onMouseDown), [onMouseDown]);
-  React142.useLayoutEffect(() => void (onMouseUpRef.current = onMouseUp), [onMouseUp]);
-  React142.useLayoutEffect(() => void (onObjectChangeRef.current = onObjectChange), [onObjectChange]);
-  React142.useEffect(() => {
+  const onChangeRef = React143.useRef(void 0);
+  const onMouseDownRef = React143.useRef(void 0);
+  const onMouseUpRef = React143.useRef(void 0);
+  const onObjectChangeRef = React143.useRef(void 0);
+  React143.useLayoutEffect(() => void (onChangeRef.current = onChange), [onChange]);
+  React143.useLayoutEffect(() => void (onMouseDownRef.current = onMouseDown), [onMouseDown]);
+  React143.useLayoutEffect(() => void (onMouseUpRef.current = onMouseUp), [onMouseUp]);
+  React143.useLayoutEffect(() => void (onObjectChangeRef.current = onObjectChange), [onObjectChange]);
+  React143.useEffect(() => {
     const onChange2 = (e4) => {
       invalidate2();
       onChangeRef.current == null || onChangeRef.current(e4);
@@ -128127,7 +128284,7 @@ var TransformControls2 = /* @__PURE__ */ React142.forwardRef(({
       controls.removeEventListener("objectChange", onObjectChange2);
     };
   }, [invalidate2, controls]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -128138,7 +128295,7 @@ var TransformControls2 = /* @__PURE__ */ React142.forwardRef(({
       });
     }
   }, [makeDefault, controls]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("primitive", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("primitive", {
     ref,
     object: controls,
     enabled,
@@ -128152,11 +128309,14 @@ var TransformControls2 = /* @__PURE__ */ React142.forwardRef(({
     showX,
     showY,
     showZ
-  }), /* @__PURE__ */ React142.createElement("group", _extends({
+  }), /* @__PURE__ */ React143.createElement("group", _extends({
     ref: group
   }, props), children));
 });
-var PointerLockControls2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/PointerLockControls.js
+init_react_shim();
+var PointerLockControls2 = /* @__PURE__ */ React143.forwardRef(({
   domElement,
   selector,
   onChange,
@@ -128179,8 +128339,8 @@ var PointerLockControls2 = /* @__PURE__ */ React142.forwardRef(({
   const set = useThree((state2) => state2.set);
   const explCamera = camera || defaultCamera;
   const explDomElement = domElement || events.connected || gl.domElement;
-  const controls = React142.useMemo(() => new PointerLockControls(explCamera), [explCamera]);
-  React142.useEffect(() => {
+  const controls = React143.useMemo(() => new PointerLockControls(explCamera), [explCamera]);
+  React143.useEffect(() => {
     if (enabled) {
       controls.connect(explDomElement);
       const oldComputeOffsets = get().events.compute;
@@ -128200,7 +128360,7 @@ var PointerLockControls2 = /* @__PURE__ */ React142.forwardRef(({
       };
     }
   }, [enabled, controls]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const callback = (e4) => {
       invalidate2();
       if (onChange) onChange(e4);
@@ -128218,7 +128378,7 @@ var PointerLockControls2 = /* @__PURE__ */ React142.forwardRef(({
       elements.forEach((element) => element ? element.removeEventListener("click", handler) : void 0);
     };
   }, [onChange, onLock, onUnlock, selector, controls, invalidate2]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -128229,12 +128389,15 @@ var PointerLockControls2 = /* @__PURE__ */ React142.forwardRef(({
       });
     }
   }, [makeDefault, controls]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls
   }, rest));
 });
-var FirstPersonControls2 = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/FirstPersonControls.js
+init_react_shim();
+var FirstPersonControls2 = /* @__PURE__ */ React143.forwardRef(({
   domElement,
   makeDefault,
   ...props
@@ -128245,8 +128408,8 @@ var FirstPersonControls2 = /* @__PURE__ */ React142.forwardRef(({
   const get = useThree((state2) => state2.get);
   const set = useThree((state2) => state2.set);
   const explDomElement = domElement || events.connected || gl.domElement;
-  const [controls] = React142.useState(() => new FirstPersonControls(camera, explDomElement));
-  React142.useEffect(() => {
+  const [controls] = React143.useState(() => new FirstPersonControls(camera, explDomElement));
+  React143.useEffect(() => {
     if (makeDefault) {
       const old = get().controls;
       set({
@@ -128260,13 +128423,17 @@ var FirstPersonControls2 = /* @__PURE__ */ React142.forwardRef(({
   useFrame((_2, delta) => {
     controls.update(delta);
   }, -1);
-  return controls ? /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return controls ? /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls
   }, props)) : null;
 });
 
+// node_modules/@react-three/drei/core/CameraControls.js
+init_react_shim();
+
 // node_modules/camera-controls/dist/camera-controls.module.js
+init_react_shim();
 var MOUSE_BUTTON = {
   LEFT: 1,
   RIGHT: 2,
@@ -130797,15 +130964,18 @@ var CameraControls2 = /* @__PURE__ */ forwardRef((props, ref) => {
       });
     }
   }, [makeDefault, controls]);
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     ref,
     object: controls
   }, restProps));
 });
+
+// node_modules/@react-three/drei/core/MotionPathControls.js
+init_react_shim();
 var isObject3DRef = (ref) => (ref == null ? void 0 : ref.current) instanceof Object3D;
-var MotionContext = /* @__PURE__ */ React142.createContext(null);
+var MotionContext = /* @__PURE__ */ React143.createContext(null);
 function useMotion() {
-  const context12 = React142.useContext(MotionContext);
+  const context12 = React143.useContext(MotionContext);
   if (!context12) throw new Error("useMotion hook must be used in a MotionPathControls component.");
   return context12;
 }
@@ -130816,26 +130986,26 @@ function Debug({
   const {
     path
   } = useMotion();
-  const [dots, setDots] = React142.useState([]);
-  const material = React142.useMemo(() => new MeshBasicMaterial({
+  const [dots, setDots] = React143.useState([]);
+  const material = React143.useMemo(() => new MeshBasicMaterial({
     color
   }), [color]);
-  const geometry3 = React142.useMemo(() => new SphereGeometry(0.025, 16, 16), []);
-  const last = React142.useRef([]);
-  React142.useEffect(() => {
+  const geometry3 = React143.useMemo(() => new SphereGeometry(0.025, 16, 16), []);
+  const last = React143.useRef([]);
+  React143.useEffect(() => {
     if (path.curves !== last.current) {
       setDots(path.getPoints(points));
       last.current = path.curves;
     }
   });
-  return dots.map((item, index2) => /* @__PURE__ */ React142.createElement("mesh", {
+  return dots.map((item, index2) => /* @__PURE__ */ React143.createElement("mesh", {
     key: index2,
     material,
     geometry: geometry3,
     position: [item.x, item.y, item.z]
   }));
 }
-var MotionPathControls = /* @__PURE__ */ React142.forwardRef(({
+var MotionPathControls = /* @__PURE__ */ React143.forwardRef(({
   children,
   curves = [],
   debug = false,
@@ -130854,10 +131024,10 @@ var MotionPathControls = /* @__PURE__ */ React142.forwardRef(({
   const {
     camera
   } = useThree();
-  const ref = React142.useRef(null);
-  const pos = React142.useRef(offset !== null && offset !== void 0 ? offset : 0);
-  const path = React142.useMemo(() => new CurvePath(), []);
-  const state2 = React142.useMemo(() => ({
+  const ref = React143.useRef(null);
+  const pos = React143.useRef(offset !== null && offset !== void 0 ? offset : 0);
+  const path = React143.useMemo(() => new CurvePath(), []);
+  const state2 = React143.useMemo(() => ({
     focus,
     object: (object == null ? void 0 : object.current) instanceof Object3D ? object : {
       current: camera
@@ -130870,7 +131040,7 @@ var MotionPathControls = /* @__PURE__ */ React142.forwardRef(({
     next: new Vector3()
   }), [focus, object]);
   const instanceRef = useInstanceHandle(ref);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const instance2 = instanceRef.current;
     path.curves = [];
     const _curves = curves.length > 0 ? curves : instance2.children.map((instance3) => instance3.object);
@@ -130882,13 +131052,13 @@ var MotionPathControls = /* @__PURE__ */ React142.forwardRef(({
     }
     path.updateArcLengths();
   });
-  React142.useImperativeHandle(fref, () => Object.assign(ref.current, {
+  React143.useImperativeHandle(fref, () => Object.assign(ref.current, {
     motion: state2
   }), [state2]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     pos.current = misc.repeat(pos.current, 1);
   }, [offset]);
-  const vec = React142.useMemo(() => new Vector3(), []);
+  const vec = React143.useMemo(() => new Vector3(), []);
   useFrame((_state, delta) => {
     const lastOffset = state2.offset;
     easing.damp(pos, "current", offset !== void 0 ? offset : state2.current, damping, delta, maxSpeed, void 0, eps2);
@@ -130904,14 +131074,20 @@ var MotionPathControls = /* @__PURE__ */ React142.forwardRef(({
       }
     }
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
-  }, props), /* @__PURE__ */ React142.createElement(MotionContext.Provider, {
+  }, props), /* @__PURE__ */ React143.createElement(MotionContext.Provider, {
     value: state2
-  }, children, debug && /* @__PURE__ */ React142.createElement(Debug, {
+  }, children, debug && /* @__PURE__ */ React143.createElement(Debug, {
     color: debugColor
   })));
 });
+
+// node_modules/@react-three/drei/core/GizmoHelper.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Hud.js
+init_react_shim();
 function RenderHud({
   defaultScene,
   defaultCamera,
@@ -130934,7 +131110,7 @@ function RenderHud({
     gl.render(scene, camera);
     gl.autoClear = oldCLear;
   }, renderPriority);
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     onPointerOver: () => null
   });
 }
@@ -130946,8 +131122,8 @@ function Hud({
     scene: defaultScene,
     camera: defaultCamera
   } = useThree();
-  const [hudScene] = React142.useState(() => new Scene());
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, createPortal(/* @__PURE__ */ React142.createElement(React142.Fragment, null, children, /* @__PURE__ */ React142.createElement(RenderHud, {
+  const [hudScene] = React143.useState(() => new Scene());
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, createPortal(/* @__PURE__ */ React143.createElement(React143.Fragment, null, children, /* @__PURE__ */ React143.createElement(RenderHud, {
     defaultScene,
     defaultCamera,
     renderPriority
@@ -130959,9 +131135,9 @@ function Hud({
 }
 
 // node_modules/@react-three/drei/core/GizmoHelper.js
-var Context = /* @__PURE__ */ React142.createContext({});
+var Context = /* @__PURE__ */ React143.createContext({});
 var useGizmoContext = () => {
-  return React142.useContext(Context);
+  return React143.useContext(Context);
 };
 var turnRate = 2 * Math.PI;
 var dummy = /* @__PURE__ */ new Object3D();
@@ -130987,17 +131163,17 @@ var GizmoHelper = ({
   const mainCamera = useThree((state2) => state2.camera);
   const defaultControls = useThree((state2) => state2.controls);
   const invalidate2 = useThree((state2) => state2.invalidate);
-  const gizmoRef = React142.useRef(null);
-  const virtualCam = React142.useRef(null);
-  const animating = React142.useRef(false);
-  const radius = React142.useRef(0);
-  const focusPoint = React142.useRef(new Vector3(0, 0, 0));
-  const defaultUp = React142.useRef(new Vector3(0, 0, 0));
-  React142.useEffect(() => {
+  const gizmoRef = React143.useRef(null);
+  const virtualCam = React143.useRef(null);
+  const animating = React143.useRef(false);
+  const radius = React143.useRef(0);
+  const focusPoint = React143.useRef(new Vector3(0, 0, 0));
+  const defaultUp = React143.useRef(new Vector3(0, 0, 0));
+  React143.useEffect(() => {
     defaultUp.current.copy(mainCamera.up);
     dummy.up.copy(mainCamera.up);
   }, [mainCamera]);
-  const tweenCamera = React142.useCallback((direction2) => {
+  const tweenCamera = React143.useCallback((direction2) => {
     animating.current = true;
     if (defaultControls || onTarget) {
       focusPoint.current = (onTarget == null ? void 0 : onTarget()) || (isCameraControls(defaultControls) ? defaultControls.getTarget(focusPoint.current) : defaultControls == null ? void 0 : defaultControls.target);
@@ -131034,25 +131210,28 @@ var GizmoHelper = ({
       (_gizmoRef$current = gizmoRef.current) == null || _gizmoRef$current.quaternion.setFromRotationMatrix(matrix2);
     }
   });
-  const gizmoHelperContext = React142.useMemo(() => ({
+  const gizmoHelperContext = React143.useMemo(() => ({
     tweenCamera
   }), [tweenCamera]);
   const [marginX, marginY] = margin;
   const x3 = alignment.endsWith("-center") ? 0 : alignment.endsWith("-left") ? -size.width / 2 + marginX : size.width / 2 - marginX;
   const y2 = alignment.startsWith("center-") ? 0 : alignment.startsWith("top-") ? size.height / 2 - marginY : -size.height / 2 + marginY;
-  return /* @__PURE__ */ React142.createElement(Hud, {
+  return /* @__PURE__ */ React143.createElement(Hud, {
     renderPriority
-  }, /* @__PURE__ */ React142.createElement(Context.Provider, {
+  }, /* @__PURE__ */ React143.createElement(Context.Provider, {
     value: gizmoHelperContext
-  }, /* @__PURE__ */ React142.createElement(OrthographicCamera2, {
+  }, /* @__PURE__ */ React143.createElement(OrthographicCamera2, {
     makeDefault: true,
     ref: virtualCam,
     position: [0, 0, 200]
-  }), /* @__PURE__ */ React142.createElement("group", {
+  }), /* @__PURE__ */ React143.createElement("group", {
     ref: gizmoRef,
     position: [x3, y2, 0]
   }, children)));
 };
+
+// node_modules/@react-three/drei/core/GizmoViewcube.js
+init_react_shim();
 var colors = {
   bg: "#f0f0f0",
   hover: "#999",
@@ -131077,7 +131256,7 @@ var FaceMaterial = ({
   opacity = 1
 }) => {
   const gl = useThree((state2) => state2.gl);
-  const texture = React142.useMemo(() => {
+  const texture = React143.useMemo(() => {
     const canvas = document.createElement("canvas");
     canvas.width = 128;
     canvas.height = 128;
@@ -131092,7 +131271,7 @@ var FaceMaterial = ({
     context12.fillText(faces[index2].toUpperCase(), 64, 76);
     return new CanvasTexture(canvas);
   }, [index2, faces, font, color, textColor, strokeColor]);
-  return /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  return /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     map: texture,
     "map-anisotropy": gl.capabilities.getMaxAnisotropy() || 1,
     attach: `material-${index2}`,
@@ -131105,7 +131284,7 @@ var FaceCube = (props) => {
   const {
     tweenCamera
   } = useGizmoContext();
-  const [hover, setHover] = React142.useState(null);
+  const [hover, setHover] = React143.useState(null);
   const handlePointerOut = (e4) => {
     e4.stopPropagation();
     setHover(null);
@@ -131118,15 +131297,15 @@ var FaceCube = (props) => {
     e4.stopPropagation();
     setHover(Math.floor(e4.faceIndex / 2));
   };
-  return /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement("mesh", {
     onPointerOut: handlePointerOut,
     onPointerMove: handlePointerMove,
     onClick: props.onClick || handleClick
-  }, [...Array(6)].map((_2, index2) => /* @__PURE__ */ React142.createElement(FaceMaterial, _extends({
+  }, [...Array(6)].map((_2, index2) => /* @__PURE__ */ React143.createElement(FaceMaterial, _extends({
     key: index2,
     index: index2,
     hover: hover === index2
-  }, props))), /* @__PURE__ */ React142.createElement("boxGeometry", null));
+  }, props))), /* @__PURE__ */ React143.createElement("boxGeometry", null));
 };
 var EdgeCube = ({
   onClick,
@@ -131137,7 +131316,7 @@ var EdgeCube = ({
   const {
     tweenCamera
   } = useGizmoContext();
-  const [hover, setHover] = React142.useState(false);
+  const [hover, setHover] = React143.useState(false);
   const handlePointerOut = (e4) => {
     e4.stopPropagation();
     setHover(false);
@@ -131150,46 +131329,49 @@ var EdgeCube = ({
     e4.stopPropagation();
     tweenCamera(position2);
   };
-  return /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement("mesh", {
     scale: 1.01,
     position: position2,
     onPointerOver: handlePointerOver,
     onPointerOut: handlePointerOut,
     onClick: onClick || handleClick
-  }, /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     color: hover ? hoverColor : "white",
     transparent: true,
     opacity: 0.6,
     visible: hover
-  }), /* @__PURE__ */ React142.createElement("boxGeometry", {
+  }), /* @__PURE__ */ React143.createElement("boxGeometry", {
     args: dimensions
   }));
 };
 var GizmoViewcube = (props) => {
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     scale: [60, 60, 60]
-  }, /* @__PURE__ */ React142.createElement(FaceCube, props), edges.map((edge, index2) => /* @__PURE__ */ React142.createElement(EdgeCube, _extends({
+  }, /* @__PURE__ */ React143.createElement(FaceCube, props), edges.map((edge, index2) => /* @__PURE__ */ React143.createElement(EdgeCube, _extends({
     key: index2,
     position: edge,
     dimensions: edgeDimensions[index2]
-  }, props))), corners.map((corner, index2) => /* @__PURE__ */ React142.createElement(EdgeCube, _extends({
+  }, props))), corners.map((corner, index2) => /* @__PURE__ */ React143.createElement(EdgeCube, _extends({
     key: index2,
     position: corner,
     dimensions: cornerDimensions
   }, props))));
 };
+
+// node_modules/@react-three/drei/core/GizmoViewport.js
+init_react_shim();
 function Axis({
   scale: scale3 = [0.8, 0.05, 0.05],
   color,
   rotation: rotation3
 }) {
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     rotation: rotation3
-  }, /* @__PURE__ */ React142.createElement("mesh", {
+  }, /* @__PURE__ */ React143.createElement("mesh", {
     position: [0.4, 0, 0]
-  }, /* @__PURE__ */ React142.createElement("boxGeometry", {
+  }, /* @__PURE__ */ React143.createElement("boxGeometry", {
     args: scale3
-  }), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     color,
     toneMapped: false
   })));
@@ -131205,7 +131387,7 @@ function AxisHead({
   ...props
 }) {
   const gl = useThree((state2) => state2.gl);
-  const texture = React142.useMemo(() => {
+  const texture = React143.useMemo(() => {
     const canvas = document.createElement("canvas");
     canvas.width = 64;
     canvas.height = 64;
@@ -131223,7 +131405,7 @@ function AxisHead({
     }
     return new CanvasTexture(canvas);
   }, [arcStyle, label, labelColor, font]);
-  const [active, setActive] = React142.useState(false);
+  const [active, setActive] = React143.useState(false);
   const scale3 = (label ? 1 : 0.75) * (active ? 1.2 : 1) * axisHeadScale;
   const handlePointerOver = (e4) => {
     e4.stopPropagation();
@@ -131233,11 +131415,11 @@ function AxisHead({
     e4.stopPropagation();
     setActive(false);
   };
-  return /* @__PURE__ */ React142.createElement("sprite", _extends({
+  return /* @__PURE__ */ React143.createElement("sprite", _extends({
     scale: scale3,
     onPointerOver: !disabled ? handlePointerOver : void 0,
     onPointerOut: !disabled ? onClick || handlePointerOut : void 0
-  }, props), /* @__PURE__ */ React142.createElement("spriteMaterial", {
+  }, props), /* @__PURE__ */ React143.createElement("spriteMaterial", {
     map: texture,
     "map-anisotropy": gl.capabilities.getMaxAnisotropy() || 1,
     alphaTest: 0.3,
@@ -131273,43 +131455,46 @@ var GizmoViewport = ({
       e4.stopPropagation();
     } : void 0
   };
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     scale: 40
-  }, props), /* @__PURE__ */ React142.createElement(Axis, {
+  }, props), /* @__PURE__ */ React143.createElement(Axis, {
     color: colorX,
     rotation: [0, 0, 0],
     scale: axisScale
-  }), /* @__PURE__ */ React142.createElement(Axis, {
+  }), /* @__PURE__ */ React143.createElement(Axis, {
     color: colorY,
     rotation: [0, 0, Math.PI / 2],
     scale: axisScale
-  }), /* @__PURE__ */ React142.createElement(Axis, {
+  }), /* @__PURE__ */ React143.createElement(Axis, {
     color: colorZ,
     rotation: [0, -Math.PI / 2, 0],
     scale: axisScale
-  }), !hideAxisHeads && /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement(AxisHead, _extends({
+  }), !hideAxisHeads && /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement(AxisHead, _extends({
     arcStyle: colorX,
     position: [1, 0, 0],
     label: labels[0]
-  }, axisHeadProps)), /* @__PURE__ */ React142.createElement(AxisHead, _extends({
+  }, axisHeadProps)), /* @__PURE__ */ React143.createElement(AxisHead, _extends({
     arcStyle: colorY,
     position: [0, 1, 0],
     label: labels[1]
-  }, axisHeadProps)), /* @__PURE__ */ React142.createElement(AxisHead, _extends({
+  }, axisHeadProps)), /* @__PURE__ */ React143.createElement(AxisHead, _extends({
     arcStyle: colorZ,
     position: [0, 0, 1],
     label: labels[2]
-  }, axisHeadProps)), !hideNegativeAxes && /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement(AxisHead, _extends({
+  }, axisHeadProps)), !hideNegativeAxes && /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement(AxisHead, _extends({
     arcStyle: colorX,
     position: [-1, 0, 0]
-  }, axisHeadProps)), /* @__PURE__ */ React142.createElement(AxisHead, _extends({
+  }, axisHeadProps)), /* @__PURE__ */ React143.createElement(AxisHead, _extends({
     arcStyle: colorY,
     position: [0, -1, 0]
-  }, axisHeadProps)), /* @__PURE__ */ React142.createElement(AxisHead, _extends({
+  }, axisHeadProps)), /* @__PURE__ */ React143.createElement(AxisHead, _extends({
     arcStyle: colorZ,
     position: [0, 0, -1]
   }, axisHeadProps)))));
 };
+
+// node_modules/@react-three/drei/core/Grid.js
+init_react_shim();
 var GridMaterial = /* @__PURE__ */ shaderMaterial(
   {
     cellSize: 0.5,
@@ -131391,7 +131576,7 @@ var GridMaterial = /* @__PURE__ */ shaderMaterial(
     }
   `
 );
-var Grid = /* @__PURE__ */ React142.forwardRef(({
+var Grid = /* @__PURE__ */ React143.forwardRef(({
   args,
   cellColor = "#000000",
   sectionColor = "#2080ff",
@@ -131410,8 +131595,8 @@ var Grid = /* @__PURE__ */ React142.forwardRef(({
   extend({
     GridMaterial
   });
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(fRef, () => ref.current, []);
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(fRef, () => ref.current, []);
   const plane = new Plane();
   const upVector = new Vector3(0, 1, 0);
   const zeroVector = new Vector3(0, 0, 0);
@@ -131438,17 +131623,20 @@ var Grid = /* @__PURE__ */ React142.forwardRef(({
     infiniteGrid,
     followCamera
   };
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     frustumCulled: false
-  }, props), /* @__PURE__ */ React142.createElement("gridMaterial", _extends({
+  }, props), /* @__PURE__ */ React143.createElement("gridMaterial", _extends({
     transparent: true,
     "extensions-derivatives": true,
     side
-  }, uniforms1, uniforms2)), /* @__PURE__ */ React142.createElement("planeGeometry", {
+  }, uniforms1, uniforms2)), /* @__PURE__ */ React143.createElement("planeGeometry", {
     args
   }));
 });
+
+// node_modules/@react-three/drei/core/CubeTexture.js
+init_react_shim();
 function useCubeTexture(files, {
   path
 }) {
@@ -131466,8 +131654,11 @@ function CubeTexture2({
   const texture = useCubeTexture(files, {
     ...options
   });
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(texture));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(texture));
 }
+
+// node_modules/@react-three/drei/core/Fbx.js
+init_react_shim();
 function useFBX(path) {
   return useLoader(FBXLoader, path);
 }
@@ -131479,10 +131670,13 @@ function Fbx({
 }) {
   const fbx = useFBX(path);
   const object = fbx.children[0];
-  return /* @__PURE__ */ React142.createElement(Clone, _extends({}, props, {
+  return /* @__PURE__ */ React143.createElement(Clone, _extends({}, props, {
     object
   }));
 }
+
+// node_modules/@react-three/drei/core/Ktx2.js
+init_react_shim();
 var cdn = "https://cdn.jsdelivr.net/gh/pmndrs/drei-assets@master";
 function useKTX2(input, basisPath = `${cdn}/basis/`) {
   const gl = useThree((state2) => state2.gl);
@@ -131515,8 +131709,11 @@ var Ktx2 = ({
   basisPath
 }) => {
   const texture = useKTX2(input, basisPath);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(texture));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(texture));
 };
+
+// node_modules/@react-three/drei/core/VideoTexture.js
+init_react_shim();
 init_hls();
 var IS_BROWSER = /* @__PURE__ */ ((_window$document2, _window$navigator2) => typeof window !== "undefined" && typeof ((_window$document2 = window.document) == null ? void 0 : _window$document2.createElement) === "function" && typeof ((_window$navigator2 = window.navigator) == null ? void 0 : _window$navigator2.userAgent) === "string")();
 var _HLSModule = null;
@@ -131593,7 +131790,7 @@ var VideoTexture2 = /* @__PURE__ */ forwardRef(({
     return () => void texture.dispose();
   }, [texture]);
   useImperativeHandle(fref, () => texture, [texture]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(texture));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(texture));
 });
 var useVideoFrame = (video, f3) => {
   useEffect(() => {
@@ -131608,6 +131805,9 @@ var useVideoFrame = (video, f3) => {
     return () => video.cancelVideoFrameCallback(handle);
   }, [video, f3]);
 };
+
+// node_modules/@react-three/drei/core/useSpriteLoader.js
+init_react_shim();
 var getFirstFrame = (frames, frameName) => {
   if (Array.isArray(frames)) {
     return frames[0];
@@ -131625,18 +131825,18 @@ var checkIfFrameIsEmpty = (frameData) => {
   return true;
 };
 function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, canvasRenderingContext2DSettings) {
-  const viewportRef = React142.useRef(useThree((state2) => state2.viewport));
-  const spriteDataRef = React142.useRef(null);
-  const totalFrames = React142.useRef(0);
+  const viewportRef = React143.useRef(useThree((state2) => state2.viewport));
+  const spriteDataRef = React143.useRef(null);
+  const totalFrames = React143.useRef(0);
   const aspectFactor = 0.1;
-  const inputRef = React142.useRef(input);
-  const jsonRef = React142.useRef(json);
-  const animationFramesRef = React142.useRef(animationNames);
+  const inputRef = React143.useRef(input);
+  const jsonRef = React143.useRef(json);
+  const animationFramesRef = React143.useRef(animationNames);
   const [spriteData, setSpriteData] = useState(null);
-  const [spriteTexture, setSpriteTexture] = React142.useState(new Texture());
-  const textureLoader = React142.useMemo(() => new TextureLoader(), []);
+  const [spriteTexture, setSpriteTexture] = React143.useState(new Texture());
+  const textureLoader = React143.useMemo(() => new TextureLoader(), []);
   const [spriteObj, setSpriteObj] = useState(null);
-  const calculateAspectRatio = React142.useCallback((width, height, factor) => {
+  const calculateAspectRatio = React143.useCallback((width, height, factor) => {
     const adaptedHeight = height * (viewportRef.current.aspect > width / height ? viewportRef.current.width / width : viewportRef.current.height / height);
     const adaptedWidth = width * (viewportRef.current.aspect > width / height ? viewportRef.current.width / width : viewportRef.current.height / height);
     const scaleX = adaptedWidth * factor;
@@ -131650,7 +131850,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
     }
     return new Vector3(finalMaxScaleW, finalMaxScaleH, 1);
   }, []);
-  const getRowsAndColumns = React142.useCallback((texture, totalFrames2) => {
+  const getRowsAndColumns = React143.useCallback((texture, totalFrames2) => {
     if (texture.image) {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d", canvasRenderingContext2DSettings);
@@ -131704,7 +131904,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
       };
     }
   }, [canvasRenderingContext2DSettings]);
-  const calculateScaleRatio = React142.useCallback((frames) => {
+  const calculateScaleRatio = React143.useCallback((frames) => {
     const processFrameArray = (frameArray) => {
       let largestFrame = null;
       for (const frame2 of frameArray) {
@@ -131745,7 +131945,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
       return result;
     }
   }, []);
-  const parseFrames = React142.useCallback(() => {
+  const parseFrames = React143.useCallback(() => {
     const sprites = {};
     const data = spriteDataRef.current;
     const delimiters = animationFramesRef.current;
@@ -131829,7 +132029,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
     }
     return [];
   }, [calculateScaleRatio, spriteDataRef]);
-  const parseSpriteData = React142.useCallback((json2, _spriteTexture) => {
+  const parseSpriteData = React143.useCallback((json2, _spriteTexture) => {
     let aspect2 = new Vector3(1, 1, 1);
     if (json2 === null) {
       if (_spriteTexture && numberOfFrames) {
@@ -131918,7 +132118,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
       aspect: aspect2
     });
   }, [getRowsAndColumns, numberOfFrames, parseFrames, calculateAspectRatio, calculateScaleRatio]);
-  const loadJsonAndTextureAndExecuteCallback = React142.useCallback((jsonUrl, textureUrl, callback) => {
+  const loadJsonAndTextureAndExecuteCallback = React143.useCallback((jsonUrl, textureUrl, callback) => {
     const jsonPromise = fetch(jsonUrl).then((response) => response.json());
     const texturePromise = new Promise((resolve2) => {
       textureLoader.load(textureUrl, resolve2);
@@ -131927,7 +132127,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
       callback(response[0], response[1]);
     });
   }, [textureLoader]);
-  const loadStandaloneSprite = React142.useCallback((textureUrl) => {
+  const loadStandaloneSprite = React143.useCallback((textureUrl) => {
     if (!textureUrl && !inputRef.current) {
       throw new Error("Either textureUrl or input must be provided");
     }
@@ -131937,14 +132137,14 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
     }
     textureLoader.load(validUrl, (texture) => parseSpriteData(null, texture));
   }, [textureLoader, parseSpriteData]);
-  const loadJsonAndTexture = React142.useCallback((textureUrl, jsonUrl) => {
+  const loadJsonAndTexture = React143.useCallback((textureUrl, jsonUrl) => {
     if (jsonUrl && textureUrl) {
       loadJsonAndTextureAndExecuteCallback(jsonUrl, textureUrl, parseSpriteData);
     } else {
       loadStandaloneSprite(textureUrl);
     }
   }, [loadJsonAndTextureAndExecuteCallback, loadStandaloneSprite, parseSpriteData]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (jsonRef.current && inputRef.current) {
       loadJsonAndTextureAndExecuteCallback(jsonRef.current, inputRef.current, parseSpriteData);
     } else if (inputRef.current) {
@@ -131957,7 +132157,7 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
       }
     };
   }, [loadJsonAndTextureAndExecuteCallback, loadStandaloneSprite, parseSpriteData]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     onLoad == null || onLoad(spriteTexture, spriteData !== null && spriteData !== void 0 ? spriteData : null);
   }, [spriteTexture, spriteData, onLoad]);
   return {
@@ -131967,10 +132167,13 @@ function useSpriteLoader(input, json, animationNames, numberOfFrames, onLoad, ca
 }
 useSpriteLoader.preload = (url) => useLoader.preload(TextureLoader, url);
 useSpriteLoader.clear = (input) => useLoader.clear(TextureLoader, input);
+
+// node_modules/@react-three/drei/core/Helper.js
+init_react_shim();
 function useHelper(object3D, helperConstructor, ...args) {
-  const helper = React142.useRef(null);
+  const helper = React143.useRef(null);
   const scene = useThree((state2) => state2.scene);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     let currentHelper = void 0;
     if (object3D && object3D != null && object3D.current && helperConstructor) {
       helper.current = currentHelper = new helperConstructor(object3D.current, ...args);
@@ -131995,22 +132198,28 @@ var Helper = ({
   type: helperConstructor,
   args = []
 }) => {
-  const thisRef = React142.useRef(null);
-  const parentRef = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const thisRef = React143.useRef(null);
+  const parentRef = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     parentRef.current = thisRef.current.parent;
   });
   useHelper(parentRef, helperConstructor, ...args);
-  return /* @__PURE__ */ React142.createElement("object3D", {
+  return /* @__PURE__ */ React143.createElement("object3D", {
     ref: thisRef
   });
 };
+
+// node_modules/@react-three/drei/core/Stats.js
+init_react_shim();
 var import_stats = __toESM(require_stats_min());
+
+// node_modules/@react-three/drei/helpers/useEffectfulState.js
+init_react_shim();
 function call2(ref, value) {
 }
 function useEffectfulState(fn2, deps = [], cb) {
-  const [state2, set] = React142.useState();
-  React142.useLayoutEffect(() => {
+  const [state2, set] = React143.useState();
+  React143.useLayoutEffect(() => {
     const value = fn2();
     set(value);
     return () => call2();
@@ -132025,7 +132234,7 @@ function Stats({
   parent
 }) {
   const stats = useEffectfulState(() => new import_stats.default(), []);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (stats) {
       const node = parent && parent.current || document.body;
       stats.showPanel(showPanel);
@@ -132045,7 +132254,14 @@ function Stats({
   return null;
 }
 
+// node_modules/@react-three/drei/core/StatsGl.js
+init_react_shim();
+
+// node_modules/stats-gl/dist/main.js
+init_react_shim();
+
 // node_modules/stats-gl/dist/panel.js
+init_react_shim();
 var Panel = class {
   constructor(name, fg, bg) {
     this.name = name;
@@ -132487,7 +132703,7 @@ _Stats.Panel = Panel;
 var Stats2 = _Stats;
 
 // node_modules/@react-three/drei/core/StatsGl.js
-var StatsGl = /* @__PURE__ */ React142.forwardRef(function StatsGl2({
+var StatsGl = /* @__PURE__ */ React143.forwardRef(function StatsGl2({
   className,
   parent,
   id,
@@ -132495,15 +132711,15 @@ var StatsGl = /* @__PURE__ */ React142.forwardRef(function StatsGl2({
   ...props
 }, fref) {
   const gl = useThree((state2) => state2.gl);
-  const stats = React142.useMemo(() => {
+  const stats = React143.useMemo(() => {
     const stats2 = new Stats2({
       ...props
     });
     stats2.init(gl);
     return stats2;
   }, [gl]);
-  React142.useImperativeHandle(fref, () => stats.domElement, [stats]);
-  React142.useEffect(() => {
+  React143.useImperativeHandle(fref, () => stats.domElement, [stats]);
+  React143.useEffect(() => {
     if (stats) {
       const node = parent && parent.current || document.body;
       node == null || node.appendChild(stats.domElement);
@@ -132525,6 +132741,9 @@ var StatsGl = /* @__PURE__ */ React142.forwardRef(function StatsGl2({
   }, [parent, stats, className, id, clearStatsGlStyle]);
   return null;
 });
+
+// node_modules/@react-three/drei/core/useDepthBuffer.js
+init_react_shim();
 function useDepthBuffer({
   size = 256,
   frames = Infinity
@@ -132536,7 +132755,7 @@ function useDepthBuffer({
   } = useThree((state2) => state2.size);
   const w2 = size || width * dpr;
   const h3 = size || height * dpr;
-  const depthConfig = React142.useMemo(() => {
+  const depthConfig = React143.useMemo(() => {
     const depthTexture = new DepthTexture(w2, h3);
     depthTexture.format = DepthFormat;
     depthTexture.type = UnsignedShortType;
@@ -132558,15 +132777,19 @@ function useDepthBuffer({
 }
 
 // node_modules/@react-three/drei/core/useAspect.js
+init_react_shim();
 function useAspect(width, height, factor = 1) {
   const v6 = useThree((state2) => state2.viewport);
   const adaptedHeight = height * (v6.aspect > width / height ? v6.width / width : v6.height / height);
   const adaptedWidth = width * (v6.aspect > width / height ? v6.width / width : v6.height / height);
   return [adaptedWidth * factor, adaptedHeight * factor, 1];
 }
+
+// node_modules/@react-three/drei/core/useCamera.js
+init_react_shim();
 function useCamera(camera, props) {
   const pointer = useThree((state2) => state2.pointer);
-  const [raycast2] = React142.useState(() => {
+  const [raycast2] = React143.useState(() => {
     const raycaster = new Raycaster();
     if (props) applyProps(raycaster, props);
     return function(_2, intersects2) {
@@ -132578,7 +132801,11 @@ function useCamera(camera, props) {
   return raycast2;
 }
 
+// node_modules/@react-three/drei/core/DetectGPU.js
+init_react_shim();
+
 // node_modules/detect-gpu/dist/detect-gpu.esm.js
+init_react_shim();
 function e2(e4, t4, r4, n3) {
   return new (r4 || (r4 = Promise))((function(o5, a7) {
     function i6(e5) {
@@ -132737,10 +132964,20 @@ function DetectGPU({
   ...options
 }) {
   const result = useDetectGPU(options);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(result));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(result));
 }
 
+// node_modules/@react-three/drei/core/Bvh.js
+init_react_shim();
+
+// node_modules/three-mesh-bvh/src/index.js
+init_react_shim();
+
+// node_modules/three-mesh-bvh/src/core/MeshBVH.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/core/Constants.js
+init_react_shim();
 var CENTER = 0;
 var AVERAGE = 1;
 var SAH = 2;
@@ -132752,7 +132989,11 @@ var IS_LEAFNODE_FLAG = 65535;
 var FLOAT32_EPSILON = Math.pow(2, -24);
 var SKIP_GENERATION = /* @__PURE__ */ Symbol("SKIP_GENERATION");
 
+// node_modules/three-mesh-bvh/src/core/build/buildTree.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/core/build/geometryUtils.js
+init_react_shim();
 function getVertexCount(geo) {
   return geo.index ? geo.index.count : geo.attributes.position.count;
 }
@@ -132826,6 +133067,7 @@ function hasGroupGaps(geometry3, range) {
 }
 
 // node_modules/three-mesh-bvh/src/core/build/computeBoundsUtils.js
+init_react_shim();
 function getBounds(triangleBounds, offset, count, target2, centroidTarget) {
   let minx = Infinity;
   let miny = Infinity;
@@ -132942,7 +133184,11 @@ function computeTriangleBounds(geo, target2 = null, offset = null, count = null)
   return triangleBounds;
 }
 
+// node_modules/three-mesh-bvh/src/core/build/splitUtils.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/utils/ArrayBoxUtilities.js
+init_react_shim();
 function arrayToBox(nodeIndex32, array, target2) {
   target2.min.x = array[nodeIndex32];
   target2.min.y = array[nodeIndex32 + 1];
@@ -133175,6 +133421,7 @@ function getAverage(triangleBounds, offset, count, axis) {
 }
 
 // node_modules/three-mesh-bvh/src/core/MeshBVHNode.js
+init_react_shim();
 var MeshBVHNode = class {
   constructor() {
     this.boundingData = new Float32Array(6);
@@ -133182,6 +133429,7 @@ var MeshBVHNode = class {
 };
 
 // node_modules/three-mesh-bvh/src/core/build/sortUtils.generated.js
+init_react_shim();
 function partition(indirectBuffer, index2, triangleBounds, offset, count, split) {
   let left = offset;
   let right = offset + count - 1;
@@ -133214,6 +133462,7 @@ function partition(indirectBuffer, index2, triangleBounds, offset, count, split)
 }
 
 // node_modules/three-mesh-bvh/src/core/build/sortUtils_indirect.generated.js
+init_react_shim();
 function partition_indirect(indirectBuffer, index2, triangleBounds, offset, count, split) {
   let left = offset;
   let right = offset + count - 1;
@@ -133243,7 +133492,11 @@ function partition_indirect(indirectBuffer, index2, triangleBounds, offset, coun
   }
 }
 
+// node_modules/three-mesh-bvh/src/core/build/buildUtils.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/core/utils/nodeBufferUtils.js
+init_react_shim();
 function IS_LEAF(n16, uint16Array2) {
   return uint16Array2[n16 + 15] === 65535;
 }
@@ -133435,7 +133688,11 @@ function buildPackedTree(bvh, options) {
   });
 }
 
+// node_modules/three-mesh-bvh/src/math/OrientedBox.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/math/SeparatingAxisBounds.js
+init_react_shim();
 var SeparatingAxisBounds = class {
   constructor() {
     this.min = Infinity;
@@ -133493,7 +133750,11 @@ SeparatingAxisBounds.prototype.setFromBox = (function() {
   };
 })();
 
+// node_modules/three-mesh-bvh/src/math/ExtendedTriangle.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/math/MathUtilities.js
+init_react_shim();
 var closestPointLineToLine = (function() {
   const dir1 = new Vector3();
   const dir2 = new Vector3();
@@ -134185,7 +134446,11 @@ OrientedBox.prototype.distanceToBox = (function() {
   };
 })();
 
+// node_modules/three-mesh-bvh/src/utils/ExtendedTrianglePool.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/utils/PrimitivePool.js
+init_react_shim();
 var PrimitivePool = class {
   constructor(getNewPrimitive) {
     this._getNewPrimitive = getNewPrimitive;
@@ -134212,7 +134477,11 @@ var ExtendedTrianglePoolBase = class extends PrimitivePool {
 };
 var ExtendedTrianglePool = /* @__PURE__ */ new ExtendedTrianglePoolBase();
 
+// node_modules/three-mesh-bvh/src/core/cast/shapecast.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/core/utils/BufferStack.js
+init_react_shim();
 var _BufferStack = class {
   constructor() {
     this.float32Array = null;
@@ -134365,6 +134634,7 @@ function shapecastTraverse(nodeIndex32, geometry3, intersectsBoundsFunc, interse
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/closestPointToPoint.js
+init_react_shim();
 var temp = /* @__PURE__ */ new Vector3();
 var temp1 = /* @__PURE__ */ new Vector3();
 function closestPointToPoint(bvh, point, target2 = {}, minThreshold = 0, maxThreshold = Infinity) {
@@ -134405,7 +134675,11 @@ function closestPointToPoint(bvh, point, target2 = {}, minThreshold = 0, maxThre
   return target2;
 }
 
+// node_modules/three-mesh-bvh/src/core/utils/iterationUtils.generated.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/utils/ThreeRayIntersectUtilities.js
+init_react_shim();
 var IS_GT_REVISION_169 = parseInt(REVISION) >= 169;
 var _vA2 = /* @__PURE__ */ new Vector3();
 var _vB2 = /* @__PURE__ */ new Vector3();
@@ -134499,6 +134773,7 @@ function intersectTri(geo, side, ray4, tri, intersections, near, far) {
 }
 
 // node_modules/three-mesh-bvh/src/utils/TriangleUtilities.js
+init_react_shim();
 function setTriangle(tri, i6, index2, pos) {
   const ta2 = tri.a;
   const tb = tri.b;
@@ -134560,6 +134835,7 @@ function iterateOverTriangles(offset, count, bvh, intersectsTriangleFunc, contai
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/refit.generated.js
+init_react_shim();
 function refit(bvh, nodeIndices = null) {
   if (nodeIndices && Array.isArray(nodeIndices)) {
     nodeIndices = new Set(nodeIndices);
@@ -134659,7 +134935,11 @@ function refit(bvh, nodeIndices = null) {
   }
 }
 
+// node_modules/three-mesh-bvh/src/core/cast/raycast.generated.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/core/utils/intersectUtils.js
+init_react_shim();
 function intersectRay(nodeIndex32, array, ray4, near, far) {
   let tmin, tmax, tymin, tymax, tzmin, tzmax;
   const invdirx = 1 / ray4.direction.x, invdiry = 1 / ray4.direction.y, invdirz = 1 / ray4.direction.z;
@@ -134703,6 +134983,7 @@ function intersectRay(nodeIndex32, array, ray4, near, far) {
 }
 
 // node_modules/three-mesh-bvh/src/core/utils/iterationUtils_indirect.generated.js
+init_react_shim();
 function intersectTris_indirect(bvh, side, ray4, offset, count, intersections, near, far) {
   const { geometry: geometry3, _indirectBuffer } = bvh;
   for (let i6 = offset, end = offset + count; i6 < end; i6++) {
@@ -134767,6 +135048,7 @@ function _raycast(nodeIndex32, bvh, side, ray4, intersects2, near, far) {
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/raycastFirst.generated.js
+init_react_shim();
 var _xyzFields = ["x", "y", "z"];
 function raycastFirst(bvh, root, side, ray4, near, far) {
   BufferStack.setBuffer(bvh._roots[root]);
@@ -134818,6 +135100,7 @@ function _raycastFirst(nodeIndex32, bvh, side, ray4, near, far) {
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/intersectsGeometry.generated.js
+init_react_shim();
 var boundingBox = /* @__PURE__ */ new Box3();
 var triangle2 = /* @__PURE__ */ new ExtendedTriangle();
 var triangle22 = /* @__PURE__ */ new ExtendedTriangle();
@@ -134902,6 +135185,7 @@ function _intersectsGeometry(nodeIndex32, bvh, otherGeometry, geometryToBvh, cac
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/closestPointToGeometry.generated.js
+init_react_shim();
 var tempMatrix = /* @__PURE__ */ new Matrix4();
 var obb3 = /* @__PURE__ */ new OrientedBox();
 var obb22 = /* @__PURE__ */ new OrientedBox();
@@ -135041,6 +135325,7 @@ function closestPointToGeometry(bvh, otherGeometry, geometryToBvh, target1 = {},
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/refit_indirect.generated.js
+init_react_shim();
 function refit_indirect(bvh, nodeIndices = null) {
   if (nodeIndices && Array.isArray(nodeIndices)) {
     nodeIndices = new Set(nodeIndices);
@@ -135145,6 +135430,7 @@ function refit_indirect(bvh, nodeIndices = null) {
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/raycast_indirect.generated.js
+init_react_shim();
 function raycast_indirect(bvh, root, side, ray4, intersects2, near, far) {
   BufferStack.setBuffer(bvh._roots[root]);
   _raycast2(0, bvh, side, ray4, intersects2, near, far);
@@ -135171,6 +135457,7 @@ function _raycast2(nodeIndex32, bvh, side, ray4, intersects2, near, far) {
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/raycastFirst_indirect.generated.js
+init_react_shim();
 var _xyzFields2 = ["x", "y", "z"];
 function raycastFirst_indirect(bvh, root, side, ray4, near, far) {
   BufferStack.setBuffer(bvh._roots[root]);
@@ -135222,6 +135509,7 @@ function _raycastFirst2(nodeIndex32, bvh, side, ray4, near, far) {
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/intersectsGeometry_indirect.generated.js
+init_react_shim();
 var boundingBox2 = /* @__PURE__ */ new Box3();
 var triangle3 = /* @__PURE__ */ new ExtendedTriangle();
 var triangle23 = /* @__PURE__ */ new ExtendedTriangle();
@@ -135307,6 +135595,7 @@ function _intersectsGeometry2(nodeIndex32, bvh, otherGeometry, geometryToBvh, ca
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/closestPointToGeometry_indirect.generated.js
+init_react_shim();
 var tempMatrix2 = /* @__PURE__ */ new Matrix4();
 var obb5 = /* @__PURE__ */ new OrientedBox();
 var obb24 = /* @__PURE__ */ new OrientedBox();
@@ -135449,11 +135738,13 @@ function closestPointToGeometry_indirect(bvh, otherGeometry, geometryToBvh, targ
 }
 
 // node_modules/three-mesh-bvh/src/utils/BufferUtils.js
+init_react_shim();
 function isSharedArrayBufferSupported() {
   return typeof SharedArrayBuffer !== "undefined";
 }
 
 // node_modules/three-mesh-bvh/src/core/cast/bvhcast.js
+init_react_shim();
 var _bufferStack1 = new BufferStack.constructor();
 var _bufferStack2 = new BufferStack.constructor();
 var _boxPool = new PrimitivePool(() => new Box3());
@@ -136047,7 +136338,11 @@ var MeshBVH = class _MeshBVH {
   }
 };
 
+// node_modules/three-mesh-bvh/src/utils/ExtensionUtilities.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/utils/GeometryRayIntersectUtilities.js
+init_react_shim();
 function convertRaycastIntersect(hit, object, raycaster) {
   if (hit === null) {
     return null;
@@ -136152,7 +136447,11 @@ function disposeBoundsTree() {
   this.boundsTree = null;
 }
 
+// node_modules/three-mesh-bvh/src/gpu/MeshBVHUniformStruct.js
+init_react_shim();
+
 // node_modules/three-mesh-bvh/src/gpu/VertexAttributeTexture.js
+init_react_shim();
 function countToStringFormat(count) {
   switch (count) {
     case 1:
@@ -136445,6 +136744,7 @@ function bvhToTextures(bvh, boundsTexture, contentsTexture) {
 }
 
 // node_modules/three-mesh-bvh/src/gpu/glsl/common_functions.glsl.js
+init_react_shim();
 var common_functions = (
   /* glsl */
   `
@@ -136533,6 +136833,7 @@ void ndcToCameraRay(
 );
 
 // node_modules/three-mesh-bvh/src/gpu/glsl/bvh_ray_functions.glsl.js
+init_react_shim();
 var bvh_ray_functions = (
   /* glsl */
   `
@@ -136743,6 +137044,7 @@ bool _bvhIntersectFirstHit(
 );
 
 // node_modules/three-mesh-bvh/src/gpu/glsl/bvh_struct_definitions.glsl.js
+init_react_shim();
 var bvh_struct_definitions = (
   /* glsl */
   `
@@ -136777,7 +137079,7 @@ function useBVH(mesh, options) {
     indirect: false,
     ...options
   };
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (mesh.current) {
       mesh.current.raycast = acceleratedRaycast;
       const geometry3 = mesh.current.geometry;
@@ -136792,7 +137094,7 @@ function useBVH(mesh, options) {
     }
   }, [mesh, JSON.stringify(options)]);
 }
-var Bvh = /* @__PURE__ */ React142.forwardRef(({
+var Bvh = /* @__PURE__ */ React143.forwardRef(({
   enabled = true,
   firstHitOnly = false,
   children,
@@ -136804,10 +137106,10 @@ var Bvh = /* @__PURE__ */ React142.forwardRef(({
   indirect = false,
   ...props
 }, fref) => {
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const raycaster = useThree((state2) => state2.raycaster);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  React142.useEffect(() => {
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  React143.useEffect(() => {
     if (enabled) {
       const options = {
         strategy,
@@ -136838,17 +137140,20 @@ var Bvh = /* @__PURE__ */ React142.forwardRef(({
       };
     }
   }, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
   }, props), children);
 });
+
+// node_modules/@react-three/drei/core/useContextBridge.js
+init_react_shim();
 function useContextBridge(...contexts) {
-  const cRef = React142.useRef([]);
-  cRef.current = contexts.map((context12) => React142.useContext(context12));
-  return React142.useMemo(() => ({
+  const cRef = React143.useRef([]);
+  cRef.current = contexts.map((context12) => React143.useContext(context12));
+  return React143.useMemo(() => ({
     children
   }) => contexts.reduceRight(
-    (acc, Context2, i6) => /* @__PURE__ */ React142.createElement(Context2.Provider, {
+    (acc, Context2, i6) => /* @__PURE__ */ React143.createElement(Context2.Provider, {
       value: cRef.current[i6],
       children: acc
     }),
@@ -136860,18 +137165,21 @@ function useContextBridge(...contexts) {
      */
   ), []);
 }
+
+// node_modules/@react-three/drei/core/useAnimations.js
+init_react_shim();
 function useAnimations(clips, root) {
-  const ref = React142.useRef(null);
-  const [actualRef] = React142.useState(() => root ? root instanceof Object3D ? {
+  const ref = React143.useRef(null);
+  const [actualRef] = React143.useState(() => root ? root instanceof Object3D ? {
     current: root
   } : root : ref);
-  const [mixer] = React142.useState(() => new AnimationMixer(void 0));
-  React142.useLayoutEffect(() => {
+  const [mixer] = React143.useState(() => new AnimationMixer(void 0));
+  React143.useLayoutEffect(() => {
     if (root) actualRef.current = root instanceof Object3D ? root : root.current;
     mixer._root = actualRef.current;
   });
-  const lazyActions = React142.useRef({});
-  const api = React142.useMemo(() => {
+  const lazyActions = React143.useRef({});
+  const api = React143.useMemo(() => {
     const actions = {};
     clips.forEach((clip) => Object.defineProperty(actions, clip.name, {
       enumerable: true,
@@ -136891,7 +137199,7 @@ function useAnimations(clips, root) {
     };
   }, [clips]);
   useFrame((state2, delta) => mixer.update(delta));
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const currentRoot = actualRef.current;
     return () => {
       lazyActions.current = {};
@@ -136905,13 +137213,16 @@ function useAnimations(clips, root) {
   }, [clips]);
   return api;
 }
+
+// node_modules/@react-three/drei/core/useIntersect.js
+init_react_shim();
 function useIntersect(onChange) {
-  const ref = React142.useRef(null);
-  const check = React142.useRef(false);
-  const temp5 = React142.useRef(false);
-  const callback = React142.useRef(onChange);
-  React142.useLayoutEffect(() => void (callback.current = onChange), [onChange]);
-  React142.useEffect(() => {
+  const ref = React143.useRef(null);
+  const check = React143.useRef(false);
+  const temp5 = React143.useRef(false);
+  const callback = React143.useRef(onChange);
+  React143.useLayoutEffect(() => void (callback.current = onChange), [onChange]);
+  React143.useEffect(() => {
     const obj = ref.current;
     if (obj) {
       const unsub1 = addEffect(() => {
@@ -136933,6 +137244,9 @@ function useIntersect(onChange) {
   }, []);
   return ref;
 }
+
+// node_modules/@react-three/drei/core/useBoxProjectedEnv.js
+init_react_shim();
 var worldposReplace = (
   /* glsl */
   `
@@ -137003,7 +137317,7 @@ function boxProjectedEnvMap(shader, envMapPosition, envMapSize) {
         `)}`;
 }
 function useBoxProjectedEnv(position2 = new Vector3(), size = new Vector3()) {
-  const [config] = React142.useState(() => ({
+  const [config] = React143.useState(() => ({
     position: new Vector3(),
     size: new Vector3()
   }));
@@ -137011,24 +137325,27 @@ function useBoxProjectedEnv(position2 = new Vector3(), size = new Vector3()) {
     position: position2,
     size
   });
-  const ref = React142.useRef(null);
-  const spread = React142.useMemo(() => ({
+  const ref = React143.useRef(null);
+  const spread = React143.useMemo(() => ({
     ref,
     onBeforeCompile: (shader) => boxProjectedEnvMap(shader, config.position, config.size),
     customProgramCacheKey: () => JSON.stringify(config.position.toArray()) + JSON.stringify(config.size.toArray())
   }), [...config.position.toArray(), ...config.size.toArray()]);
-  React142.useLayoutEffect(() => void (ref.current.needsUpdate = true), [config]);
+  React143.useLayoutEffect(() => void (ref.current.needsUpdate = true), [config]);
   return spread;
 }
+
+// node_modules/@react-three/drei/core/BBAnchor.js
+init_react_shim();
 var boundingBox3 = /* @__PURE__ */ new Box3();
 var boundingBoxSize = /* @__PURE__ */ new Vector3();
 var BBAnchor = ({
   anchor,
   ...props
 }) => {
-  const ref = React142.useRef(null);
-  const parentRef = React142.useRef(null);
-  React142.useEffect(() => {
+  const ref = React143.useRef(null);
+  const parentRef = React143.useRef(null);
+  React143.useEffect(() => {
     var _ref$current;
     if ((_ref$current = ref.current) != null && (_ref$current = _ref$current.parent) != null && _ref$current.parent) {
       parentRef.current = ref.current.parent;
@@ -137042,10 +137359,13 @@ var BBAnchor = ({
       ref.current.position.set(parentRef.current.position.x + boundingBoxSize.x * (Array.isArray(anchor) ? anchor[0] : anchor.x) / 2, parentRef.current.position.y + boundingBoxSize.y * (Array.isArray(anchor) ? anchor[1] : anchor.y) / 2, parentRef.current.position.z + boundingBoxSize.z * (Array.isArray(anchor) ? anchor[2] : anchor.z) / 2);
     }
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
   }, props));
 };
+
+// node_modules/@react-three/drei/core/TrailTexture.js
+init_react_shim();
 function smoothAverage(current, measurement, smoothing = 0.9) {
   return measurement * smoothing + current * (1 - smoothing);
 }
@@ -137183,9 +137503,15 @@ var TrailTexture = ({
   ...config
 }) => {
   const ret = useTrailTexture(config);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(ret));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(ret));
 };
-var Center = /* @__PURE__ */ React142.forwardRef(function Center2({
+
+// node_modules/@react-three/drei/core/Example.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Center.js
+init_react_shim();
+var Center = /* @__PURE__ */ React143.forwardRef(function Center2({
   children,
   object,
   disable,
@@ -137203,13 +137529,13 @@ var Center = /* @__PURE__ */ React142.forwardRef(function Center2({
   cacheKey = 0,
   ...props
 }, fRef) {
-  const ref = React142.useRef(null);
-  const outer = React142.useRef(null);
-  const inner = React142.useRef(null);
-  const [box3] = React142.useState(() => new Box3());
-  const [center3] = React142.useState(() => new Vector3());
-  const [sphere] = React142.useState(() => new Sphere());
-  React142.useLayoutEffect(() => {
+  const ref = React143.useRef(null);
+  const outer = React143.useRef(null);
+  const inner = React143.useRef(null);
+  const [box3] = React143.useState(() => new Box3());
+  const [center3] = React143.useState(() => new Vector3());
+  const [sphere] = React143.useState(() => new Sphere());
+  React143.useLayoutEffect(() => {
     outer.current.matrixWorld.identity();
     box3.setFromObject(object !== null && object !== void 0 ? object : inner.current, precise);
     const width = box3.max.x - box3.min.x;
@@ -137235,18 +137561,18 @@ var Center = /* @__PURE__ */ React142.forwardRef(function Center2({
       depthAlignment: dAlign
     });
   }, [cacheKey, onCentered, top, left, front, disable, disableX, disableY, disableZ, object, precise, right, bottom, back, box3, center3, sphere]);
-  React142.useImperativeHandle(fRef, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  React143.useImperativeHandle(fRef, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
-  }, props), /* @__PURE__ */ React142.createElement("group", {
+  }, props), /* @__PURE__ */ React143.createElement("group", {
     ref: outer
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     ref: inner
   }, children)));
 });
 
 // node_modules/@react-three/drei/core/Example.js
-var Example = /* @__PURE__ */ React142.forwardRef(({
+var Example = /* @__PURE__ */ React143.forwardRef(({
   font,
   color = "#cbcbcb",
   bevelSize = 0.04,
@@ -137254,34 +137580,41 @@ var Example = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, fref) => {
-  const [counter, setCounter] = React142.useState(0);
-  const incr = React142.useCallback((x3 = 1) => setCounter(counter + x3), [counter]);
-  const decr = React142.useCallback((x3 = 1) => setCounter(counter - x3), [counter]);
-  const api = React142.useMemo(() => ({
+  const [counter, setCounter] = React143.useState(0);
+  const incr = React143.useCallback((x3 = 1) => setCounter(counter + x3), [counter]);
+  const decr = React143.useCallback((x3 = 1) => setCounter(counter - x3), [counter]);
+  const api = React143.useMemo(() => ({
     incr,
     decr
   }), [incr, decr]);
-  React142.useImperativeHandle(fref, () => api, [api]);
-  return /* @__PURE__ */ React142.createElement("group", props, /* @__PURE__ */ React142.createElement(React142.Suspense, {
+  React143.useImperativeHandle(fref, () => api, [api]);
+  return /* @__PURE__ */ React143.createElement("group", props, /* @__PURE__ */ React143.createElement(React143.Suspense, {
     fallback: null
-  }, /* @__PURE__ */ React142.createElement(Center, {
+  }, /* @__PURE__ */ React143.createElement(Center, {
     top: true,
     cacheKey: JSON.stringify({
       counter,
       font
     })
-  }, /* @__PURE__ */ React142.createElement(Text3D, {
+  }, /* @__PURE__ */ React143.createElement(Text3D, {
     bevelEnabled: true,
     bevelSize,
     font
-  }, debug ? /* @__PURE__ */ React142.createElement("meshNormalMaterial", {
+  }, debug ? /* @__PURE__ */ React143.createElement("meshNormalMaterial", {
     wireframe: true
-  }) : /* @__PURE__ */ React142.createElement("meshStandardMaterial", {
+  }) : /* @__PURE__ */ React143.createElement("meshStandardMaterial", {
     color
   }), counter))), children);
 });
 
+// node_modules/@react-three/drei/core/SpriteAnimator.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Instances.js
+init_react_shim();
+
 // node_modules/@react-three/drei/helpers/deprecated.js
+init_react_shim();
 var setUpdateRange = (attribute, updateRange) => {
   attribute.updateRanges[0] = updateRange;
 };
@@ -137334,7 +137667,7 @@ var PositionMesh = class extends Group {
     _instanceIntersects2.length = 0;
   }
 };
-var globalContext2 = /* @__PURE__ */ React142.createContext(null);
+var globalContext2 = /* @__PURE__ */ React143.createContext(null);
 var parentMatrix = /* @__PURE__ */ new Matrix4();
 var instanceMatrix = /* @__PURE__ */ new Matrix4();
 var tempMatrix3 = /* @__PURE__ */ new Matrix4();
@@ -137342,28 +137675,28 @@ var translation = /* @__PURE__ */ new Vector3();
 var rotation = /* @__PURE__ */ new Quaternion();
 var scale = /* @__PURE__ */ new Vector3();
 var isInstancedBufferAttribute = (attr) => attr.isInstancedBufferAttribute;
-var Instance = /* @__PURE__ */ React142.forwardRef(({
+var Instance = /* @__PURE__ */ React143.forwardRef(({
   context: context12,
   children,
   ...props
 }, ref) => {
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     PositionMesh
   }), []);
-  const group = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => group.current, []);
+  const group = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => group.current, []);
   const {
     subscribe,
     getParent
-  } = React142.useContext(context12 || globalContext2);
-  React142.useLayoutEffect(() => subscribe(group), []);
-  return /* @__PURE__ */ React142.createElement("positionMesh", _extends({
+  } = React143.useContext(context12 || globalContext2);
+  React143.useLayoutEffect(() => subscribe(group), []);
+  return /* @__PURE__ */ React143.createElement("positionMesh", _extends({
     instance: getParent(),
     instanceKey: group,
     ref: group
   }, props), children);
 });
-var Instances = /* @__PURE__ */ React142.forwardRef(({
+var Instances = /* @__PURE__ */ React143.forwardRef(({
   context: context12,
   children,
   range,
@@ -137374,32 +137707,32 @@ var Instances = /* @__PURE__ */ React142.forwardRef(({
   const [{
     localContext,
     instance: instance2
-  }] = React142.useState(() => {
-    const localContext2 = /* @__PURE__ */ React142.createContext(null);
+  }] = React143.useState(() => {
+    const localContext2 = /* @__PURE__ */ React143.createContext(null);
     return {
       localContext: localContext2,
-      instance: /* @__PURE__ */ React142.forwardRef((props2, ref2) => /* @__PURE__ */ React142.createElement(Instance, _extends({
+      instance: /* @__PURE__ */ React143.forwardRef((props2, ref2) => /* @__PURE__ */ React143.createElement(Instance, _extends({
         context: localContext2
       }, props2, {
         ref: ref2
       })))
     };
   });
-  const parentRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => parentRef.current, []);
-  const [instances, setInstances] = React142.useState([]);
-  const [[matrices, colors2]] = React142.useState(() => {
+  const parentRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => parentRef.current, []);
+  const [instances, setInstances] = React143.useState([]);
+  const [[matrices, colors2]] = React143.useState(() => {
     const mArray = new Float32Array(limit * 16);
     for (let i6 = 0; i6 < limit; i6++) tempMatrix3.identity().toArray(mArray, i6 * 16);
     return [mArray, new Float32Array([...new Array(limit * 3)].map(() => 1))];
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     parentRef.current.instanceMatrix.needsUpdate = true;
   });
   let iterations = 0;
   let count = 0;
-  const attributes = React142.useRef([]);
-  React142.useLayoutEffect(() => {
+  const attributes = React143.useRef([]);
+  React143.useLayoutEffect(() => {
     attributes.current = Object.entries(parentRef.current.geometry.attributes).filter(([_name, value]) => isInstancedBufferAttribute(value));
   });
   useFrame(() => {
@@ -137429,14 +137762,14 @@ var Instances = /* @__PURE__ */ React142.forwardRef(({
       iterations++;
     }
   });
-  const api = React142.useMemo(() => ({
+  const api = React143.useMemo(() => ({
     getParent: () => parentRef,
     subscribe: (ref2) => {
       setInstances((instances2) => [...instances2, ref2]);
       return () => setInstances((instances2) => instances2.filter((item) => item.current !== ref2.current));
     }
   }), []);
-  return /* @__PURE__ */ React142.createElement("instancedMesh", _extends({
+  return /* @__PURE__ */ React143.createElement("instancedMesh", _extends({
     userData: {
       instances,
       limit,
@@ -137446,23 +137779,23 @@ var Instances = /* @__PURE__ */ React142.forwardRef(({
     ref: parentRef,
     args: [null, null, 0],
     raycast: () => null
-  }, props), /* @__PURE__ */ React142.createElement("instancedBufferAttribute", {
+  }, props), /* @__PURE__ */ React143.createElement("instancedBufferAttribute", {
     attach: "instanceMatrix",
     args: [matrices, 16],
     usage: DynamicDrawUsage
-  }), /* @__PURE__ */ React142.createElement("instancedBufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("instancedBufferAttribute", {
     attach: "instanceColor",
     args: [colors2, 3],
     usage: DynamicDrawUsage
-  }), isFunctionChild(children) ? /* @__PURE__ */ React142.createElement(localContext.Provider, {
+  }), isFunctionChild(children) ? /* @__PURE__ */ React143.createElement(localContext.Provider, {
     value: api
-  }, children(instance2)) : context12 ? /* @__PURE__ */ React142.createElement(context12.Provider, {
+  }, children(instance2)) : context12 ? /* @__PURE__ */ React143.createElement(context12.Provider, {
     value: api
-  }, children) : /* @__PURE__ */ React142.createElement(globalContext2.Provider, {
+  }, children) : /* @__PURE__ */ React143.createElement(globalContext2.Provider, {
     value: api
   }, children));
 });
-var Merged = /* @__PURE__ */ React142.forwardRef(function Merged2({
+var Merged = /* @__PURE__ */ React143.forwardRef(function Merged2({
   meshes,
   children,
   ...props
@@ -137484,12 +137817,12 @@ var Merged = /* @__PURE__ */ React142.forwardRef(function Merged2({
   const components = (isArray3 ? meshes : Object.values(meshes)).map(({
     geometry: geometry3,
     material
-  }) => /* @__PURE__ */ React142.createElement(Instances, _extends({
+  }) => /* @__PURE__ */ React143.createElement(Instances, _extends({
     key: geometry3.uuid,
     geometry: geometry3,
     material
   }, props)));
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     ref
   }, renderRecursive(render, components));
 });
@@ -137508,30 +137841,30 @@ function renderRecursive(render, components, results = []) {
     })
   ) : (
     // When it is an element, enhance the element's props with the render prop.
-    /* @__PURE__ */ React142.cloneElement(components[0], {
+    /* @__PURE__ */ React143.cloneElement(components[0], {
       children: nextRender
     })
   );
 }
 function createInstances() {
-  const context12 = /* @__PURE__ */ React142.createContext(null);
-  return [/* @__PURE__ */ React142.forwardRef((props, fref) => /* @__PURE__ */ React142.createElement(Instances, _extends({
+  const context12 = /* @__PURE__ */ React143.createContext(null);
+  return [/* @__PURE__ */ React143.forwardRef((props, fref) => /* @__PURE__ */ React143.createElement(Instances, _extends({
     ref: fref,
     context: context12
-  }, props))), /* @__PURE__ */ React142.forwardRef((props, fref) => /* @__PURE__ */ React142.createElement(Instance, _extends({
+  }, props))), /* @__PURE__ */ React143.forwardRef((props, fref) => /* @__PURE__ */ React143.createElement(Instance, _extends({
     ref: fref,
     context: context12
   }, props)))];
 }
-var InstancedAttribute = /* @__PURE__ */ React142.forwardRef(({
+var InstancedAttribute = /* @__PURE__ */ React143.forwardRef(({
   name,
   defaultValue,
   normalized,
   usage = DynamicDrawUsage
 }, fref) => {
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  React142.useLayoutEffect(() => {
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  React143.useLayoutEffect(() => {
     const parent = ref.current.__r3f.parent.object;
     parent.geometry.attributes[name] = ref.current;
     const value = Array.isArray(defaultValue) ? defaultValue : [defaultValue];
@@ -137560,7 +137893,7 @@ var InstancedAttribute = /* @__PURE__ */ React142.forwardRef(({
       iterations++;
     }
   });
-  return /* @__PURE__ */ React142.createElement("instancedBufferAttribute", {
+  return /* @__PURE__ */ React143.createElement("instancedBufferAttribute", {
     ref,
     usage,
     normalized
@@ -137568,15 +137901,15 @@ var InstancedAttribute = /* @__PURE__ */ React142.forwardRef(({
 });
 
 // node_modules/@react-three/drei/core/SpriteAnimator.js
-var context5 = /* @__PURE__ */ React142.createContext(null);
+var context5 = /* @__PURE__ */ React143.createContext(null);
 function useSpriteAnimator() {
-  return React142.useContext(context5);
+  return React143.useContext(context5);
 }
 function isSpriteData(data) {
   return data !== null && "meta" in data && "frames" in data;
 }
 var geometry2 = /* @__PURE__ */ new PlaneGeometry(1, 1);
-var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
+var SpriteAnimator = /* @__PURE__ */ React143.forwardRef(({
   startFrame = 0,
   endFrame,
   fps = 30,
@@ -137608,27 +137941,27 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
   meshProps = {},
   ...props
 }, fref) => {
-  const ref = React142.useRef(new Group());
-  const spriteData = React142.useRef(null);
-  const matRef = React142.useRef(null);
-  const spriteRef = React142.useRef(null);
-  const timerOffset = React142.useRef(window.performance.now());
-  const currentFrame = React142.useRef(startFrame);
-  const currentFrameName = React142.useRef(frameName);
+  const ref = React143.useRef(new Group());
+  const spriteData = React143.useRef(null);
+  const matRef = React143.useRef(null);
+  const spriteRef = React143.useRef(null);
+  const timerOffset = React143.useRef(window.performance.now());
+  const currentFrame = React143.useRef(startFrame);
+  const currentFrameName = React143.useRef(frameName);
   const fpsInterval = fps > 0 ? 1e3 / fps : 0;
-  const [spriteTexture, setSpriteTexture] = React142.useState(new Texture());
-  const totalFrames = React142.useRef(0);
-  const [aspect2, setAspect] = React142.useState(new Vector3(1, 1, 1));
+  const [spriteTexture, setSpriteTexture] = React143.useState(new Texture());
+  const totalFrames = React143.useRef(0);
+  const [aspect2, setAspect] = React143.useState(new Vector3(1, 1, 1));
   const flipOffset = flipX ? -1 : 1;
-  const pauseRef = React142.useRef(pause);
-  const pos = React142.useRef(offset);
-  const softEnd = React142.useRef(false);
+  const pauseRef = React143.useRef(pause);
+  const pos = React143.useRef(offset);
+  const softEnd = React143.useRef(false);
   const {
     spriteObj,
     loadJsonAndTexture
   } = useSpriteLoader(null, null, animationNames, numberOfFrames, void 0, canvasRenderingContext2DSettings);
-  const frameNameRef = React142.useRef(frameName);
-  const parseSpriteDataLite = React142.useCallback((textureData, data) => {
+  const frameNameRef = React143.useRef(frameName);
+  const parseSpriteDataLite = React143.useCallback((textureData, data) => {
     if (data === null) {
       if (numberOfFrames) {
         totalFrames.current = numberOfFrames;
@@ -137662,7 +137995,7 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
     }
     setSpriteTexture(textureData);
   }, [numberOfFrames, playBackwards]);
-  const modifySpritePosition = React142.useCallback(() => {
+  const modifySpritePosition = React143.useCallback(() => {
     if (!spriteData.current) return;
     const {
       meta: {
@@ -137698,15 +138031,15 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
       });
     }
   }, [flipOffset, frameName, onStart]);
-  const state2 = React142.useMemo(() => ({
+  const state2 = React143.useMemo(() => ({
     current: pos.current,
     offset: pos.current,
     imageUrl: textureImageURL,
     hasEnded: false,
     ref: fref
   }), [textureImageURL, fref]);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  React142.useLayoutEffect(() => {
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  React143.useLayoutEffect(() => {
     pos.current = offset;
   }, [offset]);
   const calculateAspectRatio = (width, height) => {
@@ -137717,7 +138050,7 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
     (_spriteRef$current = spriteRef.current) == null || _spriteRef$current.scale.copy(ret);
     return ret;
   };
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (spriteDataset) {
       var _spriteDataset$sprite;
       parseSpriteDataLite(spriteDataset == null || (_spriteDataset$sprite = spriteDataset.spriteTexture) == null ? void 0 : _spriteDataset$sprite.clone(), spriteDataset.spriteData);
@@ -137727,13 +138060,13 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
       }
     }
   }, [loadJsonAndTexture, spriteDataset, textureDataURL, textureImageURL, parseSpriteDataLite]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (spriteObj) {
       var _spriteObj$spriteText;
       parseSpriteDataLite(spriteObj == null || (_spriteObj$spriteText = spriteObj.spriteTexture) == null ? void 0 : _spriteObj$spriteText.clone(), spriteObj == null ? void 0 : spriteObj.spriteData);
     }
   }, [spriteObj, parseSpriteDataLite]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     state2.hasEnded = false;
     if (spriteData.current && playBackwards === true) {
       var _ref;
@@ -137742,15 +138075,15 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
       currentFrame.current = 0;
     }
   }, [playBackwards, state2]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     modifySpritePosition();
   }, [spriteTexture, flipX, modifySpritePosition]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (autoPlay) {
       pauseRef.current = false;
     }
   }, [autoPlay]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (currentFrameName.current !== frameName && frameName) {
       currentFrame.current = 0;
       currentFrameName.current = frameName;
@@ -137901,16 +138234,16 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
     if (Array.isArray(newScale)) return initialScale.multiply(new Vector3(...newScale));
     if (newScale instanceof Vector3) return initialScale.multiply(newScale);
   }
-  return /* @__PURE__ */ React142.createElement("group", _extends({}, props, {
+  return /* @__PURE__ */ React143.createElement("group", _extends({}, props, {
     ref,
     scale: multiplyScale(aspect2, props.scale)
-  }), /* @__PURE__ */ React142.createElement(context5.Provider, {
+  }), /* @__PURE__ */ React143.createElement(context5.Provider, {
     value: state2
-  }, asSprite && /* @__PURE__ */ React142.createElement(Billboard, null, /* @__PURE__ */ React142.createElement("mesh", _extends({
+  }, asSprite && /* @__PURE__ */ React143.createElement(Billboard, null, /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref: spriteRef,
     scale: 1,
     geometry: geometry2
-  }, meshProps), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, meshProps), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     premultipliedAlpha: false,
     toneMapped: false,
     side: DoubleSide,
@@ -137918,10 +138251,10 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
     map: spriteTexture,
     transparent: true,
     alphaTest: alphaTest !== null && alphaTest !== void 0 ? alphaTest : 0
-  }))), !asSprite && /* @__PURE__ */ React142.createElement(Instances, _extends({
+  }))), !asSprite && /* @__PURE__ */ React143.createElement(Instances, _extends({
     geometry: geometry2,
     limit: maxItems !== null && maxItems !== void 0 ? maxItems : 1
-  }, meshProps), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, meshProps), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     premultipliedAlpha: false,
     toneMapped: false,
     side: DoubleSide,
@@ -137929,35 +138262,42 @@ var SpriteAnimator = /* @__PURE__ */ React142.forwardRef(({
     map: spriteTexture,
     transparent: true,
     alphaTest: alphaTest !== null && alphaTest !== void 0 ? alphaTest : 0
-  }), (instanceItems !== null && instanceItems !== void 0 ? instanceItems : [0]).map((item, index2) => /* @__PURE__ */ React142.createElement(Instance, _extends({
+  }), (instanceItems !== null && instanceItems !== void 0 ? instanceItems : [0]).map((item, index2) => /* @__PURE__ */ React143.createElement(Instance, _extends({
     key: index2,
     ref: (instanceItems == null ? void 0 : instanceItems.length) === 1 ? spriteRef : null,
     position: item,
     scale: 1
   }, meshProps)))), children));
 });
-var CurveModifier = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/CurveModifier.js
+init_react_shim();
+var CurveModifier = /* @__PURE__ */ React143.forwardRef(({
   children,
   curve
 }, ref) => {
-  const [scene] = React142.useState(() => new Scene());
-  const [obj, set] = React142.useState();
-  const modifier = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const [scene] = React143.useState(() => new Scene());
+  const [obj, set] = React143.useState();
+  const modifier = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     modifier.current = new Flow(scene.children[0]);
     set(modifier.current.object3D);
   }, [children]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _modifier$current;
     if (curve) (_modifier$current = modifier.current) == null || _modifier$current.updateCurve(0, curve);
   }, [curve]);
-  React142.useImperativeHandle(ref, () => modifier.current);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, createPortal(children, scene), obj && /* @__PURE__ */ React142.createElement("primitive", {
+  React143.useImperativeHandle(ref, () => modifier.current);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, createPortal(children, scene), obj && /* @__PURE__ */ React143.createElement("primitive", {
     object: obj
   }));
 });
 
+// node_modules/@react-three/drei/core/MeshDistortMaterial.js
+init_react_shim();
+
 // node_modules/@react-three/drei/helpers/glsl/distort.vert.glsl.js
+init_react_shim();
 var distort = "#define GLSLIFY 1\nvec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}float snoise(vec3 v){const vec2 C=vec2(1.0/6.0,1.0/3.0);const vec4 D=vec4(0.0,0.5,1.0,2.0);vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.0-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;i=mod289(i);vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));float n_=0.142857142857;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.0*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.0*x_);vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.0-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);vec4 s0=floor(b0)*2.0+1.0;vec4 s1=floor(b1)*2.0+1.0;vec4 sh=-step(h,vec4(0.0));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);m=m*m;return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}";
 
 // node_modules/@react-three/drei/core/MeshDistortMaterial.js
@@ -138012,18 +138352,21 @@ var DistortMaterialImpl = class extends MeshPhysicalMaterial {
     this._radius.value = v6;
   }
 };
-var MeshDistortMaterial = /* @__PURE__ */ React142.forwardRef(({
+var MeshDistortMaterial = /* @__PURE__ */ React143.forwardRef(({
   speed = 1,
   ...props
 }, ref) => {
-  const [material] = React142.useState(() => new DistortMaterialImpl());
+  const [material] = React143.useState(() => new DistortMaterialImpl());
   useFrame((state2) => material && (material.time = state2.clock.elapsedTime * speed));
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: material,
     ref,
     attach: "material"
   }, props));
 });
+
+// node_modules/@react-three/drei/core/MeshWobbleMaterial.js
+init_react_shim();
 var WobbleMaterialImpl = class extends MeshStandardMaterial {
   constructor(parameters = {}) {
     super(parameters);
@@ -138064,20 +138407,27 @@ var WobbleMaterialImpl = class extends MeshStandardMaterial {
     this._factor.value = v6;
   }
 };
-var MeshWobbleMaterial = /* @__PURE__ */ React142.forwardRef(({
+var MeshWobbleMaterial = /* @__PURE__ */ React143.forwardRef(({
   speed = 1,
   ...props
 }, ref) => {
-  const [material] = React142.useState(() => new WobbleMaterialImpl());
+  const [material] = React143.useState(() => new WobbleMaterialImpl());
   useFrame((state2) => material && (material.time = state2.clock.elapsedTime * speed));
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: material,
     ref,
     attach: "material"
   }, props));
 });
 
+// node_modules/@react-three/drei/core/MeshReflectorMaterial.js
+init_react_shim();
+
+// node_modules/@react-three/drei/materials/BlurPass.js
+init_react_shim();
+
 // node_modules/@react-three/drei/materials/ConvolutionMaterial.js
+init_react_shim();
 var ConvolutionMaterial = class extends ShaderMaterial {
   constructor(texelSize = new Vector2()) {
     super({
@@ -138239,6 +138589,7 @@ var BlurPass = class {
 };
 
 // node_modules/@react-three/drei/materials/MeshReflectorMaterial.js
+init_react_shim();
 var MeshReflectorMaterial = class extends MeshStandardMaterial {
   constructor(parameters = {}) {
     super(parameters);
@@ -138493,7 +138844,7 @@ var MeshReflectorMaterial = class extends MeshStandardMaterial {
 };
 
 // node_modules/@react-three/drei/core/MeshReflectorMaterial.js
-var MeshReflectorMaterial2 = /* @__PURE__ */ React142.forwardRef(({
+var MeshReflectorMaterial2 = /* @__PURE__ */ React143.forwardRef(({
   mixBlur = 0,
   mixStrength = 1,
   resolution = 256,
@@ -138525,21 +138876,21 @@ var MeshReflectorMaterial2 = /* @__PURE__ */ React142.forwardRef(({
   const hasBlur = blur[0] + blur[1] > 0;
   const blurX = blur[0];
   const blurY = blur[1];
-  const materialRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => materialRef.current, []);
-  const [reflectorPlane] = React142.useState(() => new Plane());
-  const [normal2] = React142.useState(() => new Vector3());
-  const [reflectorWorldPosition] = React142.useState(() => new Vector3());
-  const [cameraWorldPosition] = React142.useState(() => new Vector3());
-  const [rotationMatrix] = React142.useState(() => new Matrix4());
-  const [lookAtPosition] = React142.useState(() => new Vector3(0, 0, -1));
-  const [clipPlane] = React142.useState(() => new Vector4());
-  const [view2] = React142.useState(() => new Vector3());
-  const [target2] = React142.useState(() => new Vector3());
-  const [q3] = React142.useState(() => new Vector4());
-  const [textureMatrix] = React142.useState(() => new Matrix4());
-  const [virtualCamera] = React142.useState(() => new PerspectiveCamera());
-  const beforeRender = React142.useCallback(() => {
+  const materialRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => materialRef.current, []);
+  const [reflectorPlane] = React143.useState(() => new Plane());
+  const [normal2] = React143.useState(() => new Vector3());
+  const [reflectorWorldPosition] = React143.useState(() => new Vector3());
+  const [cameraWorldPosition] = React143.useState(() => new Vector3());
+  const [rotationMatrix] = React143.useState(() => new Matrix4());
+  const [lookAtPosition] = React143.useState(() => new Vector3(0, 0, -1));
+  const [clipPlane] = React143.useState(() => new Vector4());
+  const [view2] = React143.useState(() => new Vector3());
+  const [target2] = React143.useState(() => new Vector3());
+  const [q3] = React143.useState(() => new Vector4());
+  const [textureMatrix] = React143.useState(() => new Matrix4());
+  const [virtualCamera] = React143.useState(() => new PerspectiveCamera());
+  const beforeRender = React143.useCallback(() => {
     var _materialRef$current;
     const parent = materialRef.current.parent || ((_materialRef$current = materialRef.current) == null || (_materialRef$current = _materialRef$current.__r3f.parent) == null ? void 0 : _materialRef$current.object);
     if (!parent) return;
@@ -138586,7 +138937,7 @@ var MeshReflectorMaterial2 = /* @__PURE__ */ React142.forwardRef(({
     projectionMatrix.elements[10] = clipPlane.z + 1;
     projectionMatrix.elements[14] = clipPlane.w;
   }, [camera, reflectorOffset]);
-  const [fbo1, fbo2, blurpass, reflectorProps] = React142.useMemo(() => {
+  const [fbo1, fbo2, blurpass, reflectorProps] = React143.useMemo(() => {
     const parameters = {
       minFilter: LinearFilter,
       magFilter: LinearFilter,
@@ -138650,14 +139001,18 @@ var MeshReflectorMaterial2 = /* @__PURE__ */ React142.forwardRef(({
     parent.visible = true;
     gl.setRenderTarget(null);
   });
-  return /* @__PURE__ */ React142.createElement("meshReflectorMaterialImpl", _extends({
+  return /* @__PURE__ */ React143.createElement("meshReflectorMaterialImpl", _extends({
     attach: "material",
     key: "key" + reflectorProps["defines-USE_BLUR"] + reflectorProps["defines-USE_DEPTH"] + reflectorProps["defines-USE_DISTORTION"],
     ref: materialRef
   }, reflectorProps, props));
 });
 
+// node_modules/@react-three/drei/core/MeshRefractionMaterial.js
+init_react_shim();
+
 // node_modules/@react-three/drei/materials/MeshRefractionMaterial.js
+init_react_shim();
 var MeshRefractionMaterial = /* @__PURE__ */ shaderMaterial(
   {
     envMap: null,
@@ -138869,7 +139224,7 @@ function MeshRefractionMaterial2({
     material.current.viewMatrixInverse = camera.matrixWorld;
     material.current.projectionMatrixInverse = camera.projectionMatrixInverse;
   });
-  return /* @__PURE__ */ React142.createElement("meshRefractionMaterial", _extends({
+  return /* @__PURE__ */ React143.createElement("meshRefractionMaterial", _extends({
     // @ts-ignore
     key: JSON.stringify(defines),
     defines,
@@ -138880,7 +139235,11 @@ function MeshRefractionMaterial2({
   }, props));
 }
 
+// node_modules/@react-three/drei/core/MeshTransmissionMaterial.js
+init_react_shim();
+
 // node_modules/@react-three/drei/materials/DiscardMaterial.js
+init_react_shim();
 var DiscardMaterial = /* @__PURE__ */ shaderMaterial({}, "void main() { }", "void main() { gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0); discard;  }");
 
 // node_modules/@react-three/drei/core/MeshTransmissionMaterial.js
@@ -139180,7 +139539,7 @@ var MeshTransmissionMaterialImpl = class extends MeshPhysicalMaterial {
     }));
   }
 };
-var MeshTransmissionMaterial = /* @__PURE__ */ React142.forwardRef(({
+var MeshTransmissionMaterial = /* @__PURE__ */ React143.forwardRef(({
   buffer: buffer2,
   transmissionSampler = false,
   backside = false,
@@ -139200,8 +139559,8 @@ var MeshTransmissionMaterial = /* @__PURE__ */ React142.forwardRef(({
   extend({
     MeshTransmissionMaterial: MeshTransmissionMaterialImpl
   });
-  const ref = React142.useRef(null);
-  const [discardMaterial] = React142.useState(() => new DiscardMaterial());
+  const ref = React143.useRef(null);
+  const [discardMaterial] = React143.useState(() => new DiscardMaterial());
   const fboBack = useFBO(backsideResolution || resolution);
   const fboMain = useFBO(resolution);
   let oldBg;
@@ -139242,8 +139601,8 @@ var MeshTransmissionMaterial = /* @__PURE__ */ React142.forwardRef(({
       }
     }
   });
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("meshTransmissionMaterial", _extends({
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("meshTransmissionMaterial", _extends({
     // Samples must re-compile the shader so we memoize it
     args: [samples, transmissionSampler],
     ref
@@ -139256,17 +139615,23 @@ var MeshTransmissionMaterial = /* @__PURE__ */ React142.forwardRef(({
     side
   }));
 });
-var MeshDiscardMaterial = /* @__PURE__ */ React142.forwardRef((props, fref) => {
+
+// node_modules/@react-three/drei/core/MeshDiscardMaterial.js
+init_react_shim();
+var MeshDiscardMaterial = /* @__PURE__ */ React143.forwardRef((props, fref) => {
   extend({
     DiscardMaterialImpl: DiscardMaterial
   });
-  return /* @__PURE__ */ React142.createElement("discardMaterialImpl", _extends({
+  return /* @__PURE__ */ React143.createElement("discardMaterialImpl", _extends({
     ref: fref
   }, props));
 });
+
+// node_modules/@react-three/drei/core/MultiMaterial.js
+init_react_shim();
 function MultiMaterial(props) {
-  const group = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const group = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     const parent = group.current.parent;
     const geometry3 = parent == null ? void 0 : parent.geometry;
     if (geometry3) {
@@ -139284,10 +139649,13 @@ function MultiMaterial(props) {
       };
     }
   });
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: group
   }, props));
 }
+
+// node_modules/@react-three/drei/core/PointMaterial.js
+init_react_shim();
 var opaque_fragment2 = version2 >= 154 ? "opaque_fragment" : "output_fragment";
 var PointMaterialImpl = class extends PointsMaterial {
   constructor(props) {
@@ -139310,14 +139678,17 @@ var PointMaterialImpl = class extends PointsMaterial {
     };
   }
 };
-var PointMaterial = /* @__PURE__ */ React142.forwardRef((props, ref) => {
-  const [material] = React142.useState(() => new PointMaterialImpl(null));
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({}, props, {
+var PointMaterial = /* @__PURE__ */ React143.forwardRef((props, ref) => {
+  const [material] = React143.useState(() => new PointMaterialImpl(null));
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({}, props, {
     object: material,
     ref,
     attach: "material"
   }));
 });
+
+// node_modules/@react-three/drei/core/softShadows.js
+init_react_shim();
 var pcss = ({
   focus = 0,
   size = 25,
@@ -139441,7 +139812,7 @@ function SoftShadows({
   const gl = useThree((state2) => state2.gl);
   const scene = useThree((state2) => state2.scene);
   const camera = useThree((state2) => state2.camera);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const original = ShaderChunk.shadowmap_pars_fragment;
     ShaderChunk.shadowmap_pars_fragment = ShaderChunk.shadowmap_pars_fragment.replace("#ifdef USE_SHADOWMAP", "#ifdef USE_SHADOWMAP\n" + pcss({
       size,
@@ -139456,19 +139827,22 @@ function SoftShadows({
   }, [focus, size, samples]);
   return null;
 }
+
+// node_modules/@react-three/drei/core/shapes.js
+init_react_shim();
 function create2(type, effect) {
   const El = type + "Geometry";
-  return /* @__PURE__ */ React142.forwardRef(({
+  return /* @__PURE__ */ React143.forwardRef(({
     args,
     children,
     ...props
   }, fref) => {
-    const ref = React142.useRef(null);
-    React142.useImperativeHandle(fref, () => ref.current);
-    React142.useLayoutEffect(() => void (effect == null ? void 0 : effect(ref.current)));
-    return /* @__PURE__ */ React142.createElement("mesh", _extends({
+    const ref = React143.useRef(null);
+    React143.useImperativeHandle(fref, () => ref.current);
+    React143.useLayoutEffect(() => void (effect == null ? void 0 : effect(ref.current)));
+    return /* @__PURE__ */ React143.createElement("mesh", _extends({
       ref
-    }, props), /* @__PURE__ */ React142.createElement(El, {
+    }, props), /* @__PURE__ */ React143.createElement(El, {
       attach: "geometry",
       args
     }), children);
@@ -139510,6 +139884,9 @@ var Shape2 = /* @__PURE__ */ create2("shape", ({
   }
   geometry3.setAttribute("uv", new Float32BufferAttribute(uv, 2));
 });
+
+// node_modules/@react-three/drei/core/RoundedBox.js
+init_react_shim();
 var eps = 1e-5;
 function createShape(width, height, radius0) {
   const shape = new Shape();
@@ -139520,7 +139897,7 @@ function createShape(width, height, radius0) {
   shape.absarc(width - radius * 2, eps, eps, 0, -Math.PI / 2, true);
   return shape;
 }
-var RoundedBox = /* @__PURE__ */ React142.forwardRef(function RoundedBox2({
+var RoundedBox = /* @__PURE__ */ React143.forwardRef(function RoundedBox2({
   args: [width = 1, height = 1, depth = 1] = [],
   radius = 0.05,
   steps = 1,
@@ -139530,9 +139907,9 @@ var RoundedBox = /* @__PURE__ */ React142.forwardRef(function RoundedBox2({
   children,
   ...rest
 }, ref) {
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref
-  }, rest), /* @__PURE__ */ React142.createElement(RoundedBoxGeometry, {
+  }, rest), /* @__PURE__ */ React143.createElement(RoundedBoxGeometry, {
     args: [width, height, depth],
     radius,
     steps,
@@ -139541,7 +139918,7 @@ var RoundedBox = /* @__PURE__ */ React142.forwardRef(function RoundedBox2({
     creaseAngle
   }), children);
 });
-var RoundedBoxGeometry = /* @__PURE__ */ React142.forwardRef(function RoundedBoxGeometry2({
+var RoundedBoxGeometry = /* @__PURE__ */ React143.forwardRef(function RoundedBoxGeometry2({
   args: [width = 1, height = 1, depth = 1] = [],
   radius = 0.05,
   steps = 1,
@@ -139550,8 +139927,8 @@ var RoundedBoxGeometry = /* @__PURE__ */ React142.forwardRef(function RoundedBox
   creaseAngle = 0.4,
   ...rest
 }, ref) {
-  const shape = React142.useMemo(() => createShape(width, height, radius), [width, height, radius]);
-  const params = React142.useMemo(() => ({
+  const shape = React143.useMemo(() => createShape(width, height, radius), [width, height, radius]);
+  const params = React143.useMemo(() => ({
     depth: depth - radius * 2,
     bevelEnabled: true,
     bevelSegments: bevelSegments * 2,
@@ -139560,19 +139937,22 @@ var RoundedBoxGeometry = /* @__PURE__ */ React142.forwardRef(function RoundedBox
     bevelThickness: radius,
     curveSegments: smoothness
   }), [depth, radius, smoothness, bevelSegments, steps]);
-  const geomRef = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const geomRef = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     if (geomRef.current) {
       geomRef.current.center();
       toCreasedNormals(geomRef.current, creaseAngle);
     }
   }, [shape, params, creaseAngle]);
-  React142.useImperativeHandle(ref, () => geomRef.current);
-  return /* @__PURE__ */ React142.createElement("extrudeGeometry", _extends({
+  React143.useImperativeHandle(ref, () => geomRef.current);
+  return /* @__PURE__ */ React143.createElement("extrudeGeometry", _extends({
     ref: geomRef,
     args: [shape, params]
   }, rest));
 });
+
+// node_modules/@react-three/drei/core/ScreenQuad.js
+init_react_shim();
 function createScreenQuadGeometry() {
   const geometry3 = new BufferGeometry();
   const vertices = new Float32Array([-1, -1, 3, -1, -1, 3]);
@@ -139581,18 +139961,21 @@ function createScreenQuadGeometry() {
   geometry3.setAttribute("position", new BufferAttribute(vertices, 2));
   return geometry3;
 }
-var ScreenQuad = /* @__PURE__ */ React142.forwardRef(function ScreenQuad2({
+var ScreenQuad = /* @__PURE__ */ React143.forwardRef(function ScreenQuad2({
   children,
   ...restProps
 }, ref) {
-  const geometry3 = React142.useMemo(createScreenQuadGeometry, []);
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  const geometry3 = React143.useMemo(createScreenQuadGeometry, []);
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     geometry: geometry3,
     frustumCulled: false
   }, restProps), children);
 });
-var Resize = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Resize.js
+init_react_shim();
+var Resize = /* @__PURE__ */ React143.forwardRef(({
   children,
   width,
   height,
@@ -139601,10 +139984,10 @@ var Resize = /* @__PURE__ */ React142.forwardRef(({
   precise = true,
   ...props
 }, fRef) => {
-  const ref = React142.useRef(null);
-  const outer = React142.useRef(null);
-  const inner = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const ref = React143.useRef(null);
+  const outer = React143.useRef(null);
+  const inner = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     outer.current.matrixWorld.identity();
     let box = box3 || new Box3().setFromObject(inner.current, precise);
     const w2 = box.max.x - box.min.x;
@@ -139616,15 +139999,18 @@ var Resize = /* @__PURE__ */ React142.forwardRef(({
     if (depth) dimension = d3;
     outer.current.scale.setScalar(1 / dimension);
   }, [width, height, depth, box3, precise]);
-  React142.useImperativeHandle(fRef, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  React143.useImperativeHandle(fRef, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
-  }, props), /* @__PURE__ */ React142.createElement("group", {
+  }, props), /* @__PURE__ */ React143.createElement("group", {
     ref: outer
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     ref: inner
   }, children)));
 });
+
+// node_modules/@react-three/drei/core/Bounds.js
+init_react_shim();
 var AnimationState = /* @__PURE__ */ (function(AnimationState2) {
   AnimationState2[AnimationState2["NONE"] = 0] = "NONE";
   AnimationState2[AnimationState2["START"] = 1] = "START";
@@ -139636,7 +140022,7 @@ var isBox3 = (def) => def && def.isBox3;
 var interpolateFuncDefault = (t4) => {
   return 1 - Math.exp(-5 * t4) + 7e-3 * t4;
 };
-var context6 = /* @__PURE__ */ React142.createContext(null);
+var context6 = /* @__PURE__ */ React143.createContext(null);
 function Bounds({
   children,
   maxDuration = 1,
@@ -139647,31 +140033,31 @@ function Bounds({
   interpolateFunc = interpolateFuncDefault,
   onFit
 }) {
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const {
     camera,
     size,
     invalidate: invalidate2
   } = useThree();
   const controls = useThree((state2) => state2.controls);
-  const onFitRef = React142.useRef(onFit);
+  const onFitRef = React143.useRef(onFit);
   onFitRef.current = onFit;
-  const origin2 = React142.useRef({
+  const origin2 = React143.useRef({
     camPos: new Vector3(),
     camRot: new Quaternion(),
     camZoom: 1
   });
-  const goal = React142.useRef({
+  const goal = React143.useRef({
     camPos: void 0,
     camRot: void 0,
     camZoom: void 0,
     camUp: void 0,
     target: void 0
   });
-  const animationState = React142.useRef(AnimationState.NONE);
-  const t4 = React142.useRef(0);
-  const [box] = React142.useState(() => new Box3());
-  const api = React142.useMemo(() => {
+  const animationState = React143.useRef(AnimationState.NONE);
+  const t4 = React143.useRef(0);
+  const [box] = React143.useState(() => new Box3());
+  const api = React143.useMemo(() => {
     function getSize() {
       const boxSize = box.getSize(new Vector3());
       const center3 = box.getCenter(new Vector3());
@@ -139798,7 +140184,7 @@ function Bounds({
       }
     };
   }, [box, camera, controls, margin, invalidate2]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (controls) {
       const callback = () => {
         if (controls && goal.current.target && animationState.current !== AnimationState.NONE) {
@@ -139815,8 +140201,8 @@ function Bounds({
       return () => controls.removeEventListener("start", callback);
     }
   }, [controls]);
-  const count = React142.useRef(0);
-  React142.useLayoutEffect(() => {
+  const count = React143.useRef(0);
+  React143.useLayoutEffect(() => {
     if (observe || count.current++ === 0) {
       api.refresh();
       if (fit) api.reset().fit();
@@ -139853,16 +140239,19 @@ function Bounds({
       invalidate2();
     }
   });
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     ref
-  }, /* @__PURE__ */ React142.createElement(context6.Provider, {
+  }, /* @__PURE__ */ React143.createElement(context6.Provider, {
     value: api
   }, children));
 }
 function useBounds() {
-  return React142.useContext(context6);
+  return React143.useContext(context6);
 }
-var CameraShake = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/CameraShake.js
+init_react_shim();
+var CameraShake = /* @__PURE__ */ React143.forwardRef(({
   intensity = 1,
   decay,
   decayRate = 0.65,
@@ -139875,24 +140264,24 @@ var CameraShake = /* @__PURE__ */ React142.forwardRef(({
 }, ref) => {
   const camera = useThree((state2) => state2.camera);
   const defaultControls = useThree((state2) => state2.controls);
-  const intensityRef = React142.useRef(intensity);
-  const initialRotation = React142.useRef(camera.rotation.clone());
-  const [yawNoise] = React142.useState(() => new SimplexNoise());
-  const [pitchNoise] = React142.useState(() => new SimplexNoise());
-  const [rollNoise] = React142.useState(() => new SimplexNoise());
+  const intensityRef = React143.useRef(intensity);
+  const initialRotation = React143.useRef(camera.rotation.clone());
+  const [yawNoise] = React143.useState(() => new SimplexNoise());
+  const [pitchNoise] = React143.useState(() => new SimplexNoise());
+  const [rollNoise] = React143.useState(() => new SimplexNoise());
   const constrainIntensity = () => {
     if (intensityRef.current < 0 || intensityRef.current > 1) {
       intensityRef.current = intensityRef.current < 0 ? 0 : 1;
     }
   };
-  React142.useImperativeHandle(ref, () => ({
+  React143.useImperativeHandle(ref, () => ({
     getIntensity: () => intensityRef.current,
     setIntensity: (val) => {
       intensityRef.current = val;
       constrainIntensity();
     }
   }), []);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (defaultControls) {
       const callback = () => void (initialRotation.current = camera.rotation.clone());
       defaultControls.addEventListener("change", callback);
@@ -139913,7 +140302,10 @@ var CameraShake = /* @__PURE__ */ React142.forwardRef(({
   });
   return null;
 });
-var Float = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Float.js
+init_react_shim();
+var Float = /* @__PURE__ */ React143.forwardRef(({
   children,
   enabled = true,
   speed = 1,
@@ -139923,9 +140315,9 @@ var Float = /* @__PURE__ */ React142.forwardRef(({
   autoInvalidate = false,
   ...props
 }, forwardRef82) => {
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(forwardRef82, () => ref.current, []);
-  const offset = React142.useRef(Math.random() * 1e4);
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(forwardRef82, () => ref.current, []);
+  const offset = React143.useRef(Math.random() * 1e4);
   useFrame((state2) => {
     var _floatingRange$, _floatingRange$2;
     if (!enabled || speed === 0) return;
@@ -139939,13 +140331,26 @@ var Float = /* @__PURE__ */ React142.forwardRef(({
     ref.current.position.y = yPosition * floatIntensity;
     ref.current.updateMatrix();
   });
-  return /* @__PURE__ */ React142.createElement("group", props, /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", props, /* @__PURE__ */ React143.createElement("group", {
     ref,
     matrixAutoUpdate: false
   }, children));
 });
 
+// node_modules/@react-three/drei/core/Stage.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/Environment.js
+init_react_shim();
+
+// node_modules/@react-three/drei/core/useEnvironment.js
+init_react_shim();
+
+// node_modules/@monogrid/gainmap-js/dist/decode.js
+init_react_shim();
+
 // node_modules/@monogrid/gainmap-js/dist/QuadRenderer-Bj1xl_EK.js
+init_react_shim();
 var getBufferForType = (type, width, height) => {
   let out7;
   switch (type) {
@@ -140244,6 +140649,9 @@ var QuadRenderer = class _QuadRenderer {
     return this._colorSpace;
   }
 };
+
+// node_modules/@monogrid/gainmap-js/dist/Loader-DLI-_JDP.js
+init_react_shim();
 var GainMapNotFoundError = class extends Error {
 };
 var XMPMetadataNotFoundError = class extends Error {
@@ -140925,6 +141333,7 @@ var HDRJPGLoader = class extends LoaderBaseWebGL {
 };
 
 // node_modules/@react-three/drei/helpers/environment-assets.js
+init_react_shim();
 var presetsObj = {
   apartment: "lebombo_1k.hdr",
   city: "potsdamer_platz_1k.hdr",
@@ -141115,7 +141524,7 @@ function EnvironmentMap({
   ...config
 }) {
   const defaultScene = useThree((state2) => state2.scene);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (map) return setEnvProps(background, scene, defaultScene, map, config);
   });
   return null;
@@ -141133,7 +141542,7 @@ function EnvironmentCube({
 }) {
   const texture = useEnvironment(rest);
   const defaultScene = useThree((state2) => state2.scene);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     return setEnvProps(background, scene, defaultScene, texture, {
       backgroundBlurriness: blur !== null && blur !== void 0 ? blur : backgroundBlurriness,
       backgroundIntensity,
@@ -141142,7 +141551,7 @@ function EnvironmentCube({
       environmentRotation
     });
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => {
       texture.dispose();
     };
@@ -141171,19 +141580,19 @@ function EnvironmentPortal({
 }) {
   const gl = useThree((state2) => state2.gl);
   const defaultScene = useThree((state2) => state2.scene);
-  const camera = React142.useRef(null);
-  const [virtualScene] = React142.useState(() => new Scene());
-  const fbo = React142.useMemo(() => {
+  const camera = React143.useRef(null);
+  const [virtualScene] = React143.useState(() => new Scene());
+  const fbo = React143.useMemo(() => {
     const fbo2 = new WebGLCubeRenderTarget(resolution);
     fbo2.texture.type = HalfFloatType;
     return fbo2;
   }, [resolution]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => {
       fbo.dispose();
     };
   }, [fbo]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (frames === 1) {
       const autoClear = gl.autoClear;
       gl.autoClear = true;
@@ -141208,16 +141617,16 @@ function EnvironmentPortal({
       count++;
     }
   });
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, createPortal(/* @__PURE__ */ React142.createElement(React142.Fragment, null, children, /* @__PURE__ */ React142.createElement("cubeCamera", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, createPortal(/* @__PURE__ */ React143.createElement(React143.Fragment, null, children, /* @__PURE__ */ React143.createElement("cubeCamera", {
     ref: camera,
     args: [near, far, fbo]
-  }), files || preset ? /* @__PURE__ */ React142.createElement(EnvironmentCube, {
+  }), files || preset ? /* @__PURE__ */ React143.createElement(EnvironmentCube, {
     background: true,
     files,
     preset,
     path,
     extensions: extensions2
-  }) : map ? /* @__PURE__ */ React142.createElement(EnvironmentMap, {
+  }) : map ? /* @__PURE__ */ React143.createElement(EnvironmentMap, {
     background: true,
     map,
     extensions: extensions2
@@ -141227,21 +141636,21 @@ function EnvironmentGround(props) {
   var _props$ground, _props$ground2, _scale2, _props$ground3;
   const textureDefault = useEnvironment(props);
   const texture = props.map || textureDefault;
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     GroundProjectedEnvImpl: GroundProjectedEnv
   }), []);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => {
       textureDefault.dispose();
     };
   }, [textureDefault]);
-  const args = React142.useMemo(() => [texture], [texture]);
+  const args = React143.useMemo(() => [texture], [texture]);
   const height = (_props$ground = props.ground) == null ? void 0 : _props$ground.height;
   const radius = (_props$ground2 = props.ground) == null ? void 0 : _props$ground2.radius;
   const scale3 = (_scale2 = (_props$ground3 = props.ground) == null ? void 0 : _props$ground3.scale) !== null && _scale2 !== void 0 ? _scale2 : 1e3;
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement(EnvironmentMap, _extends({}, props, {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement(EnvironmentMap, _extends({}, props, {
     map: texture
-  })), /* @__PURE__ */ React142.createElement("groundProjectedEnvImpl", {
+  })), /* @__PURE__ */ React143.createElement("groundProjectedEnvImpl", {
     args,
     scale: scale3,
     height,
@@ -141249,9 +141658,12 @@ function EnvironmentGround(props) {
   }));
 }
 function Environment(props) {
-  return props.ground ? /* @__PURE__ */ React142.createElement(EnvironmentGround, props) : props.map ? /* @__PURE__ */ React142.createElement(EnvironmentMap, props) : props.children ? /* @__PURE__ */ React142.createElement(EnvironmentPortal, props) : /* @__PURE__ */ React142.createElement(EnvironmentCube, props);
+  return props.ground ? /* @__PURE__ */ React143.createElement(EnvironmentGround, props) : props.map ? /* @__PURE__ */ React143.createElement(EnvironmentMap, props) : props.children ? /* @__PURE__ */ React143.createElement(EnvironmentPortal, props) : /* @__PURE__ */ React143.createElement(EnvironmentCube, props);
 }
-var ContactShadows = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/ContactShadows.js
+init_react_shim();
+var ContactShadows = /* @__PURE__ */ React143.forwardRef(({
   scale: scale3 = 10,
   frames = Infinity,
   opacity = 1,
@@ -141267,13 +141679,13 @@ var ContactShadows = /* @__PURE__ */ React142.forwardRef(({
   renderOrder,
   ...props
 }, fref) => {
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const scene = useThree((state2) => state2.scene);
   const gl = useThree((state2) => state2.gl);
-  const shadowCamera = React142.useRef(null);
+  const shadowCamera = React143.useRef(null);
   width = width * (Array.isArray(scale3) ? scale3[0] : scale3 || 1);
   height = height * (Array.isArray(scale3) ? scale3[1] : scale3 || 1);
-  const [renderTarget, planeGeometry, depthMaterial, blurPlane, horizontalBlurMaterial, verticalBlurMaterial, renderTargetBlur] = React142.useMemo(() => {
+  const [renderTarget, planeGeometry, depthMaterial, blurPlane, horizontalBlurMaterial, verticalBlurMaterial, renderTargetBlur] = React143.useMemo(() => {
     const renderTarget2 = new WebGLRenderTarget(resolution, resolution);
     const renderTargetBlur2 = new WebGLRenderTarget(resolution, resolution);
     renderTargetBlur2.texture.generateMipmaps = renderTarget2.texture.generateMipmaps = false;
@@ -141341,33 +141753,36 @@ var ContactShadows = /* @__PURE__ */ React142.forwardRef(({
       scene.background = initialBackground;
     }
   });
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     "rotation-x": Math.PI / 2
   }, props, {
     ref
-  }), /* @__PURE__ */ React142.createElement("mesh", {
+  }), /* @__PURE__ */ React143.createElement("mesh", {
     renderOrder,
     geometry: planeGeometry,
     scale: [1, -1, 1],
     rotation: [-Math.PI / 2, 0, 0]
-  }, /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     map: renderTarget.texture,
     opacity,
     depthWrite
-  })), /* @__PURE__ */ React142.createElement("orthographicCamera", {
+  })), /* @__PURE__ */ React143.createElement("orthographicCamera", {
     ref: shadowCamera,
     args: [-width / 2, width / 2, height / 2, -height / 2, near, far]
   }));
 });
+
+// node_modules/@react-three/drei/core/AccumulativeShadows.js
+init_react_shim();
 function isLight3(object) {
   return object.isLight;
 }
 function isGeometry(object) {
   return !!object.geometry;
 }
-var accumulativeContext = /* @__PURE__ */ React142.createContext(null);
+var accumulativeContext = /* @__PURE__ */ React143.createContext(null);
 var SoftShadowMaterial = /* @__PURE__ */ shaderMaterial({
   color: /* @__PURE__ */ new Color(),
   blend: 2,
@@ -141390,7 +141805,7 @@ var SoftShadowMaterial = /* @__PURE__ */ shaderMaterial({
      #include <tonemapping_fragment>
      #include <${version2 >= 154 ? "colorspace_fragment" : "encodings_fragment"}>
    }`);
-var AccumulativeShadows = /* @__PURE__ */ React142.forwardRef(({
+var AccumulativeShadows = /* @__PURE__ */ React143.forwardRef(({
   children,
   temporal,
   frames = 40,
@@ -141412,13 +141827,13 @@ var AccumulativeShadows = /* @__PURE__ */ React142.forwardRef(({
   const scene = useThree((state2) => state2.scene);
   const camera = useThree((state2) => state2.camera);
   const invalidate2 = useThree((state2) => state2.invalidate);
-  const gPlane = React142.useRef(null);
-  const gLights = React142.useRef(null);
-  const [plm] = React142.useState(() => new ProgressiveLightMap(gl, scene, resolution));
-  React142.useLayoutEffect(() => {
+  const gPlane = React143.useRef(null);
+  const gLights = React143.useRef(null);
+  const [plm] = React143.useState(() => new ProgressiveLightMap(gl, scene, resolution));
+  React143.useLayoutEffect(() => {
     plm.configure(gPlane.current);
   }, []);
-  const api = React142.useMemo(() => ({
+  const api = React143.useMemo(() => ({
     lights: /* @__PURE__ */ new Map(),
     temporal: !!temporal,
     frames: Math.max(2, frames),
@@ -141451,11 +141866,11 @@ var AccumulativeShadows = /* @__PURE__ */ React142.forwardRef(({
       plm.finish();
     }
   }), [plm, camera, scene, temporal, frames, blend, opacity, alphaTest]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     api.reset();
     if (!api.temporal && api.frames !== Infinity) api.update(api.blend);
   });
-  React142.useImperativeHandle(forwardRef82, () => api, [api]);
+  React143.useImperativeHandle(forwardRef82, () => api, [api]);
   useFrame(() => {
     if ((api.temporal || api.frames === Infinity) && api.count < api.frames && api.count < limit) {
       invalidate2();
@@ -141463,17 +141878,17 @@ var AccumulativeShadows = /* @__PURE__ */ React142.forwardRef(({
       api.count++;
     }
   });
-  return /* @__PURE__ */ React142.createElement("group", props, /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", props, /* @__PURE__ */ React143.createElement("group", {
     traverse: () => null,
     ref: gLights
-  }, /* @__PURE__ */ React142.createElement(accumulativeContext.Provider, {
+  }, /* @__PURE__ */ React143.createElement(accumulativeContext.Provider, {
     value: api
-  }, children)), /* @__PURE__ */ React142.createElement("mesh", {
+  }, children)), /* @__PURE__ */ React143.createElement("mesh", {
     receiveShadow: true,
     ref: gPlane,
     scale: scale3,
     rotation: [-Math.PI / 2, 0, 0]
-  }, /* @__PURE__ */ React142.createElement("planeGeometry", null), /* @__PURE__ */ React142.createElement("softShadowMaterial", {
+  }, /* @__PURE__ */ React143.createElement("planeGeometry", null), /* @__PURE__ */ React143.createElement("softShadowMaterial", {
     transparent: true,
     depthWrite: false,
     toneMapped,
@@ -141482,7 +141897,7 @@ var AccumulativeShadows = /* @__PURE__ */ React142.forwardRef(({
     map: plm.progressiveLightMap2.texture
   })));
 });
-var RandomizedLight = /* @__PURE__ */ React142.forwardRef(({
+var RandomizedLight = /* @__PURE__ */ React143.forwardRef(({
   castShadow = true,
   bias = 1e-3,
   mapSize = 512,
@@ -141497,10 +141912,10 @@ var RandomizedLight = /* @__PURE__ */ React142.forwardRef(({
   ambient = 0.5,
   ...props
 }, forwardRef82) => {
-  const gLights = React142.useRef(null);
+  const gLights = React143.useRef(null);
   const length = new Vector3(...position2).length();
-  const parent = React142.useContext(accumulativeContext);
-  const update3 = React142.useCallback(() => {
+  const parent = React143.useContext(accumulativeContext);
+  const update3 = React143.useCallback(() => {
     let light;
     if (gLights.current) {
       for (let l4 = 0; l4 < gLights.current.children.length; l4++) {
@@ -141515,11 +141930,11 @@ var RandomizedLight = /* @__PURE__ */ React142.forwardRef(({
       }
     }
   }, [radius, ambient, length, ...position2]);
-  const api = React142.useMemo(() => ({
+  const api = React143.useMemo(() => ({
     update: update3
   }), [update3]);
-  React142.useImperativeHandle(forwardRef82, () => api, [api]);
-  React142.useLayoutEffect(() => {
+  React143.useImperativeHandle(forwardRef82, () => api, [api]);
+  React143.useLayoutEffect(() => {
     var _parent$lights;
     const group = gLights.current;
     if (parent) (_parent$lights = parent.lights) == null || _parent$lights.set(group.uuid, api);
@@ -141528,17 +141943,17 @@ var RandomizedLight = /* @__PURE__ */ React142.forwardRef(({
       return void (parent == null || (_parent$lights2 = parent.lights) == null ? void 0 : _parent$lights2.delete(group.uuid));
     };
   }, [parent, api]);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: gLights
   }, props), Array.from({
     length: amount
-  }, (_2, index2) => /* @__PURE__ */ React142.createElement("directionalLight", {
+  }, (_2, index2) => /* @__PURE__ */ React143.createElement("directionalLight", {
     key: index2,
     castShadow,
     "shadow-bias": bias,
     "shadow-mapSize": [mapSize, mapSize],
     intensity: intensity / amount
-  }, /* @__PURE__ */ React142.createElement("orthographicCamera", {
+  }, /* @__PURE__ */ React143.createElement("orthographicCamera", {
     attach: "shadow-camera",
     args: [-size, size, size, -size, near, far]
   }))));
@@ -141660,7 +142075,7 @@ function Refit({
   adjustCamera
 }) {
   const api = useBounds();
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (adjustCamera) api.refresh().clip().fit();
   }, [radius, adjustCamera]);
   return null;
@@ -141680,7 +142095,7 @@ function Stage({
   const [{
     radius,
     height
-  }, set] = React142.useState({
+  }, set] = React143.useState({
     radius: 0,
     width: 0,
     height: 0,
@@ -141698,7 +142113,7 @@ function Stage({
   const environmentProps = !environment ? null : typeof environment === "string" ? {
     preset: environment
   } : environment;
-  const onCentered = React142.useCallback((props2) => {
+  const onCentered = React143.useCallback((props2) => {
     const {
       width,
       height: height2,
@@ -141713,9 +142128,9 @@ function Stage({
     });
     if (center3 != null && center3.onCentered) center3.onCentered(props2);
   }, []);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("ambientLight", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("ambientLight", {
     intensity: intensity / 3
-  }), /* @__PURE__ */ React142.createElement("spotLight", {
+  }), /* @__PURE__ */ React143.createElement("spotLight", {
     penumbra: 1,
     position: [config.main[0] * radius, config.main[1] * radius, config.main[2] * radius],
     intensity: intensity * 2,
@@ -141723,33 +142138,33 @@ function Stage({
     "shadow-bias": shadowBias,
     "shadow-normalBias": normalBias,
     "shadow-mapSize": shadowSize
-  }), /* @__PURE__ */ React142.createElement("pointLight", {
+  }), /* @__PURE__ */ React143.createElement("pointLight", {
     position: [config.fill[0] * radius, config.fill[1] * radius, config.fill[2] * radius],
     intensity
-  }), /* @__PURE__ */ React142.createElement(Bounds, _extends({
+  }), /* @__PURE__ */ React143.createElement(Bounds, _extends({
     fit: !!adjustCamera,
     clip: !!adjustCamera,
     margin: Number(adjustCamera),
     observe: true
-  }, props), /* @__PURE__ */ React142.createElement(Refit, {
+  }, props), /* @__PURE__ */ React143.createElement(Refit, {
     radius,
     adjustCamera
-  }), /* @__PURE__ */ React142.createElement(Center, _extends({}, center3, {
+  }), /* @__PURE__ */ React143.createElement(Center, _extends({}, center3, {
     position: [0, shadowOffset / 2, 0],
     onCentered
-  }), children)), /* @__PURE__ */ React142.createElement("group", {
+  }), children)), /* @__PURE__ */ React143.createElement("group", {
     position: [0, -height / 2 - shadowOffset / 2, 0]
-  }, contactShadow && /* @__PURE__ */ React142.createElement(ContactShadows, _extends({
+  }, contactShadow && /* @__PURE__ */ React143.createElement(ContactShadows, _extends({
     scale: radius * 4,
     far: radius,
     blur: 2
-  }, shadowSpread)), accumulativeShadow && /* @__PURE__ */ React142.createElement(AccumulativeShadows, _extends({
+  }, shadowSpread)), accumulativeShadow && /* @__PURE__ */ React143.createElement(AccumulativeShadows, _extends({
     temporal: true,
     frames: 100,
     alphaTest: 0.9,
     toneMapped: true,
     scale: radius * 4
-  }, shadowSpread), /* @__PURE__ */ React142.createElement(RandomizedLight, {
+  }, shadowSpread), /* @__PURE__ */ React143.createElement(RandomizedLight, {
     amount: (_amount = shadowSpread.amount) !== null && _amount !== void 0 ? _amount : 8,
     radius: (_radius = shadowSpread.radius) !== null && _radius !== void 0 ? _radius : radius,
     ambient: (_ambient = shadowSpread.ambient) !== null && _ambient !== void 0 ? _ambient : 0.5,
@@ -141758,8 +142173,11 @@ function Stage({
     size: radius * 4,
     bias: -shadowBias,
     mapSize: shadowSize
-  }))), environment && /* @__PURE__ */ React142.createElement(Environment, environmentProps));
+  }))), environment && /* @__PURE__ */ React143.createElement(Environment, environmentProps));
 }
+
+// node_modules/@react-three/drei/core/Backdrop.js
+init_react_shim();
 var easeInExpo = (x3) => x3 === 0 ? 0 : Math.pow(2, 10 * x3 - 10);
 function Backdrop({
   children,
@@ -141768,8 +142186,8 @@ function Backdrop({
   receiveShadow,
   ...props
 }) {
-  const ref = React142.useRef(null);
-  React142.useLayoutEffect(() => {
+  const ref = React143.useRef(null);
+  React143.useLayoutEffect(() => {
     let i6 = 0;
     const offset = segments / segments / 2;
     const position2 = ref.current.attributes.position;
@@ -141781,15 +142199,18 @@ function Backdrop({
     position2.needsUpdate = true;
     ref.current.computeVertexNormals();
   }, [segments, floor]);
-  return /* @__PURE__ */ React142.createElement("group", props, /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement("group", props, /* @__PURE__ */ React143.createElement("mesh", {
     receiveShadow,
     rotation: [-Math.PI / 2, 0, Math.PI / 2]
-  }, /* @__PURE__ */ React142.createElement("planeGeometry", {
+  }, /* @__PURE__ */ React143.createElement("planeGeometry", {
     ref,
     args: [1, 1, segments, segments]
   }), children));
 }
-var Shadow = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Shadow.js
+init_react_shim();
+var Shadow = /* @__PURE__ */ React143.forwardRef(({
   fog = false,
   renderOrder,
   depthWrite = false,
@@ -141798,7 +142219,7 @@ var Shadow = /* @__PURE__ */ React142.forwardRef(({
   opacity = 0.5,
   ...props
 }, ref) => {
-  const canvas = React142.useMemo(() => {
+  const canvas = React143.useMemo(() => {
     const canvas2 = document.createElement("canvas");
     canvas2.width = 128;
     canvas2.height = 128;
@@ -141810,21 +142231,24 @@ var Shadow = /* @__PURE__ */ React142.forwardRef(({
     context12.fillRect(0, 0, canvas2.width, canvas2.height);
     return canvas2;
   }, [color, colorStop]);
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     renderOrder,
     ref,
     "rotation-x": -Math.PI / 2
-  }, props), /* @__PURE__ */ React142.createElement("planeGeometry", null), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, props), /* @__PURE__ */ React143.createElement("planeGeometry", null), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     opacity,
     fog,
     depthWrite,
     side: DoubleSide
-  }, /* @__PURE__ */ React142.createElement("canvasTexture", {
+  }, /* @__PURE__ */ React143.createElement("canvasTexture", {
     attach: "map",
     args: [canvas]
   })));
 });
+
+// node_modules/@react-three/drei/core/Caustics.js
+init_react_shim();
 function createNormalMaterial(side = FrontSide) {
   const viewMatrix = {
     value: new Matrix4()
@@ -142015,7 +142439,7 @@ var CAUSTICPROPS = {
   type: FloatType,
   generateMipmaps: true
 };
-var Caustics = /* @__PURE__ */ React142.forwardRef(({
+var Caustics = /* @__PURE__ */ React143.forwardRef(({
   debug,
   children,
   frames = 1,
@@ -142033,21 +142457,21 @@ var Caustics = /* @__PURE__ */ React142.forwardRef(({
   extend({
     CausticsProjectionMaterial
   });
-  const ref = React142.useRef(null);
-  const camera = React142.useRef(null);
-  const scene = React142.useRef(null);
-  const plane = React142.useRef(null);
+  const ref = React143.useRef(null);
+  const camera = React143.useRef(null);
+  const scene = React143.useRef(null);
+  const plane = React143.useRef(null);
   const gl = useThree((state2) => state2.gl);
   const helper = useHelper(debug && camera, CameraHelper);
   const normalTarget = useFBO(resolution, resolution, NORMALPROPS);
   const normalTargetB = useFBO(resolution, resolution, NORMALPROPS);
   const causticsTarget = useFBO(resolution, resolution, CAUSTICPROPS);
   const causticsTargetB = useFBO(resolution, resolution, CAUSTICPROPS);
-  const [normalMat] = React142.useState(() => createNormalMaterial());
-  const [normalMatB] = React142.useState(() => createNormalMaterial(BackSide));
-  const [causticsMaterial] = React142.useState(() => new CausticsMaterial());
-  const [causticsQuad] = React142.useState(() => new FullScreenQuad(causticsMaterial));
-  React142.useLayoutEffect(() => {
+  const [normalMat] = React143.useState(() => createNormalMaterial());
+  const [normalMatB] = React143.useState(() => createNormalMaterial(BackSide));
+  const [causticsMaterial] = React143.useState(() => new CausticsMaterial());
+  const [causticsQuad] = React143.useState(() => new FullScreenQuad(causticsMaterial));
+  React143.useLayoutEffect(() => {
     ref.current.updateWorldMatrix(false, true);
   });
   let count = 0;
@@ -142158,19 +142582,19 @@ var Caustics = /* @__PURE__ */ React142.forwardRef(({
       if (causticsOnly) scene.current.visible = false;
     }
   });
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
-  }, props), /* @__PURE__ */ React142.createElement("scene", {
+  }, props), /* @__PURE__ */ React143.createElement("scene", {
     ref: scene
-  }, /* @__PURE__ */ React142.createElement("orthographicCamera", {
+  }, /* @__PURE__ */ React143.createElement("orthographicCamera", {
     ref: camera,
     up: [0, 1, 0]
-  }), children), /* @__PURE__ */ React142.createElement("mesh", {
+  }), children), /* @__PURE__ */ React143.createElement("mesh", {
     renderOrder: 2,
     ref: plane,
     "rotation-x": -Math.PI / 2
-  }, /* @__PURE__ */ React142.createElement("planeGeometry", null), /* @__PURE__ */ React142.createElement("causticsProjectionMaterial", {
+  }, /* @__PURE__ */ React143.createElement("planeGeometry", null), /* @__PURE__ */ React143.createElement("causticsProjectionMaterial", {
     transparent: true,
     color,
     causticsTexture: causticsTarget.texture,
@@ -142179,13 +142603,17 @@ var Caustics = /* @__PURE__ */ React142.forwardRef(({
     blendSrc: OneFactor,
     blendDst: SrcAlphaFactor,
     depthWrite: false
-  }), debug && /* @__PURE__ */ React142.createElement(Edges, null, /* @__PURE__ */ React142.createElement("lineBasicMaterial", {
+  }), debug && /* @__PURE__ */ React143.createElement(Edges, null, /* @__PURE__ */ React143.createElement("lineBasicMaterial", {
     color: "#ffff00",
     toneMapped: false
   }))));
 });
 
+// node_modules/@react-three/drei/core/SpotLight.js
+init_react_shim();
+
 // node_modules/@react-three/drei/materials/SpotLightMaterial.js
+init_react_shim();
 var SpotLightMaterial = class extends ShaderMaterial {
   constructor() {
     super({
@@ -142304,6 +142732,7 @@ var SpotLightMaterial = class extends ShaderMaterial {
 };
 
 // node_modules/@react-three/drei/helpers/glsl/DefaultSpotlightShadowShadows.glsl.js
+init_react_shim();
 var SpotlightShadowShader = "#define GLSLIFY 1\nvarying vec2 vUv;uniform sampler2D uShadowMap;uniform float uTime;void main(){vec3 color=texture2D(uShadowMap,vUv).xyz;gl_FragColor=vec4(color,1.);}";
 
 // node_modules/@react-three/drei/core/SpotLight.js
@@ -142321,29 +142750,29 @@ function VolumetricMesh({
   attenuation = 5,
   anglePower = 5
 }) {
-  const mesh = React142.useRef(null);
+  const mesh = React143.useRef(null);
   const size = useThree((state2) => state2.size);
   const camera = useThree((state2) => state2.camera);
   const dpr = useThree((state2) => state2.viewport.dpr);
-  const [material] = React142.useState(() => new SpotLightMaterial());
-  const [vec] = React142.useState(() => new Vector3());
+  const [material] = React143.useState(() => new SpotLightMaterial());
+  const [vec] = React143.useState(() => new Vector3());
   radiusTop = radiusTop === void 0 ? 0.1 : radiusTop;
   radiusBottom = radiusBottom === void 0 ? angle * 7 : radiusBottom;
   useFrame(() => {
     material.uniforms.spotPosition.value.copy(mesh.current.getWorldPosition(vec));
     mesh.current.lookAt(mesh.current.parent.target.getWorldPosition(vec));
   });
-  const geom = React142.useMemo(() => {
+  const geom = React143.useMemo(() => {
     const geometry3 = new CylinderGeometry(radiusTop, radiusBottom, distance, 128, 64, true);
     geometry3.applyMatrix4(new Matrix4().makeTranslation(0, -distance / 2, 0));
     geometry3.applyMatrix4(new Matrix4().makeRotationX(-Math.PI / 2));
     return geometry3;
   }, [distance, radiusTop, radiusBottom]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("mesh", {
     ref: mesh,
     geometry: geom,
     raycast: () => null
-  }, /* @__PURE__ */ React142.createElement("primitive", {
+  }, /* @__PURE__ */ React143.createElement("primitive", {
     object: material,
     attach: "material",
     "uniforms-opacity-value": opacity,
@@ -142357,8 +142786,8 @@ function VolumetricMesh({
   })));
 }
 function useCommon(spotlight, mesh, width, height, distance) {
-  const [[pos, dir]] = React142.useState(() => [new Vector3(), new Vector3()]);
-  React142.useLayoutEffect(() => {
+  const [[pos, dir]] = React143.useState(() => [new Vector3(), new Vector3()]);
+  React143.useLayoutEffect(() => {
     if (isSpotLight(spotlight.current)) {
       spotlight.current.shadow.mapSize.set(width, height);
       spotlight.current.shadow.needsUpdate = true;
@@ -142389,16 +142818,16 @@ function SpotlightShadowWithShader({
   children,
   ...rest
 }) {
-  const mesh = React142.useRef(null);
+  const mesh = React143.useRef(null);
   const spotlight = rest.spotlightRef;
   const debug = rest.debug;
   useCommon(spotlight, mesh, width, height, distance);
-  const renderTarget = React142.useMemo(() => new WebGLRenderTarget(width, height, {
+  const renderTarget = React143.useMemo(() => new WebGLRenderTarget(width, height, {
     format: RGBAFormat,
     stencilBuffer: false
     // depthTexture: null!
   }), [width, height]);
-  const uniforms = React142.useRef({
+  const uniforms = React143.useRef({
     uShadowMap: {
       value: map
     },
@@ -142406,8 +142835,8 @@ function SpotlightShadowWithShader({
       value: 0
     }
   });
-  React142.useEffect(() => void (uniforms.current.uShadowMap.value = map), [map]);
-  const fsQuad = React142.useMemo(() => new FullScreenQuad(new ShaderMaterial({
+  React143.useEffect(() => void (uniforms.current.uShadowMap.value = map), [map]);
+  const fsQuad = React143.useMemo(() => new FullScreenQuad(new ShaderMaterial({
     uniforms: uniforms.current,
     vertexShader: (
       /* glsl */
@@ -142422,11 +142851,11 @@ function SpotlightShadowWithShader({
     ),
     fragmentShader: shader
   })), [shader]);
-  React142.useEffect(() => () => {
+  React143.useEffect(() => () => {
     fsQuad.material.dispose();
     fsQuad.dispose();
   }, [fsQuad]);
-  React142.useEffect(() => () => renderTarget.dispose(), [renderTarget]);
+  React143.useEffect(() => () => renderTarget.dispose(), [renderTarget]);
   useFrame(({
     gl
   }, dt2) => {
@@ -142435,11 +142864,11 @@ function SpotlightShadowWithShader({
     fsQuad.render(gl);
     gl.setRenderTarget(null);
   });
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("mesh", {
     ref: mesh,
     scale: scale3,
     castShadow: true
-  }, /* @__PURE__ */ React142.createElement("planeGeometry", null), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, /* @__PURE__ */ React143.createElement("planeGeometry", null), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     side: DoubleSide,
     alphaTest,
@@ -142459,15 +142888,15 @@ function SpotlightShadowWithoutShader({
   children,
   ...rest
 }) {
-  const mesh = React142.useRef(null);
+  const mesh = React143.useRef(null);
   const spotlight = rest.spotlightRef;
   const debug = rest.debug;
   useCommon(spotlight, mesh, width, height, distance);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("mesh", {
     ref: mesh,
     scale: scale3,
     castShadow: true
-  }, /* @__PURE__ */ React142.createElement("planeGeometry", null), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, /* @__PURE__ */ React143.createElement("planeGeometry", null), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     side: DoubleSide,
     alphaTest,
@@ -142478,10 +142907,10 @@ function SpotlightShadowWithoutShader({
   }, children)));
 }
 function SpotLightShadow2(props) {
-  if (props.shader) return /* @__PURE__ */ React142.createElement(SpotlightShadowWithShader, props);
-  return /* @__PURE__ */ React142.createElement(SpotlightShadowWithoutShader, props);
+  if (props.shader) return /* @__PURE__ */ React143.createElement(SpotlightShadowWithShader, props);
+  return /* @__PURE__ */ React143.createElement(SpotlightShadowWithoutShader, props);
 }
-var SpotLight2 = /* @__PURE__ */ React142.forwardRef(({
+var SpotLight2 = /* @__PURE__ */ React143.forwardRef(({
   // Volumetric
   opacity = 1,
   radiusTop,
@@ -142497,17 +142926,17 @@ var SpotLight2 = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, ref) => {
-  const spotlight = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => spotlight.current, []);
-  return /* @__PURE__ */ React142.createElement("group", null, debug && spotlight.current && /* @__PURE__ */ React142.createElement("spotLightHelper", {
+  const spotlight = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => spotlight.current, []);
+  return /* @__PURE__ */ React143.createElement("group", null, debug && spotlight.current && /* @__PURE__ */ React143.createElement("spotLightHelper", {
     args: [spotlight.current]
-  }), /* @__PURE__ */ React142.createElement("spotLight", _extends({
+  }), /* @__PURE__ */ React143.createElement("spotLight", _extends({
     ref: spotlight,
     angle,
     color,
     distance,
     castShadow: true
-  }, props), volumetric && /* @__PURE__ */ React142.createElement(VolumetricMesh, {
+  }, props), volumetric && /* @__PURE__ */ React143.createElement(VolumetricMesh, {
     debug,
     opacity,
     radiusTop,
@@ -142518,12 +142947,15 @@ var SpotLight2 = /* @__PURE__ */ React142.forwardRef(({
     angle,
     attenuation,
     anglePower
-  })), children && /* @__PURE__ */ React142.cloneElement(children, {
+  })), children && /* @__PURE__ */ React143.cloneElement(children, {
     spotlightRef: spotlight,
     debug
   }));
 });
-var Lightformer = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Lightformer.js
+init_react_shim();
+var Lightformer = /* @__PURE__ */ React143.forwardRef(({
   light,
   args,
   map,
@@ -142536,9 +142968,9 @@ var Lightformer = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, forwardRef82) => {
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(forwardRef82, () => ref.current, []);
-  React142.useLayoutEffect(() => {
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(forwardRef82, () => ref.current, []);
+  React143.useLayoutEffect(() => {
     if (!children && !props.material) {
       applyProps(ref.current.material, {
         color
@@ -142546,34 +142978,37 @@ var Lightformer = /* @__PURE__ */ React142.forwardRef(({
       ref.current.material.color.multiplyScalar(intensity);
     }
   }, [color, intensity, children, props.material]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (!props.rotation) ref.current.quaternion.identity();
     if (target2 && !props.rotation) {
       "boolean" === typeof target2 ? ref.current.lookAt(0, 0, 0) : ref.current.lookAt(Array.isArray(target2) ? new Vector3(...target2) : target2);
     }
   }, [target2, props.rotation]);
   scale3 = Array.isArray(scale3) && scale3.length === 2 ? [scale3[0], scale3[1], 1] : scale3;
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     scale: scale3
-  }, props), Form === "circle" ? /* @__PURE__ */ React142.createElement("ringGeometry", {
+  }, props), Form === "circle" ? /* @__PURE__ */ React143.createElement("ringGeometry", {
     args: args ? args : [0, 0.5, 64]
-  }) : Form === "ring" ? /* @__PURE__ */ React142.createElement("ringGeometry", {
+  }) : Form === "ring" ? /* @__PURE__ */ React143.createElement("ringGeometry", {
     args: args ? args : [0.25, 0.5, 64]
-  }) : Form === "rect" || Form === "plane" ? /* @__PURE__ */ React142.createElement("planeGeometry", {
+  }) : Form === "rect" || Form === "plane" ? /* @__PURE__ */ React143.createElement("planeGeometry", {
     args: args ? args : [1, 1]
-  }) : Form === "box" ? /* @__PURE__ */ React142.createElement("boxGeometry", {
+  }) : Form === "box" ? /* @__PURE__ */ React143.createElement("boxGeometry", {
     args: args ? args : [1, 1, 1]
-  }) : /* @__PURE__ */ React142.createElement(Form, {
+  }) : /* @__PURE__ */ React143.createElement(Form, {
     args
-  }), children ? children : /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }), children ? children : /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     toneMapped,
     map,
     side: DoubleSide
-  }), light && /* @__PURE__ */ React142.createElement("pointLight", _extends({
+  }), light && /* @__PURE__ */ React143.createElement("pointLight", _extends({
     castShadow: true
   }, light)));
 });
+
+// node_modules/@react-three/drei/core/Sky.js
+init_react_shim();
 function calcPosFromAngles(inclination, azimuth, vector = new Vector3()) {
   const theta = Math.PI * (inclination - 0.5);
   const phi = 2 * Math.PI * (azimuth - 0.5);
@@ -142582,7 +143017,7 @@ function calcPosFromAngles(inclination, azimuth, vector = new Vector3()) {
   vector.z = Math.sin(phi);
   return vector;
 }
-var Sky2 = /* @__PURE__ */ React142.forwardRef(({
+var Sky2 = /* @__PURE__ */ React143.forwardRef(({
   inclination = 0.6,
   azimuth = 0.1,
   distance = 1e3,
@@ -142593,9 +143028,9 @@ var Sky2 = /* @__PURE__ */ React142.forwardRef(({
   sunPosition = calcPosFromAngles(inclination, azimuth),
   ...props
 }, ref) => {
-  const scale3 = React142.useMemo(() => new Vector3().setScalar(distance), [distance]);
-  const [sky] = React142.useState(() => new Sky());
-  return /* @__PURE__ */ React142.createElement("primitive", _extends({
+  const scale3 = React143.useMemo(() => new Vector3().setScalar(distance), [distance]);
+  const [sky] = React143.useState(() => new Sky());
+  return /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: sky,
     ref,
     "material-uniforms-mieCoefficient-value": mieCoefficient,
@@ -142606,6 +143041,9 @@ var Sky2 = /* @__PURE__ */ React142.forwardRef(({
     scale: scale3
   }, props));
 });
+
+// node_modules/@react-three/drei/core/Stars.js
+init_react_shim();
 var StarfieldMaterial = class extends ShaderMaterial {
   constructor() {
     super({
@@ -142654,7 +143092,7 @@ var StarfieldMaterial = class extends ShaderMaterial {
 var genStar = (r4) => {
   return new Vector3().setFromSpherical(new Spherical(r4, Math.acos(1 - Math.random() * 2), Math.random() * 2 * Math.PI));
 };
-var Stars = /* @__PURE__ */ React142.forwardRef(({
+var Stars = /* @__PURE__ */ React143.forwardRef(({
   radius = 100,
   depth = 50,
   count = 5e3,
@@ -142663,8 +143101,8 @@ var Stars = /* @__PURE__ */ React142.forwardRef(({
   fade: fade2 = false,
   speed = 1
 }, ref) => {
-  const material = React142.useRef(null);
-  const [position2, color, size] = React142.useMemo(() => {
+  const material = React143.useRef(null);
+  const [position2, color, size] = React143.useMemo(() => {
     const positions = [];
     const colors2 = [];
     const sizes = Array.from({
@@ -142682,19 +143120,19 @@ var Stars = /* @__PURE__ */ React142.forwardRef(({
     return [new Float32Array(positions), new Float32Array(colors2), new Float32Array(sizes)];
   }, [count, depth, factor, radius, saturation]);
   useFrame((state2) => material.current && (material.current.uniforms.time.value = state2.clock.elapsedTime * speed));
-  const [starfieldMaterial] = React142.useState(() => new StarfieldMaterial());
-  return /* @__PURE__ */ React142.createElement("points", {
+  const [starfieldMaterial] = React143.useState(() => new StarfieldMaterial());
+  return /* @__PURE__ */ React143.createElement("points", {
     ref
-  }, /* @__PURE__ */ React142.createElement("bufferGeometry", null, /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }, /* @__PURE__ */ React143.createElement("bufferGeometry", null, /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-position",
     args: [position2, 3]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-color",
     args: [color, 3]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-size",
     args: [size, 1]
-  })), /* @__PURE__ */ React142.createElement("primitive", {
+  })), /* @__PURE__ */ React143.createElement("primitive", {
     ref: material,
     object: starfieldMaterial,
     attach: "material",
@@ -142705,6 +143143,9 @@ var Stars = /* @__PURE__ */ React142.forwardRef(({
     vertexColors: true
   }));
 });
+
+// node_modules/@react-three/drei/core/Cloud.js
+init_react_shim();
 var CLOUD_URL = "https://rawcdn.githack.com/pmndrs/drei-assets/9225a9f1fbd449d9411125c2f419b843d0308c9f/cloud.png";
 var parentMatrix2 = /* @__PURE__ */ new Matrix4();
 var translation2 = /* @__PURE__ */ new Vector3();
@@ -142712,8 +143153,8 @@ var rotation2 = /* @__PURE__ */ new Quaternion();
 var cpos = /* @__PURE__ */ new Vector3();
 var cquat = /* @__PURE__ */ new Quaternion();
 var scale2 = /* @__PURE__ */ new Vector3();
-var context7 = /* @__PURE__ */ React142.createContext(null);
-var Clouds = /* @__PURE__ */ React142.forwardRef(({
+var context7 = /* @__PURE__ */ React143.createContext(null);
+var Clouds = /* @__PURE__ */ React143.forwardRef(({
   children,
   material = MeshLambertMaterial,
   texture = CLOUD_URL,
@@ -142723,7 +143164,7 @@ var Clouds = /* @__PURE__ */ React142.forwardRef(({
   ...props
 }, fref) => {
   var _image$width, _image$height;
-  const CloudMaterial = React142.useMemo(() => {
+  const CloudMaterial = React143.useMemo(() => {
     return class extends material {
       constructor() {
         super();
@@ -142745,12 +143186,12 @@ var Clouds = /* @__PURE__ */ React142.forwardRef(({
   extend({
     CloudMaterial
   });
-  const instance2 = React142.useRef(null);
-  const clouds = React142.useRef([]);
-  const opacities = React142.useMemo(() => new Float32Array(Array.from({
+  const instance2 = React143.useRef(null);
+  const clouds = React143.useRef([]);
+  const opacities = React143.useMemo(() => new Float32Array(Array.from({
     length: limit
   }, () => 1)), [limit]);
-  const colors2 = React142.useMemo(() => new Float32Array(Array.from({
+  const colors2 = React143.useMemo(() => new Float32Array(Array.from({
     length: limit
   }, () => [1, 1, 1]).flat()), [limit]);
   const cloudTexture = useTexture(texture);
@@ -142784,7 +143225,7 @@ var Clouds = /* @__PURE__ */ React142.forwardRef(({
     instance2.current.instanceMatrix.needsUpdate = true;
     if (instance2.current.instanceColor) instance2.current.instanceColor.needsUpdate = true;
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const count = Math.min(limit, range !== void 0 ? range : limit, clouds.current.length);
     instance2.current.count = count;
     setUpdateRange(instance2.current.instanceMatrix, {
@@ -142805,33 +143246,33 @@ var Clouds = /* @__PURE__ */ React142.forwardRef(({
   let imageBounds = [(_image$width = cloudTexture.image.width) !== null && _image$width !== void 0 ? _image$width : 1, (_image$height = cloudTexture.image.height) !== null && _image$height !== void 0 ? _image$height : 1];
   const max2 = Math.max(imageBounds[0], imageBounds[1]);
   imageBounds = [imageBounds[0] / max2, imageBounds[1] / max2];
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: fref
-  }, props), /* @__PURE__ */ React142.createElement(context7.Provider, {
+  }, props), /* @__PURE__ */ React143.createElement(context7.Provider, {
     value: clouds
-  }, children, /* @__PURE__ */ React142.createElement("instancedMesh", {
+  }, children, /* @__PURE__ */ React143.createElement("instancedMesh", {
     matrixAutoUpdate: false,
     ref: instance2,
     args: [null, null, limit],
     frustumCulled
-  }, /* @__PURE__ */ React142.createElement("instancedBufferAttribute", {
+  }, /* @__PURE__ */ React143.createElement("instancedBufferAttribute", {
     usage: DynamicDrawUsage,
     attach: "instanceColor",
     args: [colors2, 3]
-  }), /* @__PURE__ */ React142.createElement("planeGeometry", {
+  }), /* @__PURE__ */ React143.createElement("planeGeometry", {
     args: [...imageBounds]
-  }, /* @__PURE__ */ React142.createElement("instancedBufferAttribute", {
+  }, /* @__PURE__ */ React143.createElement("instancedBufferAttribute", {
     usage: DynamicDrawUsage,
     attach: "attributes-cloudOpacity",
     args: [opacities, 1]
-  })), /* @__PURE__ */ React142.createElement("cloudMaterial", {
+  })), /* @__PURE__ */ React143.createElement("cloudMaterial", {
     key: material.name,
     map: cloudTexture,
     transparent: true,
     depthWrite: false
   }))));
 });
-var CloudInstance = /* @__PURE__ */ React142.forwardRef(({
+var CloudInstance = /* @__PURE__ */ React143.forwardRef(({
   opacity = 1,
   speed = 0,
   bounds = [5, 1, 1],
@@ -142850,10 +143291,10 @@ var CloudInstance = /* @__PURE__ */ React142.forwardRef(({
     const x3 = Math.sin(seed3++) * 1e4;
     return x3 - Math.floor(x3);
   }
-  const parent = React142.useContext(context7);
-  const ref = React142.useRef(null);
-  const uuid2 = React142.useId();
-  const clouds = React142.useMemo(() => {
+  const parent = React143.useContext(context7);
+  const ref = React143.useRef(null);
+  const uuid2 = React143.useId();
+  const clouds = React143.useMemo(() => {
     return [...new Array(segments)].map((_2, index2) => ({
       segments,
       bounds: new Vector3(1, 1, 1),
@@ -142867,7 +143308,7 @@ var CloudInstance = /* @__PURE__ */ React142.forwardRef(({
       rotation: index2 * (Math.PI / segments)
     }));
   }, [segments, uuid2]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     clouds.forEach((cloud, index2) => {
       applyProps(cloud, {
         volume,
@@ -142900,27 +143341,30 @@ var CloudInstance = /* @__PURE__ */ React142.forwardRef(({
       cloud.volume = ((distributed == null ? void 0 : distributed.volume) !== void 0 ? distributed.volume : Math.max(Math.max(0, smallestVolume), concentrate === "random" ? random() : concentrate === "inside" ? cloud.length : 1 - cloud.length)) * volume;
     });
   }, [concentrate, bounds, fade2, color, opacity, growth, volume, seed3, segments, speed]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const temp5 = clouds;
     parent.current = [...parent.current, ...temp5];
     return () => {
       parent.current = parent.current.filter((item) => item.uuid !== uuid2);
     };
   }, [clouds]);
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref
   }, props));
 });
-var Cloud = /* @__PURE__ */ React142.forwardRef((props, fref) => {
-  const parent = React142.useContext(context7);
-  if (parent) return /* @__PURE__ */ React142.createElement(CloudInstance, _extends({
+var Cloud = /* @__PURE__ */ React143.forwardRef((props, fref) => {
+  const parent = React143.useContext(context7);
+  if (parent) return /* @__PURE__ */ React143.createElement(CloudInstance, _extends({
     ref: fref
   }, props));
-  return /* @__PURE__ */ React142.createElement(Clouds, null, /* @__PURE__ */ React142.createElement(CloudInstance, _extends({
+  return /* @__PURE__ */ React143.createElement(Clouds, null, /* @__PURE__ */ React143.createElement(CloudInstance, _extends({
     ref: fref
   }, props)));
 });
+
+// node_modules/@react-three/drei/core/Sparkles.js
+init_react_shim();
 var SparklesImplMaterial = class extends ShaderMaterial {
   constructor() {
     super({
@@ -142998,7 +143442,7 @@ var normalizeVector = (v6) => {
   return [v6, v6, v6];
 };
 function usePropAsIsOrAsAttribute(count, prop, setDefault) {
-  return React142.useMemo(() => {
+  return React143.useMemo(() => {
     if (prop !== void 0) {
       if (isFloat32Array(prop)) {
         return prop;
@@ -143024,7 +143468,7 @@ function usePropAsIsOrAsAttribute(count, prop, setDefault) {
     }, setDefault);
   }, [prop]);
 }
-var Sparkles = /* @__PURE__ */ React142.forwardRef(({
+var Sparkles = /* @__PURE__ */ React143.forwardRef(({
   noise = 1,
   count = 100,
   speed = 1,
@@ -143035,13 +143479,13 @@ var Sparkles = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, forwardRef82) => {
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     SparklesImplMaterial
   }), []);
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const dpr = useThree((state2) => state2.viewport.dpr);
   const _scale2 = normalizeVector(scale3);
-  const positions = React142.useMemo(() => Float32Array.from(Array.from({
+  const positions = React143.useMemo(() => Float32Array.from(Array.from({
     length: count
   }, () => _scale2.map(MathUtils.randFloatSpread)).flat()), [count, ..._scale2]);
   const sizes = usePropAsIsOrAsAttribute(count, size, Math.random);
@@ -143052,35 +143496,38 @@ var Sparkles = /* @__PURE__ */ React142.forwardRef(({
   useFrame((state2) => {
     if (ref.current && ref.current.material) ref.current.material.time = state2.clock.elapsedTime;
   });
-  React142.useImperativeHandle(forwardRef82, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("points", _extends({
+  React143.useImperativeHandle(forwardRef82, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("points", _extends({
     key: `particle-${count}-${JSON.stringify(scale3)}`
   }, props, {
     ref
-  }), /* @__PURE__ */ React142.createElement("bufferGeometry", null, /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferGeometry", null, /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-position",
     args: [positions, 3]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-size",
     args: [sizes, 1]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-opacity",
     args: [opacities, 1]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-speed",
     args: [speeds, 1]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-color",
     args: [colors2, 3]
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-noise",
     args: [noises, 3]
-  })), children ? children : /* @__PURE__ */ React142.createElement("sparklesImplMaterial", {
+  })), children ? children : /* @__PURE__ */ React143.createElement("sparklesImplMaterial", {
     transparent: true,
     pixelRatio: dpr,
     depthWrite: false
   }));
 });
+
+// node_modules/@react-three/drei/core/MatcapTexture.js
+init_react_shim();
 function getFormatString(format2) {
   switch (format2) {
     case 64:
@@ -143100,8 +143547,8 @@ var MATCAP_ROOT = "https://rawcdn.githack.com/emmelleppi/matcaps/9b36ccaaf0a2488
 function useMatcapTexture(id = 0, format2 = 1024, onLoad) {
   const matcapList = suspend(() => fetch(LIST_URL).then((res) => res.json()), ["matcapList"]);
   const DEFAULT_MATCAP = matcapList[0];
-  const numTot = React142.useMemo(() => Object.keys(matcapList).length, []);
-  const fileHash = React142.useMemo(() => {
+  const numTot = React143.useMemo(() => Object.keys(matcapList).length, []);
+  const fileHash = React143.useMemo(() => {
     if (typeof id === "string") {
       return id;
     } else if (typeof id === "number") {
@@ -143121,8 +143568,11 @@ var MatcapTexture = ({
   onLoad
 }) => {
   const texture = useMatcapTexture(id, format2, onLoad);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(texture));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(texture));
 };
+
+// node_modules/@react-three/drei/core/NormalTexture.js
+init_react_shim();
 var NORMAL_ROOT = "https://rawcdn.githack.com/pmndrs/drei-assets/7a3104997e1576f83472829815b00880d88b32fb";
 var LIST_URL2 = "https://cdn.jsdelivr.net/gh/pmndrs/drei-assets@master/normals/normals.json";
 function useNormalTexture(id = 0, settings = {}, onLoad) {
@@ -143132,12 +143582,12 @@ function useNormalTexture(id = 0, settings = {}, onLoad) {
     offset = [0, 0]
   } = settings;
   const normalsList = suspend(() => fetch(LIST_URL2).then((res) => res.json()), ["normalsList"]);
-  const numTot = React142.useMemo(() => Object.keys(normalsList).length, []);
+  const numTot = React143.useMemo(() => Object.keys(normalsList).length, []);
   const DEFAULT_NORMAL = normalsList[0];
   const imageName = normalsList[id] || DEFAULT_NORMAL;
   const url = `${NORMAL_ROOT}/normals/${imageName}`;
   const normalTexture = useTexture(url, onLoad);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (!normalTexture) return;
     normalTexture.wrapS = normalTexture.wrapT = RepeatWrapping;
     normalTexture.repeat = new Vector2(repeat3[0], repeat3[1]);
@@ -143153,8 +143603,14 @@ var NormalTexture = ({
   ...settings
 }) => {
   const ret = useNormalTexture(id, settings, onLoad);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children == null ? void 0 : children(ret));
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children == null ? void 0 : children(ret));
 };
+
+// node_modules/@react-three/drei/core/Wireframe.js
+init_react_shim();
+
+// node_modules/@react-three/drei/materials/WireframeMaterial.js
+init_react_shim();
 var WireframeMaterialShaders = {
   uniforms: {
     strokeOpacity: 1,
@@ -143338,45 +143794,45 @@ function setWireframeOverride(material, uniforms) {
   material.transparent = true;
 }
 function useWireframeUniforms(uniforms, props) {
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _props$fillOpacity;
     return void (uniforms.fillOpacity.value = (_props$fillOpacity = props.fillOpacity) !== null && _props$fillOpacity !== void 0 ? _props$fillOpacity : uniforms.fillOpacity.value);
   }, [props.fillOpacity]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _props$fillMix;
     return void (uniforms.fillMix.value = (_props$fillMix = props.fillMix) !== null && _props$fillMix !== void 0 ? _props$fillMix : uniforms.fillMix.value);
   }, [props.fillMix]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _props$strokeOpacity;
     return void (uniforms.strokeOpacity.value = (_props$strokeOpacity = props.strokeOpacity) !== null && _props$strokeOpacity !== void 0 ? _props$strokeOpacity : uniforms.strokeOpacity.value);
   }, [props.strokeOpacity]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _props$thickness;
     return void (uniforms.thickness.value = (_props$thickness = props.thickness) !== null && _props$thickness !== void 0 ? _props$thickness : uniforms.thickness.value);
   }, [props.thickness]);
-  React142.useEffect(() => void (uniforms.colorBackfaces.value = !!props.colorBackfaces), [props.colorBackfaces]);
-  React142.useEffect(() => void (uniforms.dash.value = !!props.dash), [props.dash]);
-  React142.useEffect(() => void (uniforms.dashInvert.value = !!props.dashInvert), [props.dashInvert]);
-  React142.useEffect(() => {
+  React143.useEffect(() => void (uniforms.colorBackfaces.value = !!props.colorBackfaces), [props.colorBackfaces]);
+  React143.useEffect(() => void (uniforms.dash.value = !!props.dash), [props.dash]);
+  React143.useEffect(() => void (uniforms.dashInvert.value = !!props.dashInvert), [props.dashInvert]);
+  React143.useEffect(() => {
     var _props$dashRepeats;
     return void (uniforms.dashRepeats.value = (_props$dashRepeats = props.dashRepeats) !== null && _props$dashRepeats !== void 0 ? _props$dashRepeats : uniforms.dashRepeats.value);
   }, [props.dashRepeats]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _props$dashLength;
     return void (uniforms.dashLength.value = (_props$dashLength = props.dashLength) !== null && _props$dashLength !== void 0 ? _props$dashLength : uniforms.dashLength.value);
   }, [props.dashLength]);
-  React142.useEffect(() => void (uniforms.squeeze.value = !!props.squeeze), [props.squeeze]);
-  React142.useEffect(() => {
+  React143.useEffect(() => void (uniforms.squeeze.value = !!props.squeeze), [props.squeeze]);
+  React143.useEffect(() => {
     var _props$squeezeMin;
     return void (uniforms.squeezeMin.value = (_props$squeezeMin = props.squeezeMin) !== null && _props$squeezeMin !== void 0 ? _props$squeezeMin : uniforms.squeezeMin.value);
   }, [props.squeezeMin]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _props$squeezeMax;
     return void (uniforms.squeezeMax.value = (_props$squeezeMax = props.squeezeMax) !== null && _props$squeezeMax !== void 0 ? _props$squeezeMax : uniforms.squeezeMax.value);
   }, [props.squeezeMax]);
-  React142.useEffect(() => void (uniforms.stroke.value = props.stroke ? new Color(props.stroke) : uniforms.stroke.value), [props.stroke]);
-  React142.useEffect(() => void (uniforms.fill.value = props.fill ? new Color(props.fill) : uniforms.fill.value), [props.fill]);
-  React142.useEffect(() => void (uniforms.backfaceStroke.value = props.backfaceStroke ? new Color(props.backfaceStroke) : uniforms.backfaceStroke.value), [props.backfaceStroke]);
+  React143.useEffect(() => void (uniforms.stroke.value = props.stroke ? new Color(props.stroke) : uniforms.stroke.value), [props.stroke]);
+  React143.useEffect(() => void (uniforms.fill.value = props.fill ? new Color(props.fill) : uniforms.fill.value), [props.fill]);
+  React143.useEffect(() => void (uniforms.backfaceStroke.value = props.backfaceStroke ? new Color(props.backfaceStroke) : uniforms.backfaceStroke.value), [props.backfaceStroke]);
 }
 
 // node_modules/@react-three/drei/core/Wireframe.js
@@ -143454,8 +143910,8 @@ function WireframeWithCustomGeo({
   extend({
     MeshWireframeMaterial: WireframeMaterial
   });
-  const [geometry3, setGeometry] = React142.useState(null);
-  React142.useLayoutEffect(() => {
+  const [geometry3, setGeometry] = React143.useState(null);
+  React143.useLayoutEffect(() => {
     const geom = getInputGeometry(customGeometry);
     if (!geom) {
       throw new Error("Wireframe: geometry prop must be a BufferGeometry or a ref to a BufferGeometry.");
@@ -143466,9 +143922,9 @@ function WireframeWithCustomGeo({
     }
   }, [simplify, customGeometry]);
   const drawnGeo = isRef3(customGeometry) ? geometry3 : customGeometry;
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, drawnGeo && /* @__PURE__ */ React142.createElement("mesh", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, drawnGeo && /* @__PURE__ */ React143.createElement("mesh", {
     geometry: drawnGeo
-  }, /* @__PURE__ */ React142.createElement("meshWireframeMaterial", _extends({
+  }, /* @__PURE__ */ React143.createElement("meshWireframeMaterial", _extends({
     attach: "material",
     transparent: true,
     side: DoubleSide,
@@ -143487,10 +143943,10 @@ function WireframeWithoutCustomGeo({
   simplify = false,
   ...props
 }) {
-  const objectRef = React142.useRef(null);
-  const uniforms = React142.useMemo(() => getUniforms2(), [WireframeMaterialShaders.uniforms]);
+  const objectRef = React143.useRef(null);
+  const uniforms = React143.useMemo(() => getUniforms2(), [WireframeMaterialShaders.uniforms]);
   useWireframeUniforms(uniforms, props);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const geom = getInputGeometry(objectRef);
     if (!geom) {
       throw new Error("Wireframe: Must be a child of a Mesh, Line or Points object or specify a geometry prop.");
@@ -143502,7 +143958,7 @@ function WireframeWithoutCustomGeo({
       og.dispose();
     };
   }, [simplify]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const parentMesh = objectRef.current.parent;
     const og = parentMesh.material.clone();
     setWireframeOverride(parentMesh.material, uniforms);
@@ -143511,7 +143967,7 @@ function WireframeWithoutCustomGeo({
       parentMesh.material = og;
     };
   }, []);
-  return /* @__PURE__ */ React142.createElement("object3D", {
+  return /* @__PURE__ */ React143.createElement("object3D", {
     ref: objectRef
   });
 }
@@ -143520,28 +143976,31 @@ function Wireframe({
   ...props
 }) {
   if (customGeometry) {
-    return /* @__PURE__ */ React142.createElement(WireframeWithCustomGeo, _extends({
+    return /* @__PURE__ */ React143.createElement(WireframeWithCustomGeo, _extends({
       geometry: customGeometry
     }, props));
   }
-  return /* @__PURE__ */ React142.createElement(WireframeWithoutCustomGeo, props);
+  return /* @__PURE__ */ React143.createElement(WireframeWithoutCustomGeo, props);
 }
+
+// node_modules/@react-three/drei/core/ShadowAlpha.js
+init_react_shim();
 function ShadowAlpha({
   opacity,
   alphaMap
 }) {
-  const depthMaterialRef = React142.useRef(null);
-  const distanceMaterialRef = React142.useRef(null);
-  const uShadowOpacity = React142.useRef({
+  const depthMaterialRef = React143.useRef(null);
+  const distanceMaterialRef = React143.useRef(null);
+  const uShadowOpacity = React143.useRef({
     value: 1
   });
-  const uAlphaMap = React142.useRef({
+  const uAlphaMap = React143.useRef({
     value: null
   });
-  const uHasAlphaMap = React142.useRef({
+  const uHasAlphaMap = React143.useRef({
     value: false
   });
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     depthMaterialRef.current.onBeforeCompile = distanceMaterialRef.current.onBeforeCompile = (shader) => {
       const mainLineStart = shader.fragmentShader.indexOf("void main");
       let mainLine = "";
@@ -143608,15 +144067,18 @@ function ShadowAlpha({
       }
     }
   });
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("meshDepthMaterial", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("meshDepthMaterial", {
     ref: depthMaterialRef,
     attach: "customDepthMaterial",
     depthPacking: RGBADepthPacking
-  }), /* @__PURE__ */ React142.createElement("meshDistanceMaterial", {
+  }), /* @__PURE__ */ React143.createElement("meshDistanceMaterial", {
     ref: distanceMaterialRef,
     attach: "customDistanceMaterial"
   }));
 }
+
+// node_modules/@react-three/drei/core/Points.js
+init_react_shim();
 var _inverseMatrix2 = /* @__PURE__ */ new Matrix4();
 var _ray4 = /* @__PURE__ */ new Ray();
 var _sphere4 = /* @__PURE__ */ new Sphere();
@@ -143671,24 +144133,24 @@ var PositionPoint = class extends Group {
 };
 var i4;
 var positionRef;
-var context8 = /* @__PURE__ */ React142.createContext(null);
+var context8 = /* @__PURE__ */ React143.createContext(null);
 var parentMatrix3 = /* @__PURE__ */ new Matrix4();
 var position = /* @__PURE__ */ new Vector3();
-var PointsInstances = /* @__PURE__ */ React142.forwardRef(({
+var PointsInstances = /* @__PURE__ */ React143.forwardRef(({
   children,
   range,
   limit = 1e3,
   ...props
 }, ref) => {
-  const parentRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => parentRef.current, []);
-  const [refs, setRefs] = React142.useState([]);
-  const [[positions, colors2, sizes]] = React142.useState(() => [new Float32Array(limit * 3), Float32Array.from({
+  const parentRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => parentRef.current, []);
+  const [refs, setRefs] = React143.useState([]);
+  const [[positions, colors2, sizes]] = React143.useState(() => [new Float32Array(limit * 3), Float32Array.from({
     length: limit * 3
   }, () => 1), Float32Array.from({
     length: limit
   }, () => 1)]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     parentRef.current.geometry.attributes.position.needsUpdate = true;
   });
   useFrame(() => {
@@ -143708,57 +144170,57 @@ var PointsInstances = /* @__PURE__ */ React142.forwardRef(({
       parentRef.current.geometry.attributes.size.needsUpdate = true;
     }
   });
-  const api = React142.useMemo(() => ({
+  const api = React143.useMemo(() => ({
     getParent: () => parentRef,
     subscribe: (ref2) => {
       setRefs((refs2) => [...refs2, ref2]);
       return () => setRefs((refs2) => refs2.filter((item) => item.current !== ref2.current));
     }
   }), []);
-  return /* @__PURE__ */ React142.createElement("points", _extends({
+  return /* @__PURE__ */ React143.createElement("points", _extends({
     userData: {
       instances: refs
     },
     matrixAutoUpdate: false,
     ref: parentRef,
     raycast: () => null
-  }, props), /* @__PURE__ */ React142.createElement("bufferGeometry", null, /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }, props), /* @__PURE__ */ React143.createElement("bufferGeometry", null, /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-position",
     args: [positions, 3],
     usage: DynamicDrawUsage
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-color",
     args: [colors2, 3],
     usage: DynamicDrawUsage
-  }), /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-size",
     args: [sizes, 1],
     usage: DynamicDrawUsage
-  })), /* @__PURE__ */ React142.createElement(context8.Provider, {
+  })), /* @__PURE__ */ React143.createElement(context8.Provider, {
     value: api
   }, children));
 });
-var Point = /* @__PURE__ */ React142.forwardRef(({
+var Point = /* @__PURE__ */ React143.forwardRef(({
   children,
   ...props
 }, ref) => {
-  React142.useMemo(() => extend({
+  React143.useMemo(() => extend({
     PositionPoint
   }), []);
-  const group = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => group.current, []);
+  const group = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => group.current, []);
   const {
     subscribe,
     getParent
-  } = React142.useContext(context8);
-  React142.useLayoutEffect(() => subscribe(group), []);
-  return /* @__PURE__ */ React142.createElement("positionPoint", _extends({
+  } = React143.useContext(context8);
+  React143.useLayoutEffect(() => subscribe(group), []);
+  return /* @__PURE__ */ React143.createElement("positionPoint", _extends({
     instance: getParent(),
     instanceKey: group,
     ref: group
   }, props), children);
 });
-var PointsBuffer = /* @__PURE__ */ React142.forwardRef(({
+var PointsBuffer = /* @__PURE__ */ React143.forwardRef(({
   children,
   positions,
   colors: colors2,
@@ -143766,44 +144228,47 @@ var PointsBuffer = /* @__PURE__ */ React142.forwardRef(({
   stride = 3,
   ...props
 }, forwardedRef) => {
-  const pointsRef = React142.useRef(null);
-  React142.useImperativeHandle(forwardedRef, () => pointsRef.current, []);
+  const pointsRef = React143.useRef(null);
+  React143.useImperativeHandle(forwardedRef, () => pointsRef.current, []);
   useFrame(() => {
     const attr = pointsRef.current.geometry.attributes;
     attr.position.needsUpdate = true;
     if (colors2) attr.color.needsUpdate = true;
     if (sizes) attr.size.needsUpdate = true;
   });
-  return /* @__PURE__ */ React142.createElement("points", _extends({
+  return /* @__PURE__ */ React143.createElement("points", _extends({
     ref: pointsRef
-  }, props), /* @__PURE__ */ React142.createElement("bufferGeometry", null, /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }, props), /* @__PURE__ */ React143.createElement("bufferGeometry", null, /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-position",
     args: [positions, stride],
     usage: DynamicDrawUsage
-  }), colors2 && /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), colors2 && /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-color",
     args: [colors2, stride],
     count: colors2.length / stride,
     usage: DynamicDrawUsage
-  }), sizes && /* @__PURE__ */ React142.createElement("bufferAttribute", {
+  }), sizes && /* @__PURE__ */ React143.createElement("bufferAttribute", {
     attach: "attributes-size",
     args: [sizes, 1],
     count: sizes.length / stride,
     usage: DynamicDrawUsage
   })), children);
 });
-var Points2 = /* @__PURE__ */ React142.forwardRef((props, forwardedRef) => {
+var Points2 = /* @__PURE__ */ React143.forwardRef((props, forwardedRef) => {
   if (props.positions instanceof Float32Array) {
-    return /* @__PURE__ */ React142.createElement(PointsBuffer, _extends({}, props, {
+    return /* @__PURE__ */ React143.createElement(PointsBuffer, _extends({}, props, {
       ref: forwardedRef
     }));
-  } else return /* @__PURE__ */ React142.createElement(PointsInstances, _extends({}, props, {
+  } else return /* @__PURE__ */ React143.createElement(PointsInstances, _extends({}, props, {
     ref: forwardedRef
   }));
 });
-var context9 = /* @__PURE__ */ React142.createContext(null);
-var Segments = /* @__PURE__ */ React142.forwardRef((props, forwardedRef) => {
-  React142.useMemo(() => extend({
+
+// node_modules/@react-three/drei/core/Segments.js
+init_react_shim();
+var context9 = /* @__PURE__ */ React143.createContext(null);
+var Segments = /* @__PURE__ */ React143.forwardRef((props, forwardedRef) => {
+  React143.useMemo(() => extend({
     SegmentObject
   }), []);
   const {
@@ -143812,14 +144277,14 @@ var Segments = /* @__PURE__ */ React142.forwardRef((props, forwardedRef) => {
     children,
     ...rest
   } = props;
-  const [segments, setSegments] = React142.useState([]);
-  const [line] = React142.useState(() => new Line2());
-  const [material] = React142.useState(() => new LineMaterial());
-  const [geometry3] = React142.useState(() => new LineSegmentsGeometry());
-  const [resolution] = React142.useState(() => new Vector2(512, 512));
-  const [positions] = React142.useState(() => Array(limit * 6).fill(0));
-  const [colors2] = React142.useState(() => Array(limit * 6).fill(0));
-  const api = React142.useMemo(() => ({
+  const [segments, setSegments] = React143.useState([]);
+  const [line] = React143.useState(() => new Line2());
+  const [material] = React143.useState(() => new LineMaterial());
+  const [geometry3] = React143.useState(() => new LineSegmentsGeometry());
+  const [resolution] = React143.useState(() => new Vector2(512, 512));
+  const [positions] = React143.useState(() => Array(limit * 6).fill(0));
+  const [colors2] = React143.useState(() => Array(limit * 6).fill(0));
+  const api = React143.useMemo(() => ({
     subscribe: (ref) => {
       setSegments((segments2) => [...segments2, ref]);
       return () => setSegments((segments2) => segments2.filter((item) => item.current !== ref.current));
@@ -143848,19 +144313,19 @@ var Segments = /* @__PURE__ */ React142.forwardRef((props, forwardedRef) => {
     geometry3.setPositions(positions);
     line.computeLineDistances();
   });
-  return /* @__PURE__ */ React142.createElement("primitive", {
+  return /* @__PURE__ */ React143.createElement("primitive", {
     object: line,
     ref: forwardedRef
-  }, /* @__PURE__ */ React142.createElement("primitive", {
+  }, /* @__PURE__ */ React143.createElement("primitive", {
     object: geometry3,
     attach: "geometry"
-  }), /* @__PURE__ */ React142.createElement("primitive", _extends({
+  }), /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: material,
     attach: "material",
     vertexColors: true,
     resolution,
     linewidth: lineWidth
-  }, rest)), /* @__PURE__ */ React142.createElement(context9.Provider, {
+  }, rest)), /* @__PURE__ */ React143.createElement(context9.Provider, {
     value: api
   }, children));
 });
@@ -143872,32 +144337,35 @@ var SegmentObject = class {
   }
 };
 var normPos = (pos) => pos instanceof Vector3 ? pos : new Vector3(...typeof pos === "number" ? [pos, pos, pos] : pos);
-var Segment = /* @__PURE__ */ React142.forwardRef(({
+var Segment = /* @__PURE__ */ React143.forwardRef(({
   color,
   start,
   end
 }, forwardedRef) => {
-  const api = React142.useContext(context9);
+  const api = React143.useContext(context9);
   if (!api) throw "Segment must used inside Segments component.";
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(forwardedRef, () => ref.current, []);
-  React142.useLayoutEffect(() => api.subscribe(ref), []);
-  return /* @__PURE__ */ React142.createElement("segmentObject", {
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(forwardedRef, () => ref.current, []);
+  React143.useLayoutEffect(() => api.subscribe(ref), []);
+  return /* @__PURE__ */ React143.createElement("segmentObject", {
     ref,
     color,
     start: normPos(start),
     end: normPos(end)
   });
 });
-var Detailed = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Detailed.js
+init_react_shim();
+var Detailed = /* @__PURE__ */ React143.forwardRef(({
   children,
   hysteresis = 0,
   distances,
   ...props
 }, ref) => {
-  const lodRef = React142.useRef(null);
-  React142.useImperativeHandle(ref, () => lodRef.current, []);
-  React142.useLayoutEffect(() => {
+  const lodRef = React143.useRef(null);
+  React143.useImperativeHandle(ref, () => lodRef.current, []);
+  React143.useLayoutEffect(() => {
     const {
       current: lod
     } = lodRef;
@@ -143912,10 +144380,13 @@ var Detailed = /* @__PURE__ */ React142.forwardRef(({
     var _lodRef$current;
     return (_lodRef$current = lodRef.current) == null ? void 0 : _lodRef$current.update(state2.camera);
   });
-  return /* @__PURE__ */ React142.createElement("lOD", _extends({
+  return /* @__PURE__ */ React143.createElement("lOD", _extends({
     ref: lodRef
   }, props), children);
 });
+
+// node_modules/@react-three/drei/core/Preload.js
+init_react_shim();
 function Preload({
   all,
   scene,
@@ -143930,7 +144401,7 @@ function Preload({
   const dScene = useThree(({
     scene: scene2
   }) => scene2);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const invisible = [];
     if (all) {
       (scene || dScene).traverse((object) => {
@@ -143949,6 +144420,9 @@ function Preload({
   }, []);
   return null;
 }
+
+// node_modules/@react-three/drei/core/BakeShadows.js
+init_react_shim();
 function BakeShadows() {
   const gl = useThree((state2) => state2.gl);
   useEffect(() => {
@@ -143962,6 +144436,7 @@ function BakeShadows() {
 }
 
 // node_modules/@react-three/drei/core/meshBounds.js
+init_react_shim();
 var _inverseMatrix3 = /* @__PURE__ */ new Matrix4();
 var _ray5 = /* @__PURE__ */ new Ray();
 var _sphere5 = /* @__PURE__ */ new Sphere();
@@ -143984,6 +144459,9 @@ function meshBounds(raycaster, intersects2) {
     object: this
   });
 }
+
+// node_modules/@react-three/drei/core/AdaptiveDpr.js
+init_react_shim();
 function AdaptiveDpr({
   pixelated
 }) {
@@ -143992,34 +144470,40 @@ function AdaptiveDpr({
   const current = useThree((state2) => state2.performance.current);
   const initialDpr = useThree((state2) => state2.viewport.initialDpr);
   const setDpr = useThree((state2) => state2.setDpr);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const domElement = gl.domElement;
     return () => {
       if (active) setDpr(initialDpr);
       if (pixelated && domElement) domElement.style.imageRendering = "auto";
     };
   }, []);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     setDpr(current * initialDpr);
     if (pixelated && gl.domElement) gl.domElement.style.imageRendering = current === 1 ? "auto" : "pixelated";
   }, [current]);
   return null;
 }
+
+// node_modules/@react-three/drei/core/AdaptiveEvents.js
+init_react_shim();
 function AdaptiveEvents() {
   const get = useThree((state2) => state2.get);
   const setEvents = useThree((state2) => state2.setEvents);
   const current = useThree((state2) => state2.performance.current);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     const enabled = get().events.enabled;
     return () => setEvents({
       enabled
     });
   }, []);
-  React142.useEffect(() => setEvents({
+  React143.useEffect(() => setEvents({
     enabled: current === 1
   }), [current]);
   return null;
 }
+
+// node_modules/@react-three/drei/core/PerformanceMonitor.js
+init_react_shim();
 var context10 = /* @__PURE__ */ createContext(null);
 function PerformanceMonitor({
   iterations = 10,
@@ -144098,7 +144582,7 @@ function PerformanceMonitor({
       }
     }
   });
-  return /* @__PURE__ */ React142.createElement(context10.Provider, {
+  return /* @__PURE__ */ React143.createElement(context10.Provider, {
     value: api
   }, children);
 }
@@ -144123,7 +144607,10 @@ function usePerformanceMonitor({
   }, [onIncline, onDecline, onChange, onFallback]);
   useLayoutEffect(() => api.subscribe(ref), [api]);
 }
-var RenderTexture = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/RenderTexture.js
+init_react_shim();
+var RenderTexture = /* @__PURE__ */ React143.forwardRef(({
   children,
   compute,
   width,
@@ -144147,8 +144634,8 @@ var RenderTexture = /* @__PURE__ */ React142.forwardRef(({
     depthBuffer,
     generateMipmaps
   });
-  const [vScene] = React142.useState(() => new Scene());
-  const uvCompute = React142.useCallback((event, state2, previous) => {
+  const [vScene] = React143.useState(() => new Scene());
+  const uvCompute = React143.useCallback((event, state2, previous) => {
     var _fbo$texture, _previous$previousRoo;
     let parent = (_fbo$texture = fbo.texture) == null || (_fbo$texture = _fbo$texture.__r3f.parent) == null ? void 0 : _fbo$texture.object;
     while (parent && !(parent instanceof Object3D)) {
@@ -144163,19 +144650,19 @@ var RenderTexture = /* @__PURE__ */ React142.forwardRef(({
     if (!uv) return false;
     state2.raycaster.setFromCamera(state2.pointer.set(uv.x * 2 - 1, uv.y * 2 - 1), state2.camera);
   }, []);
-  React142.useImperativeHandle(forwardRef82, () => fbo.texture, [fbo]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, createPortal(/* @__PURE__ */ React142.createElement(Container, {
+  React143.useImperativeHandle(forwardRef82, () => fbo.texture, [fbo]);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, createPortal(/* @__PURE__ */ React143.createElement(Container, {
     renderPriority,
     frames,
     fbo
-  }, children, /* @__PURE__ */ React142.createElement("group", {
+  }, children, /* @__PURE__ */ React143.createElement("group", {
     onPointerOver: () => null
   })), vScene, {
     events: {
       compute: compute || uvCompute,
       priority: eventPriority
     }
-  }), /* @__PURE__ */ React142.createElement("primitive", _extends({
+  }), /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: fbo.texture
   }, props)));
 });
@@ -144208,9 +144695,12 @@ function Container({
       count++;
     }
   }, renderPriority);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children);
 }
-var RenderCubeTexture = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/RenderCubeTexture.js
+init_react_shim();
+var RenderCubeTexture = /* @__PURE__ */ React143.forwardRef(({
   children,
   compute,
   renderPriority = -1,
@@ -144235,8 +144725,8 @@ var RenderCubeTexture = /* @__PURE__ */ React142.forwardRef(({
     size,
     viewport
   } = useThree();
-  const camera = React142.useRef(null);
-  const fbo = React142.useMemo(() => {
+  const camera = React143.useRef(null);
+  const fbo = React143.useMemo(() => {
     const fbo2 = new WebGLCubeRenderTarget(Math.max((resolution || size.width) * viewport.dpr, (resolution || size.height) * viewport.dpr), {
       stencilBuffer,
       depthBuffer,
@@ -144247,29 +144737,29 @@ var RenderCubeTexture = /* @__PURE__ */ React142.forwardRef(({
     fbo2.texture.type = HalfFloatType;
     return fbo2;
   }, [resolution, flip]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     return () => fbo.dispose();
   }, [fbo]);
-  const [vScene] = React142.useState(() => new Scene());
-  React142.useImperativeHandle(forwardRef82, () => ({
+  const [vScene] = React143.useState(() => new Scene());
+  React143.useImperativeHandle(forwardRef82, () => ({
     scene: vScene,
     fbo,
     camera: camera.current
   }), [fbo]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, createPortal(/* @__PURE__ */ React142.createElement(Container2, {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, createPortal(/* @__PURE__ */ React143.createElement(Container2, {
     renderPriority,
     frames,
     camera
-  }, children, /* @__PURE__ */ React142.createElement("group", {
+  }, children, /* @__PURE__ */ React143.createElement("group", {
     onPointerOver: () => null
   })), vScene, {
     events: {
       compute,
       priority: eventPriority
     }
-  }), /* @__PURE__ */ React142.createElement("primitive", _extends({
+  }), /* @__PURE__ */ React143.createElement("primitive", _extends({
     object: fbo.texture
-  }, props)), /* @__PURE__ */ React142.createElement("cubeCamera", {
+  }, props)), /* @__PURE__ */ React143.createElement("cubeCamera", {
     ref: camera,
     args: [near, far, fbo],
     position: position2,
@@ -144293,16 +144783,19 @@ function Container2({
       count++;
     }
   }, renderPriority);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children);
 }
-var Mask = /* @__PURE__ */ React142.forwardRef(({
+
+// node_modules/@react-three/drei/core/Mask.js
+init_react_shim();
+var Mask = /* @__PURE__ */ React143.forwardRef(({
   id = 1,
   colorWrite = false,
   depthWrite = false,
   ...props
 }, fref) => {
-  const ref = React142.useRef(null);
-  const spread = React142.useMemo(() => ({
+  const ref = React143.useRef(null);
+  const spread = React143.useMemo(() => ({
     colorWrite,
     depthWrite,
     stencilWrite: true,
@@ -144312,11 +144805,11 @@ var Mask = /* @__PURE__ */ React142.forwardRef(({
     stencilZFail: ReplaceStencilOp,
     stencilZPass: ReplaceStencilOp
   }), [id, colorWrite, depthWrite]);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     Object.assign(ref.current.material, spread);
   });
-  React142.useImperativeHandle(fref, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement("mesh", _extends({
+  React143.useImperativeHandle(fref, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref,
     renderOrder: -id
   }, props));
@@ -144331,6 +144824,9 @@ function useMask(id, inverse = false) {
     stencilZPass: KeepStencilOp
   };
 }
+
+// node_modules/@react-three/drei/core/Fisheye.js
+init_react_shim();
 function Fisheye({
   renderPriority = 1,
   zoom = 0,
@@ -144339,14 +144835,14 @@ function Fisheye({
   resolution = 896,
   ...props
 }) {
-  const sphere = React142.useRef(null);
-  const cubeApi = React142.useRef(null);
+  const sphere = React143.useRef(null);
+  const cubeApi = React143.useRef(null);
   const {
     width,
     height
   } = useThree((state2) => state2.size);
-  const [orthoC] = React142.useState(() => new OrthographicCamera());
-  React142.useLayoutEffect(() => {
+  const [orthoC] = React143.useState(() => new OrthographicCamera());
+  React143.useLayoutEffect(() => {
     orthoC.position.set(0, 0, 100);
     orthoC.zoom = 100;
     orthoC.left = width / -2;
@@ -144359,7 +144855,7 @@ function Fisheye({
   const normal2 = new Vector3();
   const sph = new Sphere(new Vector3(), radius);
   const normalMatrix = new Matrix3();
-  const compute = React142.useCallback((event, state2, prev) => {
+  const compute = React143.useCallback((event, state2, prev) => {
     state2.pointer.set(event.offsetX / state2.size.width * 2 - 1, -(event.offsetY / state2.size.height) * 2 + 1);
     state2.raycaster.setFromCamera(state2.pointer, orthoC);
     if (!state2.raycaster.ray.intersectSphere(sph, normal2)) return;
@@ -144374,19 +144870,19 @@ function Fisheye({
   useFrame((state2) => {
     if (renderPriority) state2.gl.render(sphere.current, orthoC);
   }, renderPriority);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("mesh", _extends({
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("mesh", _extends({
     ref: sphere
   }, props, {
     scale: radius
-  }), /* @__PURE__ */ React142.createElement("sphereGeometry", {
+  }), /* @__PURE__ */ React143.createElement("sphereGeometry", {
     args: [1, segments, segments]
-  }), /* @__PURE__ */ React142.createElement("meshBasicMaterial", null, /* @__PURE__ */ React142.createElement(RenderCubeTexture, {
+  }), /* @__PURE__ */ React143.createElement("meshBasicMaterial", null, /* @__PURE__ */ React143.createElement(RenderCubeTexture, {
     compute,
     attach: "envMap",
     flip: true,
     resolution,
     ref: cubeApi
-  }, children, /* @__PURE__ */ React142.createElement(UpdateCubeCamera, {
+  }, children, /* @__PURE__ */ React143.createElement(UpdateCubeCamera, {
     api: cubeApi
   })))));
 }
@@ -144404,6 +144900,9 @@ function UpdateCubeCamera({
   });
   return null;
 }
+
+// node_modules/@react-three/drei/core/MeshPortalMaterial.js
+init_react_shim();
 var PortalMaterialImpl = /* @__PURE__ */ shaderMaterial({
   blur: 0,
   map: null,
@@ -144433,7 +144932,7 @@ var PortalMaterialImpl = /* @__PURE__ */ shaderMaterial({
      #include <tonemapping_fragment>
      #include <${version2 >= 154 ? "colorspace_fragment" : "encodings_fragment"}>
    }`);
-var MeshPortalMaterial = /* @__PURE__ */ React142.forwardRef(({
+var MeshPortalMaterial = /* @__PURE__ */ React143.forwardRef(({
   children,
   events = void 0,
   blur = 0,
@@ -144446,7 +144945,7 @@ var MeshPortalMaterial = /* @__PURE__ */ React142.forwardRef(({
   extend({
     PortalMaterialImpl
   });
-  const ref = React142.useRef(null);
+  const ref = React143.useRef(null);
   const {
     scene,
     gl,
@@ -144455,23 +144954,23 @@ var MeshPortalMaterial = /* @__PURE__ */ React142.forwardRef(({
     setEvents
   } = useThree();
   const maskRenderTarget = useFBO(resolution, resolution);
-  const [priority, setPriority] = React142.useState(0);
+  const [priority, setPriority] = React143.useState(0);
   useFrame(() => {
     const p5 = ref.current.blend > 0 ? Math.max(1, renderPriority) : 0;
     if (priority !== p5) setPriority(p5);
   });
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (events !== void 0) setEvents({
       enabled: !events
     });
   }, [events]);
-  const [visible, setVisible] = React142.useState(true);
+  const [visible, setVisible] = React143.useState(true);
   const parent = useIntersect(setVisible);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     var _ref$current;
     parent.current = (_ref$current = ref.current) == null || (_ref$current = _ref$current.__r3f.parent) == null ? void 0 : _ref$current.object;
   }, []);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     if (!parent.current) return;
     if (blur && ref.current.sdf === null) {
       const tempMesh = new Mesh(parent.current.geometry, new MeshBasicMaterial());
@@ -144495,8 +144994,8 @@ var MeshPortalMaterial = /* @__PURE__ */ React142.forwardRef(({
       gl.setRenderTarget(null);
     }
   }, [resolution, blur]);
-  React142.useImperativeHandle(fref, () => ref.current);
-  const compute = React142.useCallback((event, state2, previous) => {
+  React143.useImperativeHandle(fref, () => ref.current);
+  const compute = React143.useCallback((event, state2, previous) => {
     var _ref$current2;
     if (!parent.current) return false;
     state2.pointer.set(event.offsetX / state2.size.width * 2 - 1, -(event.offsetY / state2.size.height) * 2 + 1);
@@ -144509,19 +145008,19 @@ var MeshPortalMaterial = /* @__PURE__ */ React142.forwardRef(({
       }
     }
   }, []);
-  return /* @__PURE__ */ React142.createElement("portalMaterialImpl", _extends({
+  return /* @__PURE__ */ React143.createElement("portalMaterialImpl", _extends({
     ref,
     blur,
     blend: 0,
     resolution: [size.width * viewport.dpr, size.height * viewport.dpr],
     attach: "material"
-  }, props), /* @__PURE__ */ React142.createElement(RenderTexture, {
+  }, props), /* @__PURE__ */ React143.createElement(RenderTexture, {
     attach: "map",
     frames: visible ? Infinity : 0,
     eventPriority,
     renderPriority,
     compute
-  }, children, /* @__PURE__ */ React142.createElement(ManagePortalScene, {
+  }, children, /* @__PURE__ */ React143.createElement(ManagePortalScene, {
     events,
     rootScene: scene,
     priority,
@@ -144540,15 +145039,15 @@ function ManagePortalScene({
   const setEvents = useThree((state2) => state2.setEvents);
   const buffer1 = useFBO();
   const buffer2 = useFBO();
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     scene.matrixAutoUpdate = false;
   }, []);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (events !== void 0) setEvents({
       enabled: events
     });
   }, [events]);
-  const [quad, blend] = React142.useMemo(() => {
+  const [quad, blend] = React143.useMemo(() => {
     const blend2 = {
       value: 0
     };
@@ -144615,7 +145114,7 @@ function ManagePortalScene({
       }
     }
   }, priority);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null);
 }
 var makeSDFGenerator = (clientWidth, clientHeight, renderer) => {
   let finalTarget = new WebGLRenderTarget(clientWidth, clientHeight, {
@@ -144877,7 +145376,17 @@ var makeSDFGenerator = (clientWidth, clientHeight, renderer) => {
   };
 };
 
+// node_modules/@react-three/drei/web/View.js
+init_react_shim();
+
+// node_modules/tunnel-rat/dist/index.js
+init_react_shim();
+
+// node_modules/tunnel-rat/node_modules/zustand/esm/index.mjs
+init_react_shim();
+
 // node_modules/tunnel-rat/node_modules/zustand/esm/vanilla.mjs
+init_react_shim();
 var createStoreImpl2 = (createState) => {
   let state2;
   const listeners = /* @__PURE__ */ new Set();
@@ -144908,11 +145417,8 @@ var createStoreImpl2 = (createState) => {
   return api;
 };
 var createStore3 = (createState) => createState ? createStoreImpl2(createState) : createStoreImpl2;
-
-// node_modules/tunnel-rat/node_modules/zustand/esm/index.mjs
-var import_with_selector2 = __toESM(require_with_selector(), 1);
-var { useDebugValue } = React142__default;
-var { useSyncExternalStoreWithSelector: useSyncExternalStoreWithSelector2 } = import_with_selector2.default;
+var { useDebugValue } = React143__default;
+var { useSyncExternalStoreWithSelector: useSyncExternalStoreWithSelector2 } = useSyncExternalStoreExports;
 var didWarnAboutEqualityFn = false;
 var identity4 = (arg) => arg;
 function useStore3(api, selector = identity4, equalityFn) {
@@ -144948,7 +145454,7 @@ var create3 = (createState) => createState ? createImpl2(createState) : createIm
 // node_modules/tunnel-rat/dist/index.js
 var _window$document;
 var _window$navigator;
-var useIsomorphicLayoutEffect2 = typeof window !== "undefined" && ((_window$document = window.document) != null && _window$document.createElement || ((_window$navigator = window.navigator) == null ? void 0 : _window$navigator.product) === "ReactNative") ? React142__default.useLayoutEffect : React142__default.useEffect;
+var useIsomorphicLayoutEffect2 = typeof window !== "undefined" && ((_window$document = window.document) != null && _window$document.createElement || ((_window$navigator = window.navigator) == null ? void 0 : _window$navigator.product) === "ReactNative") ? React143__default.useLayoutEffect : React143__default.useEffect;
 function tunnel() {
   const useStore4 = create3((set) => ({
     current: new Array(),
@@ -144982,7 +145488,7 @@ function tunnel() {
     },
     Out: () => {
       const current = useStore4((state2) => state2.current);
-      return /* @__PURE__ */ React142__default.createElement(React142__default.Fragment, null, current);
+      return /* @__PURE__ */ React143__default.createElement(React143__default.Fragment, null, current);
     }
   };
 }
@@ -145069,7 +145575,7 @@ function Container3({
   track
 }) {
   const rootState = useThree();
-  const [isOffscreen, setOffscreen] = React142.useState(false);
+  const [isOffscreen, setOffscreen] = React143.useState(false);
   let frameCount = 0;
   useFrame((state2) => {
     if (frames === Infinity || frameCount <= frames) {
@@ -145090,7 +145596,7 @@ function Container3({
       }
     }
   }, index2);
-  React142.useLayoutEffect(() => {
+  React143.useLayoutEffect(() => {
     const curRect = rect.current;
     if (curRect && (!visible || !isOffscreen)) {
       const {
@@ -145101,7 +145607,7 @@ function Container3({
       finishSkissor(rootState, autoClear);
     }
   }, [visible, isOffscreen]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     if (!track) return;
     const curRect = rect.current;
     const old = rootState.get().events.connected;
@@ -145122,11 +145628,11 @@ function Container3({
       });
     };
   }, [track]);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, children, /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, children, /* @__PURE__ */ React143.createElement("group", {
     onPointerOver: () => null
   }));
 }
-var CanvasView = /* @__PURE__ */ React142.forwardRef(({
+var CanvasView = /* @__PURE__ */ React143.forwardRef(({
   track,
   visible = true,
   index: index2 = 1,
@@ -145138,14 +145644,14 @@ var CanvasView = /* @__PURE__ */ React142.forwardRef(({
   ...props
 }, fref) => {
   var _rect$current, _rect$current2, _rect$current3, _rect$current4;
-  const rect = React142.useRef(null);
+  const rect = React143.useRef(null);
   const {
     size,
     scene
   } = useThree();
-  const [virtualScene] = React142.useState(() => new Scene());
-  const [ready, toggle] = React142.useReducer(() => true, false);
-  const compute = React142.useCallback((event, state2) => {
+  const [virtualScene] = React143.useState(() => new Scene());
+  const [ready, toggle] = React143.useReducer(() => true, false);
+  const compute = React143.useCallback((event, state2) => {
     if (rect.current && track && track.current && event.target === track.current) {
       const {
         width,
@@ -145159,14 +145665,14 @@ var CanvasView = /* @__PURE__ */ React142.forwardRef(({
       state2.raycaster.setFromCamera(state2.pointer, state2.camera);
     }
   }, [rect, track]);
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _track$current2;
     if (track) rect.current = (_track$current2 = track.current) == null ? void 0 : _track$current2.getBoundingClientRect();
     toggle();
   }, [track]);
-  return /* @__PURE__ */ React142.createElement("group", _extends({
+  return /* @__PURE__ */ React143.createElement("group", _extends({
     ref: fref
-  }, props), ready && createPortal(/* @__PURE__ */ React142.createElement(Container3, {
+  }, props), ready && createPortal(/* @__PURE__ */ React143.createElement(Container3, {
     visible,
     canvasSize: size,
     frames,
@@ -145189,7 +145695,7 @@ var CanvasView = /* @__PURE__ */ React142.forwardRef(({
     }
   }));
 });
-var HtmlView = /* @__PURE__ */ React142.forwardRef(({
+var HtmlView = /* @__PURE__ */ React143.forwardRef(({
   as: El = "div",
   id,
   visible,
@@ -145201,15 +145707,15 @@ var HtmlView = /* @__PURE__ */ React142.forwardRef(({
   children,
   ...props
 }, fref) => {
-  const uuid2 = React142.useId();
-  const ref = React142.useRef(null);
-  React142.useImperativeHandle(fref, () => ref.current);
-  return /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement(El, _extends({
+  const uuid2 = React143.useId();
+  const ref = React143.useRef(null);
+  React143.useImperativeHandle(fref, () => ref.current);
+  return /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement(El, _extends({
     ref,
     id,
     className,
     style
-  }, props)), /* @__PURE__ */ React142.createElement(tracked.In, null, /* @__PURE__ */ React142.createElement(CanvasView, {
+  }, props)), /* @__PURE__ */ React143.createElement(tracked.In, null, /* @__PURE__ */ React143.createElement(CanvasView, {
     visible,
     key: uuid2,
     track: ref,
@@ -145218,19 +145724,28 @@ var HtmlView = /* @__PURE__ */ React142.forwardRef(({
   }, children)));
 });
 var View = /* @__PURE__ */ (() => {
-  const _View = /* @__PURE__ */ React142.forwardRef((props, fref) => {
-    const store = React142.useContext(context);
-    if (!store) return /* @__PURE__ */ React142.createElement(HtmlView, _extends({
+  const _View = /* @__PURE__ */ React143.forwardRef((props, fref) => {
+    const store = React143.useContext(context);
+    if (!store) return /* @__PURE__ */ React143.createElement(HtmlView, _extends({
       ref: fref
     }, props));
-    else return /* @__PURE__ */ React142.createElement(CanvasView, _extends({
+    else return /* @__PURE__ */ React143.createElement(CanvasView, _extends({
       ref: fref
     }, props));
   });
-  _View.Port = () => /* @__PURE__ */ React142.createElement(tracked.Out, null);
+  _View.Port = () => /* @__PURE__ */ React143.createElement(tracked.Out, null);
   return _View;
 })();
-var context11 = /* @__PURE__ */ React142.createContext(null);
+
+// node_modules/@react-three/drei/web/pivotControls/index.js
+init_react_shim();
+
+// node_modules/@react-three/drei/web/pivotControls/AxisArrow.js
+init_react_shim();
+
+// node_modules/@react-three/drei/web/pivotControls/context.js
+init_react_shim();
+var context11 = /* @__PURE__ */ React143.createContext(null);
 
 // node_modules/@react-three/drei/web/pivotControls/AxisArrow.js
 var vec1 = /* @__PURE__ */ new Vector3();
@@ -145270,14 +145785,14 @@ var AxisArrow = ({
     onDrag,
     onDragEnd,
     userData
-  } = React142.useContext(context11);
+  } = React143.useContext(context11);
   const camControls = useThree((state2) => state2.controls);
-  const divRef = React142.useRef(null);
-  const objRef = React142.useRef(null);
-  const clickInfo = React142.useRef(null);
-  const offset0 = React142.useRef(0);
-  const [isHovered, setIsHovered] = React142.useState(false);
-  const onPointerDown = React142.useCallback((e4) => {
+  const divRef = React143.useRef(null);
+  const objRef = React143.useRef(null);
+  const clickInfo = React143.useRef(null);
+  const offset0 = React143.useRef(0);
+  const [isHovered, setIsHovered] = React143.useState(false);
+  const onPointerDown = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.innerText = `${translation3.current[axis].toFixed(2)}`;
       divRef.current.style.display = "block";
@@ -145301,7 +145816,7 @@ var AxisArrow = ({
     camControls && (camControls.enabled = false);
     e4.target.setPointerCapture(e4.pointerId);
   }, [annotations, direction2, camControls, onDragStart, translation3, axis]);
-  const onPointerMove = React142.useCallback((e4) => {
+  const onPointerMove = React143.useCallback((e4) => {
     e4.stopPropagation();
     if (!isHovered) setIsHovered(true);
     if (clickInfo.current) {
@@ -145325,7 +145840,7 @@ var AxisArrow = ({
       onDrag(offsetMatrix);
     }
   }, [annotations, onDrag, isHovered, translation3, translationLimits, axis]);
-  const onPointerUp = React142.useCallback((e4) => {
+  const onPointerUp = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.style.display = "none";
     }
@@ -145335,7 +145850,7 @@ var AxisArrow = ({
     camControls && (camControls.enabled = true);
     e4.target.releasePointerCapture(e4.pointerId);
   }, [annotations, camControls, onDragEnd]);
-  const onPointerOut = React142.useCallback((e4) => {
+  const onPointerOut = React143.useCallback((e4) => {
     e4.stopPropagation();
     setIsHovered(false);
   }, []);
@@ -145344,7 +145859,7 @@ var AxisArrow = ({
     coneWidth,
     coneLength,
     matrixL
-  } = React142.useMemo(() => {
+  } = React143.useMemo(() => {
     const coneWidth2 = fixed ? lineWidth / scale3 * 1.6 : scale3 / 20;
     const coneLength2 = fixed ? 0.2 : scale3 / 5;
     const cylinderLength2 = fixed ? 1 - coneLength2 : scale3 - coneLength2;
@@ -145358,18 +145873,18 @@ var AxisArrow = ({
     };
   }, [direction2, scale3, lineWidth, fixed]);
   const color_ = isHovered ? hoveredColor : axisColors[axis];
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     ref: objRef
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     matrix: matrixL,
     matrixAutoUpdate: false,
     onPointerDown,
     onPointerMove,
     onPointerUp,
     onPointerOut
-  }, annotations && /* @__PURE__ */ React142.createElement(Html, {
+  }, annotations && /* @__PURE__ */ React143.createElement(Html, {
     position: [0, -coneLength, 0]
-  }, /* @__PURE__ */ React142.createElement("div", {
+  }, /* @__PURE__ */ React143.createElement("div", {
     style: {
       display: "none",
       background: "#151520",
@@ -145380,13 +145895,13 @@ var AxisArrow = ({
     },
     className: annotationsClass,
     ref: divRef
-  })), /* @__PURE__ */ React142.createElement("mesh", {
+  })), /* @__PURE__ */ React143.createElement("mesh", {
     visible: false,
     position: [0, (cylinderLength + coneLength) / 2, 0],
     userData
-  }, /* @__PURE__ */ React142.createElement("cylinderGeometry", {
+  }, /* @__PURE__ */ React143.createElement("cylinderGeometry", {
     args: [coneWidth * 1.4, coneWidth * 1.4, cylinderLength + coneLength, 8, 1]
-  })), /* @__PURE__ */ React142.createElement(Line4, {
+  })), /* @__PURE__ */ React143.createElement(Line4, {
     transparent: true,
     raycast: () => null,
     depthTest,
@@ -145399,13 +145914,13 @@ var AxisArrow = ({
     renderOrder,
     polygonOffsetFactor: -10,
     fog: false
-  }), /* @__PURE__ */ React142.createElement("mesh", {
+  }), /* @__PURE__ */ React143.createElement("mesh", {
     raycast: () => null,
     position: [0, cylinderLength + coneLength / 2, 0],
     renderOrder
-  }, /* @__PURE__ */ React142.createElement("coneGeometry", {
+  }, /* @__PURE__ */ React143.createElement("coneGeometry", {
     args: [coneWidth, coneLength, 24, 1]
-  }), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     depthTest,
     color: color_,
@@ -145415,6 +145930,9 @@ var AxisArrow = ({
     fog: false
   }))));
 };
+
+// node_modules/@react-three/drei/web/pivotControls/AxisRotator.js
+init_react_shim();
 var clickDir = /* @__PURE__ */ new Vector3();
 var intersectionDir = /* @__PURE__ */ new Vector3();
 var toDegrees = (radians) => radians * 180 / Math.PI;
@@ -145472,15 +145990,15 @@ var AxisRotator = ({
     onDrag,
     onDragEnd,
     userData
-  } = React142.useContext(context11);
+  } = React143.useContext(context11);
   const camControls = useThree((state2) => state2.controls);
-  const divRef = React142.useRef(null);
-  const objRef = React142.useRef(null);
-  const angle0 = React142.useRef(0);
-  const angle = React142.useRef(0);
-  const clickInfo = React142.useRef(null);
-  const [isHovered, setIsHovered] = React142.useState(false);
-  const onPointerDown = React142.useCallback((e4) => {
+  const divRef = React143.useRef(null);
+  const objRef = React143.useRef(null);
+  const angle0 = React143.useRef(0);
+  const angle = React143.useRef(0);
+  const clickInfo = React143.useRef(null);
+  const [isHovered, setIsHovered] = React143.useState(false);
+  const onPointerDown = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.innerText = `${toDegrees(angle.current).toFixed(0)}\xBA`;
       divRef.current.style.display = "block";
@@ -145509,7 +146027,7 @@ var AxisRotator = ({
     camControls && (camControls.enabled = false);
     e4.target.setPointerCapture(e4.pointerId);
   }, [annotations, camControls, onDragStart, axis]);
-  const onPointerMove = React142.useCallback((e4) => {
+  const onPointerMove = React143.useCallback((e4) => {
     e4.stopPropagation();
     if (!isHovered) setIsHovered(true);
     if (clickInfo.current) {
@@ -145551,7 +146069,7 @@ var AxisRotator = ({
       onDrag(rotMatrix);
     }
   }, [annotations, onDrag, isHovered, rotationLimits, axis]);
-  const onPointerUp = React142.useCallback((e4) => {
+  const onPointerUp = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.style.display = "none";
     }
@@ -145562,17 +146080,17 @@ var AxisRotator = ({
     camControls && (camControls.enabled = true);
     e4.target.releasePointerCapture(e4.pointerId);
   }, [annotations, camControls, onDragEnd]);
-  const onPointerOut = React142.useCallback((e4) => {
+  const onPointerOut = React143.useCallback((e4) => {
     e4.stopPropagation();
     setIsHovered(false);
   }, []);
-  const matrixL = React142.useMemo(() => {
+  const matrixL = React143.useMemo(() => {
     const dir1N = dir1.clone().normalize();
     const dir2N = dir2.clone().normalize();
     return new Matrix4().makeBasis(dir1N, dir2N, dir1N.clone().cross(dir2N));
   }, [dir1, dir2]);
   const r4 = fixed ? 0.65 : scale3 * 0.65;
-  const arc = React142.useMemo(() => {
+  const arc = React143.useMemo(() => {
     const segments = 32;
     const points = [];
     for (let j3 = 0; j3 <= segments; j3++) {
@@ -145581,7 +146099,7 @@ var AxisRotator = ({
     }
     return points;
   }, [r4]);
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     ref: objRef,
     onPointerDown,
     onPointerMove,
@@ -145589,9 +146107,9 @@ var AxisRotator = ({
     onPointerOut,
     matrix: matrixL,
     matrixAutoUpdate: false
-  }, annotations && /* @__PURE__ */ React142.createElement(Html, {
+  }, annotations && /* @__PURE__ */ React143.createElement(Html, {
     position: [r4, r4, 0]
-  }, /* @__PURE__ */ React142.createElement("div", {
+  }, /* @__PURE__ */ React143.createElement("div", {
     style: {
       display: "none",
       background: "#151520",
@@ -145602,12 +146120,12 @@ var AxisRotator = ({
     },
     className: annotationsClass,
     ref: divRef
-  })), /* @__PURE__ */ React142.createElement(Line4, {
+  })), /* @__PURE__ */ React143.createElement(Line4, {
     points: arc,
     lineWidth: lineWidth * 4,
     visible: false,
     userData
-  }), /* @__PURE__ */ React142.createElement(Line4, {
+  }), /* @__PURE__ */ React143.createElement(Line4, {
     transparent: true,
     raycast: () => null,
     depthTest,
@@ -145622,6 +146140,9 @@ var AxisRotator = ({
     fog: false
   }));
 };
+
+// node_modules/@react-three/drei/web/pivotControls/PlaneSlider.js
+init_react_shim();
 var decomposeIntoBasis = (e1, e22, offset) => {
   const i1 = Math.abs(e1.x) >= Math.abs(e1.y) && Math.abs(e1.x) >= Math.abs(e1.z) ? 0 : Math.abs(e1.y) >= Math.abs(e1.x) && Math.abs(e1.y) >= Math.abs(e1.z) ? 1 : 2;
   const e2DegrowthOrder = [0, 1, 2].sort((a7, b6) => Math.abs(e22.getComponent(b6)) - Math.abs(e22.getComponent(a7)));
@@ -145661,15 +146182,15 @@ var PlaneSlider = ({
     onDrag,
     onDragEnd,
     userData
-  } = React142.useContext(context11);
+  } = React143.useContext(context11);
   const camControls = useThree((state2) => state2.controls);
-  const divRef = React142.useRef(null);
-  const objRef = React142.useRef(null);
-  const clickInfo = React142.useRef(null);
-  const offsetX0 = React142.useRef(0);
-  const offsetY0 = React142.useRef(0);
-  const [isHovered, setIsHovered] = React142.useState(false);
-  const onPointerDown = React142.useCallback((e4) => {
+  const divRef = React143.useRef(null);
+  const objRef = React143.useRef(null);
+  const clickInfo = React143.useRef(null);
+  const offsetX0 = React143.useRef(0);
+  const offsetY0 = React143.useRef(0);
+  const [isHovered, setIsHovered] = React143.useState(false);
+  const onPointerDown = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.innerText = `${translation3.current[(axis + 1) % 3].toFixed(2)}, ${translation3.current[(axis + 2) % 3].toFixed(2)}`;
       divRef.current.style.display = "block";
@@ -145698,7 +146219,7 @@ var PlaneSlider = ({
     camControls && (camControls.enabled = false);
     e4.target.setPointerCapture(e4.pointerId);
   }, [annotations, camControls, onDragStart, axis]);
-  const onPointerMove = React142.useCallback((e4) => {
+  const onPointerMove = React143.useCallback((e4) => {
     e4.stopPropagation();
     if (!isHovered) setIsHovered(true);
     if (clickInfo.current) {
@@ -145737,7 +146258,7 @@ var PlaneSlider = ({
       onDrag(offsetMatrix2);
     }
   }, [annotations, onDrag, isHovered, translation3, translationLimits, axis]);
-  const onPointerUp = React142.useCallback((e4) => {
+  const onPointerUp = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.style.display = "none";
     }
@@ -145747,11 +146268,11 @@ var PlaneSlider = ({
     camControls && (camControls.enabled = true);
     e4.target.releasePointerCapture(e4.pointerId);
   }, [annotations, camControls, onDragEnd]);
-  const onPointerOut = React142.useCallback((e4) => {
+  const onPointerOut = React143.useCallback((e4) => {
     e4.stopPropagation();
     setIsHovered(false);
   }, []);
-  const matrixL = React142.useMemo(() => {
+  const matrixL = React143.useMemo(() => {
     const dir1N = dir1.clone().normalize();
     const dir2N = dir2.clone().normalize();
     return new Matrix4().makeBasis(dir1N, dir2N, dir1N.clone().cross(dir2N));
@@ -145759,14 +146280,14 @@ var PlaneSlider = ({
   const pos1 = fixed ? 1 / 7 : scale3 / 7;
   const length = fixed ? 0.225 : scale3 * 0.225;
   const color = isHovered ? hoveredColor : axisColors[axis];
-  const points = React142.useMemo(() => [new Vector3(0, 0, 0), new Vector3(0, length, 0), new Vector3(length, length, 0), new Vector3(length, 0, 0), new Vector3(0, 0, 0)], [length]);
-  return /* @__PURE__ */ React142.createElement("group", {
+  const points = React143.useMemo(() => [new Vector3(0, 0, 0), new Vector3(0, length, 0), new Vector3(length, length, 0), new Vector3(length, 0, 0), new Vector3(0, 0, 0)], [length]);
+  return /* @__PURE__ */ React143.createElement("group", {
     ref: objRef,
     matrix: matrixL,
     matrixAutoUpdate: false
-  }, annotations && /* @__PURE__ */ React142.createElement(Html, {
+  }, annotations && /* @__PURE__ */ React143.createElement(Html, {
     position: [0, 0, 0]
-  }, /* @__PURE__ */ React142.createElement("div", {
+  }, /* @__PURE__ */ React143.createElement("div", {
     style: {
       display: "none",
       background: "#151520",
@@ -145777,9 +146298,9 @@ var PlaneSlider = ({
     },
     className: annotationsClass,
     ref: divRef
-  })), /* @__PURE__ */ React142.createElement("group", {
+  })), /* @__PURE__ */ React143.createElement("group", {
     position: [pos1 * 1.7, pos1 * 1.7, 0]
-  }, /* @__PURE__ */ React142.createElement("mesh", {
+  }, /* @__PURE__ */ React143.createElement("mesh", {
     visible: true,
     onPointerDown,
     onPointerMove,
@@ -145788,7 +146309,7 @@ var PlaneSlider = ({
     scale: length,
     userData,
     renderOrder
-  }, /* @__PURE__ */ React142.createElement("planeGeometry", null), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }, /* @__PURE__ */ React143.createElement("planeGeometry", null), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     depthTest,
     color,
@@ -145796,7 +146317,7 @@ var PlaneSlider = ({
     polygonOffsetFactor: -10,
     side: DoubleSide,
     fog: false
-  })), /* @__PURE__ */ React142.createElement(Line4, {
+  })), /* @__PURE__ */ React143.createElement(Line4, {
     position: [-length / 2, -length / 2, 0],
     transparent: true,
     depthTest,
@@ -145811,6 +146332,9 @@ var PlaneSlider = ({
     renderOrder
   })));
 };
+
+// node_modules/@react-three/drei/web/pivotControls/ScalingSphere.js
+init_react_shim();
 var vec12 = /* @__PURE__ */ new Vector3();
 var vec22 = /* @__PURE__ */ new Vector3();
 var calculateOffset4 = (clickPoint, normal2, rayStart, rayDir) => {
@@ -145848,18 +146372,18 @@ var ScalingSphere = ({
     onDrag,
     onDragEnd,
     userData
-  } = React142.useContext(context11);
+  } = React143.useContext(context11);
   const size = useThree((state2) => state2.size);
   const camControls = useThree((state2) => state2.controls);
-  const divRef = React142.useRef(null);
-  const objRef = React142.useRef(null);
-  const meshRef = React142.useRef(null);
-  const scale0 = React142.useRef(1);
-  const scaleCur = React142.useRef(1);
-  const clickInfo = React142.useRef(null);
-  const [isHovered, setIsHovered] = React142.useState(false);
+  const divRef = React143.useRef(null);
+  const objRef = React143.useRef(null);
+  const meshRef = React143.useRef(null);
+  const scale0 = React143.useRef(1);
+  const scaleCur = React143.useRef(1);
+  const clickInfo = React143.useRef(null);
+  const [isHovered, setIsHovered] = React143.useState(false);
   const position2 = fixed ? 1.2 : 1.2 * scale3;
-  const onPointerDown = React142.useCallback((e4) => {
+  const onPointerDown = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.innerText = `${scaleCur.current.toFixed(2)}`;
       divRef.current.style.display = "block";
@@ -145888,7 +146412,7 @@ var ScalingSphere = ({
     camControls && (camControls.enabled = false);
     e4.target.setPointerCapture(e4.pointerId);
   }, [annotations, camControls, direction2, onDragStart, axis, fixed, scale3, size]);
-  const onPointerMove = React142.useCallback((e4) => {
+  const onPointerMove = React143.useCallback((e4) => {
     e4.stopPropagation();
     if (!isHovered) setIsHovered(true);
     if (clickInfo.current) {
@@ -145922,7 +146446,7 @@ var ScalingSphere = ({
       onDrag(scaleMatrix);
     }
   }, [annotations, position2, onDrag, isHovered, scaleLimits, axis]);
-  const onPointerUp = React142.useCallback((e4) => {
+  const onPointerUp = React143.useCallback((e4) => {
     if (annotations) {
       divRef.current.style.display = "none";
     }
@@ -145934,14 +146458,14 @@ var ScalingSphere = ({
     camControls && (camControls.enabled = true);
     e4.target.releasePointerCapture(e4.pointerId);
   }, [annotations, camControls, onDragEnd, position2]);
-  const onPointerOut = React142.useCallback((e4) => {
+  const onPointerOut = React143.useCallback((e4) => {
     e4.stopPropagation();
     setIsHovered(false);
   }, []);
   const {
     radius,
     matrixL
-  } = React142.useMemo(() => {
+  } = React143.useMemo(() => {
     const radius2 = fixed ? lineWidth / scale3 * 1.8 : scale3 / 22.5;
     const quaternion = new Quaternion().setFromUnitVectors(upV2, direction2.clone().normalize());
     const matrixL2 = new Matrix4().makeRotationFromQuaternion(quaternion);
@@ -145951,18 +146475,18 @@ var ScalingSphere = ({
     };
   }, [direction2, scale3, lineWidth, fixed]);
   const color = isHovered ? hoveredColor : axisColors[axis];
-  return /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", {
     ref: objRef
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     matrix: matrixL,
     matrixAutoUpdate: false,
     onPointerDown,
     onPointerMove,
     onPointerUp,
     onPointerOut
-  }, annotations && /* @__PURE__ */ React142.createElement(Html, {
+  }, annotations && /* @__PURE__ */ React143.createElement(Html, {
     position: [0, position2 / 2, 0]
-  }, /* @__PURE__ */ React142.createElement("div", {
+  }, /* @__PURE__ */ React143.createElement("div", {
     style: {
       display: "none",
       background: "#151520",
@@ -145973,14 +146497,14 @@ var ScalingSphere = ({
     },
     className: annotationsClass,
     ref: divRef
-  })), /* @__PURE__ */ React142.createElement("mesh", {
+  })), /* @__PURE__ */ React143.createElement("mesh", {
     ref: meshRef,
     position: [0, position2, 0],
     renderOrder,
     userData
-  }, /* @__PURE__ */ React142.createElement("sphereGeometry", {
+  }, /* @__PURE__ */ React143.createElement("sphereGeometry", {
     args: [radius, 12, 12]
-  }), /* @__PURE__ */ React142.createElement("meshBasicMaterial", {
+  }), /* @__PURE__ */ React143.createElement("meshBasicMaterial", {
     transparent: true,
     depthTest,
     color,
@@ -146010,7 +146534,7 @@ var vScale = /* @__PURE__ */ new Vector3();
 var xDir = /* @__PURE__ */ new Vector3(1, 0, 0);
 var yDir = /* @__PURE__ */ new Vector3(0, 1, 0);
 var zDir = /* @__PURE__ */ new Vector3(0, 0, 1);
-var PivotControls = /* @__PURE__ */ React142.forwardRef(({
+var PivotControls = /* @__PURE__ */ React143.forwardRef(({
   enabled = true,
   matrix: matrix3,
   onDragStart,
@@ -146044,14 +146568,14 @@ var PivotControls = /* @__PURE__ */ React142.forwardRef(({
   ...props
 }, fRef) => {
   const invalidate2 = useThree((state2) => state2.invalidate);
-  const parentRef = React142.useRef(null);
-  const ref = React142.useRef(null);
-  const gizmoRef = React142.useRef(null);
-  const childrenRef = React142.useRef(null);
-  const translation3 = React142.useRef([0, 0, 0]);
-  const cameraScale = React142.useRef(new Vector3(1, 1, 1));
-  const gizmoScale = React142.useRef(new Vector3(1, 1, 1));
-  React142.useLayoutEffect(() => {
+  const parentRef = React143.useRef(null);
+  const ref = React143.useRef(null);
+  const gizmoRef = React143.useRef(null);
+  const childrenRef = React143.useRef(null);
+  const translation3 = React143.useRef([0, 0, 0]);
+  const cameraScale = React143.useRef(new Vector3(1, 1, 1));
+  const gizmoScale = React143.useRef(new Vector3(1, 1, 1));
+  React143.useLayoutEffect(() => {
     if (!anchor) return;
     childrenRef.current.updateWorldMatrix(true, true);
     mPInv.copy(childrenRef.current.matrixWorld).invert();
@@ -146071,7 +146595,7 @@ var PivotControls = /* @__PURE__ */ React142.forwardRef(({
     gizmoRef.current.position.copy(vPosition);
     invalidate2();
   });
-  const config = React142.useMemo(() => ({
+  const config = React143.useMemo(() => ({
     onDragStart: (props2) => {
       mL0.copy(ref.current.matrix);
       mW0.copy(ref.current.matrixWorld);
@@ -146128,66 +146652,69 @@ var PivotControls = /* @__PURE__ */ React142.forwardRef(({
       state2.invalidate();
     }
   });
-  React142.useImperativeHandle(fRef, () => ref.current, []);
-  return /* @__PURE__ */ React142.createElement(context11.Provider, {
+  React143.useImperativeHandle(fRef, () => ref.current, []);
+  return /* @__PURE__ */ React143.createElement(context11.Provider, {
     value: config
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     ref: parentRef
-  }, /* @__PURE__ */ React142.createElement("group", _extends({
+  }, /* @__PURE__ */ React143.createElement("group", _extends({
     ref,
     matrix: matrix3,
     matrixAutoUpdate: false
-  }, props), /* @__PURE__ */ React142.createElement("group", {
+  }, props), /* @__PURE__ */ React143.createElement("group", {
     visible,
     ref: gizmoRef,
     position: offset,
     rotation: rotation3
-  }, enabled && /* @__PURE__ */ React142.createElement(React142.Fragment, null, !disableAxes && activeAxes[0] && /* @__PURE__ */ React142.createElement(AxisArrow, {
+  }, enabled && /* @__PURE__ */ React143.createElement(React143.Fragment, null, !disableAxes && activeAxes[0] && /* @__PURE__ */ React143.createElement(AxisArrow, {
     axis: 0,
     direction: xDir
-  }), !disableAxes && activeAxes[1] && /* @__PURE__ */ React142.createElement(AxisArrow, {
+  }), !disableAxes && activeAxes[1] && /* @__PURE__ */ React143.createElement(AxisArrow, {
     axis: 1,
     direction: yDir
-  }), !disableAxes && activeAxes[2] && /* @__PURE__ */ React142.createElement(AxisArrow, {
+  }), !disableAxes && activeAxes[2] && /* @__PURE__ */ React143.createElement(AxisArrow, {
     axis: 2,
     direction: zDir
-  }), !disableSliders && activeAxes[0] && activeAxes[1] && /* @__PURE__ */ React142.createElement(PlaneSlider, {
+  }), !disableSliders && activeAxes[0] && activeAxes[1] && /* @__PURE__ */ React143.createElement(PlaneSlider, {
     axis: 2,
     dir1: xDir,
     dir2: yDir
-  }), !disableSliders && activeAxes[0] && activeAxes[2] && /* @__PURE__ */ React142.createElement(PlaneSlider, {
+  }), !disableSliders && activeAxes[0] && activeAxes[2] && /* @__PURE__ */ React143.createElement(PlaneSlider, {
     axis: 1,
     dir1: zDir,
     dir2: xDir
-  }), !disableSliders && activeAxes[2] && activeAxes[1] && /* @__PURE__ */ React142.createElement(PlaneSlider, {
+  }), !disableSliders && activeAxes[2] && activeAxes[1] && /* @__PURE__ */ React143.createElement(PlaneSlider, {
     axis: 0,
     dir1: yDir,
     dir2: zDir
-  }), !disableRotations && activeAxes[0] && activeAxes[1] && /* @__PURE__ */ React142.createElement(AxisRotator, {
+  }), !disableRotations && activeAxes[0] && activeAxes[1] && /* @__PURE__ */ React143.createElement(AxisRotator, {
     axis: 2,
     dir1: xDir,
     dir2: yDir
-  }), !disableRotations && activeAxes[0] && activeAxes[2] && /* @__PURE__ */ React142.createElement(AxisRotator, {
+  }), !disableRotations && activeAxes[0] && activeAxes[2] && /* @__PURE__ */ React143.createElement(AxisRotator, {
     axis: 1,
     dir1: zDir,
     dir2: xDir
-  }), !disableRotations && activeAxes[2] && activeAxes[1] && /* @__PURE__ */ React142.createElement(AxisRotator, {
+  }), !disableRotations && activeAxes[2] && activeAxes[1] && /* @__PURE__ */ React143.createElement(AxisRotator, {
     axis: 0,
     dir1: yDir,
     dir2: zDir
-  }), !disableScaling && activeAxes[0] && /* @__PURE__ */ React142.createElement(ScalingSphere, {
+  }), !disableScaling && activeAxes[0] && /* @__PURE__ */ React143.createElement(ScalingSphere, {
     axis: 0,
     direction: xDir
-  }), !disableScaling && activeAxes[1] && /* @__PURE__ */ React142.createElement(ScalingSphere, {
+  }), !disableScaling && activeAxes[1] && /* @__PURE__ */ React143.createElement(ScalingSphere, {
     axis: 1,
     direction: yDir
-  }), !disableScaling && activeAxes[2] && /* @__PURE__ */ React142.createElement(ScalingSphere, {
+  }), !disableScaling && activeAxes[2] && /* @__PURE__ */ React143.createElement(ScalingSphere, {
     axis: 2,
     direction: zDir
-  }))), /* @__PURE__ */ React142.createElement("group", {
+  }))), /* @__PURE__ */ React143.createElement("group", {
     ref: childrenRef
   }, children))));
 });
+
+// node_modules/@react-three/drei/web/ScreenVideoTexture.js
+init_react_shim();
 var ScreenVideoTexture = /* @__PURE__ */ forwardRef(({
   options = {
     video: true
@@ -146201,12 +146728,15 @@ var ScreenVideoTexture = /* @__PURE__ */ forwardRef(({
       clear([]);
     };
   }, [mediaStream]);
-  return /* @__PURE__ */ React142.createElement(VideoTexture2, _extends({
+  return /* @__PURE__ */ React143.createElement(VideoTexture2, _extends({
     ref: fref
   }, props, {
     src: mediaStream
   }));
 });
+
+// node_modules/@react-three/drei/web/WebcamVideoTexture.js
+init_react_shim();
 var WebcamVideoTexture = /* @__PURE__ */ forwardRef(({
   constraints = {
     audio: false,
@@ -146223,12 +146753,18 @@ var WebcamVideoTexture = /* @__PURE__ */ forwardRef(({
       clear([]);
     };
   }, [mediaStream]);
-  return /* @__PURE__ */ React142.createElement(VideoTexture2, _extends({
+  return /* @__PURE__ */ React143.createElement(VideoTexture2, _extends({
     ref: fref
   }, props, {
     src: mediaStream
   }));
 });
+
+// node_modules/@react-three/drei/web/FaceControls.js
+init_react_shim();
+
+// node_modules/@react-three/drei/web/Facemesh.js
+init_react_shim();
 var defaultLookAt = /* @__PURE__ */ new Vector3(0, 0, -1);
 var normal = /* @__PURE__ */ (function() {
   const a7 = new Vector3();
@@ -146248,7 +146784,7 @@ var normal = /* @__PURE__ */ (function() {
 function mean(v12, v22) {
   return v12.clone().add(v22).multiplyScalar(0.5);
 }
-var Facemesh = /* @__PURE__ */ React142.forwardRef(({
+var Facemesh = /* @__PURE__ */ React143.forwardRef(({
   points = FacemeshDatas.SAMPLE_FACELANDMARKER_RESULT.faceLandmarks[0],
   face,
   facialTransformationMatrix,
@@ -146271,26 +146807,26 @@ var Facemesh = /* @__PURE__ */ React142.forwardRef(({
     points = face.keypoints;
     console.warn("Facemesh `face` prop is deprecated: use `points` instead");
   }
-  const offsetRef = React142.useRef(null);
-  const scaleRef = React142.useRef(null);
-  const originRef = React142.useRef(null);
-  const outerRef = React142.useRef(null);
-  const meshRef = React142.useRef(null);
-  const eyeRightRef = React142.useRef(null);
-  const eyeLeftRef = React142.useRef(null);
-  const [sightDir] = React142.useState(() => new Vector3());
-  const [transform] = React142.useState(() => new Object3D());
-  const [sightDirQuaternion] = React142.useState(() => new Quaternion());
-  const [_origin2] = React142.useState(() => new Vector3());
+  const offsetRef = React143.useRef(null);
+  const scaleRef = React143.useRef(null);
+  const originRef = React143.useRef(null);
+  const outerRef = React143.useRef(null);
+  const meshRef = React143.useRef(null);
+  const eyeRightRef = React143.useRef(null);
+  const eyeLeftRef = React143.useRef(null);
+  const [sightDir] = React143.useState(() => new Vector3());
+  const [transform] = React143.useState(() => new Object3D());
+  const [sightDirQuaternion] = React143.useState(() => new Quaternion());
+  const [_origin2] = React143.useState(() => new Vector3());
   const {
     invalidate: invalidate2
   } = useThree();
-  React142.useEffect(() => {
+  React143.useEffect(() => {
     var _meshRef$current;
     (_meshRef$current = meshRef.current) == null || _meshRef$current.geometry.setIndex(FacemeshDatas.TRIANGULATION);
   }, []);
-  const [bboxSize] = React142.useState(() => new Vector3());
-  React142.useEffect(() => {
+  const [bboxSize] = React143.useState(() => new Vector3());
+  React143.useEffect(() => {
     var _meshRef$current2, _outerRef$current;
     const faceGeometry = (_meshRef$current2 = meshRef.current) == null ? void 0 : _meshRef$current2.geometry;
     if (!faceGeometry) return;
@@ -146366,43 +146902,43 @@ var Facemesh = /* @__PURE__ */ React142.forwardRef(({
     faceGeometry.computeVertexNormals();
     faceGeometry.attributes.position.needsUpdate = true;
   }, [points, facialTransformationMatrix, faceBlendshapes, transform, offset, offsetScalar, width, height, depth, verticalTri, origin2, eyes, debug, invalidate2, sightDir, sightDirQuaternion, bboxSize, _origin2]);
-  const api = React142.useMemo(() => ({
+  const api = React143.useMemo(() => ({
     outerRef,
     meshRef,
     eyeRightRef,
     eyeLeftRef
   }), []);
-  React142.useImperativeHandle(fref, () => api, [api]);
-  const [meshBboxSize] = React142.useState(() => new Vector3());
+  React143.useImperativeHandle(fref, () => api, [api]);
+  const [meshBboxSize] = React143.useState(() => new Vector3());
   const bbox = (_meshRef$current3 = meshRef.current) == null ? void 0 : _meshRef$current3.geometry.boundingBox;
   const one = (bbox == null ? void 0 : bbox.getSize(meshBboxSize).z) || 1;
-  return /* @__PURE__ */ React142.createElement("group", props, /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", props, /* @__PURE__ */ React143.createElement("group", {
     ref: offsetRef
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     ref: outerRef
-  }, /* @__PURE__ */ React142.createElement("group", {
+  }, /* @__PURE__ */ React143.createElement("group", {
     ref: scaleRef
-  }, debug ? /* @__PURE__ */ React142.createElement(React142.Fragment, null, /* @__PURE__ */ React142.createElement("axesHelper", {
+  }, debug ? /* @__PURE__ */ React143.createElement(React143.Fragment, null, /* @__PURE__ */ React143.createElement("axesHelper", {
     args: [one]
-  }), /* @__PURE__ */ React142.createElement(Line4, {
+  }), /* @__PURE__ */ React143.createElement(Line4, {
     points: [[0, 0, 0], [0, 0, -one]],
     color: 65535
-  })) : null, /* @__PURE__ */ React142.createElement("group", {
+  })) : null, /* @__PURE__ */ React143.createElement("group", {
     ref: originRef
-  }, eyes && faceBlendshapes && /* @__PURE__ */ React142.createElement("group", {
+  }, eyes && faceBlendshapes && /* @__PURE__ */ React143.createElement("group", {
     name: "eyes"
-  }, /* @__PURE__ */ React142.createElement(FacemeshEye, {
+  }, /* @__PURE__ */ React143.createElement(FacemeshEye, {
     side: "left",
     ref: eyeRightRef,
     debug
-  }), /* @__PURE__ */ React142.createElement(FacemeshEye, {
+  }), /* @__PURE__ */ React143.createElement(FacemeshEye, {
     side: "right",
     ref: eyeLeftRef,
     debug
-  })), /* @__PURE__ */ React142.createElement("mesh", {
+  })), /* @__PURE__ */ React143.createElement("mesh", {
     ref: meshRef,
     name: "face"
-  }, children, debug ? /* @__PURE__ */ React142.createElement(React142.Fragment, null, bbox && /* @__PURE__ */ React142.createElement("box3Helper", {
+  }, children, debug ? /* @__PURE__ */ React143.createElement(React143.Fragment, null, bbox && /* @__PURE__ */ React143.createElement("box3Helper", {
     args: [bbox]
   })) : null))))));
 });
@@ -146426,14 +146962,14 @@ var FacemeshEyeDefaults = {
     vertical: 90
   }
 };
-var FacemeshEye = /* @__PURE__ */ React142.forwardRef(({
+var FacemeshEye = /* @__PURE__ */ React143.forwardRef(({
   side,
   debug = true
 }, fref) => {
-  const eyeMeshRef = React142.useRef(null);
-  const irisDirRef = React142.useRef(null);
-  const [sphere] = React142.useState(() => new Sphere());
-  const _computeSphere = React142.useCallback((faceGeometry) => {
+  const eyeMeshRef = React143.useRef(null);
+  const irisDirRef = React143.useRef(null);
+  const [sphere] = React143.useState(() => new Sphere());
+  const _computeSphere = React143.useCallback((faceGeometry) => {
     const position2 = faceGeometry.getAttribute("position");
     const eyeContourLandmarks = FacemeshEyeDefaults.contourLandmarks[side];
     const eyeContourPoints = eyeContourLandmarks.map((i6) => new Vector3(position2.getX(i6), position2.getY(i6), position2.getZ(i6)));
@@ -146443,8 +146979,8 @@ var FacemeshEye = /* @__PURE__ */ React142.forwardRef(({
     sphere.radius = eyeContourPoints[0].sub(eyeContourPoints[1]).length() / 2;
     return sphere;
   }, [sphere, side]);
-  const [rotation3] = React142.useState(() => new Euler());
-  const _update = React142.useCallback((faceGeometry, faceBlendshapes, sphere2) => {
+  const [rotation3] = React143.useState(() => new Euler());
+  const _update = React143.useCallback((faceGeometry, faceBlendshapes, sphere2) => {
     if (eyeMeshRef.current) {
       var _sphere6;
       (_sphere6 = sphere2) !== null && _sphere6 !== void 0 ? _sphere6 : sphere2 = _computeSphere(faceGeometry);
@@ -146465,19 +147001,19 @@ var FacemeshEye = /* @__PURE__ */ React142.forwardRef(({
       irisDirRef.current.setRotationFromEuler(rotation3);
     }
   }, [_computeSphere, side, rotation3]);
-  const api = React142.useMemo(() => ({
+  const api = React143.useMemo(() => ({
     eyeMeshRef,
     irisDirRef,
     _computeSphere,
     _update
   }), [_computeSphere, _update]);
-  React142.useImperativeHandle(fref, () => api, [api]);
+  React143.useImperativeHandle(fref, () => api, [api]);
   const color = FacemeshEyeDefaults.color[side];
-  return /* @__PURE__ */ React142.createElement("group", null, /* @__PURE__ */ React142.createElement("group", {
+  return /* @__PURE__ */ React143.createElement("group", null, /* @__PURE__ */ React143.createElement("group", {
     ref: eyeMeshRef
-  }, debug && /* @__PURE__ */ React142.createElement("axesHelper", null), /* @__PURE__ */ React142.createElement("group", {
+  }, debug && /* @__PURE__ */ React143.createElement("axesHelper", null), /* @__PURE__ */ React143.createElement("group", {
     ref: irisDirRef
-  }, /* @__PURE__ */ React142.createElement(React142.Fragment, null, debug && /* @__PURE__ */ React142.createElement(Line4, {
+  }, /* @__PURE__ */ React143.createElement(React143.Fragment, null, debug && /* @__PURE__ */ React143.createElement(Line4, {
     points: [[0, 0, 0], [0, 0, -2]],
     lineWidth: 1,
     color
@@ -150685,6 +151221,9 @@ var FacemeshDatas = {
     }]
   }
 };
+
+// node_modules/@react-three/drei/web/FaceLandmarker.js
+init_react_shim();
 var FaceLandmarkerContext = /* @__PURE__ */ createContext({});
 var FaceLandmarkerDefaults = {
   basePath: "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.17/wasm",
@@ -150719,7 +151258,7 @@ var FaceLandmarker = /* @__PURE__ */ forwardRef(({
     };
   }, [faceLandmarker, basePath, opts]);
   useImperativeHandle(fref, () => faceLandmarker, [faceLandmarker]);
-  return /* @__PURE__ */ React142.createElement(FaceLandmarkerContext.Provider, {
+  return /* @__PURE__ */ React143.createElement(FaceLandmarkerContext.Provider, {
     value: faceLandmarker
   }, children);
 });
@@ -150855,17 +151394,17 @@ var FaceControls = /* @__PURE__ */ forwardRef(({
     onVideoFrame,
     ...videoTexture
   };
-  return /* @__PURE__ */ React142.createElement(FaceControlsContext.Provider, {
+  return /* @__PURE__ */ React143.createElement(FaceControlsContext.Provider, {
     value: api
-  }, !manualDetect && /* @__PURE__ */ React142.createElement(Suspense, {
+  }, !manualDetect && /* @__PURE__ */ React143.createElement(Suspense, {
     fallback: null
-  }, "src" in videoTextureProps ? /* @__PURE__ */ React142.createElement(VideoTexture2, _extends({
+  }, "src" in videoTextureProps ? /* @__PURE__ */ React143.createElement(VideoTexture2, _extends({
     ref: videoTextureRef
-  }, videoTextureProps)) : /* @__PURE__ */ React142.createElement(WebcamVideoTexture, _extends({
+  }, videoTextureProps)) : /* @__PURE__ */ React143.createElement(WebcamVideoTexture, _extends({
     ref: videoTextureRef
-  }, videoTextureProps))), /* @__PURE__ */ React142.createElement(Facemesh, _extends({
+  }, videoTextureProps))), /* @__PURE__ */ React143.createElement(Facemesh, _extends({
     ref: facemeshApiRef,
-    children: /* @__PURE__ */ React142.createElement("meshNormalMaterial", {
+    children: /* @__PURE__ */ React143.createElement("meshNormalMaterial", {
       side: DoubleSide
     })
   }, facemesh, {
@@ -150904,28 +151443,6 @@ var R3FViewer = ({
   ] }) });
 };
 /*! Bundled license information:
-
-use-sync-external-store/cjs/use-sync-external-store-shim.development.js:
-  (**
-   * @license React
-   * use-sync-external-store-shim.development.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
-
-use-sync-external-store/cjs/use-sync-external-store-shim/with-selector.development.js:
-  (**
-   * @license React
-   * use-sync-external-store-shim/with-selector.development.js
-   *
-   * Copyright (c) Meta Platforms, Inc. and affiliates.
-   *
-   * This source code is licensed under the MIT license found in the
-   * LICENSE file in the root directory of this source tree.
-   *)
 
 scheduler/cjs/scheduler.development.js:
   (**
